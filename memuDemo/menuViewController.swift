@@ -17,8 +17,8 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var iconArray:Array = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        ManuNameArray = ["Home","Message","Map","Setting"]
-        iconArray = [UIImage(named:"home")!,UIImage(named:"message")!,UIImage(named:"map")!,UIImage(named:"setting")!]
+        ManuNameArray = ["Профиль","Счета","Оплата","Настройки","Выйти"]
+        iconArray = [UIImage(named:"menuProfile")!,UIImage(named:"message")!,UIImage(named:"map")!,UIImage(named:"setting")!,UIImage(named:"logout")!]
         
         imgProfile.layer.borderWidth = 2
         imgProfile.layer.borderColor = UIColor.green.cgColor
@@ -52,9 +52,9 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let cell:MenuCell = tableView.cellForRow(at: indexPath) as! MenuCell
         print(cell.lblMenuname.text!)
-        if cell.lblMenuname.text! == "Home"
+        if cell.lblMenuname.text! == "Профиль"
         {
-            print("Home Tapped")
+            print("Открыт профиль")
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
@@ -62,9 +62,9 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
             
         }
-        if cell.lblMenuname.text! == "Message"
+        if cell.lblMenuname.text! == "Счета"
         {
-            print("message Tapped")
+            print("Все ваши счета")
            
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "MessageViewController") as! MessageViewController
@@ -72,13 +72,17 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
         }
-        if cell.lblMenuname.text! == "Map"
+        if cell.lblMenuname.text! == "Оплата"
         {
-            print("Map Tapped")
+            print("Здесь вы можете оплатить счет")
         }
-        if cell.lblMenuname.text! == "Setting"
+        if cell.lblMenuname.text! == "Настройки"
         {
-           print("setting Tapped")
+           print("Настройки")
+        }
+        if cell.lblMenuname.text! == "Выйти"
+        {
+            print("Выход")
         }
     }
     /*

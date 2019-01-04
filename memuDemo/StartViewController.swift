@@ -61,12 +61,12 @@ class StartViewController: UIViewController {
                 print(jsonResponse)
                 
                 //try to turn jsonResponse into array of dictionaries, to get data via key from json object
-                guard let jsonArray = jsonResponse as? [[String:Any]] else {
+                guard let jsonArray = jsonResponse as? [String:Any] else {
                     return
                 }
                 print(jsonArray)
                 //get status from dictionary from response
-                guard let authStatus = jsonArray[0]["auth"] as? Bool else {
+                guard let authStatus = jsonArray["token"] as? String else {
                     return
                 }
                 print(authStatus)
