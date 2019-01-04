@@ -12,9 +12,10 @@ class StartViewController: UIViewController {
 
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         login.useUnderline()
         password.useUnderline()
         // Do any additional setup after loading the view.
@@ -26,44 +27,59 @@ class StartViewController: UIViewController {
     
     @IBAction func userLogin() {
         //define request parameters
-        let parameters = ["phoneNumber":login.text,"password":password.text]
-        let url = URL(string: "http://192.168.1.161:3000/api/login")!
+        let login = self.login.text
+        let password = self.password.text
+        let parameters = [ "phoneNumber":login,"password":password]
+        guard let url = URL(string: "http://192.168.1.161:3000/api/login") else {return}
         
         //create session object
-        let session = URLSession.shared
+        
         
         //define request object
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        }catch let error {
-            print(error.localizedDescription)
-        }
-        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        var connection = NSURLConnection(request: request, delegate: nil, startImmediately: true)
-//        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-//            guard  error == nil else {
-//            return
-//        }
-//        guard let  data = data else {
-//            return
-//        }
-//
-//        do {
-//            //create json oobject from data
-//            if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] {
-//                print(json)
-//            }
-//        }catch let error {
-//            print(error.localizedDescription)
-//        }
-//    })
-//    task.resume()
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+        request.httpBody = httpBody
+        print(httpBody)
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {(data,response,error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            
+            do {
+                print(data)
+                //get json response from server
+                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
+                print(jsonResponse)
+                
+                //try to turn jsonResponse into array of dictionaries, to get data via key from json object
+                guard let jsonArray = jsonResponse as? [[String:Any]] else {
+                    return
+                }
+                print(jsonArray)
+                //get status from dictionary from response
+                guard let authStatus = jsonArray[0]["auth"] as? Bool else {
+                    return
+                }
+                print(authStatus)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
+                self.present(controller, animated: true, completion: nil)
+                
+            }catch {
+                print(error)
+            }
+            
+        }.resume()
     /*
     // MARK: - Navigation
 
