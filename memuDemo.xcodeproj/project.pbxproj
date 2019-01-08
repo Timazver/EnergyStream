@@ -12,6 +12,8 @@
 		2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89421D72ADC00EB411A /* StartViewController.swift */; };
 		2227A89721D7753F00EB411A /* SignedTextFieldfd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89621D7753E00EB411A /* SignedTextFieldfd.swift */; };
 		2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89821D79C0900EB411A /* RegisterViewController.swift */; };
+		228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB01F21E45B4F00033803 /* ProfileViewController.swift */; };
+		228EB02221E4A3B000033803 /* UserProfileCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCellTableViewCell.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 		2227A89421D72ADC00EB411A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2227A89621D7753E00EB411A /* SignedTextFieldfd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedTextFieldfd.swift; sourceTree = "<group>"; };
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		228EB01F21E45B4F00033803 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		228EB02121E4A3B000033803 /* UserProfileCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCellTableViewCell.swift; sourceTree = "<group>"; };
 		B222F1E41DAA30330089573D /* memuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 			children = (
 				B222F1E71DAA30330089573D /* AppDelegate.swift */,
 				B222F1E91DAA30330089573D /* ViewController.swift */,
+				228EB01F21E45B4F00033803 /* ProfileViewController.swift */,
+				228EB02121E4A3B000033803 /* UserProfileCellTableViewCell.swift */,
 				B222F2161DAA33DA0089573D /* SWRevealViewController.h */,
 				B222F2171DAA33DA0089573D /* SWRevealViewController.m */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
@@ -192,11 +198,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B222F1EA1DAA30330089573D /* ViewController.swift in Sources */,
+				228EB02221E4A3B000033803 /* UserProfileCellTableViewCell.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
 				2210047821D63AB10062C9C9 /* memuDemoTests.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
 				B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */,
 				2210047C21D644A10062C9C9 /* AuthViewController.swift in Sources */,
+				228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */,
 				2227A89721D7753F00EB411A /* SignedTextFieldfd.swift in Sources */,
 				2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */,
 				B222F2181DAA33DA0089573D /* SWRevealViewController.m in Sources */,
@@ -267,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -311,7 +319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

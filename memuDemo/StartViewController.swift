@@ -29,9 +29,9 @@ class StartViewController: UIViewController {
         //define request parameters
         let login = self.login.text
         let password = self.password.text
-        let parameters = [ "phoneNumber":login,"password":password]
+        let parameters = ["phoneNumber":login,"password":password]
         guard let url = URL(string: "http://192.168.1.161:3000/api/login") else {return}
-        
+        print(url)
         //create session object
         
         
@@ -39,9 +39,11 @@ class StartViewController: UIViewController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        print("Here is request")
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
         request.httpBody = httpBody
+        print("here is httpBdy")
         print(httpBody)
         
         let session = URLSession.shared
@@ -53,7 +55,7 @@ class StartViewController: UIViewController {
             }
             
             guard let data = data else {return}
-            
+            print("Here is data")
             do {
                 print(data)
                 //get json response from server
@@ -61,15 +63,15 @@ class StartViewController: UIViewController {
                 print(jsonResponse)
                 
                 //try to turn jsonResponse into array of dictionaries, to get data via key from json object
-                guard let jsonArray = jsonResponse as? [String:Any] else {
-                    return
-                }
-                print(jsonArray)
+//                guard let jsonArray = jsonResponse as? [String:Any] else {
+//                    return
+//                }
+//                print(jsonArray)
                 //get status from dictionary from response
-                guard let authStatus = jsonArray["token"] as? String else {
-                    return
-                }
-                print(authStatus)
+//                guard let authStatus = jsonArray["token"] as? String else {
+//                    return
+//                }
+                
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
