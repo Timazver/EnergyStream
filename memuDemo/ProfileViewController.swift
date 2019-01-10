@@ -29,8 +29,8 @@ class ProfileViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userArray = getUserInfo()
-        print(userArray)
+        profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        Requests.getUserInfo()
         profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
         // Do any additional setup after loading the view, typically from a nib.
         if revealViewController() != nil {
@@ -51,59 +51,21 @@ class ProfileViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
-
+        
         cell.title.text! = profileCellTitles[indexPath.row]
-        if !userArray.isEmpty {
-        cell.data.text! = userArray[indexPath.row]
+        if !Requests.userArray.isEmpty {
+        cell.data.text! = Requests.userArray[indexPath.row]
         
         }
         else {
-                self.profileTableView.reloadData()
-              
-            
+            self.profileTableView.reloadData()
         }
         
         return cell
     }
 
     
-    func getUserInfo() -> [String] {
-        
-        let accountNumber = "50179872"
-        var arrayForReturn: Array = [String]()
-        guard let url = URL(string:"http://192.168.1.161:3000/api/user/card?accountNumber=\(accountNumber)") else {return["hello"]}
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjMzcwYTQzYjlkNDY1MzY2NGZlMzExMSIsImlhdCI6MTU0NzExMjkyOCwiZXhwIjoxNTQ3MTk5MzI4fQ.tj5kr71wrj2_RrdhGUEEUDU4ObZmHCW9WGldIPMtYcw"
-        
-        var requestForUserInfo = URLRequest(url:url )
-        requestForUserInfo.httpMethod = "GET"
-        requestForUserInfo.addValue("Bearer \(token) ", forHTTPHeaderField: "Authorization")
-        
-        let session = URLSession.shared
-        session.dataTask(with: requestForUserInfo) {
-            (data,response,error) in
-            
-            if let response = response {
-                print(response)
-            }
-            
-            guard let data = data else {return}
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-                guard let userData = json as? [String:Any] else {return}
-                let user = userData["user"] as? [String:Any]
-                arrayForReturn = [user?["LS"] ,user?["FIO"], user?["KOL_MAN"], user?["ADRESS"], user?["accountNumber"], user?["RAYON"],user?["SCH_TYPE"]] as! [String]
-                
-                print(arrayForReturn)
-            }catch {
-                print(error)
-            }
-            
-            }.resume()
-        return arrayForReturn
-
-        }
+    
 
 }
 

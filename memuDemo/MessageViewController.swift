@@ -42,7 +42,7 @@ class MessageViewController: UIViewController,UINavigationBarDelegate,UINavigati
     func getUserEpd() {
     guard let url = URL(string:"http://192.168.1.161:3000/api/user/epd?accountNumber=\(self.accountNumber)") else {return}
     
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjMmRjZmEzN2NmZmY0MjZjZmEzNmNjZCIsImlhdCI6MTU0NzAxNTIyMywiZXhwIjoxNTQ3MTAxNjIzfQ.9i-Qef6Tca2QyPAk-AsdmPbDJJTUPYNsw3TtklUImMo"
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjMzcwYTQzYjlkNDY1MzY2NGZlMzExMSIsImlhdCI6MTU0NzExMjkyOCwiZXhwIjoxNTQ3MTk5MzI4fQ.tj5kr71wrj2_RrdhGUEEUDU4ObZmHCW9WGldIPMtYcw"
     
     var requestForUserInfo = URLRequest(url:url )
     
