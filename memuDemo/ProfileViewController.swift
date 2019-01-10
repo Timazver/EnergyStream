@@ -19,26 +19,31 @@ import UIKit
 //}
 
 class ProfileViewController: UITableViewController {
+    var userArray: Array = [String]()
+    var profileCellTitles: Array = [String]()
     
-    let profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
     @IBOutlet weak var profileTableView: UITableView!
-    let accountNumber = "50179872"
+    
     
     @IBOutlet weak var menu: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userArray = getUserInfo()
+        print(userArray)
+        profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
         // Do any additional setup after loading the view, typically from a nib.
         if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
             menu.target = revealViewController()
             menu.action = #selector(SWRevealViewController.revealToggle(_:))
         }
+
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        getUserInfo()
-    }
+    
+        
+    
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileCellTitles.count
     }
@@ -46,21 +51,30 @@ class ProfileViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
-        print(indexPath)
+
         cell.title.text! = profileCellTitles[indexPath.row]
-        print(userArray.count)
-//        cell.data.text! = userArray[indexPath.row]
+        if !userArray.isEmpty {
+        cell.data.text! = userArray[indexPath.row]
+        
+        }
+        else {
+                self.profileTableView.reloadData()
+              
+            
+        }
         
         return cell
     }
 
     
     func getUserInfo() -> [String] {
-        var arrayForReturn: [String]
-        guard let url = URL(string:"http://192.168.1.161:3000/api/user/profile?accountNumber=\(self.accountNumber)") else {return []}
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjMmRjZmEzN2NmZmY0MjZjZmEzNmNjZCIsImlhdCI6MTU0NzAxNTIyMywiZXhwIjoxNTQ3MTAxNjIzfQ.9i-Qef6Tca2QyPAk-AsdmPbDJJTUPYNsw3TtklUImMo"
         
-       var requestForUserInfo = URLRequest(url:url )
+        let accountNumber = "50179872"
+        var arrayForReturn: Array = [String]()
+        guard let url = URL(string:"http://192.168.1.161:3000/api/user/card?accountNumber=\(accountNumber)") else {return["hello"]}
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjMzcwYTQzYjlkNDY1MzY2NGZlMzExMSIsImlhdCI6MTU0NzExMjkyOCwiZXhwIjoxNTQ3MTk5MzI4fQ.tj5kr71wrj2_RrdhGUEEUDU4ObZmHCW9WGldIPMtYcw"
+        
+        var requestForUserInfo = URLRequest(url:url )
         requestForUserInfo.httpMethod = "GET"
         requestForUserInfo.addValue("Bearer \(token) ", forHTTPHeaderField: "Authorization")
         
@@ -79,18 +93,18 @@ class ProfileViewController: UITableViewController {
                 print(json)
                 guard let userData = json as? [String:Any] else {return}
                 let user = userData["user"] as? [String:Any]
-                print(user?["LS" ] as! String)
-//                self.userArray
-                   arrayForReturn = [user?["LS"] ,user?["FIO"], user?["KOL_MAN"], user?["ADRESS"], user?["accountNumber"], user?["RAYON"],user?["SCH_TYPE"]] as! [String]
+                arrayForReturn = [user?["LS"] ,user?["FIO"], user?["KOL_MAN"], user?["ADRESS"], user?["accountNumber"], user?["RAYON"],user?["SCH_TYPE"]] as! [String]
                 
-                print(self.userArray)
+                print(arrayForReturn)
             }catch {
                 print(error)
             }
             
             }.resume()
-       return arrayForReturn
+        return arrayForReturn
+
         }
-    
+
 }
+
 
