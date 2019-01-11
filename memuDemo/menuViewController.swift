@@ -67,7 +67,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print("Все ваши счета")
            
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "MessageViewController") as! MessageViewController
+            let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "EpdViewController") as! EpdViewController
             let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
             
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)

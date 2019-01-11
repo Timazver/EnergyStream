@@ -30,6 +30,7 @@ class ProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        Requests.getListAccountNumbers()
         Requests.getUserInfo()
         profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
         // Do any additional setup after loading the view, typically from a nib.
