@@ -13,17 +13,16 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var accountNumber: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password:UITextField!
-    @IBOutlet weak var confirmPassword: UITextField!
     var smsCode: String!
     //disable status bar on top
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        accountNumber.canBecomeFirstResponder
         accountNumber.useUnderline()
         phoneNumber.useUnderline()
         password.useUnderline()
-        confirmPassword.useUnderline()
     }
     
     //To hide keyboard after touching outside of keyboard
@@ -38,10 +37,9 @@ class RegisterViewController: UIViewController {
         let accountNumber = self.accountNumber.text
         let phoneNumber = self.phoneNumber.text
         let password = self.password.text
-        let confirmPassword = self.confirmPassword.text
         
         let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
-        guard let url = URL(string: "http://192.168.1.161:3000/api/register") else {return}
+        guard let url = URL(string: "http://5.63.112.4:30000cd Do/api/register") else {return}
         
         //create session object
         

@@ -21,18 +21,23 @@ import UIKit
 class ProfileViewController: UITableViewController {
     var userArray: Array = [String]()
     var profileCellTitles: Array = [String]()
+//    var sections = sectionsData
     
     @IBOutlet weak var profileTableView: UITableView!
+    
     
     
     @IBOutlet weak var menu: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
+        profileTableView.estimatedRowHeight = 44.0
+        profileTableView.rowHeight = UITableViewAutomaticDimension
+        self.title = "Информация о счетах"
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         Requests.getListAccountNumbers()
         Requests.getUserInfo()
-        profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
         // Do any additional setup after loading the view, typically from a nib.
         if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
@@ -45,29 +50,30 @@ class ProfileViewController: UITableViewController {
         
     
    
+
+    
+    // Cell
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileCellTitles.count
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
-        
+
         cell.title.text! = profileCellTitles[indexPath.row]
+        cell.sizeThatFits(CGSize.init(width: 150, height: 150))
         if !Requests.userArray.isEmpty {
         cell.data.text! = Requests.userArray[indexPath.row]
-        
+
+
         }
         else {
             self.profileTableView.reloadData()
         }
-        
+
         return cell
     }
-
-    
-    
-
+   
 }
 
 

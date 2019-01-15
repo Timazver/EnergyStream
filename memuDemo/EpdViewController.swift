@@ -8,21 +8,24 @@
 
 import UIKit
 
-class EpdViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
     
+    
+    @IBOutlet weak var dropDownTextField: UITextField!
     @IBOutlet weak var epdTableView: UITableView!
     @IBOutlet weak var menu: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Requests.getListAccountNumbers()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        Requests.getUserEpd()
+        Requests.getUserEpd(Requests.currentAccoutNumber)
         // Do any additional setup after loading the view.
-        if revealViewController() != nil {
+            if revealViewController() != nil {
         //revealViewController().rearViewRevealWidth = 200
-        menu.target = revealViewController()
-        menu.action = #selector(SWRevealViewController.revealToggle(_:))
-        }
+                menu.target = revealViewController()
+                menu.action = #selector(SWRevealViewController.revealToggle(_:))
+            }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +51,11 @@ class EpdViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
         return epdCell
+    }
+    func showDropDown() {
+    let modalViewController = ModalPickerViewController()
+    modalViewController.modalPresentationStyle = .overCurrentContext
+        present(modalViewController, animated: true, completion: nil)
     }
     
 }

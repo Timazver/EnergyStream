@@ -30,7 +30,7 @@ class StartViewController: UIViewController {
         let login = self.login.text
         let password = self.password.text
         let parameters = ["phoneNumber":login,"password":password]
-        guard let url = URL(string: "http://192.168.1.161:3000/api/login") else {return}
+        guard let url = URL(string: "http://5.63.112.4:30000/api/login") else {return}
         print(url)
         //create session object
         
@@ -61,18 +61,15 @@ class StartViewController: UIViewController {
                 //get json response from server
                 let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
                 print(jsonResponse)
+                let jsonData = jsonResponse as! [String:Any]
                 
-                //try to turn jsonResponse into array of dictionaries, to get data via key from json object
-//                guard let jsonArray = jsonResponse as? [String:Any] else {
-//                    return
-//                }
-//                print(jsonArray)
-                //get status from dictionary from response
-//                guard let authStatus = jsonArray["token"] as? String else {
-//                    return
-//                }
+                guard let token = jsonData["token"] else {return}
+                if token != nil {
+                Requests.authToken = jsonData["token"] as! String
+                }
                 
                 
+                guard let auth = jsonData["auth"] else {return}
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
                 self.present(controller, animated: true, completion: nil)
@@ -82,15 +79,6 @@ class StartViewController: UIViewController {
             }
             
         }.resume()
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
 }

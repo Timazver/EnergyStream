@@ -14,6 +14,7 @@
 		2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89821D79C0900EB411A /* RegisterViewController.swift */; };
 		2260827F21E752B100B5D768 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260827E21E752B100B5D768 /* Requests.swift */; };
 		2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260828021E76B8B00B5D768 /* EpdCell.swift */; };
+		228B905821E88BA100BD2DF3 /* ModalPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228B905721E88BA100BD2DF3 /* ModalPickerViewController.swift */; };
 		228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB01F21E45B4F00033803 /* ProfileViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2260827E21E752B100B5D768 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		2260828021E76B8B00B5D768 /* EpdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpdCell.swift; sourceTree = "<group>"; };
+		228B905721E88BA100BD2DF3 /* ModalPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPickerViewController.swift; sourceTree = "<group>"; };
 		228EB01F21E45B4F00033803 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		B222F1E41DAA30330089573D /* memuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				B222F2161DAA33DA0089573D /* SWRevealViewController.h */,
 				B222F2171DAA33DA0089573D /* SWRevealViewController.m */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
+				228B905721E88BA100BD2DF3 /* ModalPickerViewController.swift */,
 				2210047B21D644A10062C9C9 /* AuthViewController.swift */,
 				2227A89421D72ADC00EB411A /* StartViewController.swift */,
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
@@ -207,6 +210,7 @@
 				228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
 				2210047821D63AB10062C9C9 /* memuDemoTests.swift in Sources */,
+				228B905821E88BA100BD2DF3 /* ModalPickerViewController.swift in Sources */,
 				2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
