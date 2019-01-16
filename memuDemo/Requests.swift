@@ -18,11 +18,46 @@ struct ListAccNumbers {
         self.PHONE = dictionary["PHONE"] as? String ?? ""
     }
 }
+struct CellData {
+    var opened = Bool()
+    var title = String()
+    var sectionData = [String]()
+}
+
+struct UserCard {
+    var accountNumber: String
+    var firstName: String
+    var lastName: String
+    var middleName: String
+    var numberOfPeople: String
+    var address: String
+    var phoneNumber: String
+    var SCH_TYPE: String
+    var fio: String
+    var area: String
+    
+    init(_ userCard: [String:Any]) {
+        self.accountNumber = userCard["LS"] as? String ?? "Не указано"
+        self.fio = userCard["FIO"] as? String ?? ""
+        self.firstName = ""
+        self.lastName = ""
+        self.middleName = "Не указано"
+//        self.firstName = String(fioArray[1] as? Substring ?? "Не указано")
+//        self.lastName = String(fioArray[0] as? Substring ?? "Не указано")
+//        self.middleName = String(fioArray[2].isEmpty ? fioArray[2] as! Substring : "Не указано")
+        self.numberOfPeople = userCard["LS"] as? String ?? ""
+        self.address = userCard["LS"] as? String ?? "Не указано"
+        self.phoneNumber = userCard["LS"] as? String ?? "Не указано"
+        self.SCH_TYPE = userCard["LS"] as? String ?? "Не указано"
+        self.area = userCard["RAYON"] as! String ?? "Не указано"
+    }
+}
 
 import Foundation
 class Requests {
-    static var currentAccoutNumber: String = "50179872"
-    static var userArray: Array = [String]()
+    static var currentAccoutNumber: String = ""
+//    static var userArray: Array = [String]()
+    static var userModel: Array = [UserCard]()
     static var epdArray: Array = [String]()
     static var epdTitles: Array = [String]()
     static var epdData: Array = [String]()
@@ -30,13 +65,18 @@ class Requests {
     static var authToken: String = ""
     
     
-
+    static func divideFio(_ fio: String) {
+        let fioArray = fio.split(separator: " ")
+        Requests.userModel[0].firstName = String(fioArray[1])
+        Requests.userModel[0].lastName = String(fioArray[0])
+        Requests.userModel[0].middleName = "Не указано"
+    }
     
     
     static func getUserInfo() {
-        let accountNumber = "50179872"
+        
 
-        guard let url = URL(string:"http://5.63.112.4:30000/api/user/card?accountNumber=\(accountNumber)") else {return}
+        guard let url = URL(string:"http://5.63.112.4:30000/api/user/card?accountNumber=\(self.currentAccoutNumber)") else {return}
         
         
         var requestForUserInfo = URLRequest(url:url )
@@ -57,10 +97,19 @@ class Requests {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
                 guard let userData = json as? [String:Any] else {return}
-                let user = userData["user"] as? [String:Any]
-                print(user ?? "user is Empty")
-                self.userArray = [user?["LS"] ,user?["FIO"] , user?["KOL_MAN"] , user?["ADRESS"] , user?["PHONE"] , user?["RAYON"] ,user?["SCH_TYPE"]] as! [String]
                 
+                guard let user = userData["user"] as? [String:Any] else {
+                    print("User is empty")
+                    return}
+                if userModel.isEmpty {
+                userModel.append(UserCard(user))
+                Requests.divideFio(user["FIO"] as! String)
+                }
+                else {
+                    userModel.removeAll()
+                }
+//                self.userArray = [user?["LS"] ,user?["FIO"] , user?["KOL_MAN"] , user?["ADRESS"] , user?["PHONE"] , user?["RAYON"] ,user?["SCH_TYPE"]] as! [String]
+                print(userModel)
 
             }catch {
                 print(error)
@@ -71,10 +120,11 @@ class Requests {
         
     }
     
+    
     //Area with Epd related method and fields
     static func getUserEpd(_ accountNumber: String) {
         let epdTitles = ["Организация", "Назначение" , "К оплате"]
-        guard let url = URL(string:"http://5.63.112.4:30000/api/epd?accountNumber=\(accountNumber)") else {return}
+        guard let url = URL(string:"http://5.63.112.4:30000/api/epd?accountNumber=\(currentAccoutNumber)") else {return}
         
         
         
@@ -100,7 +150,13 @@ class Requests {
                 guard let jsonData = json as? [String:AnyObject] else {return}
                 let epdDataArray = jsonData["epdData"] as? [String:AnyObject]
                 let oplInfo = epdDataArray?["opl_info"] as? [AnyObject]
+                if oplInfo == nil {
+                    print("Текущий начислений нет")
+                }
+                else {
+                    print(oplInfo)
                 self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
+                }
             }catch {
                 print(error)
             }
@@ -108,11 +164,12 @@ class Requests {
             }.resume()
         self.epdTitles = epdTitles
     }
+    
+    
+    
     //Get user object with list of Account Numbers
     static func getListAccountNumbers() {
         guard let url = URL(string:"http://5.63.112.4:30000/api/user/profile") else {return}
-        
-        
         
         var requestForUserInfo = URLRequest(url:url )
         
@@ -134,6 +191,8 @@ class Requests {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 guard let userData = json as? [String:Any] else {return}
                 let user = userData["user"] as? [String:Any]
+                self.currentAccoutNumber = user?["accountNumber"] as! String
+                print(currentAccoutNumber)
                 let accountNumbersArray = user?["listAccountNumbers"] as! [[String:Any]]
                 
                 //Try to parse array of ListAccNumbers into array of Structure

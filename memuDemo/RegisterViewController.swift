@@ -82,7 +82,7 @@ class RegisterViewController: UIViewController {
         let action=UIAlertAction(title: "Отправить", style: .default, handler:{
             action in
             guard let urlForActivate = URL(string: "http://192.168.1.161:3000/api/activate") else {return}
-            let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text]
+            let parametersForActivate = ["phoneNumber":phoneNumber,"activat Code":smsAlert.textFields![0].text]
             var requestForActivate = URLRequest(url: urlForActivate)
             requestForActivate.httpMethod = "POST"
             requestForActivate.addValue("application/json", forHTTPHeaderField: "Content-Type")

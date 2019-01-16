@@ -51,7 +51,9 @@ class ProfileViewController: UITableViewController {
     
    
 
-    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Requests.listAccountNumbers.count
+    }
     // Cell
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileCellTitles.count
@@ -59,17 +61,46 @@ class ProfileViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
-
-        cell.title.text! = profileCellTitles[indexPath.row]
-        cell.sizeThatFits(CGSize.init(width: 150, height: 150))
-        if !Requests.userArray.isEmpty {
-        cell.data.text! = Requests.userArray[indexPath.row]
-
-
+        
+        if !Requests.userModel.isEmpty {
+            cell.title.text! = profileCellTitles[indexPath.row]
+            switch profileCellTitles[indexPath.row] {
+            case "Лицевой счет":
+                cell.data.text! = Requests.userModel[0].accountNumber
+            case "Имя":
+                cell.data.text! = Requests.userModel[0].firstName
+            case "Фамилия":
+                cell.data.text! = Requests.userModel[0].lastName
+            case "Отчество":
+                cell.data.text! = Requests.userModel[0].middleName
+            case "Количество человек":
+                cell.data.text! = Requests.userModel[0].numberOfPeople
+            case "Адрес":
+                cell.data.text! = Requests.userModel[0].address
+            case "Номер телефона":
+                cell.data.text! = Requests.userModel[0].phoneNumber
+            case "Район":
+                cell.data.text! = Requests.userModel[0].area
+            case "SCH_TYPE":
+                cell.data.text! = Requests.userModel[0].SCH_TYPE
+            default:
+                break
+            }
+            print(indexPath.row)
         }
+            
+        
         else {
             self.profileTableView.reloadData()
         }
+//        if !Requests.userArray.isEmpty {
+//        cell.data.text! = Requests.userArray[indexPath.row]
+//
+//
+//        }
+//        else {
+//            self.profileTableView.reloadData()
+//        }
 
         return cell
     }

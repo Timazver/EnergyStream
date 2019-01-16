@@ -17,6 +17,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var iconArray:Array = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tblTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         ManuNameArray = ["Профиль","Счета","Оплата","Настройки","Выйти"]
         iconArray = [UIImage(named:"menuProfile")!,UIImage(named:"message")!,UIImage(named:"map")!,UIImage(named:"setting")!,UIImage(named:"logout")!]
         
