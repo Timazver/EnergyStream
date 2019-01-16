@@ -69,10 +69,15 @@ class StartViewController: UIViewController {
                 }
                 
                 
-                guard let auth = jsonData["auth"] else {return}
+                guard let auth = jsonData["auth"] as? Bool else {return}
+                if auth == true {
+                print("Successfully logged in")
+                Requests.getListAccountNumbers()
+                print(Requests.currentAccoutNumber)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
                 self.present(controller, animated: true, completion: nil)
+                }
                 
             }catch {
                 print(error)

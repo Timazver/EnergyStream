@@ -36,7 +36,6 @@ class ProfileViewController: UITableViewController {
         profileTableView.rowHeight = UITableViewAutomaticDimension
         self.title = "Информация о счетах"
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        Requests.getListAccountNumbers()
         Requests.getUserInfo()
         // Do any additional setup after loading the view, typically from a nib.
         if revealViewController() != nil {
@@ -51,9 +50,9 @@ class ProfileViewController: UITableViewController {
     
    
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return Requests.listAccountNumbers.count
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return Requests.listAccountNumbers.count
+//    }
     // Cell
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileCellTitles.count

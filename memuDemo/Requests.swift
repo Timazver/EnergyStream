@@ -45,10 +45,10 @@ struct UserCard {
 //        self.firstName = String(fioArray[1] as? Substring ?? "Не указано")
 //        self.lastName = String(fioArray[0] as? Substring ?? "Не указано")
 //        self.middleName = String(fioArray[2].isEmpty ? fioArray[2] as! Substring : "Не указано")
-        self.numberOfPeople = userCard["LS"] as? String ?? ""
-        self.address = userCard["LS"] as? String ?? "Не указано"
-        self.phoneNumber = userCard["LS"] as? String ?? "Не указано"
-        self.SCH_TYPE = userCard["LS"] as? String ?? "Не указано"
+        self.numberOfPeople = userCard["KOL_MAN"] as? String ?? ""
+        self.address = userCard["ADRESS"] as? String ?? "Не указано"
+        self.phoneNumber = userCard["PHONE"] as? String ?? "Не указано"
+        self.SCH_TYPE = userCard["SCH_TYPE"] as? String ?? "Не указано"
         self.area = userCard["RAYON"] as! String ?? "Не указано"
     }
 }

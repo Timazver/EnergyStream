@@ -24,34 +24,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2A-Fx-X6M">
                                 <rect key="frame" x="5" y="180" width="365" height="187"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ign-LL-OaV">
-                                        <rect key="frame" x="30" y="134" width="300" height="22"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ign-LL-OaV">
+                                        <rect key="frame" x="30" y="120" width="300" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="SyC-fP-5gO"/>
+                                            <constraint firstAttribute="height" constant="30" id="hah-Jt-gRF"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер телефона" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HJ-z6-osU">
-                                        <rect key="frame" x="30" y="20" width="136" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho4-Yz-qYd">
-                                        <rect key="frame" x="30" y="98" width="60" height="21"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-2G-V2L">
+                                        <rect key="frame" x="30" y="50" width="300" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="Ldg-Mx-Z7Z"/>
-                                            <constraint firstAttribute="height" constant="21" id="mSi-tL-Q8Y"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-2G-V2L">
-                                        <rect key="frame" x="30" y="56" width="300" height="22"/>
-                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8nH-Lt-whw"/>
                                             <constraint firstAttribute="width" constant="300" id="HNc-HY-yoS"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -61,17 +47,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ho4-Yz-qYd" firstAttribute="top" secondItem="d2W-2G-V2L" secondAttribute="bottom" constant="20" id="4Ta-c0-tz7"/>
-                                    <constraint firstItem="ign-LL-OaV" firstAttribute="top" secondItem="ho4-Yz-qYd" secondAttribute="bottom" constant="15" id="4ag-UT-luq"/>
+                                    <constraint firstItem="ign-LL-OaV" firstAttribute="top" secondItem="d2W-2G-V2L" secondAttribute="bottom" constant="40" id="7dx-GT-v5k"/>
+                                    <constraint firstItem="d2W-2G-V2L" firstAttribute="top" secondItem="O2A-Fx-X6M" secondAttribute="top" constant="50" id="Cek-Ly-moi"/>
                                     <constraint firstItem="d2W-2G-V2L" firstAttribute="leading" secondItem="O2A-Fx-X6M" secondAttribute="leading" constant="30" id="Ksi-EL-Tyw"/>
-                                    <constraint firstItem="ho4-Yz-qYd" firstAttribute="leading" secondItem="O2A-Fx-X6M" secondAttribute="leading" constant="30" id="O6u-bp-YC2"/>
-                                    <constraint firstAttribute="trailing" secondItem="ign-LL-OaV" secondAttribute="trailing" constant="30" id="SRc-K1-xXb"/>
-                                    <constraint firstItem="6HJ-z6-osU" firstAttribute="leading" secondItem="O2A-Fx-X6M" secondAttribute="leading" constant="30" id="pL4-RY-c1S"/>
-                                    <constraint firstAttribute="trailing" secondItem="d2W-2G-V2L" secondAttribute="trailing" constant="30" id="r5O-Gy-ytk"/>
-                                    <constraint firstItem="d2W-2G-V2L" firstAttribute="top" secondItem="6HJ-z6-osU" secondAttribute="bottom" constant="15" id="thz-UF-68a"/>
-                                    <constraint firstItem="ho4-Yz-qYd" firstAttribute="top" secondItem="d2W-2G-V2L" secondAttribute="bottom" constant="20" id="u59-zV-gDb"/>
                                     <constraint firstItem="ign-LL-OaV" firstAttribute="leading" secondItem="O2A-Fx-X6M" secondAttribute="leading" constant="30" id="x9E-Af-j9b"/>
-                                    <constraint firstItem="6HJ-z6-osU" firstAttribute="top" secondItem="O2A-Fx-X6M" secondAttribute="top" constant="20" id="xRg-Zc-Ejw"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPS-lV-TrU">
