@@ -14,7 +14,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
 //    @IBOutlet weak var dropDownTextField: UITextField!
     @IBOutlet weak var epdTableView: UITableView!
     @IBOutlet weak var menu: UIBarButtonItem!
-    
+//    @IBOutlet weak var energyStreamTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Начисления"
@@ -32,9 +32,9 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
   
     
     //Define tableView methods
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Requests.epdTitles.count
     }
