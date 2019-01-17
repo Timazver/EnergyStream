@@ -52,15 +52,26 @@ struct UserCard {
         self.area = userCard["RAYON"] as! String ?? "Не указано"
     }
 }
+struct epdData {
+    var organization: String = ""
+    var destination: String = ""
+    var sumForPayment: String = ""
+    
+    init(_ epdArray: [String:Any]) {
+        self.organization = epdArray["ORG"] as? String ?? "Не указано"
+        self.destination = epdArray["NACH_NAME"] as? String ?? "Не указано"
+        self.sumForPayment = epdArray["K_OPL"] as? String ?? "Не указано"
+    }
+}
 
 import Foundation
 class Requests {
     static var currentAccoutNumber: String = ""
 //    static var userArray: Array = [String]()
     static var userModel: Array = [UserCard]()
-    static var epdArray: Array = [String]()
+//    static var epdArray: Array = [String]()
     static var epdTitles: Array = [String]()
-    static var epdData: Array = [String]()
+    static var epdModel: Array = [epdData]()
     static var listAccountNumbers: Array = [String]()
     static var authToken: String = ""
     
@@ -149,14 +160,27 @@ class Requests {
                 print(json)
                 guard let jsonData = json as? [String:AnyObject] else {return}
                 let epdDataArray = jsonData["epdData"] as? [String:AnyObject]
-                let oplInfo = epdDataArray?["opl_info"] as? [AnyObject]
-                if oplInfo == nil {
-                    print("Текущий начислений нет")
+                let oplInfo = epdDataArray?["opl_info"] as? [[String:Any]]
+//                if oplInfo == nil {
+//                    print("Текущий начислений нет")
+//                }
+//                else {
+//                    print(oplInfo)
+//                    for dic in
+//                self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
+//                }
+                if (oplInfo?.isEmpty)! {
+                    print("Текущих начислений нет")
                 }
                 else {
                     print(oplInfo)
-                self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
+                    for dic in oplInfo! {
+                        self.epdModel.append(epdData(dic))
+                    }
+                    print(Requests.epdModel)
+//                    self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
                 }
+                
             }catch {
                 print(error)
             }

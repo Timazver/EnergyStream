@@ -32,6 +32,9 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
   
     
     //Define tableView methods
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Requests.epdTitles.count
     }
@@ -39,10 +42,21 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let epdCell = tableView.dequeueReusableCell(withIdentifier: "EpdCell", for: indexPath ) as! EpdCell
         print("tableView method was called")
-        epdCell.title.text! = Requests.epdTitles[indexPath.row]
-        if !Requests.epdData.isEmpty {
-            epdCell.data.text! = Requests.epdData[indexPath.row]
-            print(Requests.epdData[indexPath.row])
+        print(Requests.epdModel)
+        
+        if !Requests.epdModel.isEmpty {
+            epdCell.title.text! = Requests.epdTitles[indexPath.row]
+            switch Requests.epdTitles[indexPath.row] {
+                case "Организация":
+                    epdCell.data.text! = Requests.epdModel[0].organization
+                case "Назначение":
+                    epdCell.data.text! = Requests.epdModel[0].destination
+                case "К оплате":
+                    epdCell.data.text! = Requests.epdModel[0].sumForPayment
+                default:
+                    break
+            }
+//            print(Requests.epdData[indexPath.row])
         }
         else {
             self.epdTableView.reloadData()
