@@ -14,14 +14,19 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
 //    @IBOutlet weak var dropDownTextField: UITextField!
     @IBOutlet weak var epdTableView: UITableView!
     @IBOutlet weak var menu: UIBarButtonItem!
+    @IBOutlet weak var buttonForPay: UIButton!
+    
 //    @IBOutlet weak var energyStreamTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Начисления"
-        Requests.getListAccountNumbers()
-        epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+       
         Requests.getUserEpd(Requests.currentAccoutNumber)
-        // Do any additional setup after loading the view.
+            // Do any additional setup after loading the view.
+       self.epdTableView.reloadData()
+        //Requests.getListAccountNumbers()
+        epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
             if revealViewController() != nil {
         //revealViewController().rearViewRevealWidth = 200
                 menu.target = revealViewController()
@@ -33,36 +38,57 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     
     //Define tableView methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Requests.epdModel.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Requests.epdTitles.count
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let epdCell = tableView.dequeueReusableCell(withIdentifier: "EpdCell", for: indexPath ) as! EpdCell
         print("tableView method was called")
-        print(Requests.epdModel)
-        
-        if !Requests.epdModel.isEmpty {
-            epdCell.title.text! = Requests.epdTitles[indexPath.row]
-            switch Requests.epdTitles[indexPath.row] {
-                case "Организация":
-                    epdCell.data.text! = Requests.epdModel[0].organization
-                case "Назначение":
-                    epdCell.data.text! = Requests.epdModel[0].destination
-                case "К оплате":
-                    epdCell.data.text! = Requests.epdModel[0].sumForPayment
-                default:
-                    break
+//        print(Requests.epdModel)
+//            if !Requests.epdModel.isEmpty {
+//                if indexPath.row == 0 {
+//                epdCell.title.text! = Requests.epdModel[0].organization
+//    //            switch Requests.epdTitles[indexPath.row] {
+//    //                case "Организация":
+//    //                    epdCell.data.text! = Requests.epdModel[0].organization
+//    //                case "Назначение":
+//    //                    epdCell.data.text! = Requests.epdModel[0].destination
+//    //                case "К оплате":
+//    //                    epdCell.data.text! = Requests.epdModel[0].sumForPayment
+//    //                default:
+//    //                    break
+//                return epdCell
+//            }
+//                else {
+//                    let cell = tableView.dequeueReusableCell(withIdentifier: "payInfoCell") as! payInfoCell
+//                    cell.sumForPay.text! = Requests.epdModel[0].sumForPayment
+//                    return cell
+//                }
+////            print(Requests.epdData[indexPath.row])
+//            }
+//        else {
+//            self.epdTableView.reloadData()
+//        }
+//        if !Requests.epdModel.isEmpty {
+        if indexPath.row == 0 {
+            let titleCell = tableView.dequeueReusableCell(withIdentifier: "EpdCell", for: indexPath) as! EpdCell
+            titleCell.title.text! = Requests.epdModel[indexPath.section].organization
+            
+            return titleCell
             }
-//            print(Requests.epdData[indexPath.row])
-        }
         else {
-            self.epdTableView.reloadData()
+            let dataCell = tableView.dequeueReusableCell(withIdentifier: "payInfoCell", for: indexPath) as! payInfoCell
+            dataCell.sumForPay.text! = Requests.epdModel[indexPath.section].sumForPayment
+            buttonForPay.setTitle("К оплате \(Requests.epdModel[indexPath.section].sumForPayment)", for: .normal)
+            return dataCell
         }
         
-        return epdCell
+       
+        
+        
     }
 //    func showDropDown() {
 //    let modalViewController = ModalPickerViewController()

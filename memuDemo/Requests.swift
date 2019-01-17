@@ -74,6 +74,7 @@ class Requests {
     static var epdModel: Array = [epdData]()
     static var listAccountNumbers: Array = [String]()
     static var authToken: String = ""
+    static var totalSumForPay: String = ""
     
     
     static func divideFio(_ fio: String) {
@@ -174,11 +175,17 @@ class Requests {
                 }
                 else {
                     print(oplInfo)
+                    if !Requests.epdModel.isEmpty {
+                        Requests.epdModel.removeAll()
+                    }
+                    else {
                     for dic in oplInfo! {
                         self.epdModel.append(epdData(dic))
+                        
                     }
                     print(Requests.epdModel)
 //                    self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
+                    }
                 }
                 
             }catch {

@@ -57,7 +57,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         {
             print("Открыт профиль")
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "AccListTableViewController") as! AccListTableViewController
             let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
             
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)

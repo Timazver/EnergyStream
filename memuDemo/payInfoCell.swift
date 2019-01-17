@@ -1,18 +1,17 @@
 //
-//  EpdCellTableViewCell.swift
+//  fsfsdf.swift
 //  memuDemo
 //
-//  Created by Timur on 1/10/19.
+//  Created by Timur on 1/17/19.
 //  Copyright © 2019 Parth Changela. All rights reserved.
 //
 
 import UIKit
 
-class EpdCell: UITableViewCell {
+class payInfoCell: UITableViewCell {
 
-    @IBOutlet weak  var title: UILabel!
-//    @IBOutlet weak var data: UILabel!
-    @IBOutlet weak var switchForEpd: UISwitch!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var sumForPay: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

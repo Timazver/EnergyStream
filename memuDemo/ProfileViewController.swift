@@ -76,7 +76,7 @@ class ProfileViewController: UITableViewController {
                 cell.data.text! = Requests.userModel[0].numberOfPeople
             case "Адрес":
                 cell.data.text! = Requests.userModel[0].address
-            case "Номер телефона":
+            case "Номер тел":
                 cell.data.text! = Requests.userModel[0].phoneNumber
             case "Район":
                 cell.data.text! = Requests.userModel[0].area
