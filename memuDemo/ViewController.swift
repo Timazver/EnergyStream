@@ -11,18 +11,18 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var btnMenuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         if revealViewController() != nil {
-            //            revealViewController().rearViewRevealWidth = 62
+            
+            
+            //            revealViewController().rearViewRevealWidth = 62 //Define width of showing part of menu
             btnMenuButton.target = revealViewController()
             btnMenuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            
-//            revealViewController().rightViewRevealWidth = 150
-//            extraButton.target = revealViewController()
-//            extraButton.action = "rightRevealToggle:"
-            
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Добавить", style: .plain, target: self, action: #selector(addTapped))
       
             
             

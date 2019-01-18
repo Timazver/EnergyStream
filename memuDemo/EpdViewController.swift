@@ -31,6 +31,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         //revealViewController().rearViewRevealWidth = 200
                 menu.target = revealViewController()
                 menu.action = #selector(SWRevealViewController.revealToggle(_:))
+                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             }
     }
 

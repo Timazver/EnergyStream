@@ -13,9 +13,17 @@ class StartViewController: UIViewController {
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+        self.login.text = ""
+        self.password.text = ""
+        Requests.authToken = ""
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.login.text = ""
+        self.password.text = ""
         login.useUnderline()
         password.useUnderline()
         // Do any additional setup after loading the view.

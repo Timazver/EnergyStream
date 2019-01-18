@@ -28,20 +28,22 @@ class ProfileViewController: UITableViewController {
     
     
     @IBOutlet weak var menu: UIBarButtonItem!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
-        profileTableView.estimatedRowHeight = 44.0
-        profileTableView.rowHeight = UITableViewAutomaticDimension
+//        profileTableView.estimatedRowHeight = 44.0
+//        profileTableView.rowHeight = UITableViewAutomaticDimension
         self.title = "Информация о счетах"
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        Requests.getUserInfo()
+        Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
         // Do any additional setup after loading the view, typically from a nib.
         if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
             menu.target = revealViewController()
             menu.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+           
+
         }
 
     }
@@ -63,24 +65,46 @@ class ProfileViewController: UITableViewController {
         
         if !Requests.userModel.isEmpty {
             cell.title.text! = profileCellTitles[indexPath.row]
-            switch profileCellTitles[indexPath.row] {
-            case "Лицевой счет":
+//            switch profileCellTitles[indexPath.row] {
+//            case "Лицевой счет":
+//                cell.data.text! = Requests.userModel[0].accountNumber
+//            case "Имя":
+//                cell.data.text! = Requests.userModel[0].firstName
+//            case "Фамилия":
+//                cell.data.text! = Requests.userModel[0].lastName
+//            case "Отчество":
+//                cell.data.text! = Requests.userModel[0].middleName
+//            case "Количество человек":
+//                cell.data.text! = Requests.userModel[0].numberOfPeople
+//            case "Адрес":
+//                cell.data.text! = Requests.userModel[0].address
+//            case "Номер тел":
+//                cell.data.text! = Requests.userModel[0].phoneNumber
+//            case "Район":
+//                cell.data.text! = Requests.userModel[0].area
+//            case "SCH_TYPE":
+//                cell.data.text! = Requests.userModel[0].SCH_TYPE
+//            default:
+//                break
+//            }
+            switch indexPath.row {
+            case 0:
                 cell.data.text! = Requests.userModel[0].accountNumber
-            case "Имя":
+            case 1:
                 cell.data.text! = Requests.userModel[0].firstName
-            case "Фамилия":
+            case 2:
                 cell.data.text! = Requests.userModel[0].lastName
-            case "Отчество":
+            case 3:
                 cell.data.text! = Requests.userModel[0].middleName
-            case "Количество человек":
+            case 4:
                 cell.data.text! = Requests.userModel[0].numberOfPeople
-            case "Адрес":
+            case 5:
                 cell.data.text! = Requests.userModel[0].address
-            case "Номер тел":
+            case 6:
                 cell.data.text! = Requests.userModel[0].phoneNumber
-            case "Район":
+            case 7:
                 cell.data.text! = Requests.userModel[0].area
-            case "SCH_TYPE":
+            case 8:
                 cell.data.text! = Requests.userModel[0].SCH_TYPE
             default:
                 break

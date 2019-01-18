@@ -85,10 +85,10 @@ class Requests {
     }
     
     
-    static func getUserInfo() {
+    static func getUserInfo(userAccNumber: String) {
         
 
-        guard let url = URL(string:"http://5.63.112.4:30000/api/user/card?accountNumber=\(self.currentAccoutNumber)") else {return}
+        guard let url = URL(string:"http://5.63.112.4:30000/api/user/card?accountNumber=\(userAccNumber)") else {return}
         
         
         var requestForUserInfo = URLRequest(url:url )

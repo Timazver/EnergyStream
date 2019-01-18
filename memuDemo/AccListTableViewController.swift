@@ -10,13 +10,16 @@ import UIKit
 
 class AccListTableViewController: UITableViewController {
     @IBOutlet weak var menu: UIBarButtonItem!
+    @IBOutlet weak var accAddBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if revealViewController() != nil {
             //revealViewController().rearViewRevealWidth = 200
+            profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
             menu.target = revealViewController()
             menu.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         // Do any additional setup after loading the view.
     }
@@ -32,8 +35,17 @@ class AccListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell:AccListCell = tableView.cellForRow(at: indexPath) as! AccListCell
         
+        let revealviewcontroller:SWRevealViewController = self.revealViewController()
+        
+        let cell:AccListCell = tableView.cellForRow(at: indexPath) as! AccListCell
+        Requests.currentAccoutNumber = (cell.textLabel?.text)!
+        
+        let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
+        
+        revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
         
     }
    

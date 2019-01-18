@@ -13,12 +13,17 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var tblTableView: UITableView!
     @IBOutlet weak var imgProfile: UIImageView!
     
+    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "logout", sender: self)
+    }
+    
+    
     var ManuNameArray:Array = [String]()
     var iconArray:Array = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tblTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        ManuNameArray = ["Профиль","Счета","Оплата","Настройки","Выйти"]
+        ManuNameArray = ["Мои лицевые счета","Квитанции по лицевыми счетам","Оплата","Настройки","Выйти"]
         iconArray = [UIImage(named:"menuProfile")!,UIImage(named:"message")!,UIImage(named:"map")!,UIImage(named:"setting")!,UIImage(named:"logout")!]
         
         imgProfile.layer.borderWidth = 2
@@ -53,7 +58,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let cell:MenuCell = tableView.cellForRow(at: indexPath) as! MenuCell
         print(cell.lblMenuname.text!)
-        if cell.lblMenuname.text! == "Профиль"
+        if cell.lblMenuname.text! == "Мои лицевые счета"
         {
             print("Открыт профиль")
             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -63,7 +68,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
             
         }
-        if cell.lblMenuname.text! == "Счета"
+        if cell.lblMenuname.text! == "Квитанции по лицевыми счетам"
         {
             print("Все ваши счета")
            
@@ -84,9 +89,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if cell.lblMenuname.text! == "Выйти"
         {
             print("Выход")
-            let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "StartViewController") as! StartViewController
-            let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
+           goBackToOneButtonTapped(self)
         }
     }
     
