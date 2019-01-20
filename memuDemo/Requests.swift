@@ -66,6 +66,7 @@ struct epdData {
 
 import Foundation
 import PDFKit
+import Alamofire
 
 class Requests {
     static var currentAccoutNumber: String = ""
@@ -83,7 +84,9 @@ class Requests {
         let fioArray = fio.split(separator: " ")
         Requests.userModel[0].firstName = String(fioArray[1])
         Requests.userModel[0].lastName = String(fioArray[0])
+        if fioArray.count > 2 {
         Requests.userModel[0].middleName = String(fioArray[2]) ?? "Не указано"
+        }
     }
     
     
@@ -118,6 +121,8 @@ class Requests {
                 if userModel.isEmpty {
                 userModel.append(UserCard(user))
                 Requests.divideFio(user["FIO"] as! String)
+                
+               
                 }
                 else {
                     userModel.removeAll()

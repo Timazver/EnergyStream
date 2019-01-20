@@ -324,7 +324,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMs-dy-PFM">
-                                                    <rect key="frame" x="68" y="11" width="237" height="27"/>
+                                                    <rect key="frame" x="68" y="11" width="292" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="s33-zQ-ZXZ"/>
                                                     </constraints>
@@ -422,40 +422,28 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserProfileCell" id="UVE-8I-moX" customClass="UserProfileCell" customModule="memuDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UVE-8I-moX" id="Wye-T6-6qG">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UVE-8I-moX" id="Wye-T6-6qG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS7-I2-QHZ">
-                                            <rect key="frame" x="25" y="10" width="200" height="12"/>
+                                            <rect key="frame" x="25" y="10" width="325" height="19.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="qEP-Hu-unQ"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="qEP-Hu-unQ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRg-nc-KCT">
-                                            <rect key="frame" x="200" y="10" width="200" height="14.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="Grh-3T-VPX"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="FRg-nc-KCT" secondAttribute="trailing" constant="25" id="CGj-N5-YPl"/>
+                                        <constraint firstAttribute="trailing" secondItem="IS7-I2-QHZ" secondAttribute="trailing" constant="25" id="2X9-cP-naN"/>
                                         <constraint firstItem="IS7-I2-QHZ" firstAttribute="leading" secondItem="Wye-T6-6qG" secondAttribute="leading" constant="25" id="Swb-D3-G3v"/>
-                                        <constraint firstItem="FRg-nc-KCT" firstAttribute="leading" secondItem="Wye-T6-6qG" secondAttribute="leading" constant="200" id="Zpj-r2-xK8"/>
                                         <constraint firstItem="IS7-I2-QHZ" firstAttribute="top" secondItem="Wye-T6-6qG" secondAttribute="top" constant="10" id="bH7-MZ-7hw"/>
-                                        <constraint firstItem="FRg-nc-KCT" firstAttribute="top" secondItem="Wye-T6-6qG" secondAttribute="top" constant="10" id="iDt-vB-fKh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <connections>
-                                    <outlet property="data" destination="FRg-nc-KCT" id="Wsf-lT-LtP"/>
                                     <outlet property="title" destination="IS7-I2-QHZ" id="T7s-SB-Qag"/>
                                 </connections>
                             </tableViewCell>
@@ -559,7 +547,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2G-yn-JFK">
-                                                    <rect key="frame" x="261" y="20" width="51" height="35"/>
+                                                    <rect key="frame" x="316" y="20" width="51" height="35"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -585,7 +573,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8E-Rj-F07">
-                                                    <rect key="frame" x="265" y="20" width="50" height="10"/>
+                                                    <rect key="frame" x="320" y="20" width="50" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="10" id="B5C-o1-HYZ"/>
                                                         <constraint firstAttribute="width" constant="50" id="TWY-Y4-va9"/>

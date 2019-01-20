@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class StartViewController: UIViewController {
     
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    //Wind segue for logout function
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
         self.login.text = ""
         self.password.text = ""
@@ -40,72 +43,43 @@ class StartViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+//
     @IBAction func userLogin() {
-        //define request parameters
-      
-
         let login = self.login.text
         let password = self.password.text
         let parameters = ["phoneNumber":login,"password":password]
         
         
         guard let url = URL(string: "http://5.63.112.4:30000/api/login") else {return}
-        print(url)
-        //create session object
         
-        
-        //define request object
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        print("Here is request")
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
-        request.httpBody = httpBody
-        print("here is httpBdy")
-        print(httpBody)
-        
-        let session = URLSession.shared
-        
-        session.dataTask(with: request) {(data,response,error) in
+        request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
             
-            if let response = response {
-                print(response)
-            }
-            
-            guard let data = data else {return}
-            print("Here is data")
-            do {
-                print(data)
-                //get json response from server
-                let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
-                print(jsonResponse)
-                let jsonData = jsonResponse as! [String:Any]
+            if (200..<300).contains(statusCode) {
+                let value = responseJSON.result.value
+                let jsonData = value as! [String:Any]
                 
                 guard let token = jsonData["token"] else {return}
-                if token != nil {
-                Requests.authToken = jsonData["token"] as! String
-                }
-                
-                
+                    if token != nil {
+                        Requests.authToken = jsonData["token"] as! String
+                    }
                 guard let auth = jsonData["auth"] as? Bool else {return}
-                if auth == true {
-                print("Successfully logged in")
-                Requests.getListAccountNumbers()
-                print(Requests.currentAccoutNumber)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
-                    
-                self.present(controller, animated: true, completion: nil)
-                }
+                    if auth == true {
+                        print("Successfully logged in")
+                        Requests.getListAccountNumbers()
+                        print(Requests.currentAccoutNumber)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
+                        self.present(controller, animated: true, completion: nil)
+                    }
                 
-            }catch {
-                print(error)
+                            
+                print("value: ", value ?? "nil")
+            } else {
+                print("error")
             }
             
-        }.resume()
-        
-        
-}
-    
+        }
+    }
 }

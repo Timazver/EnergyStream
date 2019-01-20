@@ -21,38 +21,28 @@ import UIKit
 class ProfileViewController: UITableViewController {
     var userArray: Array = [String]()
     var profileCellTitles: Array = [String]()
+    
 //    var sections = sectionsData
     
     @IBOutlet weak var profileTableView: UITableView!
     
     
-    
     @IBOutlet weak var menu: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        var activityIndicator = UIActivityIndicatorView()
-        activityIndicator.center = view.center
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
-
-                self.profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
-                Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
-        activityIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
-        profileTableView.reloadData()
+            self.profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
+            Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
+      
         
-        self.title = "Информация о счете"
-        profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
+            self.title = "Информация о счете"
+            profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
         // Do any additional setup after loading the view, typically from a nib.
-        if revealViewController() != nil {
+            if revealViewController() != nil {
             //            revealViewController().rearViewRevealWidth = 62
-            menu.target = revealViewController()
-            menu.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+                menu.target = revealViewController()
+                menu.action = #selector(SWRevealViewController.revealToggle(_:))
+                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
            
 
         }
@@ -74,45 +64,36 @@ class ProfileViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
         
-        if !Requests.userModel.isEmpty {
-            cell.title.text! = profileCellTitles[indexPath.row]
+        if !Requests.userModel.isEmpty && Requests.userModel[0].firstName != "" {
+            
             switch indexPath.row {
-            case 0:
-                cell.data.text! = Requests.userModel[0].accountNumber
-            case 1:
-                cell.data.text! = Requests.userModel[0].firstName
-            case 2:
-                cell.data.text! = Requests.userModel[0].lastName
-            case 3:
-                cell.data.text! = Requests.userModel[0].middleName
-            case 4:
-                cell.data.text! = Requests.userModel[0].numberOfPeople
-            case 5:
-                cell.data.text! = Requests.userModel[0].address
-            case 6:
-                cell.data.text! = Requests.userModel[0].phoneNumber
-            case 7:
-                cell.data.text! = Requests.userModel[0].area
-            case 8:
-                cell.data.text! = Requests.userModel[0].SCH_TYPE
-            default:
-                break
-            }
-            print(indexPath.row)
+                            case 0:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].accountNumber)"
+                            case 1:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].firstName)"
+                            case 2:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].lastName)"
+                            case 3:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].middleName)"
+                            case 4:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].numberOfPeople)"
+                            case 5:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].address)"
+                            case 6:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].phoneNumber)"
+                            case 7:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].area)"
+                            case 8:
+                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].SCH_TYPE)"
+                            default:
+                                break
+                            }
         }
             
         
         else {
-            self.profileTableView.reloadData()
+            profileTableView.reloadData()
         }
-//        if !Requests.userArray.isEmpty {
-//        cell.data.text! = Requests.userArray[indexPath.row]
-//
-//
-//        }
-//        else {
-//            self.profileTableView.reloadData()
-//        }
 
         return cell
     }

@@ -40,7 +40,8 @@ class AccListTableViewController: UITableViewController {
         let revealviewcontroller:SWRevealViewController = self.revealViewController()
         
         let cell:AccListCell = tableView.cellForRow(at: indexPath) as! AccListCell
-        Requests.currentAccoutNumber = (cell.textLabel?.text)!
+        print(Requests.currentAccoutNumber)
+        Requests.currentAccoutNumber = (cell.textLabel?.text) ?? Requests.listAccountNumbers[0]
         
         let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
