@@ -30,10 +30,21 @@ class ProfileViewController: UITableViewController {
     @IBOutlet weak var menu: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
-//        profileTableView.estimatedRowHeight = 44.0
-//        profileTableView.rowHeight = UITableViewAutomaticDimension
-        self.title = "Информация о счетах"
+        var activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = view.center
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+                self.profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
+                Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        profileTableView.reloadData()
+        
+        self.title = "Информация о счете"
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
         // Do any additional setup after loading the view, typically from a nib.
@@ -65,28 +76,6 @@ class ProfileViewController: UITableViewController {
         
         if !Requests.userModel.isEmpty {
             cell.title.text! = profileCellTitles[indexPath.row]
-//            switch profileCellTitles[indexPath.row] {
-//            case "Лицевой счет":
-//                cell.data.text! = Requests.userModel[0].accountNumber
-//            case "Имя":
-//                cell.data.text! = Requests.userModel[0].firstName
-//            case "Фамилия":
-//                cell.data.text! = Requests.userModel[0].lastName
-//            case "Отчество":
-//                cell.data.text! = Requests.userModel[0].middleName
-//            case "Количество человек":
-//                cell.data.text! = Requests.userModel[0].numberOfPeople
-//            case "Адрес":
-//                cell.data.text! = Requests.userModel[0].address
-//            case "Номер тел":
-//                cell.data.text! = Requests.userModel[0].phoneNumber
-//            case "Район":
-//                cell.data.text! = Requests.userModel[0].area
-//            case "SCH_TYPE":
-//                cell.data.text! = Requests.userModel[0].SCH_TYPE
-//            default:
-//                break
-//            }
             switch indexPath.row {
             case 0:
                 cell.data.text! = Requests.userModel[0].accountNumber

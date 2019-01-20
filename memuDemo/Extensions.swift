@@ -1,9 +1,9 @@
 //
-//  File.swift
+//  Extensions.swift
 //  memuDemo
 //
-//  Created by Timur on 12/29/18.
-//  Copyright © 2018 Parth Changela. All rights reserved.
+//  Created by Timur on 1/19/19.
+//  Copyright © 2019 Parth Changela. All rights reserved.
 //
 
 import Foundation
@@ -19,3 +19,12 @@ extension UITextField {
         self.layer.masksToBounds = true
     }
 }
+
+
+extension FileManager {
+    static var documentDicrectoryURL: URL {
+//        print(FileManager.default.urls(for: <#T##FileManager.SearchPathDirectory#>, in: <#T##FileManager.SearchPathDomainMask#>))
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+}
+

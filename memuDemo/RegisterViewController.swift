@@ -13,13 +13,12 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var accountNumber: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password:UITextField!
-    var smsCode: String!
+//    var smsCode: String!
     //disable status bar on top
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        accountNumber.canBecomeFirstResponder
         accountNumber.useUnderline()
         phoneNumber.useUnderline()
         password.useUnderline()
@@ -39,7 +38,7 @@ class RegisterViewController: UIViewController {
         let password = self.password.text
         
         let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
-        guard let url = URL(string: "http://5.63.112.4:30000cd Do/api/register") else {return}
+        guard let url = URL(string: "http://5.63.112.4:30000/api/register") else {return}
         
         //create session object
         

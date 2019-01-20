@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043940E55065553787730A0B /* Pods_memuDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FEFDAAC90C3D655F873E47 /* Pods_memuDemo.framework */; };
 		2210047821D63AB10062C9C9 /* memuDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1FC1DAA30330089573D /* memuDemoTests.swift */; };
+		2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213165921F1F8220045F7D3 /* PdfViewController.swift */; };
 		2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89421D72ADC00EB411A /* StartViewController.swift */; };
-		2227A89721D7753F00EB411A /* SignedTextFieldfd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89621D7753E00EB411A /* SignedTextFieldfd.swift */; };
 		2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89821D79C0900EB411A /* RegisterViewController.swift */; };
+		2239C9BA21F30924003515D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239C9B921F30924003515D8 /* Extensions.swift */; };
 		2260827F21E752B100B5D768 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260827E21E752B100B5D768 /* Requests.swift */; };
 		2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260828021E76B8B00B5D768 /* EpdCell.swift */; };
 		226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464F921F053940003C9C2 /* payInfoCell.swift */; };
 		226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */; };
 		226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FD21F09B1A0003C9C2 /* AccListCell.swift */; };
+		2289246B21F46A5A008CEFA9 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2289246A21F46A5A008CEFA9 /* ActivityIndicator.swift */; };
 		228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB01F21E45B4F00033803 /* ProfileViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
@@ -30,14 +33,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2213165921F1F8220045F7D3 /* PdfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfViewController.swift; sourceTree = "<group>"; };
 		2227A89421D72ADC00EB411A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		2227A89621D7753E00EB411A /* SignedTextFieldfd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedTextFieldfd.swift; sourceTree = "<group>"; };
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2239C9B921F30924003515D8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2260827E21E752B100B5D768 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		2260828021E76B8B00B5D768 /* EpdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpdCell.swift; sourceTree = "<group>"; };
 		226464F921F053940003C9C2 /* payInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payInfoCell.swift; sourceTree = "<group>"; };
 		226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListTableViewController.swift; sourceTree = "<group>"; };
 		226464FD21F09B1A0003C9C2 /* AccListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListCell.swift; sourceTree = "<group>"; };
+		2289246A21F46A5A008CEFA9 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		228EB01F21E45B4F00033803 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		B222F1E41DAA30330089573D /* memuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +62,9 @@
 		B222F2191DAA354D0089573D /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		B222F21B1DAA36070089573D /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		B222F21D1DAA46600089573D /* EpdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpdViewController.swift; sourceTree = "<group>"; };
+		BCD09EC4BBB6B603E25C85FB /* Pods-memuDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memuDemo.debug.xcconfig"; path = "Target Support Files/Pods-memuDemo/Pods-memuDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C8D10AC4F5F17DE0CB91F17D /* Pods-memuDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memuDemo.release.xcconfig"; path = "Target Support Files/Pods-memuDemo/Pods-memuDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F0FEFDAAC90C3D655F873E47 /* Pods_memuDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_memuDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,20 +72,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043940E55065553787730A0B /* Pods_memuDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		681713C20F6FC02CA5A0293B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BCD09EC4BBB6B603E25C85FB /* Pods-memuDemo.debug.xcconfig */,
+				C8D10AC4F5F17DE0CB91F17D /* Pods-memuDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6A0B05E69C764BD576150D15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0FEFDAAC90C3D655F873E47 /* Pods_memuDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B222F1DB1DAA30320089573D = {
 			isa = PBXGroup;
 			children = (
-				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
 				B222F1E61DAA30330089573D /* memuDemo */,
 				B222F1FB1DAA30330089573D /* memuDemoTests */,
 				B222F2061DAA30330089573D /* memuDemoUITests */,
 				B222F1E51DAA30330089573D /* Products */,
+				681713C20F6FC02CA5A0293B /* Pods */,
+				6A0B05E69C764BD576150D15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +119,7 @@
 		B222F1E61DAA30330089573D /* memuDemo */ = {
 			isa = PBXGroup;
 			children = (
+				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
 				B222F1E71DAA30330089573D /* AppDelegate.swift */,
 				B222F1E91DAA30330089573D /* ViewController.swift */,
 				228EB01F21E45B4F00033803 /* ProfileViewController.swift */,
@@ -100,10 +128,11 @@
 				B222F2161DAA33DA0089573D /* SWRevealViewController.h */,
 				B222F2171DAA33DA0089573D /* SWRevealViewController.m */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
+				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
+				2239C9B921F30924003515D8 /* Extensions.swift */,
 				226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */,
 				2227A89421D72ADC00EB411A /* StartViewController.swift */,
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
-				2227A89621D7753E00EB411A /* SignedTextFieldfd.swift */,
 				B222F21D1DAA46600089573D /* EpdViewController.swift */,
 				226464F921F053940003C9C2 /* payInfoCell.swift */,
 				B222F21B1DAA36070089573D /* MenuCell.swift */,
@@ -113,6 +142,7 @@
 				B222F1F31DAA30330089573D /* Info.plist */,
 				B222F2151DAA33D90089573D /* memuDemo-Bridging-Header.h */,
 				B222F2191DAA354D0089573D /* menuViewController.swift */,
+				2289246A21F46A5A008CEFA9 /* ActivityIndicator.swift */,
 			);
 			path = memuDemo;
 			sourceTree = "<group>";
@@ -142,6 +172,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "memuDemo" */;
 			buildPhases = (
+				E3C981087DC8C374A4BA2870 /* [CP] Check Pods Manifest.lock */,
 				B222F1E01DAA30320089573D /* Sources */,
 				B222F1E11DAA30320089573D /* Frameworks */,
 				B222F1E21DAA30320089573D /* Resources */,
@@ -204,6 +235,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E3C981087DC8C374A4BA2870 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-memuDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B222F1E01DAA30320089573D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -211,21 +267,23 @@
 			files = (
 				B222F1EA1DAA30330089573D /* ViewController.swift in Sources */,
 				228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */,
+				2289246B21F46A5A008CEFA9 /* ActivityIndicator.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
 				2210047821D63AB10062C9C9 /* memuDemoTests.swift in Sources */,
 				2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */,
 				226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
+				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
 				B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */,
 				228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */,
-				2227A89721D7753F00EB411A /* SignedTextFieldfd.swift in Sources */,
 				2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */,
 				B222F2181DAA33DA0089573D /* SWRevealViewController.m in Sources */,
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,
+				2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,13 +404,14 @@
 		};
 		B222F20D1DAA30330089573D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCD09EC4BBB6B603E25C85FB /* Pods-memuDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = GJ654J93NT;
 				INFOPLIST_FILE = memuDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sp.local.memuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -364,13 +423,14 @@
 		};
 		B222F20E1DAA30330089573D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8D10AC4F5F17DE0CB91F17D /* Pods-memuDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = GJ654J93NT;
 				INFOPLIST_FILE = memuDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sp.local.memuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

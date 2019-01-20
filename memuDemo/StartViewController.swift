@@ -12,7 +12,7 @@ class StartViewController: UIViewController {
     
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
-   
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView()
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
         self.login.text = ""
         self.password.text = ""
@@ -22,6 +22,13 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        self.indicator.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        self.indicator.center = view.center
+        self.indicator.transform = CGAffineTransform(scaleX: 3, y: 3)
+        self.view.addSubview(indicator)
+        self.view.bringSubview(toFront: indicator)
         self.login.text = ""
         self.password.text = ""
         login.useUnderline()
@@ -35,9 +42,13 @@ class StartViewController: UIViewController {
     
     @IBAction func userLogin() {
         //define request parameters
+      
+
         let login = self.login.text
         let password = self.password.text
         let parameters = ["phoneNumber":login,"password":password]
+        
+        
         guard let url = URL(string: "http://5.63.112.4:30000/api/login") else {return}
         print(url)
         //create session object
@@ -84,6 +95,7 @@ class StartViewController: UIViewController {
                 print(Requests.currentAccoutNumber)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
+                    
                 self.present(controller, animated: true, completion: nil)
                 }
                 
@@ -92,6 +104,8 @@ class StartViewController: UIViewController {
             }
             
         }.resume()
-    
+        
+        
 }
+    
 }

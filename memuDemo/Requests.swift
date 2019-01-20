@@ -65,6 +65,8 @@ struct epdData {
 }
 
 import Foundation
+import PDFKit
+
 class Requests {
     static var currentAccoutNumber: String = ""
 //    static var userArray: Array = [String]()
@@ -75,13 +77,13 @@ class Requests {
     static var listAccountNumbers: Array = [String]()
     static var authToken: String = ""
     static var totalSumForPay: String = ""
-    
+    static var pdfFileName: String = ""
     
     static func divideFio(_ fio: String) {
         let fioArray = fio.split(separator: " ")
         Requests.userModel[0].firstName = String(fioArray[1])
         Requests.userModel[0].lastName = String(fioArray[0])
-        Requests.userModel[0].middleName = "Не указано"
+        Requests.userModel[0].middleName = String(fioArray[2]) ?? "Не указано"
     }
     
     
@@ -161,7 +163,9 @@ class Requests {
                 print(json)
                 guard let jsonData = json as? [String:AnyObject] else {return}
                 let epdDataArray = jsonData["epdData"] as? [String:AnyObject]
-                let oplInfo = epdDataArray?["opl_info"] as? [[String:Any]]
+                guard let oplInfo = epdDataArray?["opl_info"] as? [[String:Any]] else {print("Текущих начислений нет")
+                    return
+                }
 //                if oplInfo == nil {
 //                    print("Текущий начислений нет")
 //                }
@@ -170,23 +174,22 @@ class Requests {
 //                    for dic in
 //                self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
 //                }
-                if (oplInfo?.isEmpty)! {
+            
                     print("Текущих начислений нет")
-                }
-                else {
+                
                     print(oplInfo)
                     if !Requests.epdModel.isEmpty {
                         Requests.epdModel.removeAll()
                     }
                     else {
-                    for dic in oplInfo! {
+                    for dic in oplInfo {
                         self.epdModel.append(epdData(dic))
                         
                     }
                     print(Requests.epdModel)
 //                    self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
                     }
-                }
+                
                 
             }catch {
                 print(error)
@@ -256,4 +259,67 @@ class Requests {
             }.resume()
      
     }
+    
+   static func getEpdFile(_ accountNumber: String) {
+        guard let url = URL(string:"http://5.63.112.4:30000/api/epd/generate") else {return}
+        
+        let parameters = ["accountNumber":Requests.currentAccoutNumber]
+        var requestForEpdFile = URLRequest(url:url )
+        requestForEpdFile.httpMethod = "POST"
+        requestForEpdFile.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+        requestForEpdFile.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+        requestForEpdFile.httpBody = httpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: requestForEpdFile) {
+            (data,response,error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            //Start testing
+            
+            downloadPdf(data: data,fileName: "test")
+            
+            //End of testing
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                
+                
+               
+            }catch {
+                print(error)
+            }
+            
+            }.resume()
+    }
+    
+    static func downloadPdf(data: Data, fileName: String) {
+
+        DispatchQueue.main.async {
+
+            let arrayUint8:[UInt8] = Array(data)
+            let dataNew = Data(bytes: arrayUint8)
+            let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+            let pdfNameFromUrl = "\(fileName).pdf"
+            let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+            do {
+                try? dataNew.write(to: actualPath, options: .atomic)
+                print("pdf file \(pdfNameFromUrl) successfully saved!")
+                self.pdfFileName = pdfNameFromUrl
+            } catch {
+                print("Pdf could not be saved")
+            }
+        }
+
+
+
+    }
+    
+    
 }

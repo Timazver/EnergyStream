@@ -16,6 +16,25 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var buttonForPay: UIButton!
     
+    @IBAction func getEpdFile() {
+        Requests.getEpdFile(Requests.currentAccoutNumber)
+        
+        let docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last) as? NSURL
+        
+        //put the contents in an array.
+        do {
+        let contents = try (FileManager.default.contentsOfDirectory(at: docURL! as URL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles))
+            print(contents)
+        }catch {
+            print("Error in getting folder list")
+        }
+        //print the file listing to the console
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "PdfViewController")
+        
+        self.present(controller, animated: true, completion: nil)
+    }
 //    @IBOutlet weak var energyStreamTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()

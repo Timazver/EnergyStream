@@ -11,12 +11,13 @@ import UIKit
 class AccListTableViewController: UITableViewController {
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var accAddBtn: UIBarButtonItem!
+    @IBOutlet weak var accListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if revealViewController() != nil {
             //revealViewController().rearViewRevealWidth = 200
-            profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            accListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
             menu.target = revealViewController()
             menu.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
