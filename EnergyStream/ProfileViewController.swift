@@ -25,29 +25,26 @@ class ProfileViewController: UITableViewController {
 //    var sections = sectionsData
     
     @IBOutlet weak var profileTableView: UITableView!
+   
     
     
-    @IBOutlet weak var menu: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.profileTableView.reloadData()
+        
             self.profileCellTitles = ["Лицевой счет","Имя","Фамилия", "Отчество","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
             Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
-      
-        
-            self.title = "Информация о счете"
+//
+//
+//            self.title = "Информация о счете"
             profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
+            Requests.getUserInfo(userAccNumber: self.title!)
         // Do any additional setup after loading the view, typically from a nib.
-            if revealViewController() != nil {
-            //            revealViewController().rearViewRevealWidth = 62
-                menu.target = revealViewController()
-                menu.action = #selector(SWRevealViewController.revealToggle(_:))
-                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-           
+        
 
         }
 
-    }
+    
     
         
     
@@ -68,23 +65,23 @@ class ProfileViewController: UITableViewController {
             
             switch indexPath.row {
                             case 0:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].accountNumber)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].accountNumber)"
                             case 1:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].firstName)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].firstName)"
                             case 2:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].lastName)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].lastName)"
                             case 3:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].middleName)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].middleName)"
                             case 4:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].numberOfPeople)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].numberOfPeople)"
                             case 5:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].address)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].address)"
                             case 6:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].phoneNumber)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].phoneNumber)"
                             case 7:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].area)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].area)"
                             case 8:
-                                cell.title.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].SCH_TYPE)"
+                                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[0].SCH_TYPE)"
                             default:
                                 break
                             }

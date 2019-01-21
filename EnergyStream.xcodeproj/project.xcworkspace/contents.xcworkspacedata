@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:memuDemo.xcodeproj">
+      location = "self:/Users/tima/Documents/SoftPowerProjects/EnergyStream/EnergyStream.xcodeproj">
    </FileRef>
 </Workspace>

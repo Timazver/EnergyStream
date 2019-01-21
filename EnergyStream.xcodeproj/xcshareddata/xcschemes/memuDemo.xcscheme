@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B222F1E31DAA30320089573D"
-               BuildableName = "memuDemo.app"
-               BlueprintName = "memuDemo"
-               ReferencedContainer = "container:memuDemo.xcodeproj">
+               BuildableName = "EnergyStream.app"
+               BlueprintName = "EnergyStream"
+               ReferencedContainer = "container:EnergyStream.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "B222F1F71DAA30330089573D"
                BuildableName = "memuDemoTests.xctest"
                BlueprintName = "memuDemoTests"
-               ReferencedContainer = "container:memuDemo.xcodeproj">
+               ReferencedContainer = "container:EnergyStream.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "B222F2021DAA30330089573D"
                BuildableName = "memuDemoUITests.xctest"
                BlueprintName = "memuDemoUITests"
-               ReferencedContainer = "container:memuDemo.xcodeproj">
+               ReferencedContainer = "container:EnergyStream.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B222F1E31DAA30320089573D"
-            BuildableName = "memuDemo.app"
-            BlueprintName = "memuDemo"
-            ReferencedContainer = "container:memuDemo.xcodeproj">
+            BuildableName = "EnergyStream.app"
+            BlueprintName = "EnergyStream"
+            ReferencedContainer = "container:EnergyStream.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B222F1E31DAA30320089573D"
-            BuildableName = "memuDemo.app"
-            BlueprintName = "memuDemo"
-            ReferencedContainer = "container:memuDemo.xcodeproj">
+            BuildableName = "EnergyStream.app"
+            BlueprintName = "EnergyStream"
+            ReferencedContainer = "container:EnergyStream.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B222F1E31DAA30320089573D"
-            BuildableName = "memuDemo.app"
-            BlueprintName = "memuDemo"
-            ReferencedContainer = "container:memuDemo.xcodeproj">
+            BuildableName = "EnergyStream.app"
+            BlueprintName = "EnergyStream"
+            ReferencedContainer = "container:EnergyStream.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

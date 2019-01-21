@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		043940E55065553787730A0B /* Pods_memuDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0FEFDAAC90C3D655F873E47 /* Pods_memuDemo.framework */; };
-		2210047821D63AB10062C9C9 /* memuDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1FC1DAA30330089573D /* memuDemoTests.swift */; };
+		2210047821D63AB10062C9C9 /* EnergyStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1FC1DAA30330089573D /* EnergyStreamTests.swift */; };
 		2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213165921F1F8220045F7D3 /* PdfViewController.swift */; };
 		2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89421D72ADC00EB411A /* StartViewController.swift */; };
 		2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89821D79C0900EB411A /* RegisterViewController.swift */; };
@@ -20,18 +19,22 @@
 		226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FD21F09B1A0003C9C2 /* AccListCell.swift */; };
 		228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB01F21E45B4F00033803 /* ProfileViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
+		2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */; };
+		2290B93C21F5D48C004DE3EA /* ContextMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93B21F5D48C004DE3EA /* ContextMenuViewController.swift */; };
+		2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
 		B222F1EF1DAA30330089573D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EE1DAA30330089573D /* Assets.xcassets */; };
 		B222F1F21DAA30330089573D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1F01DAA30330089573D /* LaunchScreen.storyboard */; };
-		B222F2181DAA33DA0089573D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B222F2171DAA33DA0089573D /* SWRevealViewController.m */; };
 		B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F2191DAA354D0089573D /* menuViewController.swift */; };
 		B222F21C1DAA36070089573D /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F21B1DAA36070089573D /* MenuCell.swift */; };
 		B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F21D1DAA46600089573D /* EpdViewController.swift */; };
+		EDC99ACF170C3BB78952FE77 /* Pods_EnergyStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		016EAD7D4940D86CF631A271 /* Pods-EnergyStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnergyStream.release.xcconfig"; path = "Target Support Files/Pods-EnergyStream/Pods-EnergyStream.release.xcconfig"; sourceTree = "<group>"; };
 		2213165921F1F8220045F7D3 /* PdfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfViewController.swift; sourceTree = "<group>"; };
 		2227A89421D72ADC00EB411A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -43,26 +46,25 @@
 		226464FD21F09B1A0003C9C2 /* AccListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListCell.swift; sourceTree = "<group>"; };
 		228EB01F21E45B4F00033803 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
-		B222F1E41DAA30330089573D /* memuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormViewController.swift; sourceTree = "<group>"; };
+		2290B93B21F5D48C004DE3EA /* ContextMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuViewController.swift; sourceTree = "<group>"; };
+		2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeUserFormViewController.swift; sourceTree = "<group>"; };
+		B222F1E41DAA30330089573D /* EnergyStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B222F1EC1DAA30330089573D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B222F1EE1DAA30330089573D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B222F1F11DAA30330089573D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B222F1F31DAA30330089573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B222F1FC1DAA30330089573D /* memuDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memuDemoTests.swift; sourceTree = "<group>"; };
+		B222F1FC1DAA30330089573D /* EnergyStreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStreamTests.swift; sourceTree = "<group>"; };
 		B222F1FE1DAA30330089573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B222F2071DAA30330089573D /* memuDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memuDemoUITests.swift; sourceTree = "<group>"; };
+		B222F2071DAA30330089573D /* EnergyStreamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStreamUITests.swift; sourceTree = "<group>"; };
 		B222F2091DAA30330089573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B222F2151DAA33D90089573D /* memuDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "memuDemo-Bridging-Header.h"; sourceTree = "<group>"; };
-		B222F2161DAA33DA0089573D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		B222F2171DAA33DA0089573D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		B222F2191DAA354D0089573D /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		B222F21B1DAA36070089573D /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		B222F21D1DAA46600089573D /* EpdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpdViewController.swift; sourceTree = "<group>"; };
-		BCD09EC4BBB6B603E25C85FB /* Pods-memuDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memuDemo.debug.xcconfig"; path = "Target Support Files/Pods-memuDemo/Pods-memuDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		C8D10AC4F5F17DE0CB91F17D /* Pods-memuDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memuDemo.release.xcconfig"; path = "Target Support Files/Pods-memuDemo/Pods-memuDemo.release.xcconfig"; sourceTree = "<group>"; };
-		F0FEFDAAC90C3D655F873E47 /* Pods_memuDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_memuDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFE7F1388F102BB4CD1B5D36 /* Pods-EnergyStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnergyStream.debug.xcconfig"; path = "Target Support Files/Pods-EnergyStream/Pods-EnergyStream.debug.xcconfig"; sourceTree = "<group>"; };
+		F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EnergyStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				043940E55065553787730A0B /* Pods_memuDemo.framework in Frameworks */,
+				EDC99ACF170C3BB78952FE77 /* Pods_EnergyStream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,8 +82,8 @@
 		681713C20F6FC02CA5A0293B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BCD09EC4BBB6B603E25C85FB /* Pods-memuDemo.debug.xcconfig */,
-				C8D10AC4F5F17DE0CB91F17D /* Pods-memuDemo.release.xcconfig */,
+				EFE7F1388F102BB4CD1B5D36 /* Pods-EnergyStream.debug.xcconfig */,
+				016EAD7D4940D86CF631A271 /* Pods-EnergyStream.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -89,7 +91,7 @@
 		6A0B05E69C764BD576150D15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F0FEFDAAC90C3D655F873E47 /* Pods_memuDemo.framework */,
+				F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,9 +99,9 @@
 		B222F1DB1DAA30320089573D = {
 			isa = PBXGroup;
 			children = (
-				B222F1E61DAA30330089573D /* memuDemo */,
-				B222F1FB1DAA30330089573D /* memuDemoTests */,
-				B222F2061DAA30330089573D /* memuDemoUITests */,
+				B222F1E61DAA30330089573D /* EnergyStream */,
+				B222F1FB1DAA30330089573D /* EnergyStreamTests */,
+				B222F2061DAA30330089573D /* EnergyStreamUITests */,
 				B222F1E51DAA30330089573D /* Products */,
 				681713C20F6FC02CA5A0293B /* Pods */,
 				6A0B05E69C764BD576150D15 /* Frameworks */,
@@ -109,12 +111,12 @@
 		B222F1E51DAA30330089573D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B222F1E41DAA30330089573D /* memuDemo.app */,
+				B222F1E41DAA30330089573D /* EnergyStream.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B222F1E61DAA30330089573D /* memuDemo */ = {
+		B222F1E61DAA30330089573D /* EnergyStream */ = {
 			isa = PBXGroup;
 			children = (
 				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
@@ -123,12 +125,13 @@
 				228EB01F21E45B4F00033803 /* ProfileViewController.swift */,
 				2260827E21E752B100B5D768 /* Requests.swift */,
 				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
-				B222F2161DAA33DA0089573D /* SWRevealViewController.h */,
-				B222F2171DAA33DA0089573D /* SWRevealViewController.m */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
+				2290B93B21F5D48C004DE3EA /* ContextMenuViewController.swift */,
+				2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */,
 				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
 				2239C9B921F30924003515D8 /* Extensions.swift */,
 				226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */,
+				2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */,
 				2227A89421D72ADC00EB411A /* StartViewController.swift */,
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
 				B222F21D1DAA46600089573D /* EpdViewController.swift */,
@@ -138,36 +141,35 @@
 				B222F1EE1DAA30330089573D /* Assets.xcassets */,
 				B222F1F01DAA30330089573D /* LaunchScreen.storyboard */,
 				B222F1F31DAA30330089573D /* Info.plist */,
-				B222F2151DAA33D90089573D /* memuDemo-Bridging-Header.h */,
 				B222F2191DAA354D0089573D /* menuViewController.swift */,
 			);
-			path = memuDemo;
+			path = EnergyStream;
 			sourceTree = "<group>";
 		};
-		B222F1FB1DAA30330089573D /* memuDemoTests */ = {
+		B222F1FB1DAA30330089573D /* EnergyStreamTests */ = {
 			isa = PBXGroup;
 			children = (
-				B222F1FC1DAA30330089573D /* memuDemoTests.swift */,
+				B222F1FC1DAA30330089573D /* EnergyStreamTests.swift */,
 				B222F1FE1DAA30330089573D /* Info.plist */,
 			);
-			path = memuDemoTests;
+			path = EnergyStreamTests;
 			sourceTree = "<group>";
 		};
-		B222F2061DAA30330089573D /* memuDemoUITests */ = {
+		B222F2061DAA30330089573D /* EnergyStreamUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B222F2071DAA30330089573D /* memuDemoUITests.swift */,
+				B222F2071DAA30330089573D /* EnergyStreamUITests.swift */,
 				B222F2091DAA30330089573D /* Info.plist */,
 			);
-			path = memuDemoUITests;
+			path = EnergyStreamUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B222F1E31DAA30320089573D /* memuDemo */ = {
+		B222F1E31DAA30320089573D /* EnergyStream */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "memuDemo" */;
+			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "EnergyStream" */;
 			buildPhases = (
 				E3C981087DC8C374A4BA2870 /* [CP] Check Pods Manifest.lock */,
 				B222F1E01DAA30320089573D /* Sources */,
@@ -179,9 +181,9 @@
 			);
 			dependencies = (
 			);
-			name = memuDemo;
+			name = EnergyStream;
 			productName = memuDemo;
-			productReference = B222F1E41DAA30330089573D /* memuDemo.app */;
+			productReference = B222F1E41DAA30330089573D /* EnergyStream.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +204,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B222F1DF1DAA30320089573D /* Build configuration list for PBXProject "memuDemo" */;
+			buildConfigurationList = B222F1DF1DAA30320089573D /* Build configuration list for PBXProject "EnergyStream" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -215,7 +217,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B222F1E31DAA30320089573D /* memuDemo */,
+				B222F1E31DAA30320089573D /* EnergyStream */,
 			);
 		};
 /* End PBXProject section */
@@ -242,18 +244,20 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-memuDemo/Pods-memuDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-memuDemo/Pods-memuDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3C981087DC8C374A4BA2870 /* [CP] Check Pods Manifest.lock */ = {
@@ -271,7 +275,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-memuDemo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-EnergyStream-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -285,24 +289,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */,
 				B222F1EA1DAA30330089573D /* ViewController.swift in Sources */,
 				228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
-				2210047821D63AB10062C9C9 /* memuDemoTests.swift in Sources */,
+				2210047821D63AB10062C9C9 /* EnergyStreamTests.swift in Sources */,
 				2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */,
 				226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
+				2290B93C21F5D48C004DE3EA /* ContextMenuViewController.swift in Sources */,
 				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
 				B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */,
 				228EB02021E45B4F00033803 /* ProfileViewController.swift in Sources */,
 				2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */,
-				B222F2181DAA33DA0089573D /* SWRevealViewController.m in Sources */,
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,
 				2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */,
+				2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +380,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -416,6 +423,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -423,45 +431,43 @@
 		};
 		B222F20D1DAA30330089573D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCD09EC4BBB6B603E25C85FB /* Pods-memuDemo.debug.xcconfig */;
+			baseConfigurationReference = EFE7F1388F102BB4CD1B5D36 /* Pods-EnergyStream.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = GJ654J93NT;
-				INFOPLIST_FILE = memuDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sp.local.memuDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = sp.local.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "memuDemo/memuDemo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		B222F20E1DAA30330089573D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8D10AC4F5F17DE0CB91F17D /* Pods-memuDemo.release.xcconfig */;
+			baseConfigurationReference = 016EAD7D4940D86CF631A271 /* Pods-EnergyStream.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = GJ654J93NT;
-				INFOPLIST_FILE = memuDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sp.local.memuDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = sp.local.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "memuDemo/memuDemo-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B222F1DF1DAA30320089573D /* Build configuration list for PBXProject "memuDemo" */ = {
+		B222F1DF1DAA30320089573D /* Build configuration list for PBXProject "EnergyStream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B222F20A1DAA30330089573D /* Debug */,
@@ -470,7 +476,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "memuDemo" */ = {
+		B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "EnergyStream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B222F20D1DAA30330089573D /* Debug */,

@@ -26,9 +26,9 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         let contents = try (FileManager.default.contentsOfDirectory(at: docURL! as URL, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles))
             for fileName in contents {
                 print(type(of: fileName))
-                if fileName  "text.pdf" {
-                    print("File exists")
-                }
+//                if fileName  "text.pdf" {
+//                    print("File exists")
+//                }
             }
             print(contents)
         }catch {
@@ -47,12 +47,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         //Requests.getListAccountNumbers()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-            if revealViewController() != nil {
-        //revealViewController().rearViewRevealWidth = 200
-                menu.target = revealViewController()
-                menu.action = #selector(SWRevealViewController.revealToggle(_:))
-                self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            }
+            
     }
 
   

@@ -67,11 +67,19 @@ class StartViewController: UIViewController {
                 guard let auth = jsonData["auth"] as? Bool else {return}
                     if auth == true {
                         print("Successfully logged in")
-                        Requests.getListAccountNumbers()
+//                        while Requests.listAccountNumbers.count == 0 {
+//                        Requests.getListAccountNumbers()
+//                        }
+                         Requests.getListAccountNumbers()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let controller = storyboard.instantiateViewController(withIdentifier: "MainNavViewController")
+                            self.present(controller, animated: true, completion: nil)
+                        })
                         print(Requests.currentAccoutNumber)
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController")
-                        self.present(controller, animated: true, completion: nil)
+//                        self.enterMainWindowAfterLogin(self)
+                        
+                       
                     }
                 
                             
@@ -82,4 +90,8 @@ class StartViewController: UIViewController {
             
         }
     }
+    //MARK Trying to create seue for next ViewController
+//    func enterMainWindowAfterLogin(_ sender: Any) {
+//        performSegue(withIdentifier: "accListSegue", sender: self)
+//    }
 }

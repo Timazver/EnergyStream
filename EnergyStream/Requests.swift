@@ -75,7 +75,7 @@ class Requests {
 //    static var epdArray: Array = [String]()
     static var epdTitles: Array = [String]()
     static var epdModel: Array = [epdData]()
-    static var listAccountNumbers: Array = [String]()
+    static var listAccountNumbers: Array = [ListAccNumbers]()
     static var authToken: String = ""
     static var totalSumForPay: String = ""
     static var pdfFileName: String = ""
@@ -231,7 +231,7 @@ class Requests {
                 guard let userData = json as? [String:Any] else {return}
                 let user = userData["user"] as? [String:Any]
                 self.currentAccoutNumber = user?["accountNumber"] as! String
-                print(currentAccoutNumber)
+                
                 let accountNumbersArray = user?["listAccountNumbers"] as! [[String:Any]]
                 
                 //Try to parse array of ListAccNumbers into array of Structure
@@ -239,7 +239,7 @@ class Requests {
                 for list in accountNumbersArray {
                     model.append(ListAccNumbers(list))
                 }
-                
+                print(Requests.listAccountNumbers.count)
                 //Check if listAccountNumbers is empty, if not need to clear it
                 if !Requests.listAccountNumbers.isEmpty {
                     Requests.listAccountNumbers.removeAll()
@@ -247,15 +247,12 @@ class Requests {
             
                 
                 for accountNumber in model {
-                    Requests.listAccountNumbers.append(accountNumber.accountNumber)
-                    print(accountNumber)
+                    Requests.listAccountNumbers.append(accountNumber)
+                    
                     
                 }
                 
                 
-                
-                
-                print("Loop finished successfully")
                 print(Requests.listAccountNumbers.count)
             }catch {
                 print(error)
@@ -327,4 +324,39 @@ class Requests {
     }
     
     
+    // MARK: Add Account number function declaring
+    
+    static func addAccountNumber(phoneNumber: String, newAccNumber: String) {
+        guard let url = URL(string:"http://5.63.112.4:30000/api/accountnumber/addaccountnumber") else {return}
+        
+        let parameters = ["accountNumber":newAccNumber, "phoneNumber":phoneNumber]
+        var requestForEpdFile = URLRequest(url:url )
+        requestForEpdFile.httpMethod = "POST"
+        requestForEpdFile.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+        requestForEpdFile.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+        requestForEpdFile.httpBody = httpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: requestForEpdFile) {
+            (data,response,error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                
+                
+                
+            }catch {
+                print(error)
+            }
+            
+            }.resume()
+    }
 }

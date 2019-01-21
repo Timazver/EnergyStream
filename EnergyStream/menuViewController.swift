@@ -54,7 +54,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let revealviewcontroller:SWRevealViewController = self.revealViewController()
+        
         
         let cell:MenuCell = tableView.cellForRow(at: indexPath) as! MenuCell
         print(cell.lblMenuname.text!)
@@ -65,7 +65,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "AccListTableViewController") as! AccListTableViewController
             let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
             
-            revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
+            
             
         }
         if cell.lblMenuname.text! == "Квитанции по лицевыми счетам"
@@ -76,7 +76,7 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let newViewcontroller = mainstoryboard.instantiateViewController(withIdentifier: "EpdViewController") as! EpdViewController
             let newFrontController = UINavigationController.init(rootViewController: newViewcontroller)
             
-            revealviewcontroller.pushFrontViewController(newFrontController, animated: true)
+            
         }
         if cell.lblMenuname.text! == "Оплата"
         {
