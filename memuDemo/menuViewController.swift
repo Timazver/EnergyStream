@@ -25,13 +25,13 @@ class menuViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tblTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         ManuNameArray = ["Мои лицевые счета","Квитанции по лицевыми счетам","Оплата","Настройки","Выйти"]
         iconArray = [UIImage(named:"menuProfile")!,UIImage(named:"message")!,UIImage(named:"map")!,UIImage(named:"setting")!,UIImage(named:"logout")!]
-        
-        imgProfile.layer.borderWidth = 2
-        imgProfile.layer.borderColor = UIColor.green.cgColor
-        imgProfile.layer.cornerRadius = 50
-        
-        imgProfile.layer.masksToBounds = false
-        imgProfile.clipsToBounds = true 
+//        
+//        imgProfile.layer.borderWidth = 2
+//        imgProfile.layer.borderColor = UIColor.green.cgColor
+//        imgProfile.layer.cornerRadius = 50
+//        
+//        imgProfile.layer.masksToBounds = false
+//        imgProfile.clipsToBounds = true 
         // Do any additional setup after loading the view.
     }
 
