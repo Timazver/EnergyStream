@@ -18,11 +18,6 @@ struct ListAccNumbers {
         self.PHONE = dictionary["PHONE"] as? String ?? ""
     }
 }
-struct CellData {
-    var opened = Bool()
-    var title = String()
-    var sectionData = [String]()
-}
 
 struct UserCard {
     var accountNumber: String
@@ -49,7 +44,7 @@ struct UserCard {
         self.address = userCard["ADRESS"] as? String ?? "Не указано"
         self.phoneNumber = userCard["PHONE"] as? String ?? "Не указано"
         self.SCH_TYPE = userCard["SCH_TYPE"] as? String ?? "Не указано"
-        self.area = userCard["RAYON"] as! String ?? "Не указано"
+        self.area = userCard["RAYON"] as? String ?? "Не указано"
     }
 }
 struct epdData {
@@ -80,14 +75,14 @@ class Requests {
     static var totalSumForPay: String = ""
     static var pdfFileName: String = ""
     
-    static func divideFio(_ fio: String) {
-        let fioArray = fio.split(separator: " ")
-        Requests.userModel[0].firstName = String(fioArray[1])
-        Requests.userModel[0].lastName = String(fioArray[0])
-        if fioArray.count > 2 {
-        Requests.userModel[0].middleName = String(fioArray[2]) ?? "Не указано"
-        }
-    }
+//    static func divideFio(_ fio: String) {
+//        let fioArray = fio.split(separator: " ")
+//        Requests.userModel[0].firstName = String(fioArray[1])
+//        Requests.userModel[0].lastName = String(fioArray[0])
+//        if fioArray.count > 2 {
+//        Requests.userModel[0].middleName = String(fioArray[2]) ?? "Не указано"
+//        }
+//    }
     
     
     static func getUserInfo(userAccNumber: String) {
@@ -118,9 +113,10 @@ class Requests {
                 guard let user = userData["user"] as? [String:Any] else {
                     print("User is empty")
                     return}
+                
                 if userModel.isEmpty {
                 userModel.append(UserCard(user))
-                Requests.divideFio(user["FIO"] as! String)
+//                Requests.divideFio(user["FIO"] as! String)
                 
                
                 }
@@ -158,42 +154,32 @@ class Requests {
             (data,response,error) in
             
             if let response = response {
-                print(response)
+//                print(response)
             }
             
             guard let data = data else {return}
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+//                print(json)
                 guard let jsonData = json as? [String:AnyObject] else {return}
                 let epdDataArray = jsonData["epdData"] as? [String:AnyObject]
                 guard let oplInfo = epdDataArray?["opl_info"] as? [[String:Any]] else {print("Текущих начислений нет")
                     return
                 }
-//                if oplInfo == nil {
-//                    print("Текущий начислений нет")
-//                }
-//                else {
-//                    print(oplInfo)
-//                    for dic in
-//                self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
-//                }
-            
-                    print("Текущих начислений нет")
+//
                 
-                    print(oplInfo)
-                    if !Requests.epdModel.isEmpty {
-                        Requests.epdModel.removeAll()
+//                    print(oplInfo)
+                    if epdModel.isEmpty {
+                        for dic in oplInfo {
+                        epdModel.append(epdData(dic))
+                            print(dic)
+                        }
                     }
-                    else {
-                    for dic in oplInfo {
-                        self.epdModel.append(epdData(dic))
-                        
-                    }
-                    print(Requests.epdModel)
-//                    self.epdData = [oplInfo![0]["ORG"], oplInfo![0]["NACH_NAME"],oplInfo![0]["K_OPL"]] as! [String]
-                    }
+//                    else {
+//                        Requests.epdModel.removeAll()
+//                        print(Requests.epdModel)
+//                    }
                 
                 
             }catch {
@@ -201,7 +187,8 @@ class Requests {
             }
             
             }.resume()
-        self.epdTitles = epdTitles
+        print(epdModel.count)
+//        self.epdTitles = epdTitles
     }
     
     
@@ -262,44 +249,44 @@ class Requests {
      
     }
     
-   static func getEpdFile(_ accountNumber: String) {
-        guard let url = URL(string:"http://5.63.112.4:30000/api/epd/generate") else {return}
-        
-        let parameters = ["accountNumber":Requests.currentAccoutNumber]
-        var requestForEpdFile = URLRequest(url:url )
-        requestForEpdFile.httpMethod = "POST"
-        requestForEpdFile.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
-        requestForEpdFile.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
-        requestForEpdFile.httpBody = httpBody
-        
-        let session = URLSession.shared
-        session.dataTask(with: requestForEpdFile) {
-            (data,response,error) in
-            
-            if let response = response {
-                print(response)
-            }
-            
-            guard let data = data else {return}
-            //Start testing
-            
-            downloadPdf(data: data,fileName: "test")
-            
-            //End of testing
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-                
-                
-               
-            }catch {
-                print(error)
-            }
-            
-            }.resume()
-    }
+//   static func getEpdFile(_ accountNumber: String) {
+//        guard let url = URL(string:"http://5.63.112.4:30000/api/epd/generate") else {return}
+//
+//        let parameters = ["accountNumber":Requests.currentAccoutNumber]
+//        var requestForEpdFile = URLRequest(url:url )
+//        requestForEpdFile.httpMethod = "POST"
+//        requestForEpdFile.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+//        requestForEpdFile.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//
+//        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+//        requestForEpdFile.httpBody = httpBody
+//
+//        let session = URLSession.shared
+//        session.dataTask(with: requestForEpdFile) {
+//            (data,response,error) in
+//
+//            if let response = response {
+//                print(response)
+//            }
+//
+//            guard let data = data else {return}
+//            //Start testing
+//
+//            downloadPdf(data: data,fileName: "test")
+//
+//            //End of testing
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                print(json)
+//
+//
+//
+//            }catch {
+//                print(error)
+//            }
+//
+//            }.resume()
+//    }
     
     static func downloadPdf(data: Data, fileName: String) {
 

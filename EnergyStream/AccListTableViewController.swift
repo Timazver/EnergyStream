@@ -23,9 +23,9 @@ class AccListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Мои лицевые счета"
         contextMenu.anchorView = contextMenuBtn
-        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
+        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль", "Получить ЕПД"]
         contextMenu.cellConfiguration = {(index,item) in return "\(item)"}
         
 //        contextMenuBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showBarButtonDropDown(_:)))
@@ -49,13 +49,15 @@ class AccListTableViewController: UITableViewController {
                 self.addAcc()
             case 1:
                 self.changePass()
+            case 2:
+                self.performSegue(withIdentifier: "toEpdVC", sender: self)
             default:
                 break
             }
         }
-        contextMenu.direction = .any
+//        contextMenu.direction = .any
         contextMenu.width = 200
-//        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu?.plainView.bounds.height)!)
+        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu.plainView.bounds.height))
         contextMenu.show()
     }
     
@@ -72,6 +74,13 @@ class AccListTableViewController: UITableViewController {
         self.present(vc, animated: true, completion: nil)
         
     }
+    
+//    func getEpd() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EpdViewController") as! EpdViewController
+//        self.present(vc, animated: true, completion: nil)
+//    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        let count = Requests.listAccountNumbers.count
 //        if count == 0 {
@@ -108,8 +117,18 @@ class AccListTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let profileVC = segue.destination as! ProfileViewController
-        profileVC.title = fileName
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+            case "toProfileView":
+                let profileVC = segue.destination as! ProfileViewController
+                profileVC.title = fileName
+            case "toEpdVC":
+                let epdVC = segue.destination as! EpdViewController
+                epdVC.title = "Текущие начисления"
+            default:
+                break
+        }
+        
     }
     
 //    private func setupGestures() {
