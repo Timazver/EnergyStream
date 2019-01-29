@@ -14,7 +14,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textfieldPhoneNumber: UITextField!
     @IBOutlet weak var password: UITextField!
-
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
     
     //Wind segue for logout function
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
@@ -25,6 +26,16 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //change buttons color and border
+        self.loginBtn.backgroundColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0)
+        self.loginBtn.layer.cornerRadius = 5
+        self.loginBtn.layer.borderWidth = 1
+        self.loginBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        self.registerBtn.backgroundColor = .clear
+        self.registerBtn.layer.cornerRadius = 5
+        self.registerBtn.layer.borderWidth = 1
+        self.registerBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        
         print(textfieldPhoneNumber.text!)
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         guard let userName = dic?["login"] else {return}
@@ -44,8 +55,10 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         password.useUnderline()
         textfieldPhoneNumber.leftViewMode = .always
         password.leftViewMode = .always
-        textfieldPhoneNumber.leftView = UIImageView(image:UIImage(named: "phoneIcon"))
-        password.leftView = UIImageView(image: UIImage(named: "passIcon"))
+        textfieldPhoneNumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        textfieldPhoneNumber.leftView?.addSubview(UIImageView(image:UIImage(named: "phoneIcon")))
+        password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        password.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
         // Do any additional setup after loading the view.
     }
     

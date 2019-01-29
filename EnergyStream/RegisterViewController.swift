@@ -13,6 +13,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var accountNumber: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password:UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
+    
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    
 //    var smsCode: String!
     //disable status bar on top
     
@@ -22,6 +27,31 @@ class RegisterViewController: UIViewController {
         accountNumber.useUnderline()
         phoneNumber.useUnderline()
         password.useUnderline()
+        confirmPassword.useUnderline()
+        self.registerBtn.backgroundColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0)
+        self.registerBtn.layer.cornerRadius = 5
+        self.registerBtn.layer.borderWidth = 1
+        self.registerBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        self.cancelBtn.backgroundColor = .clear
+        self.cancelBtn.layer.cornerRadius = 5
+        self.cancelBtn.layer.borderWidth = 1
+        self.cancelBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        
+        // MARK: add icons to TextFields
+        
+        accountNumber.leftViewMode = .always
+        phoneNumber.leftViewMode = .always
+        password.leftViewMode = .always
+        confirmPassword.leftViewMode = .always
+        
+        accountNumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        accountNumber.leftView?.addSubview(UIImageView(image:UIImage(named: "accountNumber")))
+        phoneNumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        phoneNumber.leftView?.addSubview(UIImageView(image:UIImage(named: "phoneIcon")))
+        password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        password.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
+        confirmPassword.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        confirmPassword.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
     }
     
     //To hide keyboard after touching outside of keyboard

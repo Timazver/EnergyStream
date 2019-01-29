@@ -27,6 +27,7 @@ class AccListTableViewController: UITableViewController {
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         print(dic)
 //        loadingViewService.setLoadingScreen(accListTableView)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.title = "Мои лицевые счета"
         contextMenu.anchorView = contextMenuBtn
         contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
