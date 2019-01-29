@@ -1,25 +1,23 @@
 //
-//  TicketViewController.swift
+//  WebViewController.swift
 //  EnergyStream
 //
-//  Created by Timur on 1/24/19.
+//  Created by Timur on 1/28/19.
 //  Copyright © 2019 Parth Changela. All rights reserved.
 //
 
 import UIKit
+import WebKit
+class WebViewController: UIViewController {
 
-class TicketViewController: UIViewController {
-    
-    var titleFromTable: String = ""
-    var text: String = ""
-    
-    @IBOutlet weak var msgSubject: UITextField!
-    @IBOutlet weak var msgTtext: UITextField!
+    @IBOutlet weak var webView: WKWebView!
+    var url: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        msgSubject.text! = titleFromTable
-        msgTtext.text! = text
+        self.navigationController!.navigationBar.topItem!.title = "Готово"
+        let request = URLRequest(url: URL(string: url)!)
+        webView.load(request)
         // Do any additional setup after loading the view.
     }
     

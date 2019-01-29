@@ -12,6 +12,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     var userArray: Array = [String]()
     var profileCellTitles: Array = [String]()
+    
+     
+    
+    
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var epdButton: UITabBarItem!
     //    var sections = sectionsData
@@ -30,9 +34,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.profileTableView.reloadData()
-        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
+        
+        loadingViewService.setLoadingScreen(profileTableView)
         Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
+        
+        Requests.getTicketList()
+        
+//        self.profileTableView.reloadData()
+        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
         if let accNumber = title {
             Requests.getUserEpd(accNumber)
         }
@@ -40,7 +49,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         //
         //            self.title = "Информация о счете"
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        Requests.getUserInfo(userAccNumber: self.title!)
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         
@@ -84,6 +93,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
+            loadingViewService.removeLoadingScreen()
         }
             
             
@@ -93,5 +103,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
+    
+    // Set the activity indicator into the main view
     
 }

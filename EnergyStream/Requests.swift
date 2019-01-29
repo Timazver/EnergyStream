@@ -21,9 +21,9 @@ struct ListAccNumbers {
 
 struct UserCard {
     var accountNumber: String
-    var firstName: String
-    var lastName: String
-    var middleName: String
+//    var firstName: String
+//    var lastName: String
+//    var middleName: String
     var numberOfPeople: String
     var address: String
     var phoneNumber: String
@@ -34,12 +34,9 @@ struct UserCard {
     init(_ userCard: [String:Any]) {
         self.accountNumber = userCard["LS"] as? String ?? "Не указано"
         self.fio = userCard["FIO"] as? String ?? ""
-        self.firstName = ""
-        self.lastName = ""
-        self.middleName = "Не указано"
-//        self.firstName = String(fioArray[1] as? Substring ?? "Не указано")
-//        self.lastName = String(fioArray[0] as? Substring ?? "Не указано")
-//        self.middleName = String(fioArray[2].isEmpty ? fioArray[2] as! Substring : "Не указано")
+//        self.firstName = ""
+//        self.lastName = ""
+//        self.middleName = "Не указано"
         self.numberOfPeople = userCard["KOL_MAN"] as? String ?? ""
         self.address = userCard["ADRESS"] as? String ?? "Не указано"
         self.phoneNumber = userCard["PHONE"] as? String ?? "Не указано"
@@ -47,6 +44,38 @@ struct UserCard {
         self.area = userCard["RAYON"] as? String ?? "Не указано"
     }
 }
+
+struct Ticket {
+    var ticketId: String
+    var date: String
+    var ticketTitle: String
+    var ticketMsg: String
+    var ticketNumber: String
+    
+    init(_ ticketDic: [String: Any]) {
+        let newTime = Date(timeIntervalSince1970: TimeInterval(ticketDic["createdDate"] as! Double))
+        
+        self.ticketId = ticketDic["_id"] as! String
+        self.date = newTime.toString(dateFormat: "dd-MM-YYYY")
+        self.ticketTitle = ticketDic["title"] as! String
+        self.ticketMsg = ticketDic["msg"] as! String
+        self.ticketNumber = String(ticketDic["number"] as! Int)
+        
+    }
+}
+
+struct Bank {
+    var name: String
+    var link: String
+    var imgUrl: String
+    
+    init(_ dic: [String:Any]) {
+        self.name = dic["name"] as! String
+        self.link = dic["link"] as! String
+        self.imgUrl = dic["imgUrl"] as! String
+    }
+}
+
 struct epdData {
     var organization: String = ""
     var destination: String = ""
@@ -74,7 +103,8 @@ class Requests {
     static var authToken: String = ""
     static var totalSumForPay: String = ""
     static var pdfFileName: String = ""
-    
+    static var ticketListArray: Array = [Ticket]()
+    static var bankArray: Array = [Bank]()
 //    static func divideFio(_ fio: String) {
 //        let fioArray = fio.split(separator: " ")
 //        Requests.userModel[0].firstName = String(fioArray[1])
@@ -88,7 +118,7 @@ class Requests {
     static func getUserInfo(userAccNumber: String) {
         
 
-        guard let url = URL(string:"http://5.63.112.4:30000/api/user/card?accountNumber=\(userAccNumber)") else {return}
+        guard let url = URL(string:"http://192.168.1.161:3000/api/user/card?accountNumber=\(userAccNumber)") else {return}
         
         
         var requestForUserInfo = URLRequest(url:url )
@@ -139,7 +169,7 @@ class Requests {
     //Area with Epd related method and fields
     static func getUserEpd(_ accountNumber: String) {
         let epdTitles = ["Организация", "Назначение" , "К оплате"]
-        guard let url = URL(string:"http://5.63.112.4:30000/api/epd?accountNumber=\(currentAccoutNumber)") else {return}
+        guard let url = URL(string:"http://192.168.1.161:3000/api/epd?accountNumber=\(currentAccoutNumber)") else {return}
         
         
         
@@ -195,7 +225,7 @@ class Requests {
     
     //Get user object with list of Account Numbers
     static func getListAccountNumbers() {
-        guard let url = URL(string:"http://5.63.112.4:30000/api/user/profile") else {return}
+        guard let url = URL(string:"http://192.168.1.161:3000/api/user/profile") else {return}
         
         var requestForUserInfo = URLRequest(url:url )
         
@@ -228,16 +258,16 @@ class Requests {
                 }
                 print(Requests.listAccountNumbers.count)
                 //Check if listAccountNumbers is empty, if not need to clear it
-                if !Requests.listAccountNumbers.isEmpty {
-                    Requests.listAccountNumbers.removeAll()
+                if Requests.listAccountNumbers.isEmpty {
+                    for accountNumber in model {
+                        
+                        Requests.listAccountNumbers.append(accountNumber)
+                        
+                    }
                 }
             
                 
-                for accountNumber in model {
-                    Requests.listAccountNumbers.append(accountNumber)
-                    
-                    
-                }
+                
                 
                 
                 print(Requests.listAccountNumbers.count)
@@ -314,7 +344,8 @@ class Requests {
     // MARK: Add Account number function declaring
     
     static func addAccountNumber(phoneNumber: String, newAccNumber: String) {
-        guard let url = URL(string:"http://5.63.112.4:30000/api/accountnumber/addaccountnumber") else {return}
+        
+        guard let url = URL(string:"http://192.168.1.161:3000/api/accountnumber/addaccountnumber") else {return}
         
         let parameters = ["accountNumber":newAccNumber, "phoneNumber":phoneNumber]
         var requestForEpdFile = URLRequest(url:url )
@@ -345,5 +376,76 @@ class Requests {
             }
             
             }.resume()
+    }
+    
+    //Function that parse TicketList array
+    
+    static func getTicketList() {
+        let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
+//        let parametersForRequest = ["]
+        guard let url = URL(string: "http://192.168.1.161:3000/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return}
+        
+        //MARK: Request with onlu swift features
+        var requestForUserInfo = URLRequest(url:url )
+
+        requestForUserInfo.httpMethod = "GET"
+        requestForUserInfo.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+        requestForUserInfo.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+
+        session.dataTask(with: requestForUserInfo) {
+            (data,response,error) in
+
+            if let response = response {
+                print(response)
+            }
+
+            guard let data = data else {return}
+
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                guard let ticketList = json as? [[String:Any]] else {return}
+                
+                if Requests.ticketListArray.isEmpty {
+                    for dic in ticketList {
+                    ticketListArray.append(Ticket(dic))
+                    }
+                }
+                else {
+                    Requests.ticketListArray.removeAll()
+                }
+            }catch {
+                print(error)
+            }
+
+            }.resume()
+    }
+    
+    static func getBankList() {
+        guard let url = URL(string: "http://192.168.1.161:3000/api/bank/list") else {return}
+        let headers = ["Authorization": "Bearer \(Requests.authToken)",
+            "Content-Type": "application/json"]
+        
+        request(url, method: HTTPMethod.get, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+            
+            if (200..<300).contains(statusCode) {
+                let value = responseJSON.result.value
+                let bankList = value as! [[String:Any]]
+                
+                if self.bankArray.isEmpty {
+                    for bank in bankList {
+                        print(bank)
+                        self.bankArray.append(Bank(bank))
+                    }
+                }
+            }
+            else {
+                print("Error")
+                
+            }
+        }
     }
 }

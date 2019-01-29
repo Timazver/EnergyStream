@@ -8,10 +8,11 @@
 
 import UIKit
 import DropDown
+import Locksmith
 
 class AccListTableViewController: UITableViewController {
 //    var logoutBtn: UIBarButtonItem!
-    @IBOutlet var contextMenuBtn: UIBarButtonItem!
+    var contextMenuBtn: UIBarButtonItem!
     @IBOutlet weak var accListTableView: UITableView!
     private var fileName = ""
     
@@ -23,16 +24,17 @@ class AccListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
+        print(dic)
+//        loadingViewService.setLoadingScreen(accListTableView)
         self.title = "Мои лицевые счета"
         contextMenu.anchorView = contextMenuBtn
-        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль", "Получить ЕПД"]
+        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
         contextMenu.cellConfiguration = {(index,item) in return "\(item)"}
-        
-//        contextMenuBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showBarButtonDropDown(_:)))
-//        logoutBtn = UIBarButtonItem(title:"Выйти", style: .plain, target: self, action: #selector(goBackToOneButtonTapped(_:)))
+    
         contextMenuBtn = UIBarButtonItem(title:"...", style: .plain, target: self, action: #selector(showBarButtonDropDown(_:)))
         self.navigationItem.rightBarButtonItem = contextMenuBtn
-//        self.navigationItem.leftBarButtonItem = logoutBtn
+
         print("AccListViewController was loaded")
         accListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
        
@@ -49,8 +51,6 @@ class AccListTableViewController: UITableViewController {
                 self.addAcc()
             case 1:
                 self.changePass()
-            case 2:
-                self.performSegue(withIdentifier: "toEpdVC", sender: self)
             default:
                 break
             }
@@ -97,12 +97,15 @@ class AccListTableViewController: UITableViewController {
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.lineBreakMode = .byWordWrapping
             cell.textLabel?.text! = "\(Requests.listAccountNumbers[indexPath.row].accountNumber) - \(Requests.listAccountNumbers[indexPath.row].FIO)"
-            
+//            loadingViewService.removeLoadingScreen()
         }
         else {
             print("listAccountNumbers array is empty")
             self.accListTableView.reloadData()
+            
+            
         }
+        
         return cell
     }
     
@@ -113,7 +116,7 @@ class AccListTableViewController: UITableViewController {
 //        Requests.currentAccoutNumber = (cell.textLabel?.text) ?? Requests.listAccountNumbers[0]
         performSegue(withIdentifier: "toProfileView", sender: self)
         fileName = Requests.listAccountNumbers[indexPath.row].accountNumber
-        
+        Requests.currentAccoutNumber = fileName
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,9 +125,7 @@ class AccListTableViewController: UITableViewController {
             case "toProfileView":
                 let profileVC = segue.destination as! ProfileViewController
                 profileVC.title = fileName
-            case "toEpdVC":
-                let epdVC = segue.destination as! EpdViewController
-                epdVC.title = "Текущие начисления"
+            
             default:
                 break
         }

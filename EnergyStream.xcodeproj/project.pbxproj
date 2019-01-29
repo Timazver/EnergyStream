@@ -11,15 +11,36 @@
 		2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213165921F1F8220045F7D3 /* PdfViewController.swift */; };
 		2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89421D72ADC00EB411A /* StartViewController.swift */; };
 		2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89821D79C0900EB411A /* RegisterViewController.swift */; };
+		222B8DBE21F82C35001D4B09 /* loadingViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B8DBD21F82C35001D4B09 /* loadingViewService.swift */; };
+		222B8DC021F85EF9001D4B09 /* TicketListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */; };
 		2239AF7E21F70D55009DC5AD /* PaymentDestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */; };
 		2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239AF7F21F73490009DC5AD /* ProfileViewController.swift */; };
 		2239C9BA21F30924003515D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239C9B921F30924003515D8 /* Extensions.swift */; };
+		2240080121FAB83F00E18474 /* ConnectSocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */; };
+		2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240080421FB16F600E18474 /* SocketIOManager.swift */; };
+		224008B321F9844D00A29222 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B221F9844D00A29222 /* TicketViewController.swift */; };
+		224008B521F98C2A00A29222 /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B421F98C2A00A29222 /* ResetPassViewController.swift */; };
+		224008B721F98D3F00A29222 /* ConfirmAccViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */; };
+		224008B921F98D5E00A29222 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B821F98D5E00A29222 /* ChangePassViewController.swift */; };
+		22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22494BE722003D0600C9BDFB /* MainViewController.swift */; };
+		22494BF0220049C900C9BDFB /* PTN57F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEA220049C100C9BDFB /* PTN57F.ttf */; };
+		22494BF1220049D200C9BDFB /* PTN77F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEC220049C100C9BDFB /* PTN77F.ttf */; };
+		22494BF2220049D500C9BDFB /* PTS55F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEF220049C100C9BDFB /* PTS55F.ttf */; };
+		22494BF3220049D700C9BDFB /* PTS56F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BED220049C100C9BDFB /* PTS56F.ttf */; };
+		22494BF4220049D900C9BDFB /* PTS75F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEB220049C100C9BDFB /* PTS75F.ttf */; };
+		22494BF5220049DB00C9BDFB /* PTS76F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEE220049C100C9BDFB /* PTS76F.ttf */; };
+		22494BF822004A8400C9BDFB /* PTC55F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BF722004A8200C9BDFB /* PTC55F.ttf */; };
+		22494BF922004A8700C9BDFB /* PTC75F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BF622004A8200C9BDFB /* PTC75F.ttf */; };
+		22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22494BFA22004C9A00C9BDFB /* Media.xcassets */; };
 		2260827F21E752B100B5D768 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260827E21E752B100B5D768 /* Requests.swift */; };
 		2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260828021E76B8B00B5D768 /* EpdCell.swift */; };
 		226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464F921F053940003C9C2 /* payInfoCell.swift */; };
 		226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */; };
 		226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FD21F09B1A0003C9C2 /* AccListCell.swift */; };
-		228E155621F7528E0040168A /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155521F7528E0040168A /* TicketViewController.swift */; };
+		227120D321FEC5B100965502 /* BankChoosePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */; };
+		227120D521FEE92000965502 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227120D421FEE92000965502 /* WebViewController.swift */; };
+		228E155621F7528E0040168A /* AddTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155521F7528E0040168A /* AddTicketViewController.swift */; };
+		228E155821F75BD80040168A /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155721F75BD80040168A /* TicketListViewController.swift */; };
 		228EB02021E45B4F00033803 /* ProfileTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB01F21E45B4F00033803 /* ProfileTabBarViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
 		2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */; };
@@ -27,12 +48,11 @@
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
-		B222F1EF1DAA30330089573D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EE1DAA30330089573D /* Assets.xcassets */; };
 		B222F1F21DAA30330089573D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1F01DAA30330089573D /* LaunchScreen.storyboard */; };
 		B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F2191DAA354D0089573D /* menuViewController.swift */; };
 		B222F21C1DAA36070089573D /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F21B1DAA36070089573D /* MenuCell.swift */; };
 		B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F21D1DAA46600089573D /* EpdViewController.swift */; };
-		EDC99ACF170C3BB78952FE77 /* Pods_EnergyStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */; };
+		EDC99ACF170C3BB78952FE77 /* Pods_EnergyStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,15 +60,38 @@
 		2213165921F1F8220045F7D3 /* PdfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfViewController.swift; sourceTree = "<group>"; };
 		2227A89421D72ADC00EB411A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		222B8DBD21F82C35001D4B09 /* loadingViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewService.swift; sourceTree = "<group>"; };
+		222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewCell.swift; sourceTree = "<group>"; };
 		2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDestCell.swift; sourceTree = "<group>"; };
 		2239AF7F21F73490009DC5AD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2239C9B921F30924003515D8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectSocketViewController.swift; sourceTree = "<group>"; };
+		2240080421FB16F600E18474 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		224008B221F9844D00A29222 /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		224008B421F98C2A00A29222 /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
+		224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAccViewController.swift; sourceTree = "<group>"; };
+		224008B821F98D5E00A29222 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
+		224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnergyStream.entitlements; sourceTree = "<group>"; };
+		22494BE722003D0600C9BDFB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		22494BEA220049C100C9BDFB /* PTN57F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN57F.ttf; sourceTree = "<group>"; };
+		22494BEB220049C100C9BDFB /* PTS75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS75F.ttf; sourceTree = "<group>"; };
+		22494BEC220049C100C9BDFB /* PTN77F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN77F.ttf; sourceTree = "<group>"; };
+		22494BED220049C100C9BDFB /* PTS56F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS56F.ttf; sourceTree = "<group>"; };
+		22494BEE220049C100C9BDFB /* PTS76F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS76F.ttf; sourceTree = "<group>"; };
+		22494BEF220049C100C9BDFB /* PTS55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS55F.ttf; sourceTree = "<group>"; };
+		22494BF622004A8200C9BDFB /* PTC75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC75F.ttf; sourceTree = "<group>"; };
+		22494BF722004A8200C9BDFB /* PTC55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC55F.ttf; sourceTree = "<group>"; };
+		22494BFA22004C9A00C9BDFB /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		2260827E21E752B100B5D768 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		2260828021E76B8B00B5D768 /* EpdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpdCell.swift; sourceTree = "<group>"; };
 		226464F921F053940003C9C2 /* payInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payInfoCell.swift; sourceTree = "<group>"; };
 		226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListTableViewController.swift; sourceTree = "<group>"; };
 		226464FD21F09B1A0003C9C2 /* AccListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListCell.swift; sourceTree = "<group>"; };
-		228E155521F7528E0040168A /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		22695B0021FDBC440070C831 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankChoosePopUpViewController.swift; sourceTree = "<group>"; };
+		227120D421FEE92000965502 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		228E155521F7528E0040168A /* AddTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTicketViewController.swift; sourceTree = "<group>"; };
+		228E155721F75BD80040168A /* TicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
 		228EB01F21E45B4F00033803 /* ProfileTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +100,6 @@
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B222F1EC1DAA30330089573D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B222F1EE1DAA30330089573D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B222F1F11DAA30330089573D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B222F1F31DAA30330089573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B222F1FC1DAA30330089573D /* EnergyStreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStreamTests.swift; sourceTree = "<group>"; };
@@ -83,6 +125,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22494BE92200446C00C9BDFB /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				22494BF722004A8200C9BDFB /* PTC55F.ttf */,
+				22494BF622004A8200C9BDFB /* PTC75F.ttf */,
+				22494BEA220049C100C9BDFB /* PTN57F.ttf */,
+				22494BEC220049C100C9BDFB /* PTN77F.ttf */,
+				22494BEF220049C100C9BDFB /* PTS55F.ttf */,
+				22494BED220049C100C9BDFB /* PTS56F.ttf */,
+				22494BEB220049C100C9BDFB /* PTS75F.ttf */,
+				22494BEE220049C100C9BDFB /* PTS76F.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		681713C20F6FC02CA5A0293B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +152,7 @@
 		6A0B05E69C764BD576150D15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22695B0021FDBC440070C831 /* Security.framework */,
 				F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */,
 			);
 			name = Frameworks;
@@ -123,6 +181,9 @@
 		B222F1E61DAA30330089573D /* EnergyStream */ = {
 			isa = PBXGroup;
 			children = (
+				22494BE92200446C00C9BDFB /* fonts */,
+				224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */,
+				22494BFA22004C9A00C9BDFB /* Media.xcassets */,
 				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
 				B222F1E71DAA30330089573D /* AppDelegate.swift */,
 				B222F1E91DAA30330089573D /* ViewController.swift */,
@@ -130,8 +191,20 @@
 				2260827E21E752B100B5D768 /* Requests.swift */,
 				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
-				228E155521F7528E0040168A /* TicketViewController.swift */,
+				22494BE722003D0600C9BDFB /* MainViewController.swift */,
+				227120D421FEE92000965502 /* WebViewController.swift */,
+				227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */,
+				2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */,
+				2240080421FB16F600E18474 /* SocketIOManager.swift */,
+				224008B421F98C2A00A29222 /* ResetPassViewController.swift */,
+				224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */,
+				224008B821F98D5E00A29222 /* ChangePassViewController.swift */,
+				224008B221F9844D00A29222 /* TicketViewController.swift */,
+				222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */,
+				228E155721F75BD80040168A /* TicketListViewController.swift */,
+				228E155521F7528E0040168A /* AddTicketViewController.swift */,
 				2239AF7F21F73490009DC5AD /* ProfileViewController.swift */,
+				222B8DBD21F82C35001D4B09 /* loadingViewService.swift */,
 				2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */,
 				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
 				2239C9B921F30924003515D8 /* Extensions.swift */,
@@ -144,7 +217,6 @@
 				B222F21B1DAA36070089573D /* MenuCell.swift */,
 				2260828021E76B8B00B5D768 /* EpdCell.swift */,
 				2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */,
-				B222F1EE1DAA30330089573D /* Assets.xcassets */,
 				B222F1F01DAA30330089573D /* LaunchScreen.storyboard */,
 				B222F1F31DAA30330089573D /* Info.plist */,
 				B222F2191DAA354D0089573D /* menuViewController.swift */,
@@ -204,9 +276,20 @@
 				TargetAttributes = {
 					B222F1E31DAA30320089573D = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = GJ654J93NT;
+						DevelopmentTeam = BK8ULRB748;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -233,9 +316,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22494BF922004A8700C9BDFB /* PTC75F.ttf in Resources */,
 				B222F1F21DAA30330089573D /* LaunchScreen.storyboard in Resources */,
-				B222F1EF1DAA30330089573D /* Assets.xcassets in Resources */,
+				22494BF3220049D700C9BDFB /* PTS56F.ttf in Resources */,
+				22494BF5220049DB00C9BDFB /* PTS76F.ttf in Resources */,
+				22494BF0220049C900C9BDFB /* PTN57F.ttf in Resources */,
+				22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */,
+				22494BF1220049D200C9BDFB /* PTN77F.ttf in Resources */,
 				B222F1ED1DAA30330089573D /* Main.storyboard in Resources */,
+				22494BF2220049D500C9BDFB /* PTS55F.ttf in Resources */,
+				22494BF4220049D900C9BDFB /* PTS75F.ttf in Resources */,
+				22494BF822004A8400C9BDFB /* PTC55F.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +344,9 @@
 				"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -260,6 +354,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -296,7 +393,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */,
+				227120D521FEE92000965502 /* WebViewController.swift in Sources */,
+				224008B721F98D3F00A29222 /* ConfirmAccViewController.swift in Sources */,
 				B222F1EA1DAA30330089573D /* ViewController.swift in Sources */,
+				224008B321F9844D00A29222 /* TicketViewController.swift in Sources */,
 				228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
 				2210047821D63AB10062C9C9 /* EnergyStreamTests.swift in Sources */,
@@ -305,17 +405,26 @@
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
 				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
+				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
+				2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */,
+				2240080121FAB83F00E18474 /* ConnectSocketViewController.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
+				228E155821F75BD80040168A /* TicketListViewController.swift in Sources */,
+				222B8DC021F85EF9001D4B09 /* TicketListViewCell.swift in Sources */,
+				224008B921F98D5E00A29222 /* ChangePassViewController.swift in Sources */,
 				B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */,
+				222B8DBE21F82C35001D4B09 /* loadingViewService.swift in Sources */,
 				228EB02021E45B4F00033803 /* ProfileTabBarViewController.swift in Sources */,
 				2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */,
-				228E155621F7528E0040168A /* TicketViewController.swift in Sources */,
+				228E155621F7528E0040168A /* AddTicketViewController.swift in Sources */,
 				2239AF7E21F70D55009DC5AD /* PaymentDestCell.swift in Sources */,
+				224008B521F98C2A00A29222 /* ResetPassViewController.swift in Sources */,
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */,
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,
 				2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */,
+				227120D321FEC5B100965502 /* BankChoosePopUpViewController.swift in Sources */,
 				2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,11 +552,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = GJ654J93NT;
+				CODE_SIGN_ENTITLEMENTS = EnergyStream/EnergyStream.entitlements;
+				DEVELOPMENT_TEAM = BK8ULRB748;
 				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sp.local.EnergyStream;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.softpower.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -461,11 +571,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = GJ654J93NT;
+				CODE_SIGN_ENTITLEMENTS = EnergyStream/EnergyStream.entitlements;
+				DEVELOPMENT_TEAM = BK8ULRB748;
 				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sp.local.EnergyStream;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.softpower.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;

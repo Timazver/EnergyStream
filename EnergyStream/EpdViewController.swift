@@ -22,7 +22,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Начисления"
-        
+        Requests.getBankList()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
             
@@ -78,6 +78,12 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         return 0
     }
     
-
+    @IBAction func showPopUp(sender: AnyObject) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BankChoosePopUpViewController") as! BankChoosePopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
     
 }
