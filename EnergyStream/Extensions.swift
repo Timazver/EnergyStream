@@ -61,8 +61,17 @@ extension String {
     fileprivate static let ONLY_CHAR = "c"
     fileprivate static let ONLY_NUMBER = "n"
     
+    func capitalizingFirstLetter() -> String {
+        let strArr = self.split(separator: " ")
+        let nameLetter = "\(strArr[1].uppercased()[0])."
+        let middleNameLetter = "\(strArr[2].uppercased()[0])." ?? ""
+        var newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
+    
+        return newStr
+    }
+    
     func removingWhitespaces() -> String {
-        var newStr = components(separatedBy: .whitespaces).joined()
+        let newStr = components(separatedBy: .whitespaces).joined()
         
         return newStr.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
     }

@@ -46,6 +46,10 @@ class ConfirmAccViewController: UIViewController, UITextFieldDelegate {
         thirdNumber.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         fourthNumber.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         label.numberOfLines = 0
+        firstNumber.useUnderline()
+        secondNumber.useUnderline()
+        thirdNumber.useUnderline()
+        fourthNumber.useUnderline()
 
         // Do any additional setup after loading the view.
     }

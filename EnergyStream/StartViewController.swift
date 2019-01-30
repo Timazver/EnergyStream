@@ -42,6 +42,9 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         print(userName)
         self.textfieldPhoneNumber.text! = userName as! String
         
+        guard let pass = dic?["password"] else {return}
+        self.password.text! = pass as! String
+        
 //     print(Locksmith.loadDataForUserAccount(userAccount: "EnergyStream"))
 //        self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 //        self.indicator.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
@@ -50,7 +53,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
 //        self.view.addSubview(indicator)
 //        self.view.bringSubview(toFront: indicator)
 //        self.textfieldPhoneNumber.text = ""
-        self.password.text = ""
+//        self.password.text = ""
         textfieldPhoneNumber.useUnderline()
         password.useUnderline()
         textfieldPhoneNumber.leftViewMode = .always

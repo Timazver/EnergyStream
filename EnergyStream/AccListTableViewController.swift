@@ -16,6 +16,8 @@ class AccListTableViewController: UITableViewController {
     @IBOutlet weak var accListTableView: UITableView!
     private var fileName = ""
     
+    
+    
     let contextMenu = DropDown()
     
     @IBAction func goBackToOneButtonTapped(_ sender: Any) {
@@ -24,11 +26,15 @@ class AccListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        accListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         print(dic)
 //        loadingViewService.setLoadingScreen(accListTableView)
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
+        
         self.title = "Мои лицевые счета"
+        
         contextMenu.anchorView = contextMenuBtn
         contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
         contextMenu.cellConfiguration = {(index,item) in return "\(item)"}
@@ -57,8 +63,8 @@ class AccListTableViewController: UITableViewController {
             }
         }
 //        contextMenu.direction = .any
-        contextMenu.width = 200
-        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu.plainView.bounds.height))
+        contextMenu.width = 140
+//        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu.plainView.bounds.height))
         contextMenu.show()
     }
     
@@ -81,24 +87,30 @@ class AccListTableViewController: UITableViewController {
 //        let vc = storyboard.instantiateViewController(withIdentifier: "EpdViewController") as! EpdViewController
 //        self.present(vc, animated: true, completion: nil)
 //    }
-    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return Requests.listAccountNumbers.count
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        let count = Requests.listAccountNumbers.count
 //        if count == 0 {
 //            accListTableView.reloadData()
 //        }
-        return Requests.listAccountNumbers.count
+        return 1
        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccListCell") as! AccListCell
+        
         if !Requests.listAccountNumbers.isEmpty {
             print("Ready for filling of cells")
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.lineBreakMode = .byWordWrapping
-            cell.textLabel?.text! = "\(Requests.listAccountNumbers[indexPath.row].accountNumber) - \(Requests.listAccountNumbers[indexPath.row].FIO)"
-//            loadingViewService.removeLoadingScreen()
+            cell.accNum.numberOfLines = 0
+            cell.accNum.lineBreakMode = .byWordWrapping
+            cell.accNum.text! = Requests.listAccountNumbers[indexPath.section].accountNumber
+            cell.fullName.numberOfLines = 0
+            cell.fullName.lineBreakMode = .byWordWrapping
+            cell.fullName.text! = Requests.listAccountNumbers[indexPath.section].FIO.capitalizingFirstLetter()
+            print(indexPath.section)
         }
         else {
             print("listAccountNumbers array is empty")
@@ -118,6 +130,26 @@ class AccListTableViewController: UITableViewController {
         performSegue(withIdentifier: "toProfileView", sender: self)
         fileName = Requests.listAccountNumbers[indexPath.row].accountNumber
         Requests.currentAccoutNumber = fileName
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 100
+        }
+        
+        else {
+            return 10
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Мои счета"
+            
+        }
+        
+        else {
+            return ""
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

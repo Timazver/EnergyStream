@@ -10,6 +10,9 @@ import UIKit
 
 class AccListCell: UITableViewCell {
 
+    @IBOutlet weak var accNum: UILabel!
+    @IBOutlet weak var fullName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
