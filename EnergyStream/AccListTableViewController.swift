@@ -87,9 +87,12 @@ class AccListTableViewController: UITableViewController {
     }
 
     func addAcc() {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "AddUserFormViewController") as! AddUserFormViewController
-                self.present(vc, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let AddUserFormVC = storyboard.instantiateViewController(withIdentifier: "AddUserFormViewController") as! AddUserFormViewController
+        self.addChildViewController(AddUserFormVC)
+        AddUserFormVC.view.frame = self.view.frame
+        self.view.addSubview(AddUserFormVC.view)
+        AddUserFormVC.didMove(toParentViewController: self)
 
     }
 //

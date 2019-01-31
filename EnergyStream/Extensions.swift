@@ -67,10 +67,12 @@ extension String {
         var middleNameLetter = ""
         if strArr.count > 1 {
             nameLetter = "\(strArr[1].uppercased()[0])."
+            if strArr.count > 2 {
+                middleNameLetter = "\(strArr[2].uppercased()[0])."
+            }
+            
         }
-        else if strArr.count > 2 {
-           middleNameLetter = "\(strArr[2].uppercased()[0])."
-        }
+       
         
         let newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
     

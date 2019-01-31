@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var accountNumber: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
@@ -64,11 +64,11 @@ class RegisterViewController: UIViewController {
     @IBAction func userRegister() {
         
         let accountNumber = self.accountNumber.text
-        let phoneNumber = self.phoneNumber.text
+        let phoneNumber = self.phoneNumber.text!.removingWhitespaces()
         let password = self.password.text
         
         let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
-        guard let url = URL(string: "http://192.168.1.38:30000/api/register") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/register") else {return}
         
         //create session object
         
@@ -104,14 +104,14 @@ class RegisterViewController: UIViewController {
         let smsAlert = UIAlertController(title: "Введите смс код", message: "", preferredStyle: UIAlertControllerStyle.alert)
 //
         smsAlert.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Second Name"
+            
             
             
         }
         let action=UIAlertAction(title: "Отправить", style: .default, handler:{
             action in
             guard let urlForActivate = URL(string: "http://192.168.1.38:3000/api/activate") else {return}
-            let parametersForActivate = ["phoneNumber":phoneNumber,"activat Code":smsAlert.textFields![0].text]
+            let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text] as [String : Any]
             var requestForActivate = URLRequest(url: urlForActivate)
             requestForActivate.httpMethod = "POST"
             requestForActivate.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -145,5 +145,21 @@ class RegisterViewController: UIViewController {
     }
     @IBAction func closeRegisterWindow() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        guard let text = textField.text else {
+            return true
+        }
+        
+        let lastText = (text as NSString).replacingCharacters(in: range, with: string) as String
+        
+        if phoneNumber == textField {
+            textField.text = lastText.format("N (NNN) NNN NN NN", oldString: text)
+            return false
+        }
+        return true
     }
 }

@@ -10,8 +10,9 @@ import UIKit
 
 class payInfoCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var sumForPay: UILabel!
+    @IBOutlet weak var paySumTitleLbl: UILabel!
+    @IBOutlet weak var paySumDataLbl: UITextField!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,6 +10,11 @@ import UIKit
 
 class PaymentDestCell: UITableViewCell {
 
+    @IBOutlet weak var payDestTitleLbl: UILabel!
+    @IBOutlet weak var payDestDataLbl: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

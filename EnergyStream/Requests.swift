@@ -43,6 +43,15 @@ struct UserCard {
         self.SCH_TYPE = userCard["SCH_TYPE"] as? String ?? "Не указано"
         self.area = userCard["RAYON"] as? String ?? "Не указано"
     }
+    init() {
+        self.accountNumber = ""
+        self.fio = ""
+        self.numberOfPeople = ""
+        self.address = ""
+        self.phoneNumber = ""
+        self.SCH_TYPE = ""
+        self.area = ""
+    }
 }
 
 struct Ticket {
