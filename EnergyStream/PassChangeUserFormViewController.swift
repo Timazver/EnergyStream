@@ -10,9 +10,15 @@ import UIKit
 import Alamofire
 class PassChangeUserFormViewController: UIViewController {
 
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var currentPass: UITextField!
     @IBOutlet weak var newPass: UITextField!
     @IBOutlet weak var newPassAgain: UITextField!
+    @IBOutlet weak var currentPassLbl: UILabel!
+    @IBOutlet weak var newPassLbl: UILabel!
+    @IBOutlet weak var newPassAgainLbl: UILabel!
+    @IBOutlet weak var viewForElements: UIView!
     
     @IBAction func saveNewPass(_ sender: Any) {
         let oldPassword = self.currentPass.text
@@ -33,7 +39,7 @@ class PassChangeUserFormViewController: UIViewController {
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
         
-        guard let url = URL(string: "http://5.63.112.4:30000/api/changepass") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/changepass") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
@@ -53,14 +59,56 @@ class PassChangeUserFormViewController: UIViewController {
         }
     }
     @IBAction func closeWindow() {
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
+        self.removeAnimate()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Изменить пароль"
+        self.view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        self.showAnimate()
+        currentPass.useBottomBorder()
+        newPass.useBottomBorder()
+        newPassAgain.useBottomBorder()
+        self.saveBtn.backgroundColor = .clear
+        self.saveBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+//            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.saveBtn.layer.cornerRadius = 5
+        self.saveBtn.layer.borderWidth = 1
+        self.cancelBtn.backgroundColor = .clear
+        self.cancelBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+//            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.cancelBtn.layer.cornerRadius = 5
+        self.cancelBtn.layer.borderWidth = 1
+        
+        self.viewForElements.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func showAnimate()
+    {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
+    }
     
+    func removeAnimate()
+    {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.view.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.view.removeFromSuperview()
+            }
+        });
+    }
 
     
     

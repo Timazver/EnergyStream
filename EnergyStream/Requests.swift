@@ -118,7 +118,7 @@ class Requests {
     static func getUserInfo(userAccNumber: String) {
         
 
-        guard let url = URL(string:"http://192.168.1.161:3000/api/user/card?accountNumber=\(userAccNumber)") else {return}
+        guard let url = URL(string:"http://192.168.1.38:3000/api/user/card?accountNumber=\(userAccNumber)") else {return}
         
         
         var requestForUserInfo = URLRequest(url:url )
@@ -169,7 +169,7 @@ class Requests {
     //Area with Epd related method and fields
     static func getUserEpd(_ accountNumber: String) {
         let epdTitles = ["Организация", "Назначение" , "К оплате"]
-        guard let url = URL(string:"http://192.168.1.161:3000/api/epd?accountNumber=\(currentAccoutNumber)") else {return}
+        guard let url = URL(string:"http://192.168.1.38:3000/api/epd?accountNumber=\(currentAccoutNumber)") else {return}
         
         
         
@@ -225,7 +225,7 @@ class Requests {
     
     //Get user object with list of Account Numbers
     static func getListAccountNumbers() {
-        guard let url = URL(string:"http://192.168.1.161:3000/api/user/profile") else {return}
+        guard let url = URL(string:"http://192.168.1.38:3000/api/user/profile") else {return}
         
         var requestForUserInfo = URLRequest(url:url )
         
@@ -345,7 +345,7 @@ class Requests {
     
     static func addAccountNumber(phoneNumber: String, newAccNumber: String) {
         
-        guard let url = URL(string:"http://192.168.1.161:3000/api/accountnumber/addaccountnumber") else {return}
+        guard let url = URL(string:"http://192.168.1.38:3000/api/accountnumber/addaccountnumber") else {return}
         
         let parameters = ["accountNumber":newAccNumber, "phoneNumber":phoneNumber]
         var requestForEpdFile = URLRequest(url:url )
@@ -383,7 +383,7 @@ class Requests {
     static func getTicketList() {
         let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
 //        let parametersForRequest = ["]
-        guard let url = URL(string: "http://192.168.1.161:3000/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return}
         
         //MARK: Request with onlu swift features
         var requestForUserInfo = URLRequest(url:url )
@@ -423,7 +423,7 @@ class Requests {
     }
     
     static func getBankList() {
-        guard let url = URL(string: "http://192.168.1.161:3000/api/bank/list") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/bank/list") else {return}
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
         

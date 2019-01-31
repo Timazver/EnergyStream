@@ -21,6 +21,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.topItem?.title = ""
         self.title = "Начисления"
         Requests.getBankList()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none

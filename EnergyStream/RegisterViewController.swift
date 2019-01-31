@@ -28,14 +28,14 @@ class RegisterViewController: UIViewController {
         phoneNumber.useUnderline()
         password.useUnderline()
         confirmPassword.useUnderline()
-        self.registerBtn.backgroundColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0)
+        self.registerBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.registerBtn.layer.cornerRadius = 5
         self.registerBtn.layer.borderWidth = 1
-        self.registerBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        self.registerBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
         self.cancelBtn.backgroundColor = .clear
         self.cancelBtn.layer.cornerRadius = 5
         self.cancelBtn.layer.borderWidth = 1
-        self.cancelBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        self.cancelBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
         
         // MARK: add icons to TextFields
         
@@ -68,7 +68,7 @@ class RegisterViewController: UIViewController {
         let password = self.password.text
         
         let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
-        guard let url = URL(string: "http://5.63.112.4:30000/api/register") else {return}
+        guard let url = URL(string: "http://192.168.1.38:30000/api/register") else {return}
         
         //create session object
         
@@ -110,7 +110,7 @@ class RegisterViewController: UIViewController {
         }
         let action=UIAlertAction(title: "Отправить", style: .default, handler:{
             action in
-            guard let urlForActivate = URL(string: "http://192.168.1.161:3000/api/activate") else {return}
+            guard let urlForActivate = URL(string: "http://192.168.1.38:3000/api/activate") else {return}
             let parametersForActivate = ["phoneNumber":phoneNumber,"activat Code":smsAlert.textFields![0].text]
             var requestForActivate = URLRequest(url: urlForActivate)
             requestForActivate.httpMethod = "POST"

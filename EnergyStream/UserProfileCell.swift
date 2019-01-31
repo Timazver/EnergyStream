@@ -12,9 +12,11 @@ class UserProfileCell: UITableViewCell {
 
     @IBOutlet weak  var title: UILabel!
     @IBOutlet weak var data: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 

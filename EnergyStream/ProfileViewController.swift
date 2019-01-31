@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var epdButton: UITabBarItem!
+    
+    
     //    var sections = sectionsData
     
     @IBOutlet weak var profileTableView: UITableView!
@@ -34,14 +36,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         loadingViewService.setLoadingScreen(profileTableView)
         Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
         
         Requests.getTicketList()
         
 //        self.profileTableView.reloadData()
-        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","SCH_TYPE"]
+        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","Тип счётчика"]
         if let accNumber = title {
             Requests.getUserEpd(accNumber)
         }
@@ -68,31 +71,43 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileCellTitles.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
         if !Requests.userModel.isEmpty {
-            
             switch indexPath.row {
             case 0:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].accountNumber)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].accountNumber
             case 1:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].fio)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].fio.capitalizingFirstLetter()
             case 2:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].numberOfPeople)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].numberOfPeople
             case 3:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].address)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].address
             case 4:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].phoneNumber)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].phoneNumber
             case 5:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].area)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].area.capitalizingFirstLetter()
             case 6:
-                cell.textLabel?.text! = "\(profileCellTitles[indexPath.row]): \(Requests.userModel[indexPath.section].SCH_TYPE)"
+                cell.title.text! = profileCellTitles[indexPath.row]
+                cell.data.text! = Requests.userModel[indexPath.section].SCH_TYPE
             default:
                 break
             }
+            cell.tableBottomBorder()
             loadingViewService.removeLoadingScreen()
         }
             

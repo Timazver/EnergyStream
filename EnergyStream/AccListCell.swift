@@ -17,7 +17,15 @@ class AccListCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        contentView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+//    }
 
+
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

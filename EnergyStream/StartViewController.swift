@@ -27,14 +27,14 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //change buttons color and border
-        self.loginBtn.backgroundColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0)
+        self.loginBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.loginBtn.layer.cornerRadius = 5
         self.loginBtn.layer.borderWidth = 1
-        self.loginBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        self.loginBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
         self.registerBtn.backgroundColor = .clear
         self.registerBtn.layer.cornerRadius = 5
         self.registerBtn.layer.borderWidth = 1
-        self.registerBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        self.registerBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
         
         print(textfieldPhoneNumber.text!)
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
@@ -79,7 +79,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         let parameters = ["phoneNumber":login,"password":password]
         
         
-        guard let url = URL(string: "http://192.168.1.161:3000/api/login") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/login") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }

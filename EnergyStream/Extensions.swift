@@ -11,18 +11,18 @@ import UIKit
 extension UITextField {
     
     func useUnderline() {
-//        let border = CALayer()
-//        let borderWidth = CGFloat(1.0)
-//        border.borderColor = UIColor(red: 0.20, green: 0.26, blue: 0.46, alpha: 1.0).cgColor
-//        border.frame = CGRect(origin: CGPoint(x: 0,y :self.frame.size.height - borderWidth), size: CGSize(width: self.frame.size.width, height:
-//            self.frame.width))
-////            self.frame.size.height))
-//        border.borderWidth = borderWidth
-//        self.layer.addSublayer(border)
-//        self.layer.masksToBounds = true
-        
         self.borderStyle = .none
-        self.layer.backgroundColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0).cgColor
+        self.layer.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:1.0).cgColor
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 0.0
+    }
+    
+    func useBottomBorder() {
+        self.borderStyle = .none
+        self.layer.backgroundColor = UIColor(red:0.20, green:0.26, blue:0.46, alpha:1.0).cgColor
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
@@ -63,9 +63,16 @@ extension String {
     
     func capitalizingFirstLetter() -> String {
         let strArr = self.split(separator: " ")
-        let nameLetter = "\(strArr[1].uppercased()[0])."
-        let middleNameLetter = "\(strArr[2].uppercased()[0])." ?? ""
-        var newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
+        var nameLetter = ""
+        var middleNameLetter = ""
+        if strArr.count > 1 {
+            nameLetter = "\(strArr[1].uppercased()[0])."
+        }
+        else if strArr.count > 2 {
+           middleNameLetter = "\(strArr[2].uppercased()[0])."
+        }
+        
+        let newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
     
         return newStr
     }
@@ -234,5 +241,18 @@ extension String {
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         let rangeLast: Range<Index> = start..<end
         return String(self[rangeLast])
+    }
+}
+
+extension UITableViewCell {
+    func tableBottomBorder() {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor(red:0.81, green:0.82, blue:0.85, alpha:1.0).cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
     }
 }

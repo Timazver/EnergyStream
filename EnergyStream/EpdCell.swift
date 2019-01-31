@@ -11,8 +11,7 @@ import UIKit
 class EpdCell: UITableViewCell {
 
     @IBOutlet weak  var title: UILabel!
-//    @IBOutlet weak var data: UILabel!
-    @IBOutlet weak var switchForEpd: UISwitch!
+    @IBOutlet weak var data: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

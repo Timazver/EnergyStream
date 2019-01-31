@@ -18,7 +18,7 @@ class AccListTableViewController: UITableViewController {
     
     
     
-    let contextMenu = DropDown()
+//    let contextMenu = DropDown()
     
     @IBAction func goBackToOneButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "logout", sender: self)
@@ -33,41 +33,59 @@ class AccListTableViewController: UITableViewController {
         print(dic)
 //        loadingViewService.setLoadingScreen(accListTableView)
         
-        self.title = "Мои лицевые счета"
+        self.title = "Список"
         
-        contextMenu.anchorView = contextMenuBtn
-        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
-        contextMenu.cellConfiguration = {(index,item) in return "\(item)"}
-    
-        contextMenuBtn = UIBarButtonItem(title:"...", style: .plain, target: self, action: #selector(showBarButtonDropDown(_:)))
-        self.navigationItem.rightBarButtonItem = contextMenuBtn
-
+//        contextMenu.anchorView = contextMenuBtn
+//        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
+//        contextMenu.cellConfiguration = {(index,item) in return "\(item)"}
+        contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
+        self.navigationItem.leftBarButtonItem = contextMenuBtn
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         print("AccListViewController was loaded")
         accListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
        
         }
         // Do any additional setup after loading the view.
     
-    @objc
-    func showBarButtonDropDown(_ sender: AnyObject) {
-        
-        contextMenu.selectionAction = { (index: Int, item: String) in
-//            print("Selected item: \(item) at index: \(index)")
-            switch index {
-            case 0:
-                self.addAcc()
-            case 1:
-                self.changePass()
-            default:
-                break
-            }
-        }
+//    @objc
+//    func showBarButtonDropDown(_ sender: AnyObject) {
+//
+//        contextMenu.selectionAction = { (index: Int, item: String) in
+////            print("Selected item: \(item) at index: \(index)")
+//            switch index {
+//            case 0:
+//                self.addAcc()
+//            case 1:
+//                self.changePass()
+//            default:
+//                break
+//            }
+//        }
 //        contextMenu.direction = .any
-        contextMenu.width = 140
-//        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu.plainView.bounds.height))
-        contextMenu.show()
+//        contextMenu.width = 140
+////        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu.plainView.bounds.height))
+//        contextMenu.show()
+    @objc func showBottomAlertWindow(_ sender: Any) {
+        let alert = UIAlertController(title: "Действия", message: "Выберите желаемое действие", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Добавить лицевой счет", style: .default, handler: { (_) in
+            
+            self.addAcc()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Изменить пароль", style: .default, handler: { (_) in
+            self.changePass()
+        }))
+        
+        
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (_) in
+            
+        }))
+        
+        self.present(alert, animated: true, completion:nil)
     }
-    
+
     func addAcc() {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "AddUserFormViewController") as! AddUserFormViewController
@@ -78,7 +96,10 @@ class AccListTableViewController: UITableViewController {
     func changePass() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PassChangeUserFormViewController") as! PassChangeUserFormViewController
-        self.present(vc, animated: true, completion: nil)
+        self.addChildViewController(vc)
+        vc.view.frame = self.view.frame
+        self.view.addSubview(vc.view)
+        vc.didMove(toParentViewController: self)
         
     }
     
@@ -99,6 +120,10 @@ class AccListTableViewController: UITableViewController {
        
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90.0
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccListCell") as! AccListCell
         
@@ -110,7 +135,7 @@ class AccListTableViewController: UITableViewController {
             cell.fullName.numberOfLines = 0
             cell.fullName.lineBreakMode = .byWordWrapping
             cell.fullName.text! = Requests.listAccountNumbers[indexPath.section].FIO.capitalizingFirstLetter()
-            print(indexPath.section)
+          
         }
         else {
             print("listAccountNumbers array is empty")
@@ -120,6 +145,23 @@ class AccListTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textAlignment = .center
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Мои счета"
+            
+        }
+            
+        else {
+            return ""
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -133,24 +175,17 @@ class AccListTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 100
+            return 70
         }
         
         else {
-            return 10
+            return 20
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Мои счета"
-            
-        }
-        
-        else {
-            return ""
-        }
-    }
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
@@ -176,3 +211,4 @@ class AccListTableViewController: UITableViewController {
 //    }
 
 }
+

@@ -23,14 +23,6 @@
 		224008B721F98D3F00A29222 /* ConfirmAccViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */; };
 		224008B921F98D5E00A29222 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B821F98D5E00A29222 /* ChangePassViewController.swift */; };
 		22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22494BE722003D0600C9BDFB /* MainViewController.swift */; };
-		22494BF0220049C900C9BDFB /* PTN57F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEA220049C100C9BDFB /* PTN57F.ttf */; };
-		22494BF1220049D200C9BDFB /* PTN77F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEC220049C100C9BDFB /* PTN77F.ttf */; };
-		22494BF2220049D500C9BDFB /* PTS55F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEF220049C100C9BDFB /* PTS55F.ttf */; };
-		22494BF3220049D700C9BDFB /* PTS56F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BED220049C100C9BDFB /* PTS56F.ttf */; };
-		22494BF4220049D900C9BDFB /* PTS75F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEB220049C100C9BDFB /* PTS75F.ttf */; };
-		22494BF5220049DB00C9BDFB /* PTS76F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BEE220049C100C9BDFB /* PTS76F.ttf */; };
-		22494BF822004A8400C9BDFB /* PTC55F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BF722004A8200C9BDFB /* PTC55F.ttf */; };
-		22494BF922004A8700C9BDFB /* PTC75F.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22494BF622004A8200C9BDFB /* PTC75F.ttf */; };
 		22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22494BFA22004C9A00C9BDFB /* Media.xcassets */; };
 		2260827F21E752B100B5D768 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260827E21E752B100B5D768 /* Requests.swift */; };
 		2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260828021E76B8B00B5D768 /* EpdCell.swift */; };
@@ -73,15 +65,15 @@
 		224008B821F98D5E00A29222 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
 		224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnergyStream.entitlements; sourceTree = "<group>"; };
 		22494BE722003D0600C9BDFB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		22494BEA220049C100C9BDFB /* PTN57F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN57F.ttf; sourceTree = "<group>"; };
-		22494BEB220049C100C9BDFB /* PTS75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS75F.ttf; sourceTree = "<group>"; };
-		22494BEC220049C100C9BDFB /* PTN77F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN77F.ttf; sourceTree = "<group>"; };
-		22494BED220049C100C9BDFB /* PTS56F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS56F.ttf; sourceTree = "<group>"; };
-		22494BEE220049C100C9BDFB /* PTS76F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS76F.ttf; sourceTree = "<group>"; };
-		22494BEF220049C100C9BDFB /* PTS55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS55F.ttf; sourceTree = "<group>"; };
-		22494BF622004A8200C9BDFB /* PTC75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC75F.ttf; sourceTree = "<group>"; };
-		22494BF722004A8200C9BDFB /* PTC55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC55F.ttf; sourceTree = "<group>"; };
 		22494BFA22004C9A00C9BDFB /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		22570B9F220198B40072A06C /* PTS56F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS56F.ttf; sourceTree = "<group>"; };
+		22570BA0220198B40072A06C /* PTN77F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN77F.ttf; sourceTree = "<group>"; };
+		22570BA1220198B40072A06C /* PTS75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS75F.ttf; sourceTree = "<group>"; };
+		22570BA2220198B40072A06C /* PTS55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS55F.ttf; sourceTree = "<group>"; };
+		22570BA3220198B40072A06C /* PTS76F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS76F.ttf; sourceTree = "<group>"; };
+		22570BA4220198B40072A06C /* PTN57F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN57F.ttf; sourceTree = "<group>"; };
+		22570BA5220198B90072A06C /* PTC75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC75F.ttf; sourceTree = "<group>"; };
+		22570BA6220198BA0072A06C /* PTC55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC55F.ttf; sourceTree = "<group>"; };
 		2260827E21E752B100B5D768 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		2260828021E76B8B00B5D768 /* EpdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpdCell.swift; sourceTree = "<group>"; };
 		226464F921F053940003C9C2 /* payInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payInfoCell.swift; sourceTree = "<group>"; };
@@ -125,17 +117,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22494BE92200446C00C9BDFB /* fonts */ = {
+		22570B9E220198850072A06C /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				22494BF722004A8200C9BDFB /* PTC55F.ttf */,
-				22494BF622004A8200C9BDFB /* PTC75F.ttf */,
-				22494BEA220049C100C9BDFB /* PTN57F.ttf */,
-				22494BEC220049C100C9BDFB /* PTN77F.ttf */,
-				22494BEF220049C100C9BDFB /* PTS55F.ttf */,
-				22494BED220049C100C9BDFB /* PTS56F.ttf */,
-				22494BEB220049C100C9BDFB /* PTS75F.ttf */,
-				22494BEE220049C100C9BDFB /* PTS76F.ttf */,
+				22570BA6220198BA0072A06C /* PTC55F.ttf */,
+				22570BA5220198B90072A06C /* PTC75F.ttf */,
+				22570BA4220198B40072A06C /* PTN57F.ttf */,
+				22570BA0220198B40072A06C /* PTN77F.ttf */,
+				22570BA2220198B40072A06C /* PTS55F.ttf */,
+				22570B9F220198B40072A06C /* PTS56F.ttf */,
+				22570BA1220198B40072A06C /* PTS75F.ttf */,
+				22570BA3220198B40072A06C /* PTS76F.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -181,7 +173,7 @@
 		B222F1E61DAA30330089573D /* EnergyStream */ = {
 			isa = PBXGroup;
 			children = (
-				22494BE92200446C00C9BDFB /* fonts */,
+				22570B9E220198850072A06C /* fonts */,
 				224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */,
 				22494BFA22004C9A00C9BDFB /* Media.xcassets */,
 				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
@@ -316,17 +308,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22494BF922004A8700C9BDFB /* PTC75F.ttf in Resources */,
 				B222F1F21DAA30330089573D /* LaunchScreen.storyboard in Resources */,
-				22494BF3220049D700C9BDFB /* PTS56F.ttf in Resources */,
-				22494BF5220049DB00C9BDFB /* PTS76F.ttf in Resources */,
-				22494BF0220049C900C9BDFB /* PTN57F.ttf in Resources */,
 				22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */,
-				22494BF1220049D200C9BDFB /* PTN77F.ttf in Resources */,
 				B222F1ED1DAA30330089573D /* Main.storyboard in Resources */,
-				22494BF2220049D500C9BDFB /* PTS55F.ttf in Resources */,
-				22494BF4220049D900C9BDFB /* PTS75F.ttf in Resources */,
-				22494BF822004A8400C9BDFB /* PTC55F.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +327,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
@@ -353,7 +336,6 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",

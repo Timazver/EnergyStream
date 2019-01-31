@@ -18,7 +18,7 @@ class ResetPassViewController: UIViewController {
         let parameters = ["phoneNumber":phoneNumber.text!]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
-        guard let url = URL(string: "http://192.168.1.161:3000/api/forgot") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/forgot") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
