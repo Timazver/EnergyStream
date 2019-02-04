@@ -9,13 +9,15 @@
 import UIKit
 import Alamofire
 
-class ResetPassViewController: UIViewController {
+class ResetPassViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var phoneNumber: UITextField!
+    @IBOutlet weak var getSmsBtn: UIButton!
+    
     
     @IBAction func getSmsCode() {
-        let parameters = ["phoneNumber":phoneNumber.text!]
+        let parameters = ["phoneNumber":phoneNumber.text!.removingWhitespaces()]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
         guard let url = URL(string: "http://192.168.1.38:3000/api/forgot") else {return}
@@ -41,18 +43,41 @@ class ResetPassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneNumber.useUnderline()
         label.numberOfLines = 0
         
+        self.getSmsBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.getSmsBtn.layer.cornerRadius = 5
+        self.getSmsBtn.layer.borderWidth = 1
+        self.getSmsBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
+        phoneNumber.useUnderline()
+        phoneNumber.leftViewMode = .always
+        phoneNumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        phoneNumber.leftView?.addSubview(UIImageView(image:UIImage(named: "phoneIcon")))
 
         // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let confirmAccVC = segue.destination as! ConfirmAccViewController
-        confirmAccVC.phoneNumber = self.phoneNumber.text!
+        confirmAccVC.phoneNumber = self.phoneNumber.text!.removingWhitespaces()
     }
     
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        guard let text = textField.text else {
+            return true
+        }
+        
+        let lastText = (text as NSString).replacingCharacters(in: range, with: string) as String
+        
+        if phoneNumber == textField {
+            textField.text = lastText.format("N (NNN) NNN NN NN", oldString: text)
+            return false
+        }
+        return true
+    }
 
     /*
     // MARK: - Navigation

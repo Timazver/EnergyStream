@@ -24,7 +24,9 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         self.title = "Начисления"
         Requests.getBankList()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
+        buttonForPay.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        buttonForPay.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
+        buttonForPay.layer.cornerRadius = CGFloat(5)
             buttonForPay.setTitle("Оплатить   \(sumForPayment)", for: .normal)
     }
     
@@ -42,11 +44,11 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 60
+            return 40
         case 1:
             return 60
         case 2:
-            return 80
+            return 60
         default:
             return 0
         }
@@ -65,14 +67,13 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
                 }
             else if indexPath.row == 1 {
                 let paymentDestCell = tableView.dequeueReusableCell(withIdentifier: "PaymentDestCell", for: indexPath) as! PaymentDestCell
-                paymentDestCell.payDestTitleLbl.text! = "Назначение"
-                paymentDestCell.payDestDataLbl.layer.borderColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0).cgColor
+                paymentDestCell.payDestDataLbl.layer.borderColor = UIColor.white.cgColor
                 paymentDestCell.payDestDataLbl.text! = Requests.epdModel[indexPath.section].destination
                 cell = paymentDestCell
             }
             else {
                 let paySumCell = tableView.dequeueReusableCell(withIdentifier: "payInfoCell", for: indexPath) as! payInfoCell
-                paySumCell.paySumTitleLbl.text! = "К оплате"
+                paySumCell.paySumTitleLbl.text! = "К оплате:"
                 paySumCell.paySumDataLbl.text! = "\(Requests.epdModel[indexPath.section].sumForPayment) тг"
                 self.sumForPayment += Int(Requests.epdModel[indexPath.section].sumForPayment)!
                 cell = paySumCell

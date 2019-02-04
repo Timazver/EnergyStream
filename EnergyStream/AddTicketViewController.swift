@@ -10,8 +10,18 @@ import UIKit
 import Alamofire
 class AddTicketViewController: UIViewController {
 
+    @IBOutlet weak var accNumberLbl: UILabel!
+    @IBOutlet weak var fioTitleLbl: UILabel!
+    @IBOutlet weak var fioDataLbl: UILabel!
+    @IBOutlet weak var addressTitleLbl: UILabel!
+    @IBOutlet weak var addressDataLbl: UILabel!
+    
     @IBOutlet weak var msgSubject: UITextField!
     @IBOutlet weak var msgTtext: UITextField!
+    
+    @IBOutlet weak var addBtn: UIButton!
+//    @IBOutlet weak var cancelBtn: UIButton!
+    
     
     @IBAction func sendTicket() {
         let title = self.msgSubject.text
@@ -46,9 +56,7 @@ class AddTicketViewController: UIViewController {
                 alertController.addAction(action)
                 self.present(alertController, animated: true, completion: nil)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-            self.closeWindow()
-            })
+            
         }
     }
     
@@ -56,7 +64,27 @@ class AddTicketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Создание обращения в техническую службу"
-        // Do any additional setup after loading the view.
+        self.msgSubject.backgroundColor = .clear
+        self.msgTtext.backgroundColor = .clear
+        self.msgSubject.useBottomBorderWithoutBackgroundColor()
+        self.msgTtext.useBottomBorderWithoutBackgroundColor()
+        
+        self.addBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.addBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        //            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.addBtn.layer.cornerRadius = 5
+        self.addBtn.layer.borderWidth = 1
+//        self.cancelBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+//        self.cancelBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+//        //            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+//        self.cancelBtn.layer.cornerRadius = 5
+//        self.cancelBtn.layer.borderWidth = 1
+        
+        self.accNumberLbl.text! = "№ \(getUserFromAccNumber(Requests.currentAccoutNumber).accountNumber)"
+        self.fioTitleLbl.text! = "ФИО"
+        self.fioDataLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
+        self.addressTitleLbl.text! = "Адрес"
+        self.addressDataLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
     }
     
     
@@ -64,19 +92,23 @@ class AddTicketViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func closeWindow() {
-        dismiss(animated: true, completion: nil)
-        
-    }
+//    @IBAction func closeWindow() {
+//        dismiss(animated: true, completion: nil)
+//
+//    }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func getUserFromAccNumber(_ accNumber: String) -> UserCard {
+        print(accNumber)
+        var currentUser = UserCard()
+        for user in Requests.userModel {
+            if user.accountNumber == accNumber {
+                currentUser = user
+            }
+            
+        }
+        return currentUser
     }
-    */
+    
 
 }

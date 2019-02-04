@@ -129,7 +129,6 @@ class AccListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccListCell") as! AccListCell
-        
         if !Requests.listAccountNumbers.isEmpty {
             print("Ready for filling of cells")
             cell.accNum.numberOfLines = 0

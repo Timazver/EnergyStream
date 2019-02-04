@@ -77,8 +77,29 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         //MARK : Trying to save credentials and token to keychain
         //Create object of Credentials structure type
         let parameters = ["phoneNumber":login,"password":password]
+        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
+        if dic?["login"] as! String == login {
+            
+        }
+        else {
+            let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
+            do {
+                try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
+                    
+            }
+            catch {
+                    print("Unable to save token into keychain")
+                
+            }
+        }))
+            alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
+        self.dismiss(animated: true, completion: nil)
+        }))
+            
+        self.present(alert, animated: true, completion: nil)
         
-        
+        }
         guard let url = URL(string: "http://192.168.1.38:3000/api/login") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { responseJSON in
@@ -91,15 +112,18 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                 
                 guard let token = jsonData["token"] as? String else {return}
                 if token != "" {
-//                        Requests.authToken = jsonData["token"] as! String
-                    print(type(of: token))
                     do {
-                        try Locksmith.updateData(data: ["login":login, "password":password,"token":token], forUserAccount: "energyStream")
-                        Requests.authToken = Locksmith.loadDataForUserAccount(userAccount: "energyStream")!["token"] as! String
+                        Requests.authToken = token
+//                        try Locksmith.updateData(data: ["token":token], forUserAccount: "energyStream")
+//                        Requests.authToken = Locksmith.loadDataForUserAccount(userAccount: "energyStream")!["token"] as! String
                     }
                     catch {
-                        print("Unable to save token into keychain")
+                        print("Unable to save data to keychain")
                     }
+                    
+//                        Requests.authToken = jsonData["token"] as! String
+                    print(type(of: token))
+                    
                     }
                 guard let auth = jsonData["auth"] as? Bool else {return}
                     if auth == true {
@@ -144,6 +168,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+  
+        
     
     
     //MARK Trying to create seue for next ViewController

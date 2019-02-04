@@ -13,25 +13,42 @@ class TicketViewController: UIViewController {
     var titleFromTable: String = ""
     var text: String = ""
     
-    @IBOutlet weak var msgSubject: UITextField!
-    @IBOutlet weak var msgTtext: UITextField!
-    
+    @IBOutlet weak var msgSubject: UILabel!
+    @IBOutlet weak var msgText: UITextView!
+    @IBOutlet weak var viewForElements: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewForElements.backgroundColor = UIColor.white
+        self.viewForElements.layer.cornerRadius = CGFloat(5)
+        self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
+        self.showAnimate()
+//        viewForElements.backgroundColor = .black
         msgSubject.text! = titleFromTable
-        msgTtext.text! = text
+        msgText.text! = text
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func showAnimate()
+    {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
     }
-    */
-
+    
+    func removeAnimate()
+    {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.view.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.view.removeFromSuperview()
+            }
+        });
+    }
 }

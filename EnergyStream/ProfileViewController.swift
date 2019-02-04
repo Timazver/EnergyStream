@@ -12,8 +12,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     var userArray: Array = [String]()
     var profileCellTitles: Array = [String]()
-    
-     
+    var ticketListArray = [Ticket]()
     
     
     @IBOutlet weak var tabBar: UITabBar!
@@ -30,18 +29,32 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
              self.performSegue(withIdentifier: "toEpdVC", sender: self)
         }
         else if item.title == "Заявки" {
+            
              self.performSegue(withIdentifier: "toTicketVC", sender: self)
+        }
+        else if item.title == "Справка по ЛС" {
+            
+            self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
         }
     }
     
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toTicketVC"  {
+//            let ticketListVC = segue.destination as! TicketListViewController
+//            ticketListVC.ticketListArr =
+//            print(Requests.getTicketList().count)
+//        }
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = UIColor.white
         loadingViewService.setLoadingScreen(profileTableView)
         Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
-        
         Requests.getTicketList()
+        
+        
         
 //        self.profileTableView.reloadData()
         self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","Тип счётчика"]
@@ -94,7 +107,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.data.text! = Requests.userModel[indexPath.section].numberOfPeople
             case 3:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].address
+                cell.data.text! = Requests.userModel[indexPath.section].address.capitalizingFirstLetter()
             case 4:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].phoneNumber

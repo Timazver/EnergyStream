@@ -15,6 +15,7 @@ class BankChoosePopUpViewController: UIViewController {
 
     @IBOutlet weak var  kaspiBtn: UIButton!
     @IBOutlet weak var halykBtn: UIButton!
+    @IBOutlet weak var viewForImages: UIView!
     
     var kaspiImageUrl: URL!
     var halykImageUrl: URL!
@@ -24,7 +25,7 @@ class BankChoosePopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
         self.showAnimate()
         kaspiImageUrl = URL(string: Requests.bankArray[1].imgUrl)
         halykImageUrl = URL(string: Requests.bankArray[0].imgUrl)

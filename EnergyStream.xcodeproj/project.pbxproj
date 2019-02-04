@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,11 @@
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
 		2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */; };
 		2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */; };
+		22CA1B852207F80600995A73 /* AccNumSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */; };
+		22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */; };
+		22CA1B8D22081CC000995A73 /* BlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */; };
+		22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */; };
+		22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
@@ -88,6 +93,11 @@
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormViewController.swift; sourceTree = "<group>"; };
 		2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeUserFormViewController.swift; sourceTree = "<group>"; };
+		22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccNumSheetViewController.swift; sourceTree = "<group>"; };
+		22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAccNumSheetViewController.swift; sourceTree = "<group>"; };
+		22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTableViewCell.swift; sourceTree = "<group>"; };
+		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
+		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
 		B222F1E41DAA30330089573D /* EnergyStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +193,11 @@
 				2260827E21E752B100B5D768 /* Requests.swift */,
 				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
+				22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */,
+				22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */,
+				22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */,
+				22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */,
+				22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */,
 				22494BE722003D0600C9BDFB /* MainViewController.swift */,
 				227120D421FEE92000965502 /* WebViewController.swift */,
 				227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */,
@@ -286,7 +301,7 @@
 				};
 			};
 			buildConfigurationList = B222F1DF1DAA30320089573D /* Build configuration list for PBXProject "EnergyStream" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -326,7 +341,9 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AKMonthYearPickerView/AKMonthYearPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
@@ -335,7 +352,9 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMonthYearPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
@@ -382,13 +401,16 @@
 				228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
 				2210047821D63AB10062C9C9 /* EnergyStreamTests.swift in Sources */,
+				22CA1B8D22081CC000995A73 /* BlueTableViewCell.swift in Sources */,
 				2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */,
 				226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
+				22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */,
 				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
 				2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */,
+				22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */,
 				2240080121FAB83F00E18474 /* ConnectSocketViewController.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
 				228E155821F75BD80040168A /* TicketListViewController.swift in Sources */,
@@ -401,6 +423,8 @@
 				228E155621F7528E0040168A /* AddTicketViewController.swift in Sources */,
 				2239AF7E21F70D55009DC5AD /* PaymentDestCell.swift in Sources */,
 				224008B521F98C2A00A29222 /* ResetPassViewController.swift in Sources */,
+				22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */,
+				22CA1B852207F80600995A73 /* AccNumSheetViewController.swift in Sources */,
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */,

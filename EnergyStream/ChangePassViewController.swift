@@ -13,6 +13,8 @@ class ChangePassViewController: UIViewController {
 
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var repeatPassword: UITextField!
+    @IBOutlet weak var saveBtn: UIButton!
+    
     
     var phoneNumber: String = ""
     var smsCode: String = ""
@@ -24,6 +26,19 @@ class ChangePassViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.saveBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.saveBtn.layer.cornerRadius = 5
+        self.saveBtn.layer.borderWidth = 1
+        self.saveBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
+        newPassword.useUnderline()
+        repeatPassword.useUnderline()
+        newPassword.leftViewMode = .always
+        repeatPassword.leftViewMode = .always
+        newPassword.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        newPassword.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
+        repeatPassword.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        repeatPassword.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
+        
         // Do any additional setup after loading the view.
     }
     

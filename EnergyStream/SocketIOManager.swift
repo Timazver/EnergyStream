@@ -29,7 +29,7 @@ class SocketIOManager: NSObject {
         socket.on("connect") { _, _ in
         print("socket connected")
             let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
-            self.token = dic!["token"] as! String
+            self.token = Requests.authToken
             self.socket.emit("auth", ["token":self.token])
         }
 

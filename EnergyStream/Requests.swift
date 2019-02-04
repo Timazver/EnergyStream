@@ -19,6 +19,19 @@ struct ListAccNumbers {
     }
 }
 
+struct AccNumSheet {
+    var dataName: String
+    var dataValue: String
+    
+    
+    init(_ dictionary: [String:Any]) {
+        self.dataName = dictionary["DATA_NAME"] as? String ?? ""
+        self.dataValue = dictionary["DATA_VAL"] as? String ?? ""
+        
+    }
+}
+
+
 struct UserCard {
     var accountNumber: String
 //    var firstName: String
@@ -114,6 +127,7 @@ class Requests {
     static var pdfFileName: String = ""
     static var ticketListArray: Array = [Ticket]()
     static var bankArray: Array = [Bank]()
+    static var accNumSheetArray: Array = [AccNumSheet]()
 //    static func divideFio(_ fio: String) {
 //        let fioArray = fio.split(separator: " ")
 //        Requests.userModel[0].firstName = String(fioArray[1])
@@ -392,7 +406,7 @@ class Requests {
     static func getTicketList() {
         let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
 //        let parametersForRequest = ["]
-        guard let url = URL(string: "http://192.168.1.38:3000/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return}
+        guard let url = URL(string: "http://192.168.1.38:3000/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return }
         
         //MARK: Request with onlu swift features
         var requestForUserInfo = URLRequest(url:url )
@@ -416,19 +430,20 @@ class Requests {
                 print(json)
                 guard let ticketList = json as? [[String:Any]] else {return}
                 
-                if Requests.ticketListArray.isEmpty {
+//                if !Requests.ticketListArray.isEmpty {
+//                    self.ticketListArray.removeAll()
+//                }
+                
                     for dic in ticketList {
-                    ticketListArray.append(Ticket(dic))
+                       self.ticketListArray.append(Ticket(dic))
                     }
-                }
-                else {
-                    Requests.ticketListArray.removeAll()
-                }
+                
             }catch {
                 print(error)
             }
 
             }.resume()
+        
     }
     
     static func getBankList() {
@@ -442,6 +457,7 @@ class Requests {
             
             if (200..<300).contains(statusCode) {
                 let value = responseJSON.result.value
+                print(value)
                 let bankList = value as! [[String:Any]]
                 
                 if self.bankArray.isEmpty {
@@ -449,6 +465,35 @@ class Requests {
                         print(bank)
                         self.bankArray.append(Bank(bank))
                     }
+                }
+            }
+            else {
+                print("Error")
+                
+            }
+        }
+    }
+    
+    static func getAccNumSheet(_ accNumber: String, _ date: String) {
+        guard let url = URL(string: "http://192.168.1.38:3000/api/indication") else {return}
+        let headers = ["Authorization": "Bearer \(Requests.authToken)",
+            "Content-Type": "application/json"]
+        let parameters = ["accountNumber":accNumber, "date":date]
+        request(url, method: HTTPMethod.get, parameters: parameters, headers: headers).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+            
+            if (200..<300).contains(statusCode) {
+                var value = responseJSON.result.value as! [String:Any]
+                if value["result"] != nil {
+                let accNumSheetList = value["result"] as! [[String:Any]]
+                print(accNumSheetList)
+                if self.accNumSheetArray.isEmpty {
+                    for dataObj in accNumSheetList {
+                        print(dataObj)
+                        self.accNumSheetArray.append(AccNumSheet(dataObj))
+                    }
+                }
                 }
             }
             else {
