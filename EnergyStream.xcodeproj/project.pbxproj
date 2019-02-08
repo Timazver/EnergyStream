@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221000B8220AA9E9008C7202 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221000B7220AA9E9008C7202 /* Constants.swift */; };
 		2210047821D63AB10062C9C9 /* EnergyStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1FC1DAA30330089573D /* EnergyStreamTests.swift */; };
 		2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213165921F1F8220045F7D3 /* PdfViewController.swift */; };
 		2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89421D72ADC00EB411A /* StartViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		016EAD7D4940D86CF631A271 /* Pods-EnergyStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnergyStream.release.xcconfig"; path = "Target Support Files/Pods-EnergyStream/Pods-EnergyStream.release.xcconfig"; sourceTree = "<group>"; };
+		221000B7220AA9E9008C7202 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2213165921F1F8220045F7D3 /* PdfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfViewController.swift; sourceTree = "<group>"; };
 		2227A89421D72ADC00EB411A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22399BEF220938A10079A6D3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		22399BF0220938D90079A6D3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		22570B9E220198850072A06C /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,47 +199,50 @@
 		B222F1E61DAA30330089573D /* EnergyStream */ = {
 			isa = PBXGroup;
 			children = (
+				22399BF0220938D90079A6D3 /* Services */,
+				22399BEF220938A10079A6D3 /* Cells */,
+				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
+				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
+				22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */,
+				22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */,
+				22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */,
+				222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */,
+				226464F921F053940003C9C2 /* payInfoCell.swift */,
+				B222F21B1DAA36070089573D /* MenuCell.swift */,
+				2260828021E76B8B00B5D768 /* EpdCell.swift */,
+				2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */,
+				2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */,
+				2240080421FB16F600E18474 /* SocketIOManager.swift */,
+				222B8DBD21F82C35001D4B09 /* loadingViewService.swift */,
+				2239C9B921F30924003515D8 /* Extensions.swift */,
 				22570B9E220198850072A06C /* fonts */,
 				224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */,
 				22494BFA22004C9A00C9BDFB /* Media.xcassets */,
-				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
 				B222F1E71DAA30330089573D /* AppDelegate.swift */,
 				B222F1E91DAA30330089573D /* ViewController.swift */,
 				228EB01F21E45B4F00033803 /* ProfileTabBarViewController.swift */,
 				2260827E21E752B100B5D768 /* Requests.swift */,
-				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
-				22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */,
-				22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */,
-				22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */,
 				22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */,
 				22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */,
 				22494BE722003D0600C9BDFB /* MainViewController.swift */,
 				227120D421FEE92000965502 /* WebViewController.swift */,
 				227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */,
-				2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */,
-				2240080421FB16F600E18474 /* SocketIOManager.swift */,
+				221000B7220AA9E9008C7202 /* Constants.swift */,
 				224008B421F98C2A00A29222 /* ResetPassViewController.swift */,
 				224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */,
 				224008B821F98D5E00A29222 /* ChangePassViewController.swift */,
 				224008B221F9844D00A29222 /* TicketViewController.swift */,
-				222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */,
 				228E155721F75BD80040168A /* TicketListViewController.swift */,
 				228E155521F7528E0040168A /* AddTicketViewController.swift */,
 				2239AF7F21F73490009DC5AD /* ProfileViewController.swift */,
-				222B8DBD21F82C35001D4B09 /* loadingViewService.swift */,
 				2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */,
 				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
-				2239C9B921F30924003515D8 /* Extensions.swift */,
 				226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */,
 				2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */,
 				2227A89421D72ADC00EB411A /* StartViewController.swift */,
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
 				B222F21D1DAA46600089573D /* EpdViewController.swift */,
-				226464F921F053940003C9C2 /* payInfoCell.swift */,
-				B222F21B1DAA36070089573D /* MenuCell.swift */,
-				2260828021E76B8B00B5D768 /* EpdCell.swift */,
-				2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */,
 				B222F1F01DAA30330089573D /* LaunchScreen.storyboard */,
 				B222F1F31DAA30330089573D /* Info.plist */,
 				B222F2191DAA354D0089573D /* menuViewController.swift */,
@@ -283,9 +302,8 @@
 				TargetAttributes = {
 					B222F1E31DAA30320089573D = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = BK8ULRB748;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -408,6 +426,7 @@
 				22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */,
 				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
+				221000B8220AA9E9008C7202 /* Constants.swift in Sources */,
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
 				2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */,
 				22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */,
@@ -497,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -542,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -559,15 +578,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EnergyStream/EnergyStream.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = BK8ULRB748;
 				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kz.softpower.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "EnergyStream-2";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -578,14 +601,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EnergyStream/EnergyStream.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = BK8ULRB748;
 				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kz.softpower.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "EnergyStream-2";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
