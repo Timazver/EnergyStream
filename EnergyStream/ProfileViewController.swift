@@ -14,28 +14,28 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var profileCellTitles: Array = [String]()
     var ticketListArray = [Ticket]()
     
-    @IBOutlet weak var tabBar: UITabBar!
-    @IBOutlet weak var epdButton: UITabBarItem!
-    
+    @IBOutlet weak var epdButton: UIButton!
+    @IBOutlet weak var ticketsBtn: UIButton!
+    @IBOutlet weak var accNumBtn: UIButton!
     
     //    var sections = sectionsData
     
     @IBOutlet weak var profileTableView: UITableView!
     
     
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.title == "ЕПД" {
-             self.performSegue(withIdentifier: "toEpdVC", sender: self)
-        }
-        else if item.title == "Заявки" {
-            
-             self.performSegue(withIdentifier: "toTicketVC", sender: self)
-        }
-        else if item.title == "Справка по ЛС" {
-            
-            self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
-        }
-    }
+//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        if item.title == "ЕПД" {
+//
+//        }
+//        else if item.title == "Заявки" {
+//
+//             self.performSegue(withIdentifier: "toTicketVC", sender: self)
+//        }
+//        else if item.title == "Справка по ЛС" {
+//
+//            self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
+//        }
+//    }
     
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,6 +50,22 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.title = "Лицевой счёт"
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.epdButton.backgroundColor = UIColor(red:0.77, green:0.90, blue:0.97, alpha:1.0)
+        self.epdButton.layer.cornerRadius = 5
+        self.epdButton.layer.borderWidth = 1
+        self.epdButton.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
+        
+        self.ticketsBtn.backgroundColor = UIColor(red:0.77, green:0.90, blue:0.97, alpha:1.0)
+        self.ticketsBtn.layer.cornerRadius = 5
+        self.ticketsBtn.layer.borderWidth = 1
+        self.ticketsBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
+        
+        self.accNumBtn.backgroundColor = UIColor(red:0.77, green:0.90, blue:0.97, alpha:1.0)
+        self.accNumBtn.layer.cornerRadius = 5
+        self.accNumBtn.layer.borderWidth = 1
+        self.accNumBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
+        
+        
         loadingViewService.setLoadingScreen(profileTableView)
         Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
         
@@ -87,7 +103,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+//        if indexPath.row == profileCellTitles.count - 1 {
+//            return 200.0
+//        }
+//        else {
+            return 60.0
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -140,6 +161,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    // Set the activity indicator into the main view
+    
+    @IBAction func segueToEpdVC(sender: Any) {
+        self.performSegue(withIdentifier: "toEpdVC", sender: self)
+    }
+    
+    @IBAction func segueToTicketVC(sender: Any) {
+        self.performSegue(withIdentifier: "toTicketVC", sender: self)
+    }
+    
+    @IBAction func segueToAccNumSheetVC(sender: Any) {
+        self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
+    }
     
 }

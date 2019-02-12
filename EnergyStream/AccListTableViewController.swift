@@ -54,7 +54,7 @@ class AccListTableViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Добавить лицевой счет", style: .default, handler: { (_) in
             
-            self.addAcc()
+            self.addAcc(sender: self)
         }))
         
         alert.addAction(UIAlertAction(title: "Изменить пароль", style: .default, handler: { (_) in
@@ -70,7 +70,7 @@ class AccListTableViewController: UITableViewController {
         self.present(alert, animated: true, completion:nil)
     }
 
-    func addAcc() {
+    @objc func addAcc(sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let AddUserFormVC = storyboard.instantiateViewController(withIdentifier: "AddUserFormViewController") as! AddUserFormViewController
         self.addChildViewController(AddUserFormVC)
@@ -148,11 +148,90 @@ class AccListTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 70
+            return 200
         }
         
         else {
             return 20
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))
+            headerView.backgroundColor = .clear
+            self.view.addSubview(headerView)
+            
+            let viewForElements = UIView(frame: CGRect(x: 10, y: 10, width: headerView.frame.width - 20, height: 170))
+            viewForElements.backgroundColor = UIColor.white
+            headerView.addSubview(viewForElements)
+            
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+            label.text = "Номер лицевого счёта"
+            label.font = UIFont.systemFont(ofSize: 13)
+            label.textColor = UIColor.lightGray
+            viewForElements.addSubview(label)
+            //add constraints
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
+            label.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 20).isActive = true
+            
+            //Create TextField view
+            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: viewForElements.frame.width - 20, height: 40))
+            
+            textField.placeholder = "Введите номер счета"
+            textField.font = UIFont.systemFont(ofSize: 20)
+            textField.textColor = UIColor.black
+            viewForElements.addSubview(textField)
+            textField.borderStyle = .none
+            textField.useBottomBorderWithoutBackgroundColor()
+            //add constraints
+            textField.translatesAutoresizingMaskIntoConstraints = false
+            
+            textField.topAnchor.constraint(equalTo: label.topAnchor, constant: 40).isActive = true
+            textField.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 20).isActive = true
+            
+            
+            let addBtn = UIButton()
+            addBtn.backgroundColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0)
+            addBtn.layer.cornerRadius = CGFloat(5)
+            addBtn.setTitleColor(UIColor.white, for: .normal)
+            addBtn.setTitle("Добавить лицевой счёт", for: .normal)
+            addBtn.layer.borderColor = UIColor(red:0.55, green:0.65, blue:1.00, alpha:1.0).cgColor
+            addBtn.addTarget(self, action: #selector(self.addAcc(sender:)), for:.touchUpInside)
+            viewForElements.addSubview(addBtn)
+            
+            addBtn.translatesAutoresizingMaskIntoConstraints = false
+            addBtn.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 100.0).isActive = true
+            addBtn.leadingAnchor.constraint(equalTo: viewForElements.leadingAnchor, constant: 10).isActive = true
+            addBtn.trailingAnchor.constraint(equalTo: viewForElements.trailingAnchor, constant: -10).isActive = true
+//            addBtn.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 10).isActive = true
+//            addBtn.rightAnchor.constraint(equalTo: viewForElements.rightAnchor, constant: 10).isActive = true
+//            addBtn.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
+            addBtn.layer.cornerRadius = CGFloat(5)
+//            addBtn.widthAnchor.constraint(equalToConstant: 260).isActive = true
+            addBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            
+//            let ticketNumLbl = UILabel(frame: CGRect(x: 10, y: 80, width: 150, height: 30))
+//            ticketNumLbl.numberOfLines = 0
+//            ticketNumLbl.font = UIFont.systemFont(ofSize: 15.0)
+//            ticketNumLbl.textColor = UIColor.gray
+//            ticketNumLbl.text = "Номер заявки"
+//
+//            let dateLbl = UILabel(frame: CGRect(x: self.view.frame.width - 90, y: 80, width: 150, height: 30))
+//            dateLbl.numberOfLines = 0
+//            dateLbl.font = UIFont.systemFont(ofSize: 15.0)
+//            dateLbl.textColor = UIColor.gray
+//            dateLbl.text = "Дата"
+//
+//
+//            headerView.addSubview(ticketNumLbl)
+//            headerView.addSubview(dateLbl)
+            return headerView
+        }
+            
+        else {
+            return UIView()
         }
     }
     
