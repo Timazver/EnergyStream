@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Locksmith
 
 class MainViewController: UIViewController {
 
@@ -33,7 +34,12 @@ class MainViewController: UIViewController {
         self.registerBtn.layer.cornerRadius = 5
         self.registerBtn.layer.borderWidth = 1
         self.registerBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
-
+//        do {
+//        try Locksmith.deleteDataForUserAccount(userAccount: "energyStream")
+//        }
+//        catch {
+//            
+//        }
         // Do any additional setup after loading the view.
     }
     

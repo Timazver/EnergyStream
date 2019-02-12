@@ -74,18 +74,24 @@ extension String {
     
     func capitalizingFirstLetter() -> String {
         let strArr = self.split(separator: " ")
+        
         var nameLetter = ""
         var middleNameLetter = ""
-        if strArr.count > 1 {
+        var newStr = " "
+        if strArr.count > 0 && strArr.count <= 1 {
+            newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
+        }
+        else if strArr.count > 1 {
             nameLetter = "\(strArr[1].uppercased()[0])."
             if strArr.count > 2 {
                 middleNameLetter = "\(strArr[2].uppercased()[0])."
             }
             
+            newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
         }
        
         
-        let newStr = "\(strArr[0].prefix(1).uppercased())\(strArr[0].lowercased().dropFirst()) \(nameLetter)\(middleNameLetter)"
+       
     
         return newStr
     }
@@ -271,3 +277,7 @@ extension UITableViewCell {
         self.layer.masksToBounds = true
     }
 }
+
+
+
+

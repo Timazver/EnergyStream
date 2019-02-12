@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
 
@@ -68,88 +69,57 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let password = self.password.text
         
         let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
-        guard let url = URL(string: "http://192.168.1.38:3000/api/register") else {return}
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/register") else {return}
         
-        //create session object
-        
-        
-        //define request object
-        var requestForRegister = URLRequest(url: url)
-        requestForRegister.httpMethod = "POST"
-        requestForRegister.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parametersForRegister, options: []) else {return}
-        requestForRegister.httpBody = httpBody
-        print(httpBody)
-        
-        let session = URLSession.shared
-        
-        session.dataTask(with: requestForRegister) {(data,response,error) in
-            
-            if let response = response {
-                print(response)
+        request(url, method: HTTPMethod.post, parameters: parametersForRegister, encoding: JSONEncoding.default).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+            if statusCode == 200 {
+                print("Появилось окно с смс")
+                let smsAlert = UIAlertController(title: "Введите смс код", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                smsAlert.addTextField { (textField : UITextField!) -> Void in
+                }
+                let action=UIAlertAction(title: "Отправить", style: .default, handler:{
+                    action in
+                    guard let urlForActivate = URL(string: "\(Constants.URLForApi ?? "")/api/activate") else {return}
+                    let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text] as [String : Any]
+                    request(urlForActivate, method: HTTPMethod.post, parameters: parametersForActivate, encoding: JSONEncoding.default).responseJSON {responseJSON in
+                        guard let activateStatusCode = responseJSON.response?.statusCode else { return }
+                        if activateStatusCode == 200 {
+                            let alert = UIAlertController(title: "Успешно", message: "Регистрация завершилась успешно!", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: {(action) in
+                            self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(alert,animated: true, completion: nil)
+                        }
+                
+                        else if activateStatusCode == 404 {
+                            let alert = UIAlertController(title: "Ошибка", message: "Смс код неверно", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: {(action) in
+                            self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(alert,animated: true, completion: nil)
+                        }
+                        }
+                }
+            )
+                smsAlert.addAction(action)
+                self.present(smsAlert, animated: true, completion: nil)
             }
             
-            guard let data = data else {return}
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-            }catch {
-                print(error)
+            else if statusCode == 404 {
+                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
-            
-            }.resume()
-
-        let smsAlert = UIAlertController(title: "Введите смс код", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//
-        smsAlert.addTextField { (textField : UITextField!) -> Void in
-            
-            
-            
         }
-        let action=UIAlertAction(title: "Отправить", style: .default, handler:{
-            action in
-            guard let urlForActivate = URL(string: "http://192.168.1.38:3000/api/activate") else {return}
-            let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text] as [String : Any]
-            var requestForActivate = URLRequest(url: urlForActivate)
-            requestForActivate.httpMethod = "POST"
-            requestForActivate.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            guard let httpBodyForActivate = try? JSONSerialization.data(withJSONObject: parametersForActivate, options: []) else {return}
-            requestForActivate.httpBody = httpBodyForActivate
-            
-            let session = URLSession.shared
-            
-            session.dataTask(with: requestForActivate) {(data,response,error) in
-                
-                if let response = response {
-                    print(response)
-                }
-                
-                guard let data = data else {return}
-                
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                }catch {
-                    print(error)
-                }
-                
-                }.resume()
-            
-            
-        })
-        smsAlert.addAction(action)
-        present(smsAlert, animated: true, completion: nil)
     }
+    
     @IBAction func closeRegisterWindow() {
         dismiss(animated: true, completion: nil)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        
         guard let text = textField.text else {
             return true
         }

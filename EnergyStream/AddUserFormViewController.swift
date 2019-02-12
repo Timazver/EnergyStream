@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AddUserFormViewController: UIViewController, UITextFieldDelegate {
 
@@ -19,8 +20,7 @@ class AddUserFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var viewForElements: UIView!
     
     @IBAction func addAcc() {
-        Requests.addAccountNumber(phoneNumber: phoneNumber.text!.removingWhitespaces() , newAccNumber: accountNUmber.text!)
-        Requests.getListAccountNumbers()
+        self.addAccountNumber(phoneNumber: phoneNumber.text!.removingWhitespaces() , newAccNumber: accountNUmber.text!)
         self.removeAnimate()
     }
     
@@ -99,5 +99,25 @@ class AddUserFormViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func addAccountNumber(phoneNumber: String, newAccNumber: String) {
+        
+        guard let url = URL(string:"\(Constants.URLForApi ?? "")/api/accountnumber/addaccountnumber") else {return}
+        let parameters = ["accountNumber":newAccNumber, "phoneNumber":phoneNumber]
+        let headers = ["Authorization":"Bearer \(Requests.authToken)","Content-Type":"application/json"]
+        
+        request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+            if (200..<300).contains(statusCode) {
+                let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно добавлен.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            else if statusCode == 404 {
+                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
 }

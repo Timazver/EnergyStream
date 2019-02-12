@@ -39,7 +39,7 @@ class PassChangeUserFormViewController: UIViewController {
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
         
-        guard let url = URL(string: "http://192.168.1.38:3000/api/changepass") else {return}
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/changepass") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
@@ -85,7 +85,6 @@ class PassChangeUserFormViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.closeWindow()
         self.view.endEditing(true)
     }
     func showAnimate()

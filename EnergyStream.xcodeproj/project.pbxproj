@@ -100,7 +100,7 @@
 		22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
-		B222F1E41DAA30330089573D /* EnergyStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B222F1E41DAA30330089573D /* Энергопоток..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Энергопоток..app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B222F1EC1DAA30330089573D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		B222F1E51DAA30330089573D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B222F1E41DAA30330089573D /* EnergyStream.app */,
+				B222F1E41DAA30330089573D /* Энергопоток..app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,9 +271,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B222F1E31DAA30320089573D /* EnergyStream */ = {
+		B222F1E31DAA30320089573D /* Энергопоток. */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "EnergyStream" */;
+			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "Энергопоток." */;
 			buildPhases = (
 				E3C981087DC8C374A4BA2870 /* [CP] Check Pods Manifest.lock */,
 				B222F1E01DAA30320089573D /* Sources */,
@@ -285,9 +285,9 @@
 			);
 			dependencies = (
 			);
-			name = EnergyStream;
+			name = "Энергопоток.";
 			productName = memuDemo;
-			productReference = B222F1E41DAA30330089573D /* EnergyStream.app */;
+			productReference = B222F1E41DAA30330089573D /* Энергопоток..app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -303,7 +303,7 @@
 					B222F1E31DAA30320089573D = {
 						CreatedOnToolsVersion = 8.0;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -331,7 +331,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B222F1E31DAA30320089573D /* EnergyStream */,
+				B222F1E31DAA30320089573D /* Энергопоток. */,
 			);
 		};
 /* End PBXProject section */
@@ -578,15 +578,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EnergyStream/EnergyStream.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BK8ULRB748;
 				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kz.softpower.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "EnergyStream-2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -601,15 +601,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EnergyStream/EnergyStream.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BK8ULRB748;
 				INFOPLIST_FILE = "$(SRCROOT)/EnergyStream/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kz.softpower.EnergyStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "EnergyStream-2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -628,7 +628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "EnergyStream" */ = {
+		B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "Энергопоток." */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B222F20D1DAA30330089573D /* Debug */,

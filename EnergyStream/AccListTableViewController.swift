@@ -15,7 +15,14 @@ class AccListTableViewController: UITableViewController {
     var contextMenuBtn: UIBarButtonItem!
     @IBOutlet weak var accListTableView: UITableView!
     private var fileName = ""
-    
+    var listAccountNumbers: Array = [ListAccNumbers]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.accListTableView.reloadData()
+            }
+            
+        }
+    }
     
     
 //    let contextMenu = DropDown()
@@ -26,18 +33,14 @@ class AccListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingViewService.setLoadingScreen(accListTableView)
+        self.getListAccountNumbers()
         accListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         print(dic)
-//        loadingViewService.setLoadingScreen(accListTableView)
-        
         self.title = "Список"
-        
-//        contextMenu.anchorView = contextMenuBtn
-//        contextMenu.dataSource = ["Добавить лицевой счет", "Изменить пароль"]
-//        contextMenu.cellConfiguration = {(index,item) in return "\(item)"}
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
         self.navigationItem.leftBarButtonItem = contextMenuBtn
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -45,26 +48,7 @@ class AccListTableViewController: UITableViewController {
         accListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
        
         }
-        // Do any additional setup after loading the view.
     
-//    @objc
-//    func showBarButtonDropDown(_ sender: AnyObject) {
-//
-//        contextMenu.selectionAction = { (index: Int, item: String) in
-////            print("Selected item: \(item) at index: \(index)")
-//            switch index {
-//            case 0:
-//                self.addAcc()
-//            case 1:
-//                self.changePass()
-//            default:
-//                break
-//            }
-//        }
-//        contextMenu.direction = .any
-//        contextMenu.width = 140
-////        contextMenu.topOffset = CGPoint(x: 0, y:-(contextMenu.plainView.bounds.height))
-//        contextMenu.show()
     @objc func showBottomAlertWindow(_ sender: Any) {
         let alert = UIAlertController(title: "Действия", message: "Выберите желаемое действие", preferredStyle: UIAlertControllerStyle.actionSheet)
         
@@ -106,21 +90,11 @@ class AccListTableViewController: UITableViewController {
         
     }
     
-//    func getEpd() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EpdViewController") as! EpdViewController
-//        self.present(vc, animated: true, completion: nil)
-//    }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Requests.listAccountNumbers.count
+        return self.listAccountNumbers.count
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let count = Requests.listAccountNumbers.count
-//        if count == 0 {
-//            accListTableView.reloadData()
-//        }
         return 1
-       
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -129,15 +103,15 @@ class AccListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccListCell") as! AccListCell
-        if !Requests.listAccountNumbers.isEmpty {
+        if !self.listAccountNumbers.isEmpty {
             print("Ready for filling of cells")
             cell.accNum.numberOfLines = 0
             cell.accNum.lineBreakMode = .byWordWrapping
-            cell.accNum.text! = Requests.listAccountNumbers[indexPath.section].accountNumber
+            cell.accNum.text! = self.listAccountNumbers[indexPath.section].accountNumber
             cell.fullName.numberOfLines = 0
             cell.fullName.lineBreakMode = .byWordWrapping
-            cell.fullName.text! = Requests.listAccountNumbers[indexPath.section].FIO.capitalizingFirstLetter()
-          
+            cell.fullName.text! = self.listAccountNumbers[indexPath.section].FIO.capitalizingFirstLetter()
+            loadingViewService.removeLoadingScreen()
         }
         else {
             print("listAccountNumbers array is empty")
@@ -167,12 +141,9 @@ class AccListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let cell:AccListCell = tableView.cellForRow(at: indexPath) as! AccListCell
-//        print(Requests.currentAccoutNumber)
-//        Requests.currentAccoutNumber = (cell.textLabel?.text) ?? Requests.listAccountNumbers[0]
         performSegue(withIdentifier: "toProfileView", sender: self)
-        fileName = Requests.listAccountNumbers[indexPath.row].accountNumber
+        fileName = self.listAccountNumbers[indexPath.section].accountNumber
+        print(fileName)
         Requests.currentAccoutNumber = fileName
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -201,16 +172,56 @@ class AccListTableViewController: UITableViewController {
         }
         
     }
-    
-//    private func setupGestures() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//        tapGesture.numberOfTapsRequired = 1
-////        contextMenu.addGest
-//    }
-//    @objc
-//    private func tapped() {
-//
-//    }
+
+    func getListAccountNumbers() {
+        guard let url = URL(string:"\(Constants.URLForApi ?? "")/api/user/profile") else {return}
+        
+        var requestForUserInfo = URLRequest(url:url )
+        
+        requestForUserInfo.httpMethod = "GET"
+        requestForUserInfo.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: requestForUserInfo) {
+            (data,response,error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                guard let userData = json as? [String:Any] else {return}
+                let user = userData["user"] as? [String:Any]
+                Requests.currentAccoutNumber = user?["accountNumber"] as! String
+                
+                let accountNumbersArray = user?["listAccountNumbers"] as! [[String:Any]]
+                
+                //Try to parse array of ListAccNumbers into array of Structure
+                var model = [ListAccNumbers]()
+                for list in accountNumbersArray {
+                    model.append(ListAccNumbers(list))
+                }
+                print(self.listAccountNumbers.count)
+                //Check if listAccountNumbers is empty, if not need to clear it
+                if self.listAccountNumbers.isEmpty {
+                    for accountNumber in model {
+                    print(accountNumber)
+                        self.listAccountNumbers.append(accountNumber)
+                        
+                    }
+                }
+                
+            }catch {
+                print(error)
+            }
+            
+            }.resume()
+        
+    }
 
 }
 

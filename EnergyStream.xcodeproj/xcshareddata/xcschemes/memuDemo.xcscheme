@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B222F1E31DAA30320089573D"
-               BuildableName = "EnergyStream.app"
-               BlueprintName = "EnergyStream"
+               BuildableName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;..app"
+               BlueprintName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;."
                ReferencedContainer = "container:EnergyStream.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B222F1E31DAA30320089573D"
-            BuildableName = "EnergyStream.app"
-            BlueprintName = "EnergyStream"
+            BuildableName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;..app"
+            BlueprintName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;."
             ReferencedContainer = "container:EnergyStream.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B222F1E31DAA30320089573D"
-            BuildableName = "EnergyStream.app"
-            BlueprintName = "EnergyStream"
+            BuildableName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;..app"
+            BlueprintName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;."
             ReferencedContainer = "container:EnergyStream.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B222F1E31DAA30320089573D"
-            BuildableName = "EnergyStream.app"
-            BlueprintName = "EnergyStream"
+            BuildableName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;..app"
+            BlueprintName = "&#x42d;&#x43d;&#x435;&#x440;&#x433;&#x43e;&#x43f;&#x43e;&#x442;&#x43e;&#x43a;."
             ReferencedContainer = "container:EnergyStream.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

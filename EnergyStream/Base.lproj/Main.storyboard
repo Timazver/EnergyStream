@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +23,7 @@
         <!--Main View Controller-->
         <scene sceneID="gdh-fi-dXh">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a0y-nS-JaL" customClass="MainViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a0y-nS-JaL" customClass="MainViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k7i-lr-b6i"/>
                         <viewControllerLayoutGuide type="bottom" id="c98-9E-qnZ"/>
@@ -96,7 +97,7 @@
         <!--Start View Controller-->
         <scene sceneID="YtX-ac-8h8">
             <objects>
-                <viewController storyboardIdentifier="StartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GDQ-q6-RIc" customClass="StartViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GDQ-q6-RIc" customClass="StartViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bzm-0x-HaJ"/>
                         <viewControllerLayoutGuide type="bottom" id="grl-di-Gps"/>
@@ -105,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-2G-V2L">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-2G-V2L">
                                 <rect key="frame" x="30" y="181.5" width="260" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8nH-Lt-whw"/>
@@ -131,13 +132,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPu-Lg-bn3">
-                                <rect key="frame" x="70" y="226.5" width="48" height="19.5"/>
+                                <rect key="frame" x="70" y="221.5" width="48" height="19.5"/>
                                 <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="15"/>
                                 <color key="textColor" red="0.60392156862745094" green="0.61568627450980395" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se6-Kv-osA">
-                                <rect key="frame" x="30" y="306" width="260" height="50"/>
+                                <rect key="frame" x="30" y="301" width="260" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="5rP-ub-he4"/>
                                     <constraint firstAttribute="height" constant="50" id="UFU-0Q-mNC"/>
@@ -151,7 +152,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGX-Os-5wB">
-                                <rect key="frame" x="30" y="366" width="260" height="50"/>
+                                <rect key="frame" x="30" y="361" width="260" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="96v-hc-mP8"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="c3i-9F-RMP"/>
@@ -166,18 +167,18 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ign-LL-OaV">
-                                <rect key="frame" x="30" y="256" width="260" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ign-LL-OaV">
+                                <rect key="frame" x="30" y="251" width="260" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="SyC-fP-5gO"/>
                                     <constraint firstAttribute="height" constant="30" id="hah-Jt-gRF"/>
                                 </constraints>
-                                <color key="textColor" red="0.60392156862745094" green="0.61568627450980395" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="PTSans-Caption" family="PT Sans Caption" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IC7-4Z-9Sh">
-                                <rect key="frame" x="184" y="436" width="116" height="30"/>
+                                <rect key="frame" x="184" y="431" width="116" height="30"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Забыли пароль?">
@@ -205,12 +206,12 @@
                             <constraint firstItem="d2W-2G-V2L" firstAttribute="top" secondItem="9Ig-Dw-y07" secondAttribute="bottom" constant="10" id="ARv-YV-sLy"/>
                             <constraint firstItem="OGX-Os-5wB" firstAttribute="top" secondItem="se6-Kv-osA" secondAttribute="bottom" constant="10" id="DMD-1b-01Y"/>
                             <constraint firstAttribute="trailing" secondItem="ign-LL-OaV" secondAttribute="trailing" constant="30" id="EHd-5L-DFD"/>
+                            <constraint firstItem="hPu-Lg-bn3" firstAttribute="top" secondItem="d2W-2G-V2L" secondAttribute="bottom" constant="10" id="JaO-u2-fDf"/>
                             <constraint firstItem="IC7-4Z-9Sh" firstAttribute="top" secondItem="OGX-Os-5wB" secondAttribute="bottom" constant="20" id="MdS-J6-ULL"/>
                             <constraint firstItem="zJQ-O7-87a" firstAttribute="centerX" secondItem="6TP-pH-LF5" secondAttribute="centerX" id="Oig-Qv-ANw"/>
                             <constraint firstAttribute="trailing" secondItem="d2W-2G-V2L" secondAttribute="trailing" constant="30" id="PdU-aE-4JT"/>
                             <constraint firstAttribute="trailing" secondItem="se6-Kv-osA" secondAttribute="trailing" constant="30" id="PlL-V5-qYA"/>
                             <constraint firstItem="d2W-2G-V2L" firstAttribute="leading" secondItem="6TP-pH-LF5" secondAttribute="leading" constant="30" id="T44-cj-Kzb"/>
-                            <constraint firstItem="hPu-Lg-bn3" firstAttribute="top" secondItem="d2W-2G-V2L" secondAttribute="bottom" constant="15" id="fxV-Ds-7Ym"/>
                             <constraint firstItem="zJQ-O7-87a" firstAttribute="top" secondItem="Bzm-0x-HaJ" secondAttribute="bottom" constant="70" id="mri-0m-6UT"/>
                             <constraint firstItem="9Ig-Dw-y07" firstAttribute="top" secondItem="zJQ-O7-87a" secondAttribute="bottom" constant="40" id="sHR-8o-9FP"/>
                             <constraint firstItem="ign-LL-OaV" firstAttribute="top" secondItem="hPu-Lg-bn3" secondAttribute="bottom" constant="10" id="vhx-Mu-Aas"/>
@@ -236,7 +237,7 @@
         <!--Register View Controller-->
         <scene sceneID="41k-p6-Hek">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dZk-8u-iMw" customClass="RegisterViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dZk-8u-iMw" customClass="RegisterViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2BM-LI-ahn"/>
                         <viewControllerLayoutGuide type="bottom" id="V8m-VD-ENx"/>
@@ -408,7 +409,7 @@
         <!--Reset Pass View Controller-->
         <scene sceneID="YXz-xS-bnI">
             <objects>
-                <viewController storyboardIdentifier="ResetPassViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YTL-eq-fkf" customClass="ResetPassViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPassViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YTL-eq-fkf" customClass="ResetPassViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x2S-hw-cFO"/>
                         <viewControllerLayoutGuide type="bottom" id="6rV-1Y-lB6"/>
@@ -484,7 +485,7 @@
         <!--Confirm Acc View Controller-->
         <scene sceneID="61C-N7-E6S">
             <objects>
-                <viewController storyboardIdentifier="ConfirmAccViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2GG-MC-qFN" customClass="ConfirmAccViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmAccViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2GG-MC-qFN" customClass="ConfirmAccViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X8E-tb-Lpc"/>
                         <viewControllerLayoutGuide type="bottom" id="gWZ-aX-8hR"/>
@@ -625,7 +626,7 @@
         <!--Change Pass View Controller-->
         <scene sceneID="UQ1-H7-Cx9">
             <objects>
-                <viewController storyboardIdentifier="ChangePassViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SV3-iC-LOb" customClass="ChangePassViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePassViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SV3-iC-LOb" customClass="ChangePassViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Smt-Kg-xWd"/>
                         <viewControllerLayoutGuide type="bottom" id="vhg-QA-8Mo"/>
@@ -709,9 +710,11 @@
                         <outlet property="newPassword" destination="Vbr-XH-OJr" id="mRc-DH-Md5"/>
                         <outlet property="repeatPassword" destination="bTZ-h9-vDK" id="poJ-hq-lFf"/>
                         <outlet property="saveBtn" destination="bxk-Ux-L0I" id="nwa-Ms-df7"/>
+                        <segue destination="6Qe-kC-1G6" kind="unwind" identifier="unwindSegueToVC1" unwindAction="unwindToVC1WithSegue:" id="xU1-7q-J7a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="did-b0-MBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6Qe-kC-1G6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="460" y="1580"/>
         </scene>
@@ -742,7 +745,7 @@
         <!--Menu View Controller-->
         <scene sceneID="WzP-vf-G0h">
             <objects>
-                <viewController storyboardIdentifier="menuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mJl-Tf-JQt" customClass="menuViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mJl-Tf-JQt" customClass="menuViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M39-Be-sxO"/>
                         <viewControllerLayoutGuide type="bottom" id="N0H-71-vKa"/>
@@ -763,7 +766,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="Wiy-gD-EKL" customClass="MenuCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="Wiy-gD-EKL" customClass="MenuCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wiy-gD-EKL" id="rPR-z5-SZt">
@@ -836,7 +839,7 @@
         <!--View Controller-->
         <scene sceneID="DhQ-UJ-cwR">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w4s-Em-FhA" customClass="ViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w4s-Em-FhA" customClass="ViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e6O-Jf-1oe"/>
                         <viewControllerLayoutGuide type="bottom" id="6p1-Ck-WUB"/>
@@ -860,7 +863,7 @@
         <!--Profile View Controller-->
         <scene sceneID="1RU-j7-BTg">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="Va2-P3-Uo8" customClass="ProfileViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="Va2-P3-Uo8" customClass="ProfileViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z8q-HO-fGY"/>
                         <viewControllerLayoutGuide type="bottom" id="LR6-XR-UHQ"/>
@@ -878,7 +881,7 @@
                                 <rect key="frame" x="20" y="0.0" width="280" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserProfileCell" rowHeight="86" id="1eO-Mw-1WI" customClass="UserProfileCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserProfileCell" rowHeight="86" id="1eO-Mw-1WI" customClass="UserProfileCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1eO-Mw-1WI" id="G5k-QJ-pkL">
@@ -886,27 +889,37 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKR-LL-9P5">
-                                                    <rect key="frame" x="0.0" y="10" width="30.5" height="17"/>
+                                                    <rect key="frame" x="40" y="10" width="30.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="13"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z27-ZH-m7K">
-                                                    <rect key="frame" x="0.0" y="53.5" width="46" height="22"/>
+                                                    <rect key="frame" x="40" y="53.5" width="46" height="22"/>
                                                     <fontDescription key="fontDescription" name="PTSans-CaptionBold" family="PT Sans Caption" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ItX-Nf-Ny1">
+                                                    <rect key="frame" x="0.0" y="20" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="LBc-Q4-pZQ"/>
+                                                        <constraint firstAttribute="height" constant="25" id="oLa-3e-ct4"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="bKR-LL-9P5" firstAttribute="leading" secondItem="G5k-QJ-pkL" secondAttribute="leading" id="LTj-Ra-FlU"/>
-                                                <constraint firstItem="Z27-ZH-m7K" firstAttribute="leading" secondItem="G5k-QJ-pkL" secondAttribute="leading" id="NXF-Qo-RUb"/>
+                                                <constraint firstItem="ItX-Nf-Ny1" firstAttribute="top" secondItem="G5k-QJ-pkL" secondAttribute="top" constant="20" id="Dn4-F4-z9f"/>
+                                                <constraint firstItem="bKR-LL-9P5" firstAttribute="leading" secondItem="G5k-QJ-pkL" secondAttribute="leading" constant="40" id="LTj-Ra-FlU"/>
+                                                <constraint firstItem="Z27-ZH-m7K" firstAttribute="leading" secondItem="G5k-QJ-pkL" secondAttribute="leading" constant="40" id="NXF-Qo-RUb"/>
                                                 <constraint firstItem="bKR-LL-9P5" firstAttribute="top" secondItem="G5k-QJ-pkL" secondAttribute="top" constant="10" id="RoP-1l-0mK"/>
                                                 <constraint firstAttribute="bottom" secondItem="Z27-ZH-m7K" secondAttribute="bottom" constant="10" id="Tlc-mT-T8W"/>
+                                                <constraint firstItem="ItX-Nf-Ny1" firstAttribute="leading" secondItem="G5k-QJ-pkL" secondAttribute="leading" id="zDM-oC-k4v"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="data" destination="Z27-ZH-m7K" id="Vrn-UD-xoF"/>
+                                            <outlet property="icon" destination="ItX-Nf-Ny1" id="meP-ej-aIu"/>
                                             <outlet property="title" destination="bKR-LL-9P5" id="lbM-P0-htX"/>
                                         </connections>
                                     </tableViewCell>
@@ -925,14 +938,14 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem title="ЕПД" image="documentIcon_25_x_25" landscapeImage="documentIcon_50_x_50" largeContentSizeImage="documentIcon_75_x_75" id="8f8-5k-6kq">
-                                        <color key="badgeColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="badgeColor" red="1" green="0.073079427083333329" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                                 <color key="value" red="0.84705882352941175" green="0.8784313725490196" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </tabBarItem>
-                                    <tabBarItem title="Заявки" id="gfo-jY-6Xo"/>
+                                    <tabBarItem title="Заявки" image="tickets_25_x_25" landscapeImage="ls_help_50_x_50" largeContentSizeImage="tickets_75_x_75" id="gfo-jY-6Xo"/>
                                     <tabBarItem title="Справка по ЛС" image="ls_help_25_x_25" landscapeImage="ls_help_50_x_50" largeContentSizeImage="ls_help_75_x_75" id="SPB-gM-E99"/>
                                 </items>
                                 <connections>
@@ -976,7 +989,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccListCell" textLabel="389-28-B1i" style="IBUITableViewCellStyleDefault" id="Ql1-Am-MSs" customClass="AccListCell" customModule="EnergyStream" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccListCell" textLabel="389-28-B1i" style="IBUITableViewCellStyleDefault" id="Ql1-Am-MSs" customClass="AccListCell" customModule="Энергопоток_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ql1-Am-MSs" id="QLl-wD-9Dv">
@@ -1014,7 +1027,7 @@
         <!--Root View Controller-->
         <scene sceneID="G3b-TN-LYw">
             <objects>
-                <tableViewController storyboardIdentifier="AccListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QCD-lf-SsJ" customClass="AccListTableViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AccListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QCD-lf-SsJ" customClass="AccListTableViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mdN-gg-5Pr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1023,7 +1036,7 @@
                         <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccListCell" rowHeight="100" id="pSb-jB-fxK" customClass="AccListCell" customModule="EnergyStream" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccListCell" rowHeight="100" id="pSb-jB-fxK" customClass="AccListCell" customModule="Энергопоток_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pSb-jB-fxK" id="18i-2d-STy">
@@ -1043,14 +1056,14 @@
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keS-1g-gDs" userLabel="RightPagging">
                                             <rect key="frame" x="300" y="0.0" width="20" height="99.5"/>
-                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="EXJ-fe-1Uu"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKm-eM-9vr" userLabel="LeftPadding">
                                             <rect key="frame" x="0.0" y="0.0" width="20" height="99.5"/>
-                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="QO5-aW-Wqt"/>
                                                 <constraint firstAttribute="width" constant="20" id="Y8q-t9-0V5"/>
@@ -1110,7 +1123,7 @@
         <!--Pass Change User Form View Controller-->
         <scene sceneID="oou-8F-NJx">
             <objects>
-                <viewController storyboardIdentifier="PassChangeUserFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cvW-jv-Qgm" customClass="PassChangeUserFormViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PassChangeUserFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cvW-jv-Qgm" customClass="PassChangeUserFormViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bGf-GJ-3QO"/>
                         <viewControllerLayoutGuide type="bottom" id="2IG-HT-f3h"/>
@@ -1246,7 +1259,7 @@
         <!--Add User Form View Controller-->
         <scene sceneID="lHW-dw-tew">
             <objects>
-                <viewController storyboardIdentifier="AddUserFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lqY-E8-gGe" customClass="AddUserFormViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddUserFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lqY-E8-gGe" customClass="AddUserFormViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Zd-8L-CUm"/>
                         <viewControllerLayoutGuide type="bottom" id="9bv-qj-xGZ"/>
@@ -1277,7 +1290,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="5ma-ax-YKp"/>
                                             <constraint firstAttribute="height" constant="30" id="kgY-Xa-gMd"/>
                                         </constraints>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
@@ -1299,7 +1312,7 @@
                                             <constraint firstAttribute="height" constant="30" id="aoQ-vB-nWl"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="rgd-mx-CXf"/>
                                         </constraints>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
@@ -1365,7 +1378,7 @@
         <!--Epd View Controller-->
         <scene sceneID="4zg-w0-YBg">
             <objects>
-                <viewController storyboardIdentifier="EpdViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3GM-Ib-ZSj" customClass="EpdViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EpdViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3GM-Ib-ZSj" customClass="EpdViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nob-Kl-H45"/>
                         <viewControllerLayoutGuide type="bottom" id="O6v-O0-faG"/>
@@ -1395,7 +1408,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="showPopUpWithSender:" destination="3GM-Ib-ZSj" eventType="touchUpInside" id="44J-Cy-Hs4"/>
+                                                <action selector="showPopUpWithSender:" destination="3GM-Ib-ZSj" eventType="touchUpInside" id="U5z-uQ-90e"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1405,7 +1418,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EpdCell" id="Aza-nv-K8X" customClass="EpdCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EpdCell" id="Aza-nv-K8X" customClass="EpdCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Aza-nv-K8X" id="9aj-V1-ait">
@@ -1428,7 +1441,7 @@
                                             <outlet property="title" destination="DFs-Uc-YHB" id="fAP-pI-vpv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentDestCell" id="OGW-h1-PsS" customClass="PaymentDestCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentDestCell" id="OGW-h1-PsS" customClass="PaymentDestCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OGW-h1-PsS" id="lgy-hT-Ds8">
@@ -1455,7 +1468,7 @@
                                             <outlet property="payDestDataLbl" destination="mU7-Cs-iro" id="Oc8-uh-XSg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="payInfoCell" id="Up7-Yb-jXa" customClass="payInfoCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="payInfoCell" id="Up7-Yb-jXa" customClass="payInfoCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Up7-Yb-jXa" id="YF7-27-jiN">
@@ -1472,9 +1485,8 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kX-cq-mz4">
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kX-cq-mz4">
                                                     <rect key="frame" x="190" y="2" width="120" height="40"/>
-                                                    <color key="tintColor" red="0.33563780970000001" green="1" blue="0.59929158810000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="bez-I3-p5G"/>
                                                         <constraint firstAttribute="width" constant="120" id="voO-NQ-0QJ"/>
@@ -1527,7 +1539,7 @@
         <!--Add Ticket View Controller-->
         <scene sceneID="EdL-Co-f22">
             <objects>
-                <viewController storyboardIdentifier="AddTicketViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aQg-77-4S2" customClass="AddTicketViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTicketViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aQg-77-4S2" customClass="AddTicketViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jIv-kN-ybe"/>
                         <viewControllerLayoutGuide type="bottom" id="7bX-kJ-SVu"/>
@@ -1537,9 +1549,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFC-yc-HDn">
-                                <rect key="frame" x="30" y="430" width="260" height="39"/>
+                                <rect key="frame" x="50" y="444" width="220" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="NOQ-Sr-b6B"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="NOQ-Sr-b6B"/>
                                     <constraint firstAttribute="height" constant="50" id="QA1-5a-7mc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -1550,18 +1562,9 @@
                                     <action selector="sendTicket" destination="aQg-77-4S2" eventType="touchUpInside" id="Oeg-KL-UbU"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Введите текст сообщения" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7hY-mi-DbE">
-                                <rect key="frame" x="10" y="322" width="300" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="RHk-B1-LcH"/>
-                                    <constraint firstAttribute="height" constant="100" id="cCF-oJ-6hR"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Тема обращения" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ivm-fF-LWA">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Тема обращения" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ivm-fF-LWA">
                                 <rect key="frame" x="10" y="271" width="300" height="26"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="qd3-wH-oub"/>
                                 </constraints>
@@ -1634,23 +1637,46 @@
                                     <constraint firstItem="Nbs-GK-Qet" firstAttribute="leading" secondItem="Xc3-1t-unz" secondAttribute="leading" constant="10" id="zOd-e0-43J"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Введите сообщение" translatesAutoresizingMaskIntoConstraints="NO" id="40d-NA-TWo">
+                                <rect key="frame" x="10" y="308" width="300" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cia-cN-VJv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="umS-b7-9sK"/>
+                                </constraints>
+                                <color key="textColor" red="0.81176470590000005" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aQg-77-4S2" id="Ae9-zl-AwL"/>
+                                    <outlet property="pasteDelegate" destination="aQg-77-4S2" id="PyU-BR-LwK"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8a-Yo-7T9">
+                                <rect key="frame" x="10" y="452" width="22" height="22"/>
+                                <connections>
+                                    <action selector="attachFile" destination="aQg-77-4S2" eventType="touchUpInside" id="iZB-jX-UMr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470588235294" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="7hY-mi-DbE" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" constant="10" id="220-F5-RlB"/>
                             <constraint firstItem="Xc3-1t-unz" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" id="2m2-p4-z6q"/>
+                            <constraint firstItem="p8a-Yo-7T9" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" constant="10" id="4SK-aa-kwF"/>
                             <constraint firstAttribute="trailing" secondItem="Xc3-1t-unz" secondAttribute="trailing" id="5P9-SV-H5D"/>
+                            <constraint firstItem="40d-NA-TWo" firstAttribute="top" secondItem="ivm-fF-LWA" secondAttribute="bottom" constant="10" id="6a6-x2-JU4"/>
                             <constraint firstItem="ivm-fF-LWA" firstAttribute="top" secondItem="Xc3-1t-unz" secondAttribute="bottom" constant="20" id="AGB-H3-WaP"/>
                             <constraint firstItem="NFC-yc-HDn" firstAttribute="centerX" secondItem="YMJ-L1-a0W" secondAttribute="centerX" id="Awi-vK-Fdw"/>
                             <constraint firstItem="NFC-yc-HDn" firstAttribute="centerX" secondItem="YMJ-L1-a0W" secondAttribute="centerX" id="EJm-qf-RfM"/>
                             <constraint firstItem="ivm-fF-LWA" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" constant="10" id="IaF-Pc-FRp"/>
-                            <constraint firstItem="7hY-mi-DbE" firstAttribute="top" secondItem="ivm-fF-LWA" secondAttribute="bottom" constant="10" id="PM5-AH-JOc"/>
-                            <constraint firstItem="NFC-yc-HDn" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" constant="30" id="UkX-qt-smH"/>
-                            <constraint firstAttribute="trailing" secondItem="NFC-yc-HDn" secondAttribute="trailing" constant="30" id="UzQ-TN-O1B"/>
-                            <constraint firstItem="NFC-yc-HDn" firstAttribute="top" secondItem="7hY-mi-DbE" secondAttribute="bottom" constant="10" id="edT-Kb-9kd"/>
+                            <constraint firstItem="NFC-yc-HDn" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" constant="50" id="UkX-qt-smH"/>
+                            <constraint firstAttribute="trailing" secondItem="NFC-yc-HDn" secondAttribute="trailing" constant="50" id="UzQ-TN-O1B"/>
                             <constraint firstItem="Xc3-1t-unz" firstAttribute="top" secondItem="jIv-kN-ybe" secondAttribute="bottom" id="faG-vu-82s"/>
-                            <constraint firstAttribute="trailing" secondItem="7hY-mi-DbE" secondAttribute="trailing" constant="10" id="uAH-Sl-AsC"/>
+                            <constraint firstItem="40d-NA-TWo" firstAttribute="leading" secondItem="YMJ-L1-a0W" secondAttribute="leading" constant="10" id="kfT-58-s8E"/>
+                            <constraint firstAttribute="trailing" secondItem="40d-NA-TWo" secondAttribute="trailing" constant="10" id="v71-ea-Tjj"/>
                             <constraint firstAttribute="trailing" secondItem="ivm-fF-LWA" secondAttribute="trailing" constant="10" id="wjf-yD-UTC"/>
+                            <constraint firstItem="p8a-Yo-7T9" firstAttribute="top" secondItem="40d-NA-TWo" secondAttribute="bottom" constant="10" id="xOU-yj-l1T"/>
+                            <constraint firstItem="NFC-yc-HDn" firstAttribute="top" secondItem="40d-NA-TWo" secondAttribute="bottom" constant="10" id="zGa-V6-GP1"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1661,7 +1687,7 @@
                         <outlet property="fioDataLbl" destination="djz-w1-7Ve" id="fnx-9a-YL3"/>
                         <outlet property="fioTitleLbl" destination="Nbs-GK-Qet" id="pmM-0L-xDY"/>
                         <outlet property="msgSubject" destination="ivm-fF-LWA" id="IsH-B2-yIJ"/>
-                        <outlet property="msgTtext" destination="7hY-mi-DbE" id="iKi-MM-xmO"/>
+                        <outlet property="msgTtext" destination="40d-NA-TWo" id="rq4-wY-Eog"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vC-WS-QYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1671,7 +1697,7 @@
         <!--Ticket View Controller-->
         <scene sceneID="rbU-me-ufd">
             <objects>
-                <viewController storyboardIdentifier="TicketViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="34u-KY-Rcw" customClass="TicketViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="34u-KY-Rcw" customClass="TicketViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zG5-OH-mcW"/>
                         <viewControllerLayoutGuide type="bottom" id="ZsC-Kz-nID"/>
@@ -1680,57 +1706,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FzK-Y2-E8l">
-                                <rect key="frame" x="10" y="144" width="300" height="212"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-y4-0Gn" userLabel="viewForElements">
+                                <rect key="frame" x="10" y="164.5" width="300" height="239"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oin-WJ-pBz">
-                                        <rect key="frame" x="30" y="20" width="240" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="L0C-3G-UMJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pL3-8R-o6L">
-                                        <rect key="frame" x="40" y="42" width="240" height="128"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fb5-Zg-jUU">
+                                        <rect key="frame" x="260" y="0.0" width="30" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" red="0.81176470590000005" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeWindow" destination="34u-KY-Rcw" eventType="touchUpInside" id="sMb-uV-HWa"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oin-WJ-pBz">
+                                        <rect key="frame" x="20" y="41" width="260" height="21"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="uCR-2h-p97"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="L0C-3G-UMJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.066666666669999999" green="0.1176470588" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAM-kk-UlP">
+                                        <rect key="frame" x="0.0" y="99" width="300" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="Xuz-Bn-jby"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="gXJ-6h-thH"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="34u-KY-Rcw" id="1o3-OC-Zhf"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Oin-WJ-pBz" firstAttribute="top" secondItem="FzK-Y2-E8l" secondAttribute="top" constant="20" id="9F4-QW-jLy"/>
-                                    <constraint firstItem="Oin-WJ-pBz" firstAttribute="centerX" secondItem="FzK-Y2-E8l" secondAttribute="centerX" id="Y3k-Ua-glk"/>
-                                    <constraint firstItem="pL3-8R-o6L" firstAttribute="top" secondItem="Oin-WJ-pBz" secondAttribute="bottom" constant="10" id="k4z-1p-v3G"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fb5-Zg-jUU" secondAttribute="trailing" constant="10" id="Ldu-ai-cvJ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="239" id="WHu-cA-klK"/>
+                                    <constraint firstAttribute="trailing" secondItem="oAM-kk-UlP" secondAttribute="trailing" id="ajN-F5-1ym"/>
+                                    <constraint firstItem="oAM-kk-UlP" firstAttribute="top" secondItem="Oin-WJ-pBz" secondAttribute="bottom" constant="20" id="cdQ-BR-M8U"/>
+                                    <constraint firstItem="Oin-WJ-pBz" firstAttribute="leading" secondItem="aF7-y4-0Gn" secondAttribute="leading" constant="20" id="eCD-rT-ste"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="kp5-yh-ze1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oin-WJ-pBz" secondAttribute="trailing" constant="20" id="nGb-h3-5Wi"/>
+                                    <constraint firstItem="Oin-WJ-pBz" firstAttribute="top" secondItem="Fb5-Zg-jUU" secondAttribute="bottom" constant="5" id="tuI-fb-eUf"/>
+                                    <constraint firstItem="Fb5-Zg-jUU" firstAttribute="top" secondItem="aF7-y4-0Gn" secondAttribute="top" id="uJ0-Gx-tzs"/>
+                                    <constraint firstItem="oAM-kk-UlP" firstAttribute="leading" secondItem="aF7-y4-0Gn" secondAttribute="leading" id="vJ8-xG-1dN"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FzK-Y2-E8l" firstAttribute="leading" secondItem="Rm6-qn-vhe" secondAttribute="leading" constant="10" id="6DT-Qa-UAj"/>
-                            <constraint firstAttribute="trailing" secondItem="FzK-Y2-E8l" secondAttribute="trailing" constant="10" id="QgZ-y2-veC"/>
-                            <constraint firstItem="FzK-Y2-E8l" firstAttribute="centerY" secondItem="Rm6-qn-vhe" secondAttribute="centerY" id="q4W-sS-6Vp"/>
+                            <constraint firstItem="aF7-y4-0Gn" firstAttribute="centerX" secondItem="Rm6-qn-vhe" secondAttribute="centerX" id="Got-3N-H63"/>
+                            <constraint firstItem="aF7-y4-0Gn" firstAttribute="centerY" secondItem="Rm6-qn-vhe" secondAttribute="centerY" id="eHJ-Qe-8Ya"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="msgSubject" destination="Oin-WJ-pBz" id="S8R-qa-Kve"/>
-                        <outlet property="msgText" destination="pL3-8R-o6L" id="Fbm-OG-mCx"/>
-                        <outlet property="viewForElements" destination="pL3-8R-o6L" id="dzv-p4-4ti"/>
+                        <outlet property="msgText" destination="oAM-kk-UlP" id="rU0-Z0-umX"/>
+                        <outlet property="viewForElements" destination="aF7-y4-0Gn" id="Cet-BU-tzG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yt-iv-jmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4950" y="-335.91549295774649"/>
+            <point key="canvasLocation" x="4905" y="-725"/>
         </scene>
         <!--Acc Num Sheet View Controller-->
         <scene sceneID="obt-R1-zUi">
             <objects>
-                <viewController storyboardIdentifier="AccNumSheetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nID-aj-mwR" customClass="AccNumSheetViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccNumSheetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nID-aj-mwR" customClass="AccNumSheetViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c9u-c6-7Dx"/>
                         <viewControllerLayoutGuide type="bottom" id="g3E-sc-Fz0"/>
@@ -1869,7 +1917,7 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xys-EM-29O">
                                 <rect key="frame" x="40" y="478" width="240" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="bmS-by-BG4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="bmS-by-BG4"/>
                                     <constraint firstAttribute="height" constant="50" id="lln-BL-sIK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1912,7 +1960,7 @@
         <!--Modal Acc Num Sheet View Controller-->
         <scene sceneID="V28-r9-sK8">
             <objects>
-                <viewController storyboardIdentifier="ModalAccNumSheetViewController" id="7PV-WS-8rx" customClass="ModalAccNumSheetViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalAccNumSheetViewController" id="7PV-WS-8rx" customClass="ModalAccNumSheetViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tog-fE-Mm8"/>
                         <viewControllerLayoutGuide type="bottom" id="idg-kq-Tna"/>
@@ -1925,7 +1973,7 @@
                                 <rect key="frame" x="20" y="20" width="280" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blueCell" id="azZ-7J-GVF" userLabel="blueCell" customClass="BlueTableViewCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blueCell" id="azZ-7J-GVF" userLabel="blueCell" customClass="BlueTableViewCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="azZ-7J-GVF" id="6JM-kS-Vvu">
@@ -1960,7 +2008,7 @@
                                             <outlet property="date" destination="HyX-5w-3jP" id="Hix-sB-Eqh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whiteCell" id="D9G-Lq-gFs" userLabel="whiteCell" customClass="WhiteTableViewCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whiteCell" id="D9G-Lq-gFs" userLabel="whiteCell" customClass="WhiteTableViewCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D9G-Lq-gFs" id="Ars-Sw-gOB">
@@ -1977,9 +2025,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkX-tX-b2U">
-                                                    <rect key="frame" x="145" y="11.5" width="100" height="21"/>
+                                                    <rect key="frame" x="135" y="11.5" width="120" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="DZj-XA-ml4"/>
+                                                        <constraint firstAttribute="width" constant="120" id="DZj-XA-ml4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1987,7 +2035,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="JkX-tX-b2U" secondAttribute="trailing" constant="20" id="3NF-H1-8NO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JkX-tX-b2U" secondAttribute="trailing" constant="10" id="3NF-H1-8NO"/>
                                                 <constraint firstItem="RUC-Oi-a71" firstAttribute="centerY" secondItem="Ars-Sw-gOB" secondAttribute="centerY" id="Qlr-Na-Fkh"/>
                                                 <constraint firstItem="RUC-Oi-a71" firstAttribute="leading" secondItem="Ars-Sw-gOB" secondAttribute="leading" constant="10" id="gkX-RR-3yf"/>
                                                 <constraint firstItem="JkX-tX-b2U" firstAttribute="centerY" secondItem="Ars-Sw-gOB" secondAttribute="centerY" id="ppS-rA-gMZ"/>
@@ -1998,7 +2046,7 @@
                                             <outlet property="title" destination="RUC-Oi-a71" id="GqN-Ow-ocu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exitCell" id="cu5-yh-KJX" userLabel="exitCell" customClass="ExitTableViewCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exitCell" id="cu5-yh-KJX" userLabel="exitCell" customClass="ExitTableViewCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cu5-yh-KJX" id="5Br-18-Mte">
@@ -2052,7 +2100,7 @@
         <!--Ticket List View Controller-->
         <scene sceneID="lmv-kr-upg">
             <objects>
-                <viewController storyboardIdentifier="TicketListViewController" id="gUx-DT-UH8" customClass="TicketListViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketListViewController" id="gUx-DT-UH8" customClass="TicketListViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CfK-vS-GOJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Z1o-62-2iI"/>
@@ -2068,7 +2116,7 @@
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ticketCell" rowHeight="70" id="6mc-zu-kbj" customClass="TicketListViewCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ticketCell" rowHeight="70" id="6mc-zu-kbj" customClass="TicketListViewCell" customModule="Энергопоток_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6mc-zu-kbj" id="Fpb-oI-1Ja">
@@ -2096,9 +2144,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icy-GY-e8T">
-                                                    <rect key="frame" x="200" y="25" width="90" height="20"/>
+                                                    <rect key="frame" x="170" y="25" width="120" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="Dud-rg-MSb"/>
+                                                        <constraint firstAttribute="width" constant="120" id="Dud-rg-MSb"/>
                                                         <constraint firstAttribute="height" constant="20" id="tVi-an-R2j"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2138,8 +2186,8 @@
                     </view>
                     <connections>
                         <outlet property="ticketListTableView" destination="yGA-1A-Gi4" id="f4u-VT-N3j"/>
-                        <segue destination="34u-KY-Rcw" kind="show" identifier="toTicketVC" id="FqL-lT-YbB"/>
                         <segue destination="aQg-77-4S2" kind="show" identifier="toAddTicketVC" id="8td-8Q-2xF"/>
+                        <segue destination="34u-KY-Rcw" kind="show" identifier="toTicketVC" id="tZN-Ff-glQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHt-C1-7mY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2149,7 +2197,7 @@
         <!--Bank Choose Pop Up View Controller-->
         <scene sceneID="H6x-Zy-mGr">
             <objects>
-                <viewController storyboardIdentifier="BankChoosePopUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SUw-zN-Xzk" customClass="BankChoosePopUpViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BankChoosePopUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SUw-zN-Xzk" customClass="BankChoosePopUpViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qPj-g6-6ls"/>
                         <viewControllerLayoutGuide type="bottom" id="N2E-wu-9K3"/>
@@ -2162,9 +2210,9 @@
                                 <rect key="frame" x="67" y="258.5" width="240" height="150"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Df-89-ANP">
-                                        <rect key="frame" x="0.0" y="27" width="240" height="30"/>
+                                        <rect key="frame" x="20" y="27" width="200" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="1B0-40-tXo"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="1B0-40-tXo"/>
                                             <constraint firstAttribute="height" constant="40" id="gYS-ON-cg0"/>
                                         </constraints>
                                         <connections>
@@ -2172,10 +2220,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cd2-jo-yTF">
-                                        <rect key="frame" x="0.0" y="65" width="240" height="30"/>
+                                        <rect key="frame" x="20" y="65" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="2WN-N2-xCt"/>
-                                            <constraint firstAttribute="width" constant="240" id="eZo-2X-TKg"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="eZo-2X-TKg"/>
                                         </constraints>
                                         <connections>
                                             <action selector="getKaspiPage" destination="SUw-zN-Xzk" eventType="touchUpInside" id="7k4-hI-lVT"/>
@@ -2184,12 +2232,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="6Df-89-ANP" firstAttribute="leading" secondItem="cyw-BI-gVT" secondAttribute="leading" id="8PO-xH-9jN"/>
+                                    <constraint firstItem="6Df-89-ANP" firstAttribute="leading" secondItem="cyw-BI-gVT" secondAttribute="leading" constant="20" id="8PO-xH-9jN"/>
                                     <constraint firstAttribute="height" constant="150" id="A53-km-yd0"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Df-89-ANP" secondAttribute="trailing" id="F6A-QN-sYa"/>
-                                    <constraint firstAttribute="trailing" secondItem="cd2-jo-yTF" secondAttribute="trailing" id="arG-56-jvS"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Df-89-ANP" secondAttribute="trailing" constant="20" id="F6A-QN-sYa"/>
+                                    <constraint firstAttribute="trailing" secondItem="cd2-jo-yTF" secondAttribute="trailing" constant="20" id="arG-56-jvS"/>
                                     <constraint firstItem="cd2-jo-yTF" firstAttribute="top" secondItem="6Df-89-ANP" secondAttribute="bottom" constant="30" id="kcr-Yo-Gal"/>
-                                    <constraint firstItem="cd2-jo-yTF" firstAttribute="leading" secondItem="cyw-BI-gVT" secondAttribute="leading" id="r49-Az-8Op"/>
+                                    <constraint firstItem="cd2-jo-yTF" firstAttribute="leading" secondItem="cyw-BI-gVT" secondAttribute="leading" constant="20" id="r49-Az-8Op"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2215,7 +2263,7 @@
         <!--Web View Controller-->
         <scene sceneID="L6g-JQ-tOG">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yiw-QO-zvh" customClass="WebViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yiw-QO-zvh" customClass="WebViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wl6-8L-hhc"/>
                         <viewControllerLayoutGuide type="bottom" id="FIJ-4Z-TM7"/>
@@ -2252,7 +2300,7 @@
         <!--Pdf View Controller-->
         <scene sceneID="zFd-Dm-nMd">
             <objects>
-                <viewController id="1hm-43-t21" customClass="PdfViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1hm-43-t21" customClass="PdfViewController" customModule="Энергопоток_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f1o-pn-q6h"/>
                         <viewControllerLayoutGuide type="bottom" id="jQH-oT-ySN"/>
@@ -2323,7 +2371,7 @@
         <image name="documentIcon_25_x_25" width="25" height="25"/>
         <image name="documentIcon_50_x_50" width="50" height="50"/>
         <image name="documentIcon_75_x_75" width="75" height="75"/>
-        <image name="imageView:mJc-GG-32H:image" width="225" height="225">
+        <image name="imageView:mJc-GG-32H:image" width="0.0" height="0.0">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGUFFYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
 ERYbHCIjKSw2PkJGSk1VJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
@@ -2421,6 +2469,8 @@ AABUAAAAAAAAAAAAAAAAAAAT6w
         <image name="ls_help_50_x_50" width="50" height="50"/>
         <image name="ls_help_75_x_75" width="75" height="75"/>
         <image name="menu" width="32" height="32"/>
+        <image name="tickets_25_x_25" width="25" height="25"/>
+        <image name="tickets_75_x_75" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QgY-TU-dxe"/>

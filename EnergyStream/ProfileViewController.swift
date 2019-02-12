@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var profileCellTitles: Array = [String]()
     var ticketListArray = [Ticket]()
     
-    
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var epdButton: UITabBarItem!
     
@@ -48,11 +47,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 //    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Лицевой счёт"
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = UIColor.white
         loadingViewService.setLoadingScreen(profileTableView)
         Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
-        Requests.getTicketList()
+        
+//        self.getTicketList()
         
         
         
@@ -99,24 +100,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 0:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].accountNumber
+                cell.icon.image = UIImage(named: "accNum")
             case 1:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].fio.capitalizingFirstLetter()
+                cell.icon.image = UIImage(named: "fio")
             case 2:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].numberOfPeople
+                cell.icon.image = UIImage(named: "numOfPeople")
             case 3:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].address.capitalizingFirstLetter()
+                cell.icon.image = UIImage(named: "address")
             case 4:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].phoneNumber
+                cell.icon.image = UIImage(named: "phoneNum")
             case 5:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].area.capitalizingFirstLetter()
+                cell.icon.image = UIImage(named: "area")
             case 6:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].SCH_TYPE
+                cell.icon.image = UIImage(named: "schType")
             default:
                 break
             }
@@ -128,7 +136,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         else {
             profileTableView.reloadData()
         }
-        
+        cell.selectionStyle = .none
         return cell
     }
     

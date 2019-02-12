@@ -14,7 +14,14 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var ticketListTableView: UITableView!
     var msgTitle: String = ""
     var msgText: String = ""
-    var ticketListArr = [Ticket]()
+    var ticketListArr = [Ticket]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.ticketListTableView.reloadData()
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +29,10 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
         self.ticketListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         
         ticketListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
+        self.getTicketList()
         print("ticketListArray count is \(ticketListArr.count)")
-//        let addTicket = UIBarButtonItem(barButtonSystemItem:.add, target: self, action: #selector(addTicketVC))
-//        self.navigationItem.rightBarButtonItem = addTicket
+        let addTicket = UIBarButtonItem(barButtonSystemItem:.add, target: self, action: #selector(addTicketVC))
+        self.navigationItem.rightBarButtonItem = addTicket
         // Do any additional setup after loading the view.
     }
     
@@ -37,9 +44,12 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-
-            return Requests.ticketListArray.count
-//        }
+        if ticketListArr.isEmpty {
+            return 1
+        }
+        else {
+            return self.ticketListArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,12 +62,12 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
 //        cell.textLabel?.numberOfLines = 0
 //        cell.textLabel?.lineBreakMode = .byWordWrapping
         print("Filling cells")
-        if !Requests.ticketListArray.isEmpty {
-            cell.ticketNumber.text = "№ \(Requests.ticketListArray[indexPath.row].ticketNumber)"
-            cell.ticketTitle.text = Requests.ticketListArray[indexPath.row].ticketTitle
-            cell.ticketDate.text = Requests.ticketListArray[indexPath.row].date
+        if !self.ticketListArr.isEmpty {
+            cell.ticketNumber.text = "№ \(self.ticketListArr[indexPath.section].ticketNumber)"
+            cell.ticketTitle.text = self.ticketListArr[indexPath.section].ticketTitle
+            cell.ticketDate.text = self.ticketListArr[indexPath.section].date
             loadingViewService.removeLoadingScreen()
-            print(Requests.ticketListArray[indexPath.row].date)
+            print(self.ticketListArr[indexPath.section].date)
         }
         else {
             ticketListTableView.reloadData()
@@ -67,8 +77,8 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        msgTitle = Requests.ticketListArray[indexPath.row].ticketTitle
-        msgText = Requests.ticketListArray[indexPath.row].ticketMsg
+        msgTitle = self.ticketListArr[indexPath.section].ticketTitle
+        msgText = self.ticketListArr[indexPath.section].ticketMsg
         self.showTicket(msgTitle: msgTitle, msgText: msgText)
 //        performSegue(withIdentifier: "toTicketVC", sender: self)
     }
@@ -77,9 +87,9 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
             let newVC = segue.destination as! AddTicketViewController
         }
         else {
-        let ticketVC = segue.destination as! TicketViewController
-        ticketVC.titleFromTable = msgTitle
-        ticketVC.text = msgText
+//        let ticketVC = segue.destination as! TicketViewController
+//        ticketVC.titleFromTable = msgTitle
+//        ticketVC.text = msgText
         }
         
     }
@@ -149,14 +159,61 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func showTicket(msgTitle: String, msgText: String) {
+//        performSegue(withIdentifier: "toTicketVC", sender: self)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let TicketVC = storyboard.instantiateViewController(withIdentifier: "TicketViewController") as! TicketViewController
+        TicketVC.text = msgText
+        TicketVC.titleFromTable = msgTitle
         self.addChildViewController(TicketVC)
         TicketVC.view.frame = self.view.frame
         self.view.addSubview(TicketVC.view)
-        TicketVC.msgText.text! = msgText
-        TicketVC.msgSubject.text! = msgTitle
         TicketVC.didMove(toParentViewController: self)
     }
+    
+    func getTicketList() {
+        let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
+        //        let parametersForRequest = ["]
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return }
+        
+        //MARK: Request with onlu swift features
+        var requestForUserInfo = URLRequest(url:url )
+        
+            requestForUserInfo.httpMethod = "GET"
+            requestForUserInfo.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+            requestForUserInfo.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        
+            session.dataTask(with: requestForUserInfo) {
+                (data,response,error) in
+                
+                if let response = response {
+                    print(response)
+                }
+                
+                guard let data = data else {return}
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    guard let ticketList = json as? [[String:Any]] else {return}
+                    
+                    //                if !Requests.ticketListArray.isEmpty {
+                    //                    self.ticketListArray.removeAll()
+                    //                }
+                    
+                    for dic in ticketList {
+                        self.ticketListArr.append(Ticket(dic))
+                    }
+                    
+                }catch {
+                    print(error)
+                }
+                
+                }.resume()
+        
+    }
+    
+   
 }
+
 

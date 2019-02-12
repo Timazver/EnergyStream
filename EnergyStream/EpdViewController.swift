@@ -7,13 +7,12 @@
 //
 
 import UIKit
-
-class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
+class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     
 //    @IBOutlet weak var dropDownTextField: UITextField!
     @IBOutlet weak var epdTableView: UITableView!
-    @IBOutlet weak var menu: UIBarButtonItem!
+//    @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var buttonForPay: UIButton!
     
     var sumForPayment: Int = 0
@@ -27,9 +26,13 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         buttonForPay.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         buttonForPay.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
         buttonForPay.layer.cornerRadius = CGFloat(5)
-            buttonForPay.setTitle("Оплатить   \(sumForPayment)", for: .normal)
+        
+        
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
   
     
@@ -79,7 +82,8 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
                 cell = paySumCell
             }
         }
-        
+        buttonForPay.setTitle("Оплатить   \(sumForPayment) тг", for: .normal)
+        cell.selectionStyle = .none
         return cell
     }
         
@@ -116,7 +120,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             fioTitleLbl.textColor = UIColor.black
             fioTitleLbl.text = "ФИО"
             
-            let fioDataLbl = UILabel(frame: CGRect(x: 10, y: 55, width: 150, height: 30))
+            let fioDataLbl = UILabel(frame: CGRect(x: 10, y: 55, width: 250, height: 30))
             fioDataLbl.numberOfLines = 0
             fioDataLbl.font = UIFont.boldSystemFont(ofSize: 19.0)
             fioDataLbl.textColor = UIColor.black
@@ -148,12 +152,16 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func showPopUp(sender: AnyObject) {
+        print("showPopUp method was called")
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BankChoosePopUpViewController") as! BankChoosePopUpViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
+    
+    
+    
     
     func getUserFromAccNumber(_ accNumber: String) -> UserCard {
         print(accNumber)

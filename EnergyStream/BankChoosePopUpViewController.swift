@@ -15,7 +15,6 @@ class BankChoosePopUpViewController: UIViewController {
 
     @IBOutlet weak var  kaspiBtn: UIButton!
     @IBOutlet weak var halykBtn: UIButton!
-    @IBOutlet weak var viewForImages: UIView!
     
     var kaspiImageUrl: URL!
     var halykImageUrl: URL!
@@ -27,6 +26,7 @@ class BankChoosePopUpViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
         self.showAnimate()
+        print("bankArray count is \(Requests.bankArray.count)")
         kaspiImageUrl = URL(string: Requests.bankArray[1].imgUrl)
         halykImageUrl = URL(string: Requests.bankArray[0].imgUrl)
         do {
@@ -86,5 +86,7 @@ class BankChoosePopUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.removeAnimate()
+    }
 }

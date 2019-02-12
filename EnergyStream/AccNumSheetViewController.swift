@@ -22,14 +22,22 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
     
     private var datePicker: UIDatePicker?
     var dateForRequest: String = ""
+    
     @IBAction func openModalAccNumSheetVC() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ModalAccNumSheetViewController") as! ModalAccNumSheetViewController
-        vc.dateForRequest = dateForRequest
-        self.addChildViewController(vc)
-        vc.view.frame = self.view.frame
-        self.view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        if dateForRequest.isEmpty {
+            let alert = UIAlertController(title: "Ошибка", message: "Вы не указали дату", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ModalAccNumSheetViewController") as! ModalAccNumSheetViewController
+            vc.dateForRequest = dateForRequest
+            self.addChildViewController(vc)
+            vc.view.frame = self.view.frame
+            self.view.addSubview(vc.view)
+            vc.didMove(toParentViewController: self)
+        }
     }
     
     override func viewDidLoad() {

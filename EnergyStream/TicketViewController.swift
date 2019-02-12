@@ -12,17 +12,18 @@ class TicketViewController: UIViewController {
     
     var titleFromTable: String = ""
     var text: String = ""
-    
+
     @IBOutlet weak var msgSubject: UILabel!
     @IBOutlet weak var msgText: UITextView!
     @IBOutlet weak var viewForElements: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewForElements.backgroundColor = UIColor.white
-        self.viewForElements.layer.cornerRadius = CGFloat(5)
+        print(text)
+        msgText.contentInsetAdjustmentBehavior = .never
+        viewForElements.layer.cornerRadius = CGFloat(5)
         self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
         self.showAnimate()
-//        viewForElements.backgroundColor = .black
         msgSubject.text! = titleFromTable
         msgText.text! = text
         // Do any additional setup after loading the view.
@@ -50,5 +51,9 @@ class TicketViewController: UIViewController {
                 self.view.removeFromSuperview()
             }
         });
+    }
+    @IBAction func closeWindow() {
+        //        dismiss(animated: true, completion: nil)
+        self.removeAnimate()
     }
 }

@@ -35,7 +35,14 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         self.registerBtn.layer.cornerRadius = 5
         self.registerBtn.layer.borderWidth = 1
         self.registerBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
-        
+        textfieldPhoneNumber.leftViewMode = .always
+        password.leftViewMode = .always
+        textfieldPhoneNumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        textfieldPhoneNumber.leftView?.addSubview(UIImageView(image:UIImage(named: "phoneIcon")))
+        password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        password.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
+        textfieldPhoneNumber.useUnderline()
+        password.useUnderline()
         print(textfieldPhoneNumber.text!)
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         guard let userName = dic?["login"] else {return}
@@ -44,24 +51,9 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         
         guard let pass = dic?["password"] else {return}
         self.password.text! = pass as! String
+
         
-//     print(Locksmith.loadDataForUserAccount(userAccount: "EnergyStream"))
-//        self.indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-//        self.indicator.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-//        self.indicator.center = view.center
-//        self.indicator.transform = CGAffineTransform(scaleX: 3, y: 3)
-//        self.view.addSubview(indicator)
-//        self.view.bringSubview(toFront: indicator)
-//        self.textfieldPhoneNumber.text = ""
-//        self.password.text = ""
-        textfieldPhoneNumber.useUnderline()
-        password.useUnderline()
-        textfieldPhoneNumber.leftViewMode = .always
-        password.leftViewMode = .always
-        textfieldPhoneNumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        textfieldPhoneNumber.leftView?.addSubview(UIImageView(image:UIImage(named: "phoneIcon")))
-        password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        password.leftView?.addSubview(UIImageView(image:UIImage(named: "passIcon")))
+        
         // Do any additional setup after loading the view.
     }
     
@@ -71,36 +63,42 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
 //
     @IBAction func userLogin() {
-        let login = self.textfieldPhoneNumber.text!.removingWhitespaces()
-        let password = self.password.text
+        var login = self.textfieldPhoneNumber.text!.removingWhitespaces()
+        var password = self.password.text
         
         //MARK : Trying to save credentials and token to keychain
         //Create object of Credentials structure type
         let parameters = ["phoneNumber":login,"password":password]
+//        if let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream") {
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
-        if dic?["login"] as! String == login {
-            
-        }
-        else {
-            let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
-            do {
-                try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
-                    
+        if dic != nil {
+            if dic?["login"] as! String == login {
+                login = dic?["login"] as! String
+                password = dic?["password"] as! String
             }
-            catch {
-                    print("Unable to save token into keychain")
-                
-            }
-        }))
-            alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
-        self.dismiss(animated: true, completion: nil)
-        }))
-            
-        self.present(alert, animated: true, completion: nil)
         
+            else {
+                let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
+                do {
+                    try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
+                    
+                }
+                catch {
+                        print("Unable to save token into keychain")
+                    
+                }
+            }))
+                alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
+            self.dismiss(animated: true, completion: nil)
+            }))
+                
+            self.present(alert, animated: true, completion: nil)
+            
+            }
         }
-        guard let url = URL(string: "http://192.168.1.38:3000/api/login") else {return}
+        
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/login") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
@@ -128,11 +126,11 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                 guard let auth = jsonData["auth"] as? Bool else {return}
                     if auth == true {
                         print("Successfully logged in")
-                        Requests.getListAccountNumbers()
+//                        Requests.getListAccountNumbers()
 
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
                         self.performSegue(withIdentifier: "accListSegue", sender: self)
-                            })
+//                            })
 
                         print(Requests.currentAccoutNumber)
 //                        self.enterMainWindowAfterLogin(self)
@@ -141,8 +139,21 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                     }
            
                 print("value: ", value ?? "nil")
-            } else {
-                print("error")
+            }
+            else if statusCode == 404 {
+                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+                
+            else if statusCode == 401 {
+                let alert = UIAlertController(title: "Ошибка", message: "Учётная запись не активирована.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+                
+            else {
+                print("Ошибка соединения с сервером. Попробуйте позднее.")
             }
             
         }

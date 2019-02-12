@@ -47,30 +47,44 @@ class ChangePassViewController: UIViewController {
         let parameters = ["phoneNumber":phoneNumber,"activateCode":smsCode,"newPassword":newPassword.text!,"repeatedPassword":repeatPassword.text!]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
-        guard let url = URL(string: "http://192.168.1.38:3000/api/reset") else {return}
-        
-        request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
-            guard let statusCode = responseJSON.response?.statusCode else { return }
-            print("statusCode: ", statusCode)
-            
-            if (200..<300).contains(statusCode) {
-                let value = responseJSON.result.value
-                print("value: \(value)")
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/reset") else {return}
+        if newPassword.text! == repeatPassword.text! {
+            request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+                guard let statusCode = responseJSON.response?.statusCode else { return }
+                print("statusCode: ", statusCode)
+                
+                if (200..<300).contains(statusCode) {
+                    let value = responseJSON.result.value
+                    guard let msg = value as? [String:Any] else {return}
+                    
+                    let alert = UIAlertController(title: "Успешно", message: "Пароль был успешно восстановлен", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: {(action) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert,animated: true, completion: nil)
+                    DispatchQueue.main.asyncAfter(deadline:.now() + .seconds(4), execute: {
+                        self.goBackToOneButtonTapped(self)
+                    })
+                    
+                }
+                else {
+                    let alert = UIAlertController(title: "Ошибка", message: "Ошибка изменения пароля", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+                    self.present(alert,animated: true, completion: nil)
+                }
+                
             }
-            else {
-                print("error")
-            }
-            
         }
+        else {
+            let alert = UIAlertController(title: "Ошибка", message: "Введенные пароли не совпадают", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+            self.present(alert,animated: true, completion: nil)
+        }
+        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func goBackToOneButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
     }
-    */
 
 }
