@@ -12,7 +12,7 @@ class AccListCell: UITableViewCell {
 
     @IBOutlet weak var accNum: UILabel!
     @IBOutlet weak var fullName: UILabel!
-    
+    @IBOutlet weak var icon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

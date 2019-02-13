@@ -21,30 +21,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    var sections = sectionsData
     
     @IBOutlet weak var profileTableView: UITableView!
-    
-    
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        if item.title == "ЕПД" {
-//
-//        }
-//        else if item.title == "Заявки" {
-//
-//             self.performSegue(withIdentifier: "toTicketVC", sender: self)
-//        }
-//        else if item.title == "Справка по ЛС" {
-//
-//            self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
-//        }
-//    }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toTicketVC"  {
-//            let ticketListVC = segue.destination as! TicketListViewController
-//            ticketListVC.ticketListArr =
-//            print(Requests.getTicketList().count)
-//        }
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Лицевой счёт"

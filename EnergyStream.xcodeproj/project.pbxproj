@@ -100,7 +100,7 @@
 		22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
-		B222F1E41DAA30330089573D /* Энергопоток..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Энергопоток..app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B222F1E41DAA30330089573D /* EnergyStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B222F1EC1DAA30330089573D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		B222F1E51DAA30330089573D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B222F1E41DAA30330089573D /* Энергопоток..app */,
+				B222F1E41DAA30330089573D /* EnergyStream.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,9 +271,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B222F1E31DAA30320089573D /* Энергопоток. */ = {
+		B222F1E31DAA30320089573D /* EnergyStream */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "Энергопоток." */;
+			buildConfigurationList = B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "EnergyStream" */;
 			buildPhases = (
 				E3C981087DC8C374A4BA2870 /* [CP] Check Pods Manifest.lock */,
 				B222F1E01DAA30320089573D /* Sources */,
@@ -285,9 +285,9 @@
 			);
 			dependencies = (
 			);
-			name = "Энергопоток.";
+			name = EnergyStream;
 			productName = memuDemo;
-			productReference = B222F1E41DAA30330089573D /* Энергопоток..app */;
+			productReference = B222F1E41DAA30330089573D /* EnergyStream.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -331,7 +331,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B222F1E31DAA30320089573D /* Энергопоток. */,
+				B222F1E31DAA30320089573D /* EnergyStream */,
 			);
 		};
 /* End PBXProject section */
@@ -361,10 +361,10 @@
 				"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AKMonthYearPickerView/AKMonthYearPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -372,10 +372,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMonthYearPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -628,7 +628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "Энергопоток." */ = {
+		B222F20C1DAA30330089573D /* Build configuration list for PBXNativeTarget "EnergyStream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B222F20D1DAA30330089573D /* Debug */,

@@ -10,10 +10,12 @@ import UIKit
 import DropDown
 import Locksmith
 
-class AccListTableViewController: UITableViewController {
+class AccListTableViewController: UITableViewController, UITextFieldDelegate {
 //    var logoutBtn: UIBarButtonItem!
     var contextMenuBtn: UIBarButtonItem!
     @IBOutlet weak var accListTableView: UITableView!
+    private var accNum = ""
+    
     private var fileName = ""
     var listAccountNumbers: Array = [ListAccNumbers]() {
         didSet {
@@ -42,12 +44,16 @@ class AccListTableViewController: UITableViewController {
         print(dic)
         self.title = "Список"
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
-        self.navigationItem.leftBarButtonItem = contextMenuBtn
+        self.navigationItem.rightBarButtonItem = contextMenuBtn
         self.navigationController?.navigationBar.tintColor = UIColor.white
         print("AccListViewController was loaded")
         accListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
        
         }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @objc func showBottomAlertWindow(_ sender: Any) {
         let alert = UIAlertController(title: "Действия", message: "Выберите желаемое действие", preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -73,9 +79,11 @@ class AccListTableViewController: UITableViewController {
     @objc func addAcc(sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let AddUserFormVC = storyboard.instantiateViewController(withIdentifier: "AddUserFormViewController") as! AddUserFormViewController
+        
         self.addChildViewController(AddUserFormVC)
         AddUserFormVC.view.frame = self.view.frame
         self.view.addSubview(AddUserFormVC.view)
+        AddUserFormVC.accountNUmber.text!  = self.accNum
         AddUserFormVC.didMove(toParentViewController: self)
 
     }
@@ -111,6 +119,7 @@ class AccListTableViewController: UITableViewController {
             cell.fullName.numberOfLines = 0
             cell.fullName.lineBreakMode = .byWordWrapping
             cell.fullName.text! = self.listAccountNumbers[indexPath.section].FIO.capitalizingFirstLetter()
+            cell.icon.image = UIImage(named: "numOfPeople")
             loadingViewService.removeLoadingScreen()
         }
         else {
@@ -119,7 +128,6 @@ class AccListTableViewController: UITableViewController {
             
             
         }
-        
         return cell
     }
     
@@ -148,7 +156,7 @@ class AccListTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 200
+            return 220
         }
         
         else {
@@ -166,6 +174,15 @@ class AccListTableViewController: UITableViewController {
             viewForElements.backgroundColor = UIColor.white
             headerView.addSubview(viewForElements)
             
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+            headerView.addSubview(imageView)
+            imageView.image = UIImage(named: "accNum")
+            //add contraints
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 10).isActive = true
+            imageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 15).isActive = true
+            
+            
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
             label.text = "Номер лицевого счёта"
             label.font = UIFont.systemFont(ofSize: 13)
@@ -174,7 +191,7 @@ class AccListTableViewController: UITableViewController {
             //add constraints
             label.translatesAutoresizingMaskIntoConstraints = false
             label.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
-            label.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 20).isActive = true
+            label.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 55).isActive = true
             
             //Create TextField view
             let textField = UITextField(frame: CGRect(x: 0, y: 0, width: viewForElements.frame.width - 20, height: 40))
@@ -183,17 +200,21 @@ class AccListTableViewController: UITableViewController {
             textField.font = UIFont.systemFont(ofSize: 20)
             textField.textColor = UIColor.black
             viewForElements.addSubview(textField)
-            textField.borderStyle = .none
-            textField.useBottomBorderWithoutBackgroundColor()
+            textField.keyboardType = .numberPad
+            textField.layer.borderColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0).cgColor
+            textField.useBottomBorderWithoutBkgColor()
+            accNum = textField.text!
+            print(accNum)
+            print(textField.text!)
             //add constraints
             textField.translatesAutoresizingMaskIntoConstraints = false
-            
-            textField.topAnchor.constraint(equalTo: label.topAnchor, constant: 40).isActive = true
-            textField.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 20).isActive = true
-            
+            textField.widthAnchor.constraint(greaterThanOrEqualToConstant: 240).isActive = true
+            textField.topAnchor.constraint(equalTo: label.topAnchor, constant: 30).isActive = true
+            textField.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 55).isActive = true
+            textField.rightAnchor.constraint(equalTo: viewForElements.rightAnchor, constant: -20).isActive = true
             
             let addBtn = UIButton()
-            addBtn.backgroundColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0)
+            addBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
             addBtn.layer.cornerRadius = CGFloat(5)
             addBtn.setTitleColor(UIColor.white, for: .normal)
             addBtn.setTitle("Добавить лицевой счёт", for: .normal)
@@ -205,28 +226,19 @@ class AccListTableViewController: UITableViewController {
             addBtn.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 100.0).isActive = true
             addBtn.leadingAnchor.constraint(equalTo: viewForElements.leadingAnchor, constant: 10).isActive = true
             addBtn.trailingAnchor.constraint(equalTo: viewForElements.trailingAnchor, constant: -10).isActive = true
-//            addBtn.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 10).isActive = true
-//            addBtn.rightAnchor.constraint(equalTo: viewForElements.rightAnchor, constant: 10).isActive = true
-//            addBtn.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
             addBtn.layer.cornerRadius = CGFloat(5)
-//            addBtn.widthAnchor.constraint(equalToConstant: 260).isActive = true
             addBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
             
-//            let ticketNumLbl = UILabel(frame: CGRect(x: 10, y: 80, width: 150, height: 30))
-//            ticketNumLbl.numberOfLines = 0
-//            ticketNumLbl.font = UIFont.systemFont(ofSize: 15.0)
-//            ticketNumLbl.textColor = UIColor.gray
-//            ticketNumLbl.text = "Номер заявки"
-//
-//            let dateLbl = UILabel(frame: CGRect(x: self.view.frame.width - 90, y: 80, width: 150, height: 30))
-//            dateLbl.numberOfLines = 0
-//            dateLbl.font = UIFont.systemFont(ofSize: 15.0)
-//            dateLbl.textColor = UIColor.gray
-//            dateLbl.text = "Дата"
-//
-//
-//            headerView.addSubview(ticketNumLbl)
-//            headerView.addSubview(dateLbl)
+            let headerTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+            headerTitle.text = "Мои счета"
+            headerTitle.font = UIFont.systemFont(ofSize: 20)
+            headerView.addSubview(headerTitle)
+            
+            
+            //add constraints
+            headerTitle.translatesAutoresizingMaskIntoConstraints = false
+            headerTitle.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
+            headerTitle.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10).isActive = true
             return headerView
         }
             
@@ -234,10 +246,6 @@ class AccListTableViewController: UITableViewController {
             return UIView()
         }
     }
-    
-    
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
@@ -301,6 +309,8 @@ class AccListTableViewController: UITableViewController {
             }.resume()
         
     }
+    
+    
 
 }
 

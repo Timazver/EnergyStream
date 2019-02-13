@@ -41,7 +41,15 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.accNumSheetArray.count
+        if section == 0 || section == 1 {
+            return 1
+        }
+        else {
+            return self.accNumSheetArray.count
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

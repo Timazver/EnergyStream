@@ -30,12 +30,23 @@ extension UITextField {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
     }
+    //For using in AccNumTableViewController
+    
+    func useBottomBorderWithoutBkgColor() {
+        self.borderStyle = .none
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 0.0
+    }
     
     func useBottomBorderWithoutBackgroundColor() {
         let border = CALayer()
         let borderWidth = CGFloat(1.0)
-        border.borderColor = UIColor.black.cgColor
-        border.frame = CGRect(origin: CGPoint(x: 0,y :self.frame.size.height - borderWidth), size: CGSize(width: self.frame.size.width, height: self.frame.size.height))
+        border.borderColor = UIColor(red:0.37, green:0.49, blue:0.90, alpha:1.0).cgColor
+//        border.frame = CGRect(origin: CGPoint(x: 0,y :self.frame.size.height - borderWidth), size: CGSize(width: self.frame.size.width, height: self.frame.size.height))
         border.borderWidth = borderWidth
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true

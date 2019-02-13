@@ -20,7 +20,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.title = "Начисления"
+        self.title = "Единый платежный документ"
         Requests.getBankList()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         buttonForPay.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
@@ -110,31 +110,31 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             
             let accNumLbl = UILabel(frame: CGRect(x: 10, y: 10, width: 150, height: 30))
             accNumLbl.numberOfLines = 0
-            accNumLbl.font = UIFont.boldSystemFont(ofSize: 17.0)
+            accNumLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
             accNumLbl.textColor = UIColor.black
             accNumLbl.text = "№\(Requests.currentAccoutNumber)"
             
             let fioTitleLbl = UILabel(frame: CGRect(x: 10, y: 40, width: 150, height: 20))
             fioTitleLbl.numberOfLines = 0
             fioTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
-            fioTitleLbl.textColor = UIColor.black
+            fioTitleLbl.textColor = UIColor.lightGray
             fioTitleLbl.text = "ФИО"
             
             let fioDataLbl = UILabel(frame: CGRect(x: 10, y: 55, width: 250, height: 30))
             fioDataLbl.numberOfLines = 0
-            fioDataLbl.font = UIFont.boldSystemFont(ofSize: 19.0)
+            fioDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
             fioDataLbl.textColor = UIColor.black
             fioDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
             
             let addressTitleLbl = UILabel(frame: CGRect(x: 10, y: 85, width: 150, height: 20))
             addressTitleLbl.numberOfLines = 0
             addressTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
-            addressTitleLbl.textColor = UIColor.black
+            addressTitleLbl.textColor = UIColor.lightGray
             addressTitleLbl.text = "Адрес"
             
             let addressDataLbl = UILabel(frame: CGRect(x: 10, y: 100, width: 150, height: 30))
             addressDataLbl.numberOfLines = 0
-            addressDataLbl.font = UIFont.boldSystemFont(ofSize: 19.0)
+            addressDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
             addressDataLbl.textColor = UIColor.black
             addressDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
             
