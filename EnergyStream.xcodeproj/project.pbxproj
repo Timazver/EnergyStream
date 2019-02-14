@@ -34,7 +34,6 @@
 		227120D521FEE92000965502 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227120D421FEE92000965502 /* WebViewController.swift */; };
 		228E155621F7528E0040168A /* AddTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155521F7528E0040168A /* AddTicketViewController.swift */; };
 		228E155821F75BD80040168A /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155721F75BD80040168A /* TicketListViewController.swift */; };
-		228EB02021E45B4F00033803 /* ProfileTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB01F21E45B4F00033803 /* ProfileTabBarViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
 		2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */; };
 		2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */; };
@@ -91,7 +90,6 @@
 		227120D421FEE92000965502 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		228E155521F7528E0040168A /* AddTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTicketViewController.swift; sourceTree = "<group>"; };
 		228E155721F75BD80040168A /* TicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
-		228EB01F21E45B4F00033803 /* ProfileTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormViewController.swift; sourceTree = "<group>"; };
 		2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeUserFormViewController.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 				22494BFA22004C9A00C9BDFB /* Media.xcassets */,
 				B222F1E71DAA30330089573D /* AppDelegate.swift */,
 				B222F1E91DAA30330089573D /* ViewController.swift */,
-				228EB01F21E45B4F00033803 /* ProfileTabBarViewController.swift */,
 				2260827E21E752B100B5D768 /* Requests.swift */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
 				22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */,
@@ -437,7 +434,6 @@
 				224008B921F98D5E00A29222 /* ChangePassViewController.swift in Sources */,
 				B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */,
 				222B8DBE21F82C35001D4B09 /* loadingViewService.swift in Sources */,
-				228EB02021E45B4F00033803 /* ProfileTabBarViewController.swift in Sources */,
 				2227A89521D72ADC00EB411A /* StartViewController.swift in Sources */,
 				228E155621F7528E0040168A /* AddTicketViewController.swift in Sources */,
 				2239AF7E21F70D55009DC5AD /* PaymentDestCell.swift in Sources */,

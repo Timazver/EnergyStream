@@ -50,8 +50,8 @@ class AddUserFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.closeWindow()
-//        self.view.endEditing(true)
+//        self.closeWindow()
+        self.view.endEditing(true)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -112,6 +112,7 @@ class AddUserFormViewController: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно добавлен.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                self.closeWindow()
             }
             else if statusCode == 404 {
                 let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)

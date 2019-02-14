@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
 //        self.profileTableView.reloadData()
-        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Район","Тип счётчика"]
+        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Тип счётчика"]
         if let accNumber = title {
             Requests.getUserEpd(accNumber)
         }
@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 0:
                 cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].accountNumber
+                cell.data.font = UIFont.boldSystemFont(ofSize: 19.0)
                 cell.icon.image = UIImage(named: "accNum")
             case 1:
                 cell.title.text! = profileCellTitles[indexPath.row]
@@ -116,12 +117,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.icon.image = UIImage(named: "phoneNum")
             case 5:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].area.capitalizingFirstLetter()
-                cell.icon.image = UIImage(named: "area")
-            case 6:
-                cell.title.text! = profileCellTitles[indexPath.row]
                 cell.data.text! = Requests.userModel[indexPath.section].SCH_TYPE
                 cell.icon.image = UIImage(named: "schType")
+
+                
             default:
                 break
             }

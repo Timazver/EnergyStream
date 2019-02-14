@@ -8,22 +8,37 @@
 
 import UIKit
 import AKMonthYearPickerView
+import iOSDropDown
 
 class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
 
+    var dateForRequest: String = ""
+//    var btnStatus:Bool = false {
+//        didSet {
+//            print("BtnStatus was changed")
+//            self.sendBtn.isHidden = false
+//            self.dateForRequest = "\(year)\(month)"
+//        }
+//    }
+    private var year: String = ""
+    private var month: String = ""
+    
     @IBOutlet weak var accNumberLbl: UILabel!
     @IBOutlet weak var fioLbl: UILabel!
-    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var numberOfPeople: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var yearTextField: DropDown!
+    @IBOutlet weak var monthTextField: DropDown!
     
-    private var datePicker: UIDatePicker?
-    var dateForRequest: String = ""
+  
+    
     
     @IBAction func openModalAccNumSheetVC() {
+        dateForRequest = "\(year)\(month)"
+        print(dateForRequest)
         if dateForRequest.isEmpty {
             let alert = UIAlertController(title: "Ошибка", message: "Вы не указали дату", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
@@ -42,11 +57,12 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
-        dateTextField.inputView = datePicker
-        datePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
-        
+//        self.sendBtn.isHidden = true
+        monthTextField.optionArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+        yearTextField.optionArray = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024","2025"]
+        monthTextField.optionIds = [01,02,03,04,05,06,07,08,09,10,11,12]
+        yearTextField.isSearchEnable = false
+        monthTextField.isSearchEnable = false
         
         self.sendBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.sendBtn.layer.cornerRadius = 5
@@ -57,33 +73,18 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
         self.addressLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
         self.numberOfPeople.text! = getUserFromAccNumber(Requests.currentAccoutNumber).numberOfPeople
         self.phoneNumber.text! = getUserFromAccNumber(Requests.currentAccoutNumber).phoneNumber
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
+//        yearTextField.addTarget(self, action: #selector(chooseYear), for: .valueChanged )
+//        monthTextField.addTarget(self, action: #selector(chooseYear), for: .touchUpInside)
+        yearTextField.didSelect{(selectedText,index,id) in
+            print(selectedText)
+            self.year = selectedText
+        }
+        monthTextField.didSelect{(selectedText,index,id) in
+            self.month = String(id)
+        }
     }
     
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
     
-    @objc  func dateChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-       
-        dateFormatter.dateFormat = "MM/dd/YYYY"
-        dateTextField.text = dateFormatter.string(from: datePicker.date)
-        self.dateForRequest = dateFormatter.string(from: datePicker.date)
-        view.endEditing(true)
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func getUserFromAccNumber(_ accNumber: String) -> UserCard {
         print(accNumber)

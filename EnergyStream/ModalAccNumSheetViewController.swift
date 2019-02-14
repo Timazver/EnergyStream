@@ -22,7 +22,7 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         loadingViewService.setLoadingScreen(AccNumSheetTableView)
         print(dateForRequest)
-        self.getAccNumSheet(Requests.currentAccoutNumber, self.formatDateForRequest(dateFrom: dateForRequest))
+        self.getAccNumSheet(Requests.currentAccoutNumber, dateForRequest)
         self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
         self.AccNumSheetTableView.separatorStyle = .none
         self.AccNumSheetTableView.layer.cornerRadius = CGFloat(5)
@@ -119,15 +119,15 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
         });
     }
     
-    func formatDateForRequest(dateFrom: String) -> String {
-        if dateFrom != "" {
-            let dateInArr = dateFrom.split(separator: "/")
-            return "\(dateInArr[2])\(dateInArr[0])"
-        }
-        else {
-            return ""
-        }
-    }
+//    func formatDateForRequest(dateFrom: String) -> String {
+//        if dateFrom != "" {
+//            let dateInArr = dateFrom.split(separator: "/")
+//            return "\(dateInArr[2])\(dateInArr[0])"
+//        }
+//        else {
+//            return ""
+//        }
+//    }
     
     func getAccNumSheet(_ accNumber: String, _ date: String) {
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/indication") else {return}
