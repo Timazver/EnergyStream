@@ -28,8 +28,6 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sendBtn: UIButton!
     
     @IBOutlet weak var addressLbl: UILabel!
-    @IBOutlet weak var numberOfPeople: UILabel!
-    @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var yearTextField: DropDown!
     @IBOutlet weak var monthTextField: DropDown!
     
@@ -71,10 +69,6 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
         self.accNumberLbl.text! = "№ \(getUserFromAccNumber(Requests.currentAccoutNumber).accountNumber)"
         self.fioLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
         self.addressLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
-        self.numberOfPeople.text! = getUserFromAccNumber(Requests.currentAccoutNumber).numberOfPeople
-        self.phoneNumber.text! = getUserFromAccNumber(Requests.currentAccoutNumber).phoneNumber
-//        yearTextField.addTarget(self, action: #selector(chooseYear), for: .valueChanged )
-//        monthTextField.addTarget(self, action: #selector(chooseYear), for: .touchUpInside)
         yearTextField.didSelect{(selectedText,index,id) in
             print(selectedText)
             self.year = selectedText

@@ -11,82 +11,253 @@ import Alamofire
 
 
 
-class BankChoosePopUpViewController: UIViewController {
+class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var  kaspiBtn: UIButton!
-    @IBOutlet weak var halykBtn: UIButton!
-    
-    var kaspiImageUrl: URL!
-    var halykImageUrl: URL!
-    var kaspiImage: Data!
-    var halykImage: Data!
+    @IBOutlet weak var bankListTableview: UITableView!
+//    var kaspiImageUrl: URL!
+//    var halykImageUrl: URL!
+//    var kaspiImage: Data!
+//    var halykImage: Data!
     var URLForWebView: String!
+    
+    var bankArray: Array = [Bank]() {
+        didSet {
+            self.bankListTableview.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
-        self.showAnimate()
-        print("bankArray count is \(Requests.bankArray.count)")
-        kaspiImageUrl = URL(string: Requests.bankArray[1].imgUrl)
-        halykImageUrl = URL(string: Requests.bankArray[0].imgUrl)
-        do {
-            try kaspiImage = Data.init(contentsOf: kaspiImageUrl)
-            try halykImage = Data.init(contentsOf: halykImageUrl)
-        }
-        catch {
-            print("error during saving image")
-        }
-        kaspiBtn.setBackgroundImage(UIImage(data:kaspiImage), for: UIControlState.normal)
-        halykBtn.setBackgroundImage(UIImage(data:halykImage), for: UIControlState.normal)
+        self.title = "Онлайн оплата"
+        self.getBankList()
+//        self.bankListTableview.backgroundColor = UIColor.black
+        self.bankListTableview.separatorStyle = .none
+        loadingViewService.setLoadingScreen(bankListTableview)
+        
         // Do any additional setup after loading the view.
     }
-    func showAnimate()
-    {
-        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        self.view.alpha = 0.0;
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.alpha = 1.0
-            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        });
-    }
     
-    func removeAnimate()
-    {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            self.view.alpha = 0.0;
-        }, completion:{(finished : Bool)  in
-            if (finished)
-            {
-                self.view.removeFromSuperview()
-            }
-        });
-    }
 
-    @IBAction func getKaspiPage() {
-        URLForWebView = Requests.bankArray[1].link
-        performSegue(withIdentifier: "toWebView", sender: self)
-    }
-    
-    @IBAction func getHalykPage() {
-        URLForWebView = Requests.bankArray[0].link
-        performSegue(withIdentifier: "toWebView", sender: self)
-    }
+//    func getKaspiPage() {
+//        URLForWebView = self.bankArray[1].link
+//        performSegue(withIdentifier: "toWebView", sender: self)
+//    }
+//
+//    func getHalykPage() {
+//
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newVC = segue.destination as! WebViewController
         newVC.url = self.URLForWebView
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.bankArray.count
     }
-    */
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.removeAnimate()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 1
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section != self.bankArray.count - 1 {
+            return 10
+        }
+        else {
+            return 250
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 190
+        }
+            
+        else {
+            return 10
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        URLForWebView = self.bankArray[indexPath.section].link
+        performSegue(withIdentifier: "toWebView", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BankListCell", for: indexPath) as! BankListCell
+//        cell.layer.shadowOffset = CGSize(width: 0, height: 3)
+//        cell.layer.shadowOpacity = 0.3
+       
+        print("bankArray count is \(self.bankArray.count)")
+        let imageUrl = URL(string: self.bankArray[indexPath.section].imgUrl)
+        var image: Data!
+        do {
+            image = try  Data.init(contentsOf: imageUrl ?? URL(fileURLWithPath: ""))
+        }
+        catch {
+            print("Ошибка загрузки изображения")
+        }
+        
+        cell.bankBtn.setBackgroundImage(UIImage(data:image), for: UIControlState.normal)
+        cell.selectionStyle = .none
+        cell.layer.cornerRadius = 5
+        cell.layer.shadowOpacity = 0.18
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell.layer.shadowRadius = 2
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.masksToBounds = false
+        loadingViewService.removeLoadingScreen()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 190))
+            headerView.backgroundColor = UIColor.groupTableViewBackground
+            self.view.addSubview(headerView)
+            
+            let viewForElements = UIView(frame: CGRect(x: 0, y: 0, width: headerView.frame.width, height: 150))
+            viewForElements.backgroundColor = UIColor.white
+            viewForElements.layer.shadowOpacity = 0.18
+            viewForElements.layer.shadowOffset = CGSize(width: 0, height: 2)
+            viewForElements.layer.shadowRadius = 2
+            viewForElements.layer.shadowColor = UIColor.black.cgColor
+            viewForElements.layer.masksToBounds = false
+            headerView.addSubview(viewForElements)
+            
+            let accNumLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
+            accNumLbl.numberOfLines = 0
+            accNumLbl.font = UIFont.boldSystemFont(ofSize: 21.0)
+            accNumLbl.textColor = UIColor.black
+            accNumLbl.text = "№\(Requests.currentAccoutNumber)"
+            
+            let fioTitleLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
+            fioTitleLbl.numberOfLines = 0
+            fioTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
+            fioTitleLbl.textColor = UIColor.lightGray
+            fioTitleLbl.text = "ФИО"
+            
+            let fioDataLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 30))
+            fioDataLbl.numberOfLines = 0
+            fioDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
+            fioDataLbl.textColor = UIColor.black
+            fioDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
+            
+            let addressTitleLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
+            addressTitleLbl.numberOfLines = 0
+            addressTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
+            addressTitleLbl.textColor = UIColor.lightGray
+            addressTitleLbl.text = "Адрес"
+            
+            let addressDataLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
+            addressDataLbl.numberOfLines = 0
+            addressDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
+            addressDataLbl.textColor = UIColor.black
+            addressDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
+            
+            viewForElements.addSubview(accNumLbl)
+            viewForElements.addSubview(fioTitleLbl)
+            viewForElements.addSubview(fioDataLbl)
+            viewForElements.addSubview(addressTitleLbl)
+            viewForElements.addSubview(addressDataLbl)
+            
+            //add constraints
+            accNumLbl.translatesAutoresizingMaskIntoConstraints = false
+            fioTitleLbl.translatesAutoresizingMaskIntoConstraints = false
+            fioDataLbl.translatesAutoresizingMaskIntoConstraints = false
+            addressTitleLbl.translatesAutoresizingMaskIntoConstraints = false
+            addressDataLbl.translatesAutoresizingMaskIntoConstraints = false
+            
+            accNumLbl.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
+            accNumLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            fioTitleLbl.topAnchor.constraint(equalTo: accNumLbl.topAnchor, constant: 30).isActive = true
+            fioTitleLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            fioDataLbl.topAnchor.constraint(equalTo: fioTitleLbl.topAnchor, constant: 20).isActive = true
+            fioDataLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            addressTitleLbl.topAnchor.constraint(equalTo: fioDataLbl.topAnchor, constant: 40).isActive = true
+            addressTitleLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            addressDataLbl.topAnchor.constraint(equalTo: addressTitleLbl.topAnchor, constant: 20).isActive = true
+            addressDataLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            
+            let accNumImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 15, height: 15))
+            viewForElements.addSubview(accNumImageView)
+            accNumImageView.image = UIImage(named: "accNum")
+            //add contraints
+            accNumImageView.translatesAutoresizingMaskIntoConstraints = false
+            accNumImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
+            accNumImageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
+            
+            let fioImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 15, height: 15))
+            viewForElements.addSubview(fioImageView)
+            fioImageView.image = UIImage(named: "fio")
+            //add contraints
+            fioImageView.translatesAutoresizingMaskIntoConstraints = false
+            fioImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
+            fioImageView.topAnchor.constraint(equalTo: accNumImageView.topAnchor, constant: 45).isActive = true
+            
+            let addressImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 25, height: 25))
+            viewForElements.addSubview(addressImageView)
+            addressImageView.image = UIImage(named: "address")
+            //add contraints
+            addressImageView.translatesAutoresizingMaskIntoConstraints = false
+            addressImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
+            addressImageView.topAnchor.constraint(equalTo: fioImageView.topAnchor, constant: 50).isActive = true
+            return headerView
+        }
+        else {
+            return UIView()
+        }
+    }
+    
+    func getBankList() {
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/bank/list") else {return}
+        let headers = ["Authorization": "Bearer \(Requests.authToken)",
+            "Content-Type": "application/json"]
+        
+        request(url, method: HTTPMethod.get, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+            
+            if (200..<300).contains(statusCode) {
+                let value = responseJSON.result.value
+                print(value)
+                let bankList = value as! [[String:Any]]
+                
+                if self.bankArray.isEmpty {
+                    for bank in bankList {
+                        print(bank)
+                        self.bankArray.append(Bank(bank))
+                    }
+                }
+            }
+            else {
+                print("Error")
+                
+            }
+        }
+    }
+    
+    func getUserFromAccNumber(_ accNumber: String) -> UserCard {
+        print(accNumber)
+        var currentUser = UserCard()
+        for user in Requests.userModel {
+            if user.accountNumber == accNumber {
+                currentUser = user
+            }
+            
+        }
+        return currentUser
+    }
+
 }

@@ -9,24 +9,18 @@
 import UIKit
 class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    
-//    @IBOutlet weak var dropDownTextField: UITextField!
+
     @IBOutlet weak var epdTableView: UITableView!
-//    @IBOutlet weak var menu: UIBarButtonItem!
-//    @IBOutlet weak var buttonForPay: UIButton!
     
-    var sumForPayment: Int = 0
+//    var sumForPayment: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sumForPayment = self.getTotalSum()
+//        self.sumForPayment = 0
+//        self.sumForPayment = self.getTotalSum()
         self.navigationController?.navigationBar.topItem?.title = ""
         self.title = "Единый платежный документ"
-        Requests.getBankList()
         epdTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-//        buttonForPay.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
-//        buttonForPay.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
-//        buttonForPay.layer.cornerRadius = CGFloat(5)
         
         
     }
@@ -48,7 +42,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 40
+            return 50
         case 1:
             return 60
         case 2:
@@ -59,7 +53,6 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let epdCell = tableView.dequeueReusableCell(withIdentifier: "EpdCell", for: indexPath ) as! EpdCell
         var cell = UITableViewCell()
         print("tableView method was called")
         if !Requests.epdModel.isEmpty {
@@ -78,13 +71,23 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             else {
                 let paySumCell = tableView.dequeueReusableCell(withIdentifier: "payInfoCell", for: indexPath) as! payInfoCell
                 paySumCell.paySumTitleLbl.text! = "К оплате:"
-                paySumCell.paySumDataLbl.layer.borderColor = UIColor.white.cgColor
                 paySumCell.paySumDataLbl.text! = "\(Requests.epdModel[indexPath.section].sumForPayment) тг"
-                self.sumForPayment += Int(Requests.epdModel[indexPath.section].sumForPayment)!
+                paySumCell.translatesAutoresizingMaskIntoConstraints = false
+                paySumCell.paySumDataLbl.layer.borderColor = UIColor.red.cgColor
+//                self.sumForPayment += Int(Requests.epdModel[indexPath.section].sumForPayment)!
+                if indexPath.section == Requests.epdModel.count - 1 {
+                    paySumCell.layer.shadowOpacity = 0.18
+                    paySumCell.layer.shadowOffset = CGSize(width: 0, height: 2)
+                    paySumCell.layer.shadowRadius = 2
+                    paySumCell.layer.shadowColor = UIColor.black.cgColor
+                    paySumCell.layer.masksToBounds = false
+                }
                 cell = paySumCell
+                
             }
         }
 //        buttonForPay.setTitle("Оплатить   \(sumForPayment) тг", for: .normal)
+       
         cell.selectionStyle = .none
         return cell
     }
@@ -127,24 +130,41 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             label.text = "Итого к оплате:"
             footerView.addSubview(label)
             
-            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
+            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
             textField.backgroundColor = UIColor(red:0.20, green:0.26, blue:0.46, alpha:1.0)
-            textField.text! = "\(sumForPayment) тг"
+            textField.text! = "\(getTotalSum()) тг"
+            textField.textColor = .white
             footerView.addSubview(textField)
             
+            let payBtn = UIButton()
+            payBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+            payBtn.layer.cornerRadius = CGFloat(5)
+            payBtn.setTitleColor(UIColor.white, for: .normal)
+            payBtn.setTitle("Оплатить", for: .normal)
+            payBtn.layer.borderColor = UIColor(red:0.55, green:0.65, blue:1.00, alpha:1.0).cgColor
+            payBtn.addTarget(self, action: #selector(self.showPopUp(sender:)), for:.touchUpInside)
+            footerView.addSubview(payBtn)
+            
             //add constraints
+            
+            payBtn.translatesAutoresizingMaskIntoConstraints = false
+            payBtn.centerXAnchor.constraint(equalTo: footerView.centerXAnchor, constant: 0).isActive = true
+            payBtn.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 100).isActive = true
+            payBtn.widthAnchor.constraint(equalToConstant: 240).isActive = true
+            payBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
             
             label.translatesAutoresizingMaskIntoConstraints = false
             textField.translatesAutoresizingMaskIntoConstraints = false
             label.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 40).isActive = true
             label.leftAnchor.constraint(equalTo: footerView.leftAnchor, constant: 20).isActive = true
-            label.widthAnchor.constraint(equalToConstant: 150)
-            label.heightAnchor.constraint(equalToConstant: 40)
+            label.widthAnchor.constraint(equalToConstant: 150).isActive = true
+            label.heightAnchor.constraint(equalToConstant: 40).isActive = true
             
-            label.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 20).isActive = true
-            label.rightAnchor.constraint(equalTo: footerView.rightAnchor, constant: -20).isActive = true
-            label.widthAnchor.constraint(equalToConstant: 150)
-            label.heightAnchor.constraint(equalToConstant: 40)
+            textField.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 40).isActive = true
+            textField.rightAnchor.constraint(equalTo: footerView.rightAnchor, constant: -20).isActive = true
+            textField.widthAnchor.constraint(greaterThanOrEqualToConstant: 90).isActive = true
+            textField.textAlignment = .center
+            textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
             
             return footerView
         }
@@ -159,6 +179,11 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             
             let viewForElements = UIView(frame: CGRect(x: 0, y: 0, width: headerView.frame.width, height: 150))
             viewForElements.backgroundColor = UIColor.white
+            viewForElements.layer.shadowOpacity = 0.18
+            viewForElements.layer.shadowOffset = CGSize(width: 0, height: 2)
+            viewForElements.layer.shadowRadius = 2
+            viewForElements.layer.shadowColor = UIColor.black.cgColor
+            viewForElements.layer.masksToBounds = false
             headerView.addSubview(viewForElements)
             
             //add constraints
@@ -283,16 +308,10 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     
     @IBAction func showPopUp(sender: AnyObject) {
         print("showPopUp method was called")
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BankChoosePopUpViewController") as! BankChoosePopUpViewController
-        self.addChildViewController(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParentViewController: self)
+        performSegue(withIdentifier: "toBankChooseVC", sender: self)
     }
     
-    
-    
-    
+
     func getUserFromAccNumber(_ accNumber: String) -> UserCard {
         print(accNumber)
         var currentUser = UserCard()

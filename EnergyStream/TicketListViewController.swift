@@ -66,6 +66,12 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.ticketNumber.text = "№ \(self.ticketListArr[indexPath.section].ticketNumber)"
             cell.ticketTitle.text = self.ticketListArr[indexPath.section].ticketTitle
             cell.ticketDate.text = self.ticketListArr[indexPath.section].date
+            cell.layer.cornerRadius = 5
+            cell.layer.shadowOpacity = 0.18
+            cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+            cell.layer.shadowRadius = 2
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.masksToBounds = false
             loadingViewService.removeLoadingScreen()
             print(self.ticketListArr[indexPath.section].date)
         }
@@ -113,9 +119,9 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
             headerView.backgroundColor = .clear
             self.view.addSubview(headerView)
             
-            let viewForElements = UIView(frame: CGRect(x: 0, y: 0, width: headerView.frame.width - 20, height: 150))
-            viewForElements.backgroundColor = UIColor.white
-            headerView.addSubview(viewForElements)
+//            let viewForElements = UIView(frame: CGRect(x: 0, y: 0, width: headerView.frame.width - 20, height: 150))
+//            viewForElements.backgroundColor = UIColor.white
+//            headerView.addSubview(viewForElements)
             
             //add constraints
 //            viewForElements.translatesAutoresizingMaskIntoConstraints = false
@@ -124,31 +130,90 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
 //            viewForElements.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: -10).isActive = true
 //            viewForElements.topAnchor.constraint(equalTo: headerView.topAnchor, constant: -15).isActive = true
             
-            let accNumLbl = UILabel(frame: CGRect(x: 10, y: 10, width: 150, height: 30))
+//            let accNumLbl = UILabel(frame: CGRect(x: 10, y: 10, width: 150, height: 30))
+//            accNumLbl.numberOfLines = 0
+//            accNumLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
+//            accNumLbl.textColor = UIColor.black
+//            accNumLbl.text = "№\(Requests.currentAccoutNumber)"
+//
+//            let fioTitleLbl = UILabel(frame: CGRect(x: 10, y: 40, width: 150, height: 20))
+//            fioTitleLbl.numberOfLines = 0
+//            fioTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
+//            fioTitleLbl.textColor = UIColor.lightGray
+//            fioTitleLbl.text = "ФИО"
+//
+//            let fioDataLbl = UILabel(frame: CGRect(x: 10, y: 55, width: 250, height: 30))
+//            fioDataLbl.numberOfLines = 0
+//            fioDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
+//            fioDataLbl.textColor = UIColor.black
+//            fioDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
+//
+//            let addressTitleLbl = UILabel(frame: CGRect(x: 10, y: 85, width: 150, height: 20))
+//            addressTitleLbl.numberOfLines = 0
+//            addressTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
+//            addressTitleLbl.textColor = UIColor.lightGray
+//            addressTitleLbl.text = "Адрес"
+//
+//            let addressDataLbl = UILabel(frame: CGRect(x: 10, y: 100, width: 150, height: 30))
+//            addressDataLbl.numberOfLines = 0
+//            addressDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
+//            addressDataLbl.textColor = UIColor.black
+//            addressDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
+//
+//            viewForElements.addSubview(accNumLbl)
+//            viewForElements.addSubview(fioTitleLbl)
+//            viewForElements.addSubview(fioDataLbl)
+//            viewForElements.addSubview(addressTitleLbl)
+//            viewForElements.addSubview(addressDataLbl)
+//
+//            //add constraints
+//            accNumLbl.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
+//            fioTitleLbl.topAnchor.constraint(equalTo: accNumLbl.topAnchor, constant: 10).isActive = true
+//            fioDataLbl.topAnchor.constraint(equalTo: fioTitleLbl.topAnchor, constant: 10).isActive = true
+//            addressTitleLbl.topAnchor.constraint(equalTo: fioDataLbl.topAnchor, constant: 10).isActive = true
+//            addressDataLbl.topAnchor.constraint(equalTo: addressTitleLbl.topAnchor, constant: 10).isActive = true
+            
+            let viewForElements = UIView(frame: CGRect(x: 0, y: 0, width: headerView.frame.width - 20, height: 150))
+            viewForElements.backgroundColor = UIColor.white
+            viewForElements.layer.shadowOpacity = 0.18
+            viewForElements.layer.shadowOffset = CGSize(width: 0, height: 2)
+            viewForElements.layer.shadowRadius = 2
+            viewForElements.layer.shadowColor = UIColor.black.cgColor
+            viewForElements.layer.masksToBounds = false
+            headerView.addSubview(viewForElements)
+            
+            //add constraints
+            //            viewForElements.translatesAutoresizingMaskIntoConstraints = false
+            //            viewForElements.widthAnchor.constraint(greaterThanOrEqualToConstant: headerView.frame.width - 20).isActive = true
+            //            viewForElements.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 10).isActive = true
+            //            viewForElements.rightAnchor.constraint(equalTo: headerView.rightAnchor, constant: -10).isActive = true
+            //            viewForElements.topAnchor.constraint(equalTo: headerView.topAnchor, constant: -15).isActive = true
+            
+            let accNumLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
             accNumLbl.numberOfLines = 0
-            accNumLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
+            accNumLbl.font = UIFont.boldSystemFont(ofSize: 21.0)
             accNumLbl.textColor = UIColor.black
             accNumLbl.text = "№\(Requests.currentAccoutNumber)"
             
-            let fioTitleLbl = UILabel(frame: CGRect(x: 10, y: 40, width: 150, height: 20))
+            let fioTitleLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
             fioTitleLbl.numberOfLines = 0
             fioTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
             fioTitleLbl.textColor = UIColor.lightGray
             fioTitleLbl.text = "ФИО"
             
-            let fioDataLbl = UILabel(frame: CGRect(x: 10, y: 55, width: 250, height: 30))
+            let fioDataLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 30))
             fioDataLbl.numberOfLines = 0
             fioDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
             fioDataLbl.textColor = UIColor.black
             fioDataLbl.text = self.getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
             
-            let addressTitleLbl = UILabel(frame: CGRect(x: 10, y: 85, width: 150, height: 20))
+            let addressTitleLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 20))
             addressTitleLbl.numberOfLines = 0
             addressTitleLbl.font = UIFont.systemFont(ofSize: 13.0)
             addressTitleLbl.textColor = UIColor.lightGray
             addressTitleLbl.text = "Адрес"
             
-            let addressDataLbl = UILabel(frame: CGRect(x: 10, y: 100, width: 150, height: 30))
+            let addressDataLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
             addressDataLbl.numberOfLines = 0
             addressDataLbl.font = UIFont(name: "PT Sans Caption", size: 19.0)
             addressDataLbl.textColor = UIColor.black
@@ -161,11 +226,51 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
             viewForElements.addSubview(addressDataLbl)
             
             //add constraints
+            accNumLbl.translatesAutoresizingMaskIntoConstraints = false
+            fioTitleLbl.translatesAutoresizingMaskIntoConstraints = false
+            fioDataLbl.translatesAutoresizingMaskIntoConstraints = false
+            addressTitleLbl.translatesAutoresizingMaskIntoConstraints = false
+            addressDataLbl.translatesAutoresizingMaskIntoConstraints = false
+            
             accNumLbl.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
-            fioTitleLbl.topAnchor.constraint(equalTo: accNumLbl.topAnchor, constant: 10).isActive = true
-            fioDataLbl.topAnchor.constraint(equalTo: fioTitleLbl.topAnchor, constant: 10).isActive = true
-            addressTitleLbl.topAnchor.constraint(equalTo: fioDataLbl.topAnchor, constant: 10).isActive = true
-            addressDataLbl.topAnchor.constraint(equalTo: addressTitleLbl.topAnchor, constant: 10).isActive = true
+            accNumLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            fioTitleLbl.topAnchor.constraint(equalTo: accNumLbl.topAnchor, constant: 30).isActive = true
+            fioTitleLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            fioDataLbl.topAnchor.constraint(equalTo: fioTitleLbl.topAnchor, constant: 20).isActive = true
+            fioDataLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            addressTitleLbl.topAnchor.constraint(equalTo: fioDataLbl.topAnchor, constant: 40).isActive = true
+            addressTitleLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            addressDataLbl.topAnchor.constraint(equalTo: addressTitleLbl.topAnchor, constant: 20).isActive = true
+            addressDataLbl.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 50).isActive = true
+            
+            
+            let accNumImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 15, height: 15))
+            viewForElements.addSubview(accNumImageView)
+            accNumImageView.image = UIImage(named: "accNum")
+            //add contraints
+            accNumImageView.translatesAutoresizingMaskIntoConstraints = false
+            accNumImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
+            accNumImageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
+            
+            let fioImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 15, height: 15))
+            viewForElements.addSubview(fioImageView)
+            fioImageView.image = UIImage(named: "fio")
+            //add contraints
+            fioImageView.translatesAutoresizingMaskIntoConstraints = false
+            fioImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
+            fioImageView.topAnchor.constraint(equalTo: accNumImageView.topAnchor, constant: 45).isActive = true
+            
+            let addressImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 25, height: 25))
+            viewForElements.addSubview(addressImageView)
+            addressImageView.image = UIImage(named: "address")
+            //add contraints
+            addressImageView.translatesAutoresizingMaskIntoConstraints = false
+            addressImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
+            addressImageView.topAnchor.constraint(equalTo: fioImageView.topAnchor, constant: 50).isActive = true
             
             let addBtn = UIButton()
             addBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)

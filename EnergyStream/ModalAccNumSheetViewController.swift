@@ -72,7 +72,12 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
                 whiteTC.title.text = self.accNumSheetArray[indexPath.row].dataName
                 if self.accNumSheetArray[indexPath.row].dataName == "ФИО абонента" || self.accNumSheetArray[indexPath.row].dataName == "Район" || self.accNumSheetArray[indexPath.row].dataName == "Адрес" {
                     whiteTC.data.text = self.accNumSheetArray[indexPath.row].dataValue.capitalizingFirstLetter()
-                } else {
+                }
+                else if self.accNumSheetArray[indexPath.row].dataName == "Номер телефона абонента" {
+                    whiteTC.data.text = self.accNumSheetArray[indexPath.row].dataValue.format("8 (NNN) NNN NN NN", oldString: self.accNumSheetArray[indexPath.row].dataValue)
+                    
+                }
+                else {
                 whiteTC.data.text = self.accNumSheetArray[indexPath.row].dataValue
                 }
                 print(self.accNumSheetArray[indexPath.row].dataValue)

@@ -50,13 +50,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
 //        self.profileTableView.reloadData()
-        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер тел","Тип счётчика"]
+        self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер телефона","Тип счётчика"]
         if let accNumber = title {
             Requests.getUserEpd(accNumber)
         }
-        //
-        //
-        //            self.title = "Информация о счете"
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -64,27 +61,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    
-    
-    
-    
-    
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        return Requests.listAccountNumbers.count
-    //    }
-    // Cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileCellTitles.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row == profileCellTitles.count - 1 {
-//            return 200.0
-//        }
-//        else {
             return 60.0
-//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,7 +95,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.icon.image = UIImage(named: "address")
             case 4:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].phoneNumber
+                cell.data.text! = Requests.userModel[indexPath.section].phoneNumber.format("8 (NNN) NNN NN NN", oldString: Requests.userModel[indexPath.section].phoneNumber)
                 cell.icon.image = UIImage(named: "phoneNum")
             case 5:
                 cell.title.text! = profileCellTitles[indexPath.row]
@@ -124,6 +106,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             default:
                 break
             }
+            cell.layer.cornerRadius = 5
+            cell.layer.shadowOpacity = 0.18
+            cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+            cell.layer.shadowRadius = 2
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.masksToBounds = false
             cell.tableBottomBorder()
             loadingViewService.removeLoadingScreen()
         }

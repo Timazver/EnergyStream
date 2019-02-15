@@ -119,6 +119,13 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             cell.fullName.lineBreakMode = .byWordWrapping
             cell.fullName.text! = self.listAccountNumbers[indexPath.section].FIO.capitalizingFirstLetter()
             cell.icon.image = UIImage(named: "numOfPeople")
+            cell.layer.cornerRadius = 5
+            cell.layer.shadowOpacity = 0.18
+            cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+            cell.layer.shadowRadius = 2
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.masksToBounds = false
+//            cell.layer.masksToBounds = true
             loadingViewService.removeLoadingScreen()
         }
         else {
@@ -148,10 +155,10 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Requests.currentAccoutNumber = self.listAccountNumbers[indexPath.section].accountNumber
         performSegue(withIdentifier: "toProfileView", sender: self)
-        fileName = self.listAccountNumbers[indexPath.section].accountNumber
-        print(fileName)
-        Requests.currentAccoutNumber = fileName
+        
+        
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -171,6 +178,11 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             
             let viewForElements = UIView(frame: CGRect(x: 10, y: 10, width: headerView.frame.width - 20, height: 170))
             viewForElements.backgroundColor = UIColor.white
+            viewForElements.layer.shadowOpacity = 0.18
+            viewForElements.layer.shadowOffset = CGSize(width: 0, height: 2)
+            viewForElements.layer.shadowRadius = 2
+            viewForElements.layer.shadowColor = UIColor.black.cgColor
+            viewForElements.layer.masksToBounds = false
             headerView.addSubview(viewForElements)
             
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))

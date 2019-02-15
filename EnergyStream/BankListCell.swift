@@ -1,19 +1,16 @@
 //
-//  fsfsdf.swift
-//  memuDemo
+//  BankListCell.swift
+//  EnergyStream
 //
-//  Created by Timur on 1/17/19.
+//  Created by Timur on 2/15/19.
 //  Copyright © 2019 Parth Changela. All rights reserved.
 //
 
 import UIKit
 
-class payInfoCell: UITableViewCell {
-
-    @IBOutlet weak var paySumTitleLbl: UILabel!
-    @IBOutlet weak var paySumDataLbl: UITextField!
+class BankListCell: UITableViewCell {
     
-    
+    @IBOutlet weak var bankBtn : UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,6 +18,7 @@ class payInfoCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
 

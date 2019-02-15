@@ -43,8 +43,8 @@ class AddTicketViewController: UIViewController, UITextViewDelegate {
     @IBAction func sendTicket() {
         let title = self.msgSubject.text
         let msg = self.msgTtext.text
-
-        let parameters = ["title":title,"msg":msg,"accountNumber":Requests.currentAccoutNumber]
+        let files: Array = [String]()
+        let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber,"files":files] as [String : Any]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
         
@@ -79,12 +79,21 @@ class AddTicketViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        msgTtext.text = "Введите сообщение"
+        msgTtext.text = "Введите текст заявки"
         msgTtext.textColor = UIColor.lightGray
         
         self.title = "Создание обращения в тех. службу"
         self.msgSubject.backgroundColor = .clear
         self.msgTtext.backgroundColor = .clear
+        
+        self.msgSubject.layer.borderColor = UIColor.lightGray.cgColor
+        self.msgSubject.layer.borderWidth = 0.4
+        self.msgSubject.layer.cornerRadius = CGFloat(5)
+        
+        self.msgTtext.layer.borderColor = UIColor.lightGray.cgColor
+        self.msgTtext.layer.borderWidth = 0.4
+        self.msgTtext.layer.cornerRadius = CGFloat(5)
+        self.msgSubject.useBottomBorderWithoutBackgroundColor()
 //        self.msgSubject.useBottomBorderWithoutBackgroundColor()
 //        self.msgTtext.useBottomBorderWithoutBackgroundColor()
         
