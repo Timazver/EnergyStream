@@ -17,7 +17,6 @@
 		2239AF7E21F70D55009DC5AD /* PaymentDestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */; };
 		2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239AF7F21F73490009DC5AD /* ProfileViewController.swift */; };
 		2239C9BA21F30924003515D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239C9B921F30924003515D8 /* Extensions.swift */; };
-		2240080121FAB83F00E18474 /* ConnectSocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */; };
 		2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240080421FB16F600E18474 /* SocketIOManager.swift */; };
 		224008B321F9844D00A29222 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B221F9844D00A29222 /* TicketViewController.swift */; };
 		224008B521F98C2A00A29222 /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B421F98C2A00A29222 /* ResetPassViewController.swift */; };
@@ -36,7 +35,6 @@
 		228E155621F7528E0040168A /* AddTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155521F7528E0040168A /* AddTicketViewController.swift */; };
 		228E155821F75BD80040168A /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155721F75BD80040168A /* TicketListViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
-		2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */; };
 		2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */; };
 		22CA1B852207F80600995A73 /* AccNumSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */; };
 		22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */; };
@@ -64,7 +62,6 @@
 		2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDestCell.swift; sourceTree = "<group>"; };
 		2239AF7F21F73490009DC5AD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2239C9B921F30924003515D8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectSocketViewController.swift; sourceTree = "<group>"; };
 		2240080421FB16F600E18474 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		224008B221F9844D00A29222 /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		224008B421F98C2A00A29222 /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 		228E155521F7528E0040168A /* AddTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTicketViewController.swift; sourceTree = "<group>"; };
 		228E155721F75BD80040168A /* TicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
-		2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserFormViewController.swift; sourceTree = "<group>"; };
 		2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeUserFormViewController.swift; sourceTree = "<group>"; };
 		22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccNumSheetViewController.swift; sourceTree = "<group>"; };
 		22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAccNumSheetViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +128,17 @@
 		22399BEF220938A10079A6D3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				22636B60221671A9005D4436 /* BankListCell.swift */,
+				2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */,
+				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
+				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
+				22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */,
+				22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */,
+				22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */,
+				222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */,
+				226464F921F053940003C9C2 /* payInfoCell.swift */,
+				B222F21B1DAA36070089573D /* MenuCell.swift */,
+				2260828021E76B8B00B5D768 /* EpdCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -139,6 +146,8 @@
 		22399BF0220938D90079A6D3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2240080421FB16F600E18474 /* SocketIOManager.swift */,
+				222B8DBD21F82C35001D4B09 /* loadingViewService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -156,6 +165,42 @@
 				22570BA3220198B40072A06C /* PTS76F.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		2261575C221C1C50002BEEB8 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				221000B7220AA9E9008C7202 /* Constants.swift */,
+				2239C9B921F30924003515D8 /* Extensions.swift */,
+				2260827E21E752B100B5D768 /* Requests.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		2261575D221C1C6B002BEEB8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */,
+				22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */,
+				22494BE722003D0600C9BDFB /* MainViewController.swift */,
+				227120D421FEE92000965502 /* WebViewController.swift */,
+				227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */,
+				224008B421F98C2A00A29222 /* ResetPassViewController.swift */,
+				224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */,
+				224008B821F98D5E00A29222 /* ChangePassViewController.swift */,
+				224008B221F9844D00A29222 /* TicketViewController.swift */,
+				228E155721F75BD80040168A /* TicketListViewController.swift */,
+				228E155521F7528E0040168A /* AddTicketViewController.swift */,
+				2239AF7F21F73490009DC5AD /* ProfileViewController.swift */,
+				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
+				226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */,
+				2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */,
+				2227A89421D72ADC00EB411A /* StartViewController.swift */,
+				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
+				B222F21D1DAA46600089573D /* EpdViewController.swift */,
+				B222F2191DAA354D0089573D /* menuViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		681713C20F6FC02CA5A0293B /* Pods */ = {
@@ -199,53 +244,18 @@
 		B222F1E61DAA30330089573D /* EnergyStream */ = {
 			isa = PBXGroup;
 			children = (
+				2261575D221C1C6B002BEEB8 /* Controller */,
+				2261575C221C1C50002BEEB8 /* Entities */,
 				22399BF0220938D90079A6D3 /* Services */,
 				22399BEF220938A10079A6D3 /* Cells */,
-				226464FD21F09B1A0003C9C2 /* AccListCell.swift */,
-				228EB02121E4A3B000033803 /* UserProfileCell.swift */,
-				22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */,
-				22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */,
-				22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */,
-				222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */,
-				226464F921F053940003C9C2 /* payInfoCell.swift */,
-				B222F21B1DAA36070089573D /* MenuCell.swift */,
-				2260828021E76B8B00B5D768 /* EpdCell.swift */,
-				2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */,
-				2240080021FAB83F00E18474 /* ConnectSocketViewController.swift */,
-				2240080421FB16F600E18474 /* SocketIOManager.swift */,
-				222B8DBD21F82C35001D4B09 /* loadingViewService.swift */,
-				2239C9B921F30924003515D8 /* Extensions.swift */,
 				22570B9E220198850072A06C /* fonts */,
 				224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */,
 				22494BFA22004C9A00C9BDFB /* Media.xcassets */,
 				B222F1E71DAA30330089573D /* AppDelegate.swift */,
 				B222F1E91DAA30330089573D /* ViewController.swift */,
-				2260827E21E752B100B5D768 /* Requests.swift */,
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
-				22636B60221671A9005D4436 /* BankListCell.swift */,
-				22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */,
-				22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */,
-				22494BE722003D0600C9BDFB /* MainViewController.swift */,
-				227120D421FEE92000965502 /* WebViewController.swift */,
-				227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */,
-				221000B7220AA9E9008C7202 /* Constants.swift */,
-				224008B421F98C2A00A29222 /* ResetPassViewController.swift */,
-				224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */,
-				224008B821F98D5E00A29222 /* ChangePassViewController.swift */,
-				224008B221F9844D00A29222 /* TicketViewController.swift */,
-				228E155721F75BD80040168A /* TicketListViewController.swift */,
-				228E155521F7528E0040168A /* AddTicketViewController.swift */,
-				2239AF7F21F73490009DC5AD /* ProfileViewController.swift */,
-				2290B93921F5BA32004DE3EA /* AddUserFormViewController.swift */,
-				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
-				226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */,
-				2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */,
-				2227A89421D72ADC00EB411A /* StartViewController.swift */,
-				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
-				B222F21D1DAA46600089573D /* EpdViewController.swift */,
 				B222F1F01DAA30330089573D /* LaunchScreen.storyboard */,
 				B222F1F31DAA30330089573D /* Info.plist */,
-				B222F2191DAA354D0089573D /* menuViewController.swift */,
 			);
 			path = EnergyStream;
 			sourceTree = "<group>";
@@ -430,7 +440,6 @@
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
 				2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */,
 				22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */,
-				2240080121FAB83F00E18474 /* ConnectSocketViewController.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
 				22636B61221671AA005D4436 /* BankListCell.swift in Sources */,
 				228E155821F75BD80040168A /* TicketListViewController.swift in Sources */,
@@ -450,7 +459,6 @@
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,
 				2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */,
 				227120D321FEC5B100965502 /* BankChoosePopUpViewController.swift in Sources */,
-				2290B93A21F5BA32004DE3EA /* AddUserFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.topItem!.title = "Готово"
+        self.navigationController!.navigationBar.backItem?.title = ""
         let request = URLRequest(url: URL(string: url)!)
         webView.load(request)
         // Do any additional setup after loading the view.

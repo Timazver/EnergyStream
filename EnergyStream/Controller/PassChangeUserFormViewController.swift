@@ -32,9 +32,6 @@ class PassChangeUserFormViewController: UIViewController {
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)
         }
-        
-        
-        
         let parameters = ["oldPassword":oldPassword,"newPassword":newPassword,"repeatedPassword":repeatedPassword]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]

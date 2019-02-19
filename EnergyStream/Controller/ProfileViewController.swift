@@ -10,21 +10,30 @@ import UIKit
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
 
-    var userArray: Array = [String]()
     var profileCellTitles: Array = [String]()
-    var ticketListArray = [Ticket]()
+    var userModel: Array = [UserCard]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.profileTableView.reloadData()
+            }
+            
+        }
+    }
     
     @IBOutlet weak var epdButton: UIButton!
     @IBOutlet weak var ticketsBtn: UIButton!
     @IBOutlet weak var accNumBtn: UIButton!
-    
-    //    var sections = sectionsData
+    public var accNumber: String = ""
     
     @IBOutlet weak var profileTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Лицевой счёт"
-        self.navigationController?.navigationBar.topItem?.title = ""
+        Requests.currentAccoutNumber = self.accNumber
+        loadingViewService.setLoadingScreen(profileTableView)
+        self.getUserInfo(userAccNumber: self.accNumber)
+        self.navigationController!.navigationBar.backItem?.title = "Назад"
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.epdButton.backgroundColor = UIColor(red:0.77, green:0.90, blue:0.97, alpha:1.0)
         self.epdButton.layer.cornerRadius = 5
@@ -42,27 +51,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.accNumBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
         
         
-        loadingViewService.setLoadingScreen(profileTableView)
-        Requests.getUserInfo(userAccNumber: Requests.currentAccoutNumber)
-        
-//        self.getTicketList()
-        
-        
-        
-//        self.profileTableView.reloadData()
+
         self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер телефона","Тип счётчика"]
-        if let accNumber = title {
-            Requests.getUserEpd(accNumber)
-        }
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileCellTitles.count
+        if self.userModel.isEmpty {
+            return 0
+        }
+        else {
+//            return self.userModel[0].getPropertyCount()
+            return self.profileCellTitles.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,56 +72,51 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        print("UserModel's count is \(self.userModel.count)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileCell", for: indexPath ) as! UserProfileCell
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
-        if !Requests.userModel.isEmpty {
+        if !self.userModel.isEmpty {
             switch indexPath.row {
             case 0:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].accountNumber
+                cell.data.text! = self.userModel[indexPath.section].accountNumber
                 cell.data.font = UIFont.boldSystemFont(ofSize: 19.0)
                 cell.icon.image = UIImage(named: "accNum")
             case 1:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].fio.capitalizingFirstLetter()
+                cell.data.text! = self.userModel[indexPath.section].fio.capitalizingFirstLetter()
                 cell.icon.image = UIImage(named: "fio")
             case 2:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].numberOfPeople
+                cell.data.text! = self.userModel[indexPath.section].numberOfPeople
                 cell.icon.image = UIImage(named: "numOfPeople")
             case 3:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].address.capitalizingFirstLetter()
+                cell.data.text! = self.userModel[indexPath.section].address.capitalizingFirstLetter()
                 cell.icon.image = UIImage(named: "address")
             case 4:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].phoneNumber.format("8 (NNN) NNN NN NN", oldString: Requests.userModel[indexPath.section].phoneNumber)
+                cell.data.text! = self.userModel[indexPath.section].phoneNumber.format("N (NNN) NNN NN NN", oldString: self.userModel[indexPath.section].phoneNumber)
                 cell.icon.image = UIImage(named: "phoneNum")
             case 5:
                 cell.title.text! = profileCellTitles[indexPath.row]
-                cell.data.text! = Requests.userModel[indexPath.section].SCH_TYPE
+                cell.data.text! = self.userModel[indexPath.section].SCH_TYPE
                 cell.icon.image = UIImage(named: "schType")
-
-                
+   
             default:
                 break
             }
-            cell.layer.cornerRadius = 5
-            cell.layer.shadowOpacity = 0.18
-            cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-            cell.layer.shadowRadius = 2
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.masksToBounds = false
+            Requests.currentUser = self.userModel[indexPath.section]
+        }
+        else {
+            DispatchQueue.main.async {
+                self.profileTableView.reloadData()
+            }
+        }
+            
             cell.tableBottomBorder()
             loadingViewService.removeLoadingScreen()
-        }
-            
-            
-        else {
-            profileTableView.reloadData()
-        }
         cell.selectionStyle = .none
         return cell
     }
@@ -135,6 +132,54 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func segueToAccNumSheetVC(sender: Any) {
         self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
+    }
+    
+    func getUserInfo(userAccNumber: String) {
+        
+        guard let url = URL(string:"\(Constants.URLForApi ?? "")/api/user/card?accountNumber=\(self.accNumber)") else {return}
+  
+        var requestForUserInfo = URLRequest(url:url)
+        requestForUserInfo.httpMethod = "GET"
+        requestForUserInfo.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+        let session = URLSession.shared
+        session.dataTask(with: requestForUserInfo) {
+            (data,response,error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                guard let userData = json as? [String:Any] else {return}
+                
+                guard let user = userData["user"] as? [String:Any] else {
+                    print("User is empty")
+                    return}
+                
+                if self.userModel.isEmpty {
+                    self.userModel.append(UserCard(user))
+                }
+                else {
+                    self.userModel.removeAll()
+                }
+                print(self.userModel)
+                
+            }catch {
+                print(error)
+            }
+            
+            }.resume()
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
     
 }

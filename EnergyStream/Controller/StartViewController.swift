@@ -101,7 +101,11 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/login") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { responseJSON in
-            guard let statusCode = responseJSON.response?.statusCode else { return }
+            guard let statusCode = responseJSON.response?.statusCode else {
+                let alert = UIAlertController(title: "", message: "Ошибка соединения с сервером", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return }
             print("statusCode: ", statusCode)
             print(login)
             if (200..<300).contains(statusCode) {

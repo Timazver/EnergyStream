@@ -15,6 +15,9 @@ class ResetPassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var getSmsBtn: UIButton!
     
+    @IBAction func closeWindow(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func getSmsCode() {
         let parameters = ["phoneNumber":phoneNumber.text!.removingWhitespaces()]

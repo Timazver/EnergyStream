@@ -55,20 +55,21 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Отчёт по ЛС"
 //        self.sendBtn.isHidden = true
         monthTextField.optionArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
         yearTextField.optionArray = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024","2025"]
         monthTextField.optionIds = [01,02,03,04,05,06,07,08,09,10,11,12]
         yearTextField.isSearchEnable = false
         monthTextField.isSearchEnable = false
-        
+        self.navigationController!.navigationBar.backItem?.title = ""
         self.sendBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.sendBtn.layer.cornerRadius = 5
         self.sendBtn.layer.borderWidth = 1
         self.sendBtn.layer.borderColor = UIColor(red:0.33, green:0.88, blue:0.72, alpha:1.0).cgColor
-        self.accNumberLbl.text! = "№ \(getUserFromAccNumber(Requests.currentAccoutNumber).accountNumber)"
-        self.fioLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).fio.capitalizingFirstLetter()
-        self.addressLbl.text! = getUserFromAccNumber(Requests.currentAccoutNumber).address.capitalizingFirstLetter()
+        self.accNumberLbl.text! = "№ \(Requests.currentUser.accountNumber)"
+        self.fioLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
+        self.addressLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
         yearTextField.didSelect{(selectedText,index,id) in
             print(selectedText)
             self.year = selectedText
@@ -80,15 +81,5 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    func getUserFromAccNumber(_ accNumber: String) -> UserCard {
-        print(accNumber)
-        var currentUser = UserCard()
-        for user in Requests.userModel {
-            if user.accountNumber == accNumber {
-                currentUser = user
-            }
-            
-        }
-        return currentUser
-    }
+    
 }
