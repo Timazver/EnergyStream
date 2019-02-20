@@ -35,6 +35,12 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+        try Locksmith.deleteDataForUserAccount(userAccount: "energyStream")
+        }
+        catch {
+            
+        }
         loadingViewService.setLoadingScreen(accListTableView)
         self.accListTableView.tableHeaderView = createHeaderView()
         self.getListAccountNumbers()
@@ -42,7 +48,6 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
-        print(dic)
         self.title = "Мои счета"
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
         self.navigationItem.rightBarButtonItem = contextMenuBtn
@@ -77,18 +82,6 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion:nil)
     }
 
-//    @objc func addAcc(sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let AddUserFormVC = storyboard.instantiateViewController(withIdentifier: "AddUserFormViewController") as! AddUserFormViewController
-//        
-//        self.addChildViewController(AddUserFormVC)
-//        AddUserFormVC.view.frame = self.view.frame
-//        self.view.addSubview(AddUserFormVC.view)
-//        AddUserFormVC.accountNUmber.text!  = self.textField.text!
-//        AddUserFormVC.didMove(toParentViewController: self)
-//
-//    }
-//
     func changePass() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PassChangeUserFormViewController") as! PassChangeUserFormViewController
@@ -330,5 +323,26 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         return headerView
     }
 
+    func deleteRequest(accountNumber: String) {
+        let parameters = ["accountNumber":accountNumber]
+        let headers = ["Authorization":"Bearer \(Requests.authToken)","Content-Type":"application/json"]
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/delete") else {return}
+        
+        request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+            if (200..<300).contains(statusCode) {
+                let value = responseJSON.result.value
+            }
+        }
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        self.deleteRequest(accountNumber: self.listAccountNumbers[indexPath.section].accountNumber)
+        self.listAccountNumbers.remove(at: indexPath.section)
+        let indexSet = NSMutableIndexSet()
+        indexSet.add(indexPath.section)
+        tableView.deleteSections(indexSet as! IndexSet, with: .automatic)
+        
+    }
 }
 

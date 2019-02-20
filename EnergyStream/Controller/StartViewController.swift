@@ -64,39 +64,9 @@ class StartViewController: UIViewController, UITextFieldDelegate {
 //
     @IBAction func userLogin() {
         var login = self.textfieldPhoneNumber.text!.removingWhitespaces()
-        var password = self.password.text
+        var password = self.password.text!
         
-        //MARK : Trying to save credentials and token to keychain
-        //Create object of Credentials structure type
         let parameters = ["phoneNumber":login,"password":password]
-//        if let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream") {
-        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
-        if dic != nil {
-            if dic?["login"] as! String == login {
-                login = dic?["login"] as! String
-                password = dic?["password"] as! String
-            }
-        
-            else {
-                let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
-                do {
-                    try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
-                    
-                }
-                catch {
-                        print("Unable to save token into keychain")
-                    
-                }
-            }))
-                alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
-            self.dismiss(animated: true, completion: nil)
-            }))
-                
-            self.present(alert, animated: true, completion: nil)
-            
-            }
-        }
         
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/login") else {return}
         
@@ -112,34 +82,52 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                 let value = responseJSON.result.value
                 let jsonData = value as! [String:Any]
                 
+                do {
+                    try Locksmith.saveData(data: ["login":"test", "password":"test"], forUserAccount: "energyStream")
+                }
+                catch {
+                    print("Cannot create userAccount \"energyStream\" ")
+                }
+                let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
+                if dic != nil {
+                    if dic?["login"] as! String == login {
+                        login = dic?["login"] as! String
+                        password = dic?["password"] as! String
+                        
+                        print("Get the if statement")
+                    }
+                        
+                    else {
+                        print("Get the else statement")
+                        let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
+                            do {
+                                try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
+                                
+                            }
+                            catch {
+                                print("Unable to save token into keychain")
+                                
+                            }      
+                        }))
+                        alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                }
+                
                 guard let token = jsonData["token"] as? String else {return}
                 if token != "" {
-                    do {
                         Requests.authToken = token
-//                        try Locksmith.updateData(data: ["token":token], forUserAccount: "energyStream")
-//                        Requests.authToken = Locksmith.loadDataForUserAccount(userAccount: "energyStream")!["token"] as! String
-                    }
-                    catch {
-                        print("Unable to save data to keychain")
-                    }
-                    
-//                        Requests.authToken = jsonData["token"] as! String
-                    print(type(of: token))
-                    
                     }
                 guard let auth = jsonData["auth"] as? Bool else {return}
                     if auth == true {
                         print("Successfully logged in")
-//                        Requests.getListAccountNumbers()
 
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
                         self.performSegue(withIdentifier: "accListSegue", sender: self)
-//                            })
-
-                        print(Requests.currentAccoutNumber)
-//                        self.enterMainWindowAfterLogin(self)
-                        
-                       
                     }
            
                 print("value: ", value ?? "nil")
@@ -183,8 +171,49 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-  
-        
+//    func savePassword(_ userLogin: String, _ userPassword: String) {
+//        var login = userLogin
+//        var password = userPassword
+//        do {
+//            try Locksmith.saveData(data: ["login":"test", "password":"test"], forUserAccount: "energyStream")
+//        }
+//        catch {
+//            print("Cannot create userAccount \"energyStream\" ")
+//        }
+//        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
+//        if dic != nil {
+//            if dic?["login"] as! String == login {
+//                login = dic?["login"] as! String
+//                password = dic?["password"] as! String
+//
+//                print("Get the if statement")
+//            }
+//
+//            else {
+//                print("Get the else statement")
+//                let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
+//                    do {
+//                        try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
+//
+//                    }
+//                    catch {
+//                        print("Unable to save token into keychain")
+//
+//                    }
+//                    return
+//                }))
+//                alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
+//                    self.dismiss(animated: true, completion: nil)
+//                }))
+//
+//                self.present(alert, animated: true, completion: nil)
+//
+//            }
+//        }
+//    }
+//
+    
     
     
     //MARK Trying to create seue for next ViewController

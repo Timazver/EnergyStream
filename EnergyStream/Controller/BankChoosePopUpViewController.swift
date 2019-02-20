@@ -29,6 +29,7 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bankListTableview.tableHeaderView = self.createHeaderView()
+        self.bankListTableview.tableHeaderView?.backgroundColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.0)
         self.navigationController!.navigationBar.backItem?.title = ""
         self.title = "Онлайн оплата"
         self.getBankList()
@@ -58,17 +59,18 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section != self.bankArray.count - 1 {
-            return 10
-        }
-        else {
-            return 250
-        }
+//        if section != self.bankArray.count - 1 {
+//            return 10
+//        }
+//        else {
+//            return 250
+//        }
+        return 10
         
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,13 +94,6 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         cell.bankBtn.setBackgroundImage(UIImage(data:image), for: UIControlState.normal)
-        cell.selectionStyle = .none
-        cell.layer.cornerRadius = 5
-        cell.layer.shadowOpacity = 0.18
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cell.layer.shadowRadius = 2
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.masksToBounds = false
         loadingViewService.removeLoadingScreen()
         return cell
     }
@@ -211,7 +206,7 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
         //add contraints
         accNumImageView.translatesAutoresizingMaskIntoConstraints = false
         accNumImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
-        accNumImageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 20).isActive = true
+        accNumImageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 15).isActive = true
         accNumImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         accNumImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         

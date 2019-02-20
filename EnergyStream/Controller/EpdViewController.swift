@@ -262,7 +262,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
             //add contraints
             accNumImageView.translatesAutoresizingMaskIntoConstraints = false
             accNumImageView.leftAnchor.constraint(equalTo: viewForElements.leftAnchor, constant: 15).isActive = true
-            accNumImageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 10).isActive = true
+            accNumImageView.topAnchor.constraint(equalTo: viewForElements.topAnchor, constant: 15).isActive = true
             accNumImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
             accNumImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
             

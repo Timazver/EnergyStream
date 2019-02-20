@@ -1131,14 +1131,14 @@
                                         </label>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keS-1g-gDs" userLabel="RightPagging">
                                             <rect key="frame" x="310" y="0.0" width="10" height="99.5"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="10" id="EXJ-fe-1Uu"/>
                                             </constraints>
                                         </view>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKm-eM-9vr" userLabel="LeftPadding">
                                             <rect key="frame" x="0.0" y="0.0" width="10" height="99.5"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="10" id="Y8q-t9-0V5"/>
                                             </constraints>
@@ -1487,13 +1487,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFs-Uc-YHB">
-                                                    <rect key="frame" x="10" y="20" width="54" height="26"/>
+                                                    <rect key="frame" x="10" y="20" width="280" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="c3d-0v-Xc5"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="PTSans-CaptionBold" family="PT Sans Caption" pointSize="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.2627450980392157" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="DFs-Uc-YHB" secondAttribute="trailing" constant="30" id="SJ8-6S-9Fi"/>
                                                 <constraint firstItem="DFs-Uc-YHB" firstAttribute="leading" secondItem="9aj-V1-ait" secondAttribute="leading" constant="10" id="SfT-Fs-549"/>
                                                 <constraint firstItem="DFs-Uc-YHB" firstAttribute="top" secondItem="9aj-V1-ait" secondAttribute="top" constant="20" id="qwd-HP-DM2"/>
                                             </constraints>
@@ -2342,6 +2346,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BPI-4V-RSD">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BankListCell" rowHeight="70" id="80R-oa-zx6" customClass="BankListCell" customModule="EnergyStream" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
@@ -2500,13 +2505,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="accNum" width="25" height="25"/>
-        <image name="address" width="25" height="25"/>
+        <image name="accNum" width="61" height="61"/>
+        <image name="address" width="61" height="61"/>
         <image name="documentIcon_25_x_25" width="25" height="25"/>
         <image name="documentIcon_50_x_50" width="50" height="50"/>
         <image name="documentIcon_75_x_75" width="75" height="75"/>
         <image name="exitBtn2" width="30" height="30"/>
-        <image name="fio" width="25" height="25"/>
+        <image name="fio" width="61" height="61"/>
         <image name="imageView:mJc-GG-32H:image" width="0.0" height="0.0">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGUFFYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
@@ -2609,6 +2614,6 @@ AABUAAAAAAAAAAAAAAAAAAAT6w
         <image name="tickets_75_x_75" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QgY-TU-dxe"/>
+        <segue reference="ndv-oi-V9K"/>
     </inferredMetricsTieBreakers>
 </document>
