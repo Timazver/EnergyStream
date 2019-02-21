@@ -22,7 +22,7 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         loadingViewService.setLoadingScreen(AccNumSheetTableView)
         print(dateForRequest)
-        self.getAccNumSheet(Requests.currentAccoutNumber, dateForRequest)
+        self.getAccNumSheet(Requests.currentAccoutNumber, dateForRequest as String)
         self.view.backgroundColor = UIColor(red:0.07, green:0.12, blue:0.28, alpha:0.8)
         self.AccNumSheetTableView.separatorStyle = .none
         self.AccNumSheetTableView.layer.cornerRadius = CGFloat(5)
@@ -62,7 +62,8 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
                 
            else if indexPath.section == 1 {
                 let blueTC = tableView.dequeueReusableCell(withIdentifier: "blueCell", for: indexPath) as! BlueTableViewCell
-                blueTC.date.text! =  dateForRequest
+                dateForRequest.insert("/", at: dateForRequest.index(dateForRequest.startIndex, offsetBy:4))
+                blueTC.date.text! = dateForRequest
                 cell = blueTC
             }
             else {
@@ -74,7 +75,7 @@ class ModalAccNumSheetViewController: UIViewController, UITableViewDelegate, UIT
                     whiteTC.data.text = self.accNumSheetArray[indexPath.row].dataValue.capitalizingFirstLetter()
                 }
                 else if self.accNumSheetArray[indexPath.row].dataName == "Номер телефона абонента" {
-                    whiteTC.data.text = self.accNumSheetArray[indexPath.row].dataValue.format("8 (NNN) NNN NN NN", oldString: self.accNumSheetArray[indexPath.row].dataValue)
+                    whiteTC.data.text = self.accNumSheetArray[indexPath.row].dataValue.format("N (NNN) NNN NN NN", oldString: self.accNumSheetArray[indexPath.row].dataValue)
                     
                 }
                 else {

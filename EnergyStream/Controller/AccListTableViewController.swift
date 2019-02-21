@@ -224,6 +224,8 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
             print("statusCode: ", statusCode)
+            guard let response = responseJSON.value else { return}
+            print(response)
             if (200..<300).contains(statusCode) {
                 let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно добавлен.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
@@ -326,11 +328,13 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
     func deleteRequest(accountNumber: String) {
         let parameters = ["accountNumber":accountNumber]
         let headers = ["Authorization":"Bearer \(Requests.authToken)","Content-Type":"application/json"]
-        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/delete") else {return}
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/accountnumber/delete") else {return}
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
             print("statusCode: ", statusCode)
+            guard let response = responseJSON.value else { return}
+            print(response)
             if (200..<300).contains(statusCode) {
                 let value = responseJSON.result.value
             }

@@ -10,7 +10,7 @@ import UIKit
 import AKMonthYearPickerView
 import iOSDropDown
 
-class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
+class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var dateForRequest: String = ""
 //    var btnStatus:Bool = false {
@@ -22,14 +22,17 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
 //    }
     private var year: String = ""
     private var month: String = ""
+    private var months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    private var years = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024","2025"]
+    private var picker = UIPickerView()
     
     @IBOutlet weak var accNumberLbl: UILabel!
     @IBOutlet weak var fioLbl: UILabel!
     @IBOutlet weak var sendBtn: UIButton!
     
     @IBOutlet weak var addressLbl: UILabel!
-    @IBOutlet weak var yearTextField: DropDown!
-    @IBOutlet weak var monthTextField: DropDown!
+    @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var monthTextField: UITextField!
     
   
     
@@ -55,13 +58,19 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.delegate = self
+        picker.dataSource = self
+        monthTextField.inputView = picker
+        yearTextField.inputView = picker
+
         self.title = "Отчёт по ЛС"
-//        self.sendBtn.isHidden = true
-        monthTextField.optionArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-        yearTextField.optionArray = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024","2025"]
-        monthTextField.optionIds = [01,02,03,04,05,06,07,08,09,10,11,12]
-        yearTextField.isSearchEnable = false
-        monthTextField.isSearchEnable = false
+        
+////        self.sendBtn.isHidden = true
+//        monthTextField.optionArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+//        yearTextField.optionArray = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024","2025"]
+//        monthTextField.optionIds = [01,02,03,04,05,06,07,08,09,10,11,12]
+//        yearTextField.isSearchEnable = false
+//        monthTextField.isSearchEnable = false
         self.navigationController!.navigationBar.backItem?.title = ""
         self.sendBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.sendBtn.layer.cornerRadius = 5
@@ -70,16 +79,72 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate {
         self.accNumberLbl.text! = "№ \(Requests.currentUser.accountNumber)"
         self.fioLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
         self.addressLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
-        yearTextField.didSelect{(selectedText,index,id) in
-            print(selectedText)
-            self.year = selectedText
+//        yearTextField.didSelect{(selectedText,index,id) in
+//            print(selectedText)
+//            self.year = selectedText
+//        }
+//        monthTextField.didSelect{(selectedText,index,id) in
+//            self.month = String(id)
+//        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if yearTextField.isFirstResponder {
+            return years.count
         }
-        monthTextField.didSelect{(selectedText,index,id) in
-            self.month = String(id)
+        
+        else if monthTextField.isFirstResponder {
+            return months.count
+        }
+        else {
+            return 0
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if yearTextField.isFirstResponder {
+            yearTextField.text! = years[row]
+            year = yearTextField.text!
+        }
+        else if monthTextField.isFirstResponder {
+            monthTextField.text! = months[row]
+            month = formatMonth(months.firstIndex(of: monthTextField.text!)! + 1)
+        }
+        
+    }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if yearTextField.isFirstResponder {
+            return years[row]
+        }
+        else if monthTextField.isFirstResponder {
+            return months[row]
+        }
+        else {
+            return ""
+        }
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func formatMonth(_ month:Int) -> String {
+        let month = String(month)
+        if month.count == 2 {
+            return month
+        }
+        else if month.count == 1 {
+            return "0\(month)"
+        }
+        
+        else {
+          return ""
+        }
+    }
     
 }
