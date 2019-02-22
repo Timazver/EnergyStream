@@ -22,6 +22,7 @@
 		224008B521F98C2A00A29222 /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B421F98C2A00A29222 /* ResetPassViewController.swift */; };
 		224008B721F98D3F00A29222 /* ConfirmAccViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */; };
 		224008B921F98D5E00A29222 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B821F98D5E00A29222 /* ChangePassViewController.swift */; };
+		22472E732220102D002D3A9A /* ViewControllerForTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22472E722220102D002D3A9A /* ViewControllerForTest.swift */; };
 		22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22494BE722003D0600C9BDFB /* MainViewController.swift */; };
 		22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22494BFA22004C9A00C9BDFB /* Media.xcassets */; };
 		2260827F21E752B100B5D768 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260827E21E752B100B5D768 /* Requests.swift */; };
@@ -68,6 +69,7 @@
 		224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAccViewController.swift; sourceTree = "<group>"; };
 		224008B821F98D5E00A29222 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
 		224008BA21F9D6FE00A29222 /* EnergyStream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnergyStream.entitlements; sourceTree = "<group>"; };
+		22472E722220102D002D3A9A /* ViewControllerForTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForTest.swift; sourceTree = "<group>"; };
 		22494BE722003D0600C9BDFB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		22494BFA22004C9A00C9BDFB /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		22570B9F220198B40072A06C /* PTS56F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTS56F.ttf; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */,
 				2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */,
 				2227A89421D72ADC00EB411A /* StartViewController.swift */,
+				22472E722220102D002D3A9A /* ViewControllerForTest.swift */,
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
 				B222F21D1DAA46600089573D /* EpdViewController.swift */,
 				B222F2191DAA354D0089573D /* menuViewController.swift */,
@@ -440,6 +443,7 @@
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
 				2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */,
 				22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */,
+				22472E732220102D002D3A9A /* ViewControllerForTest.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
 				22636B61221671AA005D4436 /* BankListCell.swift in Sources */,
 				228E155821F75BD80040168A /* TicketListViewController.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Locksmith
+import LocalAuthentication
 
 class StartViewController: UIViewController, UITextFieldDelegate {
     
@@ -26,6 +27,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //change buttons color and border
         self.loginBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.loginBtn.layer.cornerRadius = 5
@@ -63,6 +65,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
 //
     @IBAction func userLogin() {
+        
         var login = self.textfieldPhoneNumber.text!.removingWhitespaces()
         var password = self.password.text!
         
@@ -170,54 +173,37 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    func touchInAction(sender:Any) {
+        let myContext = LAContext()
+        let myLocalizedReasonString = "Используйте отпечаток пальца для входа в приложение"
+        
+        var authError: NSError?
+        if #available(iOS 8.0, macOS 10.12.1, *) {
+            if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                    
+                    DispatchQueue.main.async {
+                        if success {
+                            // User authenticated successfully, take appropriate action
+                            self.performSegue(withIdentifier: "accListSegue", sender: self)
+                            print("Awesome!!... User authenticated successfully")
+                        } else {
+                            // User did not authenticate successfully, look at error and take appropriate action
+                            print("Sorry!!... User did not authenticate successfully")
+                        }
+                    }
+                }
+            } else {
+                // Could not evaluate policy; look at authError and present an appropriate message to user
+                print("Sorry!!.. Could not evaluate policy.")
+            }
+        } else {
+            // Fallback on earlier versions
+            
+            print("Ooops!!.. This feature is not supported.")
+        }
+    }
 
-//    func savePassword(_ userLogin: String, _ userPassword: String) {
-//        var login = userLogin
-//        var password = userPassword
-//        do {
-//            try Locksmith.saveData(data: ["login":"test", "password":"test"], forUserAccount: "energyStream")
-//        }
-//        catch {
-//            print("Cannot create userAccount \"energyStream\" ")
-//        }
-//        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
-//        if dic != nil {
-//            if dic?["login"] as! String == login {
-//                login = dic?["login"] as! String
-//                password = dic?["password"] as! String
-//
-//                print("Get the if statement")
-//            }
-//
-//            else {
-//                print("Get the else statement")
-//                let alert = UIAlertController(title: "Пароль", message:"Хотите ли вы сохранить пароль?", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler:{ action in
-//                    do {
-//                        try Locksmith.updateData(data: ["login":login, "password":password], forUserAccount: "energyStream")
-//
-//                    }
-//                    catch {
-//                        print("Unable to save token into keychain")
-//
-//                    }
-//                    return
-//                }))
-//                alert.addAction(UIAlertAction(title: "Отмена", style: .default, handler:  { action in
-//                    self.dismiss(animated: true, completion: nil)
-//                }))
-//
-//                self.present(alert, animated: true, completion: nil)
-//
-//            }
-//        }
-//    }
-//
     
-    
-    
-    //MARK Trying to create seue for next ViewController
-//    func enterMainWindowAfterLogin(_ sender: Any) {
-//        performSegue(withIdentifier: "accListSegue", sender: self)
-//    }
 }

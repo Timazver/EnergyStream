@@ -35,19 +35,18 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-        try Locksmith.deleteDataForUserAccount(userAccount: "energyStream")
-        }
-        catch {
-            
-        }
+//        do {
+//        try Locksmith.deleteDataForUserAccount(userAccount: "energyStream")
+//        }
+//        catch {
+//
+//        }
         loadingViewService.setLoadingScreen(accListTableView)
         self.accListTableView.tableHeaderView = createHeaderView()
         self.getListAccountNumbers()
         accListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         self.title = "Мои счета"
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
         self.navigationItem.rightBarButtonItem = contextMenuBtn
@@ -206,6 +205,14 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
                         
                     }
                 }
+                else {
+                    self.listAccountNumbers.removeAll()
+                    for accountNumber in model {
+                        print(accountNumber)
+                        self.listAccountNumbers.append(accountNumber)
+                        
+                    }
+                }
                 
             }catch {
                 print(error)
@@ -230,6 +237,12 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно добавлен.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                self.getListAccountNumbers()
+                DispatchQueue.main.async {
+                    self.accListTableView.reloadData()
+                }
+                self.textField.text! = ""
+                self.textField.endEditing(true)
             }
             else if statusCode == 404 {
                 let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)
@@ -336,7 +349,9 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             guard let response = responseJSON.value else { return}
             print(response)
             if (200..<300).contains(statusCode) {
-                let value = responseJSON.result.value
+                let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно удалён.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -348,5 +363,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         tableView.deleteSections(indexSet as! IndexSet, with: .automatic)
         
     }
+    
+    
 }
 
