@@ -73,6 +73,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         request(url, method: HTTPMethod.post, parameters: parametersForRegister, encoding: JSONEncoding.default).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
+            print(responseJSON.value!)
             print("statusCode: ", statusCode)
             if statusCode == 200 {
                 print("Появилось окно с смс")

@@ -41,6 +41,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
 //        catch {
 //
 //        }
+//        self.textField.delegate = self
         loadingViewService.setLoadingScreen(accListTableView)
         self.accListTableView.tableHeaderView = createHeaderView()
         self.getListAccountNumbers()
@@ -241,8 +242,8 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     self.accListTableView.reloadData()
                 }
-                self.textField.text! = ""
-                self.textField.endEditing(true)
+//                self.textField.text! = ""
+                self.textField.resignFirstResponder()
             }
             else if statusCode == 404 {
                 let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)

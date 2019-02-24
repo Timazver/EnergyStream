@@ -27,6 +27,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         //change buttons color and border
         self.loginBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
@@ -53,7 +55,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         
         guard let pass = dic?["password"] else {return}
         self.password.text! = pass as! String
-
+        self.touchInAction(login: textfieldPhoneNumber.text!)
         
         
         // Do any additional setup after loading the view.
@@ -174,34 +176,41 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func touchInAction(sender:Any) {
-        let myContext = LAContext()
-        let myLocalizedReasonString = "Используйте отпечаток пальца для входа в приложение"
+    func touchInAction(login: String) {
         
-        var authError: NSError?
-        if #available(iOS 8.0, macOS 10.12.1, *) {
-            if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
-                myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    
-                    DispatchQueue.main.async {
-                        if success {
-                            // User authenticated successfully, take appropriate action
-                            self.performSegue(withIdentifier: "accListSegue", sender: self)
-                            print("Awesome!!... User authenticated successfully")
-                        } else {
-                            // User did not authenticate successfully, look at error and take appropriate action
-                            print("Sorry!!... User did not authenticate successfully")
+        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
+        if dic != nil {
+            print("login is \(login)")
+            if dic?["login"] as! String == login {
+                
+                let myContext = LAContext()
+                let myLocalizedReasonString = "Используйте отпечаток пальца для входа в приложение"
+                
+                var authError: NSError?
+                if #available(iOS 8.0, macOS 10.12.1, *) {
+                    if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                        myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                            DispatchQueue.main.async {
+                                if success {
+                                    // User authenticated successfully, take appropriate action
+                                    self.userLogin()
+                                    print("Awesome!!... User authenticated successfully")
+                                } else {
+                                    // User did not authenticate successfully, look at error and take appropriate action
+                                    print("Sorry!!... User did not authenticate successfully")
+                                }
+                            }
                         }
+                    } else {
+                        // Could not evaluate policy; look at authError and present an appropriate message to user
+                        print("Sorry!!.. Could not evaluate policy.")
                     }
+                } else {
+                    // Fallback on earlier versions
+                    
+                    print("Ooops!!.. This feature is not supported.")
                 }
-            } else {
-                // Could not evaluate policy; look at authError and present an appropriate message to user
-                print("Sorry!!.. Could not evaluate policy.")
             }
-        } else {
-            // Fallback on earlier versions
-            
-            print("Ooops!!.. This feature is not supported.")
         }
     }
 
