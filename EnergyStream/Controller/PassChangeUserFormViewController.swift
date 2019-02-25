@@ -26,11 +26,7 @@ class PassChangeUserFormViewController: UIViewController {
         let repeatedPassword = self.newPassAgain.text
         let message = ""
         if newPassword != repeatedPassword {
-            let alertController = UIAlertController(title: "Ошибка", message: "Введенные пароли не совпадают", preferredStyle: .alert)
-            let action=UIAlertAction(title: "Ок", style: .default, handler:{
-                action in})
-            alertController.addAction(action)
-            self.present(alertController, animated: true, completion: nil)
+           self.present(AlertService.showAlert(title: "Ошибка", message: "Введенные пароли не совпадают."), animated: true, completion: nil)
         }
         let parameters = ["oldPassword":oldPassword,"newPassword":newPassword,"repeatedPassword":repeatedPassword]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
@@ -45,11 +41,7 @@ class PassChangeUserFormViewController: UIViewController {
             if (200..<300).contains(statusCode) {
                 let value = responseJSON.result.value
                 print("value: ", value ?? "nil")
-                let alertController = UIAlertController(title: "Успех", message: "Пароль был успешно сменен", preferredStyle: .alert)
-                let action=UIAlertAction(title: "Ок", style: .default, handler:{
-                    action in})
-                alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Успех", message: "Пароль был успешно сменен."), animated: true, completion: nil)
             } else {
                 print("error")
             }

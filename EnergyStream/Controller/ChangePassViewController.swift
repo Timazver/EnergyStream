@@ -56,29 +56,20 @@ class ChangePassViewController: UIViewController {
                 if (200..<300).contains(statusCode) {
                     let value = responseJSON.result.value
                     guard let msg = value as? [String:Any] else {return}
-                    
-                    let alert = UIAlertController(title: "Успешно", message: "Пароль был успешно восстановлен", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: {(action) in
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert,animated: true, completion: nil)
+                    self.present(AlertService.showAlert(title: "Успешно", message: "Пароль был успешно восстановлен."),animated: true, completion: nil)
                     DispatchQueue.main.asyncAfter(deadline:.now() + .seconds(4), execute: {
                         self.goBackToOneButtonTapped(self)
                     })
                     
                 }
                 else {
-                    let alert = UIAlertController(title: "Ошибка", message: "Ошибка изменения пароля", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-                    self.present(alert,animated: true, completion: nil)
+                    self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка изменения пароля."),animated: true, completion: nil)
                 }
                 
             }
         }
         else {
-            let alert = UIAlertController(title: "Ошибка", message: "Введенные пароли не совпадают", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-            self.present(alert,animated: true, completion: nil)
+            self.present(AlertService.showAlert(title: "Ошибка", message: "Введенные пароли не совпадают."),animated: true, completion: nil)
         }
         
     }

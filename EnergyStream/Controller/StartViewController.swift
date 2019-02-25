@@ -77,9 +77,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         
         request(url, method: HTTPMethod.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else {
-                let alert = UIAlertController(title: "", message: "Ошибка соединения с сервером", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+               self.present((AlertService.showAlert(title: "Ошибка", message: "Ошибка соединения с сервером. Попробуйте позднее.")), animated: true, completion: nil)
                 return }
             print("statusCode: ", statusCode)
             print(login)
@@ -138,19 +136,15 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                 print("value: ", value ?? "nil")
             }
             else if statusCode == 404 {
-                let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present((AlertService.showAlert(title: "Ошибка", message: "Неверные логин или пароль.")), animated: true, completion: nil)
             }
                 
             else if statusCode == 401 {
-                let alert = UIAlertController(title: "Ошибка", message: "Учётная запись не активирована.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present((AlertService.showAlert(title: "Ошибка", message: "Учётная запись неактивирована.")), animated: true, completion: nil)
             }
                 
             else {
-                print("Ошибка соединения с сервером. Попробуйте позднее.")
+                
             }
             
         }

@@ -235,9 +235,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             guard let response = responseJSON.value else { return}
             print(response)
             if (200..<300).contains(statusCode) {
-                let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно добавлен.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Успешно", message: "Лицевой счёт был успешно добавлен."), animated: true, completion: nil)
                 self.getListAccountNumbers()
                 DispatchQueue.main.async {
                     self.accListTableView.reloadData()
@@ -245,16 +243,17 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
 //                self.textField.text! = ""
                 self.textField.resignFirstResponder()
             }
+                
+            else if statusCode == 500 {
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт уже в списке."), animated: true, completion: nil)
+            }
+                
             else if statusCode == 404 {
-                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе."), animated: true, completion: nil)
             }
         }
     }
-    
-    
-    
+
     func getUserFromAccNumber(_ accNumber: String) -> UserCard {
         let vc = ProfileViewController()
         print(accNumber)
@@ -350,9 +349,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             guard let response = responseJSON.value else { return}
             print(response)
             if (200..<300).contains(statusCode) {
-                let alert = UIAlertController(title: "Успешно", message: "Лицевой счёт был успешно удалён.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Успешно", message: "Лицевой счёт был успешно удалён."), animated: true, completion: nil)
             }
         }
     }

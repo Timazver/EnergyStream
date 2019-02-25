@@ -58,19 +58,11 @@ class AddTicketViewController: UIViewController, UITextViewDelegate {
                 let value = responseJSON.result.value
                 print("value: ", value ?? "nil")
                 guard let test = value as? [String:Any] else {return}
-                let alertController = UIAlertController(title: "Успешно", message: "Ваша заявка успешно отправлена", preferredStyle: .alert)
-                let action=UIAlertAction(title: "Ок", style: .default, handler:{
-                    action in})
-                alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
             }
             else {
                 print("error")
-                let alertController = UIAlertController(title: "Ошибка", message: "Ошибка во время отправки заявки", preferredStyle: .alert)
-                let action=UIAlertAction(title: "Ок", style: .default, handler:{
-                    action in})
-                alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время отправки заявки."), animated: true, completion: nil)
             }
             
         }

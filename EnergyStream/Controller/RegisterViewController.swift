@@ -87,21 +87,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     request(urlForActivate, method: HTTPMethod.post, parameters: parametersForActivate, encoding: JSONEncoding.default).responseJSON {responseJSON in
                         guard let activateStatusCode = responseJSON.response?.statusCode else { return }
                         if activateStatusCode == 200 {
-                            let alert = UIAlertController(title: "Успешно", message: "Регистрация завершилась успешно!", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: {(action) in
-                            self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(alert,animated: true, completion: nil)
+                            
+                            self.present(AlertService.showAlert(title: "Успешно", message: "Регистрация завершилась успешно"),animated: true, completion: nil)
                         }
                 
                         else if activateStatusCode == 404 {
-                            let alert = UIAlertController(title: "Ошибка", message: "Смс код неверно", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: {(action) in
-                            self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(alert,animated: true, completion: nil)
+                            self.present(AlertService.showAlert(title: "Ошибка", message: "Смс код введен неверно."),animated: true, completion: nil)
+                           
                         }
-                        }
+                    }
                 }
             )
                 smsAlert.addAction(action)
@@ -109,9 +103,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             }
             
             else if statusCode == 404 {
-                let alert = UIAlertController(title: "Ошибка", message: "Лицевой счёт не найден в базе.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе"),animated: true, completion: nil)
             }
         }
     }

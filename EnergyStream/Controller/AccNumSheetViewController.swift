@@ -41,9 +41,7 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         dateForRequest = "\(year)\(month)"
         print(dateForRequest)
         if dateForRequest.isEmpty {
-            let alert = UIAlertController(title: "Ошибка", message: "Вы не указали дату", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.present(AlertService.showAlert(title: "Ошибка", message: "Вы не указали дату."), animated: true, completion: nil)
         }
         else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
