@@ -43,7 +43,7 @@ class AddTicketViewController: UIViewController, UITextViewDelegate {
     @IBAction func sendTicket() {
         let title = self.msgSubject.text
         let msg = self.msgTtext.text
-        let files: Array = [Any]()
+        let files: Array = [String]()
         let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber,"files":files] as [String : Any]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]

@@ -154,6 +154,7 @@ extension String {
             }
             
             newString += stringToAdd
+            
             if counter == stringUnformated.count {
                 if i == format.count - 2 {
                     let lastUnicharFormatString = format[i + 1]

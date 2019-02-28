@@ -239,9 +239,9 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
                 self.getListAccountNumbers()
                 DispatchQueue.main.async {
                     self.accListTableView.reloadData()
+                    
                 }
-//                self.textField.text! = ""
-                self.textField.resignFirstResponder()
+                
             }
                 
             else if statusCode == 500 {
@@ -252,6 +252,8 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
                 self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе."), animated: true, completion: nil)
             }
         }
+        self.textField.text! = ""
+        self.textField.resignFirstResponder()
     }
 
     func getUserFromAccNumber(_ accNumber: String) -> UserCard {

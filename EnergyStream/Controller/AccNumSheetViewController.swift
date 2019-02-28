@@ -8,7 +8,6 @@
 
 import UIKit
 import AKMonthYearPickerView
-import iOSDropDown
 
 class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -62,13 +61,7 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         yearTextField.inputView = picker
 
         self.title = "Отчёт по ЛС"
-        
-////        self.sendBtn.isHidden = true
-//        monthTextField.optionArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-//        yearTextField.optionArray = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024","2025"]
-//        monthTextField.optionIds = [01,02,03,04,05,06,07,08,09,10,11,12]
-//        yearTextField.isSearchEnable = false
-//        monthTextField.isSearchEnable = false
+
         self.navigationController!.navigationBar.backItem?.title = ""
         self.sendBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.sendBtn.layer.cornerRadius = 5
@@ -77,13 +70,6 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         self.accNumberLbl.text! = "№ \(Requests.currentUser.accountNumber)"
         self.fioLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
         self.addressLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
-//        yearTextField.didSelect{(selectedText,index,id) in
-//            print(selectedText)
-//            self.year = selectedText
-//        }
-//        monthTextField.didSelect{(selectedText,index,id) in
-//            self.month = String(id)
-//        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -107,10 +93,12 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         if yearTextField.isFirstResponder {
             yearTextField.text! = years[row]
             year = yearTextField.text!
+            yearTextField.resignFirstResponder()
         }
         else if monthTextField.isFirstResponder {
             monthTextField.text! = months[row]
             month = formatMonth(months.firstIndex(of: monthTextField.text!)! + 1)
+            monthTextField.resignFirstResponder()
         }
         
     }

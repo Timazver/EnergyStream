@@ -103,8 +103,17 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             }
             
             else if statusCode == 404 {
-                self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе"),animated: true, completion: nil)
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе."),animated: true, completion: nil)
             }
+            
+            else if statusCode == 401 {
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Данный номер уже зарегистрирован."),animated: true, completion: nil)
+            }
+            
+            else if statusCode == 500 {
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время регистрации пользователя."),animated: true, completion: nil)
+            }
+            
         }
     }
     

@@ -34,7 +34,7 @@ class loadingViewService {
         self.loadingLabel.textColor = UIColor.gray
         self.loadingLabel.textAlignment = NSTextAlignment.center
         self.loadingLabel.text = "Загрузка..."
-        self.loadingLabel.frame = CGRect(x:0,y:0,width: 140,height: 30)
+        self.loadingLabel.frame = CGRect(x:0,y:0,width: 70,height: 30)
         
         // Sets spinner
         self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
