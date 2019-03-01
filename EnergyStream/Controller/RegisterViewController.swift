@@ -88,7 +88,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                         guard let activateStatusCode = responseJSON.response?.statusCode else { return }
                         if activateStatusCode == 200 {
                             
-                            self.present(AlertService.showAlert(title: "Успешно", message: "Регистрация завершилась успешно"),animated: true, completion: nil)
+                            self.present(AlertService.showAlert(title: "Успешно", message: "Регистрация завершилась успешно", handler: {
+                                action in
+                                self.performSegue(withIdentifier: "backToLoginSegue", sender: self)
+                            }),animated: true, completion: nil)
                         }
                 
                         else if activateStatusCode == 404 {

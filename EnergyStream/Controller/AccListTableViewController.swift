@@ -48,7 +48,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         accListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.title = "Мои счета"
+        self.title = "Список лицевых счетов"
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
         self.navigationItem.rightBarButtonItem = contextMenuBtn
         self.navigationController?.navigationBar.tintColor = UIColor.white

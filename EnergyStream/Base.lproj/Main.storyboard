@@ -400,6 +400,7 @@
                         <outlet property="password" destination="e7D-Up-Xib" id="w4h-Kx-Zee"/>
                         <outlet property="phoneNumber" destination="LQu-Se-dAr" id="LM1-KK-0GR"/>
                         <outlet property="registerBtn" destination="jJD-Vy-su8" id="egT-RX-gTl"/>
+                        <segue destination="GDQ-q6-RIc" kind="show" identifier="backToLoginSegue" id="PKB-u7-CnD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgT-Bs-uVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1487,7 +1488,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFs-Uc-YHB">
-                                                    <rect key="frame" x="10" y="20" width="280" height="26"/>
+                                                    <rect key="frame" x="10" y="10" width="280" height="33.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="c3d-0v-Xc5"/>
                                                     </constraints>
@@ -1499,7 +1500,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="DFs-Uc-YHB" secondAttribute="trailing" constant="30" id="SJ8-6S-9Fi"/>
                                                 <constraint firstItem="DFs-Uc-YHB" firstAttribute="leading" secondItem="9aj-V1-ait" secondAttribute="leading" constant="10" id="SfT-Fs-549"/>
-                                                <constraint firstItem="DFs-Uc-YHB" firstAttribute="top" secondItem="9aj-V1-ait" secondAttribute="top" constant="20" id="qwd-HP-DM2"/>
+                                                <constraint firstAttribute="bottom" secondItem="DFs-Uc-YHB" secondAttribute="bottom" id="WvZ-Bd-XBw"/>
+                                                <constraint firstItem="DFs-Uc-YHB" firstAttribute="top" secondItem="9aj-V1-ait" secondAttribute="top" constant="10" id="qwd-HP-DM2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
