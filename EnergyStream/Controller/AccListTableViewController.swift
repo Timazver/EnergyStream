@@ -17,6 +17,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
     private var accNum = ""
     private var textField: UITextField!
  
+//    let vcTitle = "Список лицевых счетов"
     var listAccountNumbers: Array = [ListAccNumbers]() {
         didSet {
             DispatchQueue.main.async {
@@ -33,6 +34,12 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "logout", sender: self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.title = "Список лицевых счетов"
+        print(self.title)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        do {
@@ -46,9 +53,10 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         self.accListTableView.tableHeaderView = createHeaderView()
         self.getListAccountNumbers()
         accListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
+        self.title = "Список лицевых счетов"
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.title = "Список лицевых счетов"
+        print(self.navigationController?.navigationBar.topItem?.title)
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
         self.navigationItem.rightBarButtonItem = contextMenuBtn
         self.navigationController?.navigationBar.tintColor = UIColor.white
