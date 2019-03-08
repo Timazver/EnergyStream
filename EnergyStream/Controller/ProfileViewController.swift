@@ -23,6 +23,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var epdButton: UIButton!
     @IBOutlet weak var ticketsBtn: UIButton!
     @IBOutlet weak var accNumBtn: UIButton!
+    @IBOutlet weak var notificationsBtn: UIButton!
+    
     public var accNumber: String = ""
     
     @IBOutlet weak var profileTableView: UITableView!
@@ -50,7 +52,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.accNumBtn.layer.borderWidth = 1
         self.accNumBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
         
-        
+        self.notificationsBtn.backgroundColor = UIColor(red:0.77, green:0.90, blue:0.97, alpha:1.0)
+        self.notificationsBtn.layer.cornerRadius = 5
+        self.notificationsBtn.layer.borderWidth = 1
+        self.notificationsBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
 
         self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер телефона","Тип счётчика"]
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -132,6 +137,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func segueToAccNumSheetVC(sender: Any) {
         self.performSegue(withIdentifier: "toAccNumSheet", sender: self)
+    }
+    
+    @IBAction func segueToNotificationsVC(sender: Any) {
+        self.performSegue(withIdentifier: "segueToNotificationsVC", sender: self)
     }
     
     func getUserInfo(userAccNumber: String) {

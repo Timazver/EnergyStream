@@ -101,7 +101,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             )
+                let cancel = UIAlertAction(title: "Отмена", style: .default, handler:  {
+                    action in
+                    self.dismiss(animated: true, completion: nil)
+                })
+                
                 smsAlert.addAction(action)
+                smsAlert.addAction(cancel)
                 self.present(smsAlert, animated: true, completion: nil)
             }
             

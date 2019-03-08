@@ -388,6 +388,7 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
     }
+    
 }
 
 

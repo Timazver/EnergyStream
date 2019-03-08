@@ -42,6 +42,7 @@
 		22CA1B8D22081CC000995A73 /* BlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */; };
 		22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */; };
 		22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */; };
+		22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D806D02232653F00B1524D /* NotificationsViewController.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
@@ -98,6 +99,7 @@
 		22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
+		22D806D02232653F00B1524D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		B222F1E41DAA30330089573D /* EnergyStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				224008B821F98D5E00A29222 /* ChangePassViewController.swift */,
 				224008B221F9844D00A29222 /* TicketViewController.swift */,
 				228E155721F75BD80040168A /* TicketListViewController.swift */,
+				22D806D02232653F00B1524D /* NotificationsViewController.swift */,
 				228E155521F7528E0040168A /* AddTicketViewController.swift */,
 				2239AF7F21F73490009DC5AD /* ProfileViewController.swift */,
 				2213165921F1F8220045F7D3 /* PdfViewController.swift */,
@@ -439,6 +442,7 @@
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
 				22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */,
 				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
+				22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
 				221000B8220AA9E9008C7202 /* Constants.swift in Sources */,
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,

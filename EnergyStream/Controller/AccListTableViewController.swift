@@ -361,14 +361,19 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             if (200..<300).contains(statusCode) {
                 self.present(AlertService.showAlert(title: "Успешно", message: "Лицевой счёт был успешно удалён."), animated: true, completion: nil)
             }
+            else  if statusCode == 403 {
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Невозможно удалить данный лицевой счёт."), animated: true, completion: nil)
+            }
         }
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         self.deleteRequest(accountNumber: self.listAccountNumbers[indexPath.section].accountNumber)
-        self.listAccountNumbers.remove(at: indexPath.section)
-        let indexSet = NSMutableIndexSet()
-        indexSet.add(indexPath.section)
-        tableView.deleteSections(indexSet as! IndexSet, with: .automatic)
+        if self.listAccountNumbers.count > 1 {
+            self.listAccountNumbers.remove(at: indexPath.section)
+            let indexSet = NSMutableIndexSet()
+            indexSet.add(indexPath.section)
+            tableView.deleteSections(indexSet as! IndexSet, with: .automatic)
+        }
         
     }
     
