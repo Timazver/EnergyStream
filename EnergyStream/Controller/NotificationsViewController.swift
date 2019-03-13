@@ -8,23 +8,13 @@
 
 import UIKit
 
-//
-//  TicketListViewController.swift
-//  EnergyStream
-//
-//  Created by Timur on 1/22/19.
-//  Copyright © 2019 Parth Changela. All rights reserved.
-//
-
-import UIKit
 
 class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet var notificationsTableView: UITableView!
-    var notificationTitle: String = ""
     var notificationText: String = ""
-    var ticketListArr = [Ticket]() {
+    var notificationListArr = [Notification]() {
         didSet {
             DispatchQueue.main.async {
                 self.notificationsTableView.reloadData()
@@ -35,16 +25,14 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Список заявок"
+        self.title = "Уведомления"
         self.navigationController!.navigationBar.backItem!.title = " "
         loadingViewService.setLoadingScreen(notificationsTableView)
         self.notificationsTableView.tableHeaderView = self.createHeaderView()
         self.notificationsTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         notificationsTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.getTicketList()
-        print("ticketListArray count is \(ticketListArr.count)")
-        let addTicket = UIBarButtonItem(barButtonSystemItem:.add, target: self, action: #selector(addTicketVC))
-        self.navigationItem.rightBarButtonItem = addTicket
+        self.getNotificationsList()
+        print("notificationListArr count is \(notificationListArr.count)")
         // Do any additional setup after loading the view.
     }
     
@@ -56,11 +44,11 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if ticketListArr.isEmpty {
+        if notificationListArr.isEmpty {
             return 0
         }
         else {
-            return self.ticketListArr.count
+            return self.notificationListArr.count
         }
     }
     
@@ -70,14 +58,13 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath ) as! TicketListViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsViewCell", for: indexPath ) as! NotificationsViewCell
         //        cell.textLabel?.numberOfLines = 0
         //        cell.textLabel?.lineBreakMode = .byWordWrapping
         print("Filling cells")
-        if !self.ticketListArr.isEmpty {
-            cell.ticketNumber.text = "№ \(self.ticketListArr[indexPath.section].ticketNumber)"
-            cell.ticketTitle.text = self.ticketListArr[indexPath.section].ticketTitle
-            cell.ticketDate.text = self.ticketListArr[indexPath.section].date
+        if !self.notificationListArr.isEmpty {
+            cell.notificationTitle.text = self.notificationListArr[indexPath.section].title
+            cell.notificationDate.text = self.notificationListArr[indexPath.section].date
             loadingViewService.removeLoadingScreen()
         }
         else {
@@ -87,12 +74,12 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        notificationTitle = self.ticketListArr[indexPath.section].ticketTitle
-        notificationText = self.ticketListArr[indexPath.section].ticketMsg
-        self.showTicket(msgTitle: notificationTitle, msgText: notificationText)
-        //        performSegue(withIdentifier: "toTicketVC", sender: self)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        notificationTitle = self.notificationListArr[indexPath.section].ticketTitle
+//        notificationText = self.notificationListArr[indexPath.section].ticketMsg
+//        self.showTicket(msgTitle: notificationTitle, msgText: notificationText)
+//        //        performSegue(withIdentifier: "toTicketVC", sender: self)
+//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
         backItem.title = ""
@@ -137,10 +124,10 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         TicketVC.didMove(toParentViewController: self)
     }
     
-    func getTicketList() {
-        let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
-        //        let parametersForRequest = ["]
-        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return }
+    func getNotificationsList() {
+//        let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
+        
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/notification?accountNumber=\(Requests.currentAccoutNumber)") else {return }
         
         //MARK: Request with onlu swift features
         var requestForUserInfo = URLRequest(url:url )
@@ -162,14 +149,14 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
-                guard let ticketList = json as? [[String:Any]] else {return}
+                guard let notificationList = json as? [[String:Any]] else {return}
                 
                 //                if !Requests.ticketListArray.isEmpty {
                 //                    self.ticketListArray.removeAll()
                 //                }
                 
-                for dic in ticketList {
-                    self.ticketListArr.append(Ticket(dic))
+                for dic in notificationList {
+                    self.notificationListArr.append(Notification(dic))
                 }
                 
             }catch {
@@ -181,7 +168,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func createHeaderView() -> UIView {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 250))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))
         headerView.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
         self.view.addSubview(headerView)
         
@@ -282,25 +269,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         addressImageView.topAnchor.constraint(equalTo: fioImageView.topAnchor, constant: 50).isActive = true
         addressImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         addressImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        let addBtn = UIButton()
-        addBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
-        addBtn.layer.cornerRadius = CGFloat(5)
-        addBtn.setTitleColor(UIColor.white, for: .normal)
-        addBtn.setTitle("Подать заявку", for: .normal)
-        addBtn.layer.cornerRadius = CGFloat(5)
-        addBtn.addTarget(self, action: #selector(self.addTicketVC(sender:)), for:.touchUpInside)
-        headerView.addSubview(addBtn)
-        
-        //add constraints
-        addBtn.translatesAutoresizingMaskIntoConstraints = false
-        addBtn.topAnchor.constraint(equalTo: viewForElements.bottomAnchor, constant: 10.0).isActive = true
-        addBtn.centerXAnchor.constraint(equalTo: viewForElements.centerXAnchor).isActive = true
-        addBtn.widthAnchor.constraint(greaterThanOrEqualToConstant: 240).isActive = true
-        addBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        addBtn.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0).isActive = true
-        addBtn.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 0).isActive = true
-        
+ 
         let ticketNumLbl = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
         ticketNumLbl.numberOfLines = 0
         ticketNumLbl.font = UIFont.systemFont(ofSize: 15.0)

@@ -944,7 +944,10 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="Mfy-eU-tPe"/>
                                             <constraint firstAttribute="height" constant="50" id="bGc-r9-ScI"/>
                                         </constraints>
-                                        <state key="normal" title="Мои уведомления"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Мои уведомления">
+                                            <color key="titleColor" red="0.082352941176470587" green="0.39215686274509803" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="segueToNotificationsVCWithSender:" destination="Va2-P3-Uo8" eventType="touchUpInside" id="0qW-qi-LYo"/>
                                         </connections>
@@ -1765,7 +1768,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFC-yc-HDn">
-                                <rect key="frame" x="50" y="472" width="240" height="39"/>
+                                <rect key="frame" x="50" y="472" width="250" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="NOQ-Sr-b6B"/>
                                     <constraint firstAttribute="height" constant="50" id="QA1-5a-7mc"/>
@@ -2560,7 +2563,7 @@
         <!--Notifications View Controller-->
         <scene sceneID="HWI-Vw-nKZ">
             <objects>
-                <viewController storyboardIdentifier="TicketListViewController" id="F1O-5z-xix" customClass="NotificationsViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationsViewController" id="F1O-5z-xix" customClass="NotificationsViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WwC-1J-e8H"/>
                         <viewControllerLayoutGuide type="bottom" id="Z9t-Ge-Mfr"/>
@@ -2576,23 +2579,13 @@
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexTrackingBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ticketCell" rowHeight="70" id="c2W-fW-BXg" customClass="TicketListViewCell" customModule="EnergyStream" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationsViewCell" rowHeight="70" id="c2W-fW-BXg" customClass="NotificationsViewCell" customModule="EnergyStream" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c2W-fW-BXg" id="oh4-y0-8HY">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyo-gJ-9Ir">
-                                                    <rect key="frame" x="10" y="5" width="100" height="10"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="g8t-CI-A1G"/>
-                                                        <constraint firstAttribute="height" constant="10" id="uop-vv-Eue"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSd-Nh-PVw">
                                                     <rect key="frame" x="10" y="25" width="150" height="20"/>
                                                     <constraints>
@@ -2616,17 +2609,14 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vSd-Nh-PVw" firstAttribute="leading" secondItem="oh4-y0-8HY" secondAttribute="leading" constant="10" id="8kr-3a-o6k"/>
-                                                <constraint firstItem="Yyo-gJ-9Ir" firstAttribute="leading" secondItem="oh4-y0-8HY" secondAttribute="leading" constant="10" id="Exo-lM-ikr"/>
-                                                <constraint firstItem="Yyo-gJ-9Ir" firstAttribute="top" secondItem="oh4-y0-8HY" secondAttribute="top" constant="5" id="NUD-Ga-GJa"/>
                                                 <constraint firstItem="vSd-Nh-PVw" firstAttribute="centerY" secondItem="oh4-y0-8HY" secondAttribute="centerY" id="SK5-tl-UPd"/>
                                                 <constraint firstItem="WPA-1w-Kcw" firstAttribute="centerY" secondItem="oh4-y0-8HY" secondAttribute="centerY" id="kbc-TV-2f8"/>
                                                 <constraint firstAttribute="trailing" secondItem="WPA-1w-Kcw" secondAttribute="trailing" constant="10" id="w24-En-ZzU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ticketDate" destination="WPA-1w-Kcw" id="roG-0j-mfw"/>
-                                            <outlet property="ticketNumber" destination="Yyo-gJ-9Ir" id="gVu-lo-WcJ"/>
-                                            <outlet property="ticketTitle" destination="vSd-Nh-PVw" id="udo-O3-nKY"/>
+                                            <outlet property="notificationDate" destination="WPA-1w-Kcw" id="Se6-YA-G56"/>
+                                            <outlet property="notificationTitle" destination="vSd-Nh-PVw" id="C86-Ko-m2T"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="emptyTicketCell" textLabel="45l-38-EW2" rowHeight="70" style="IBUITableViewCellStyleDefault" id="a7U-3O-uwU" customClass="TicketListViewCell" customModule="EnergyStream" customModuleProvider="target">
@@ -2662,7 +2652,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ticketListTableView" destination="5ZC-Yi-2pG" id="bJa-Ls-qod"/>
+                        <outlet property="notificationsTableView" destination="5ZC-Yi-2pG" id="wVw-yz-Y2e"/>
                         <segue destination="7jr-EE-hSb" kind="show" id="ifC-su-y9o"/>
                     </connections>
                 </viewController>
@@ -2670,10 +2660,10 @@
             </objects>
             <point key="canvasLocation" x="2901" y="-1131"/>
         </scene>
-        <!--Ticket View Controller-->
+        <!--Notification View Controller-->
         <scene sceneID="oeF-jc-o6u">
             <objects>
-                <viewController storyboardIdentifier="TicketViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7jr-EE-hSb" customClass="TicketViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7jr-EE-hSb" customClass="NotificationViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qS3-Oo-DOW"/>
                         <viewControllerLayoutGuide type="bottom" id="8sK-fj-9cL"/>

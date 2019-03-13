@@ -20,9 +20,6 @@ class SocketIOManager: NSObject {
     
     override init() {
         super.init()
-        
-        
-       
         socket.on("connect") { _, _ in
         print("socket connected")
             let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
@@ -31,9 +28,9 @@ class SocketIOManager: NSObject {
         }
 
         socket.on("notifications") { dataArray, ack in
-            
             guard let data = dataArray[0] as? [String:Any] else {return}
-            print(data["greet"])
+            print(dataArray)
+            print(data["msg"])
             self.pushNotification(message: data)
             
         }
@@ -50,7 +47,7 @@ class SocketIOManager: NSObject {
             let content = UNMutableNotificationContent()
             content.title = "Тестовое сообщение"
             content.subtitle = "Exceeded balance by $300.00."
-            content.body = message["greet"] as! String
+            content.body = message["msg"] as? String ?? ""
             content.sound = UNNotificationSound.default()
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
             

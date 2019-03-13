@@ -12,7 +12,7 @@ import MobileCoreServices
 import AVFoundation
 import Photos
 
-class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource {
 
     static let shared = AddTicketViewController()
     fileprivate var currentVC: UIViewController?
@@ -21,11 +21,15 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
     var imagePickedBlock: ((UIImage) -> Void)?
     var videoPickedBlock: ((NSURL) -> Void)?
     var filePickedBlock: ((URL) -> Void)?
-    
-    
-    enum AttachmentType: String{
-        case camera, video, photoLibrary
+    var attachedImages = [UIImage]()
+    var ticketThemes = [String]() {
+        didSet {
+            picker.reloadAllComponents()
+        }
     }
+    
+    private var picker = UIPickerView()
+    
     
     @IBOutlet weak var accNumberLbl: UILabel!
     @IBOutlet weak var fioTitleLbl: UILabel!
@@ -50,67 +54,60 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
         
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application") else {return}
         
-//        request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
-//            guard let statusCode = responseJSON.response?.statusCode else { return }
-//            print("statusCode: ", statusCode)
-//
-//            if (200..<300).contains(statusCode) {
-//                let value = responseJSON.result.value
-//                print("value: ", value ?? "nil")
-//                guard let test = value as? [String:Any] else {return}
-//                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
-//            }
-//            else {
-//                print("error")
-//                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время отправки заявки."), animated: true, completion: nil)
-//            }
-//
-//        }
+        request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+            guard let statusCode = responseJSON.response?.statusCode else { return }
+            print("statusCode: ", statusCode)
+
+            if (200..<300).contains(statusCode) {
+                let value = responseJSON.result.value
+                print("value: ", value ?? "nil")
+                guard let test = value as? [String:Any] else {return}
+                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
+            }
+            else {
+                print("error")
+                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время отправки заявки."), animated: true, completion: nil)
+            }
+
+        }
        
     }
     
-//    func requestWith(endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((JSon?) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
-//        
-//        let url = "http://google.com" /* your API url */
-//        
-//        let headers: HTTPHeaders = [
-//            /* "Authorization": "your_access_token",  in case you need authorization header */
-//            "Content-type": "multipart/form-data"
-//        ]
-//        
-//        Alamofire.upload(multipartFormData: { (multipartFormData) in
-//            for (key, value) in parameters {
-//                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
-//            }
-//            
-//            if let data = imageData{
-//                multipartFormData.append(data, withName: "image", fileName: "image.png", mimeType: "image/png")
-//            }
-//            
-//        }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
-//            switch result{
-//            case .success(let upload, _, _):
-//                upload.responseJSON { response in
-//                    print("Succesfully uploaded")
-//                    if let err = response.error{
-//                        onError?(err)
-//                        return
-//                    }
-//                    onCompletion?(nil)
-//                }
-//            case .failure(let error):
-//                print("Error in upload: \(error.localizedDescription)")
-//                onError?(error)
-//            }
-//        }
-//    }
+    
+    func getTicketThemes() {
+        let headers = ["Authorization": "Bearer \(Requests.authToken)",
+            "Content-Type": "application/json"]
+        
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/dicts/applicationtypes") else {return}
+        
+                request(url, method: HTTPMethod.get,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+                    guard let statusCode = responseJSON.response?.statusCode else { return }
+                    print("statusCode: ", statusCode)
+        
+                    if (200..<300).contains(statusCode) {
+                        let value = responseJSON.result.value
+                        print("value: ", value ?? "nil")
+                        guard let data = value as? [[String:Any]] else {return}
+                        print(data)
+                        for dic in data {
+                            self.ticketThemes.append(dic["name"] as? String ?? "")
+                        }
+                        print("ticketThemes's count \(self.ticketThemes.count)")
+                    }
+                    else {
+                       
+                    }
+        
+                }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.getTicketThemes()
         //trigger the camera process
-        
-        
+        msgSubject.inputView = picker
+        picker.delegate = self
         self.navigationController!.navigationBar.backItem?.title = ""
         msgTtext.text = "Введите текст заявки"
         msgTtext.textColor = UIColor.lightGray
@@ -174,15 +171,15 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        picker.dismiss(animated: true, completion: nil)
+        
         
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             return
         }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-        
+        attachedImages.append(image)
+//        self.dismiss(animated: true, completion: nil)
+        print(attachedImages.count)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func selectImages() {
@@ -191,6 +188,23 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
         vc.allowsEditing = true
         vc.delegate = self
         present(vc, animated: true)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print(ticketThemes.count)
+       return ticketThemes.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            msgSubject.text! = ticketThemes[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ticketThemes[row]
     }
     
 }

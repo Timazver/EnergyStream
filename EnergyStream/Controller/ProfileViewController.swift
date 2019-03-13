@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
 
@@ -190,5 +191,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
+    
+    
     
 }

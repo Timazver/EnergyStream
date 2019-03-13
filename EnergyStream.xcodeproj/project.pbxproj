@@ -43,6 +43,15 @@
 		22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */; };
 		22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */; };
 		22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D806D02232653F00B1524D /* NotificationsViewController.swift */; };
+		22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D12237700700DE0177 /* NotificationViewController.swift */; };
+		22F4C8D42237C60500DE0177 /* epdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D32237C60500DE0177 /* epdData.swift */; };
+		22F4C8D62237C83C00DE0177 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D52237C83C00DE0177 /* Bank.swift */; };
+		22F4C8D82237C84600DE0177 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D72237C84600DE0177 /* Ticket.swift */; };
+		22F4C8DA2237C85D00DE0177 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D92237C85D00DE0177 /* UserCard.swift */; };
+		22F4C8DC2237C86D00DE0177 /* AccNumSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8DB2237C86D00DE0177 /* AccNumSheet.swift */; };
+		22F4C8DE2237C88200DE0177 /* ListAccNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8DD2237C88200DE0177 /* ListAccNumbers.swift */; };
+		22F4C8E02237CE8400DE0177 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8DF2237CE8400DE0177 /* Notification.swift */; };
+		22F4C8E22237D34C00DE0177 /* NotificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8E12237D34C00DE0177 /* NotificationsViewCell.swift */; };
 		B222F1E81DAA30330089573D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E71DAA30330089573D /* AppDelegate.swift */; };
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
@@ -100,6 +109,15 @@
 		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
 		22D806D02232653F00B1524D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		22F4C8D12237700700DE0177 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		22F4C8D32237C60500DE0177 /* epdData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = epdData.swift; sourceTree = "<group>"; };
+		22F4C8D52237C83C00DE0177 /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
+		22F4C8D72237C84600DE0177 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		22F4C8D92237C85D00DE0177 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		22F4C8DB2237C86D00DE0177 /* AccNumSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccNumSheet.swift; sourceTree = "<group>"; };
+		22F4C8DD2237C88200DE0177 /* ListAccNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAccNumbers.swift; sourceTree = "<group>"; };
+		22F4C8DF2237CE8400DE0177 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		22F4C8E12237D34C00DE0177 /* NotificationsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewCell.swift; sourceTree = "<group>"; };
 		B222F1E41DAA30330089573D /* EnergyStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B222F1E71DAA30330089573D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B222F1E91DAA30330089573D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +161,7 @@
 				226464F921F053940003C9C2 /* payInfoCell.swift */,
 				B222F21B1DAA36070089573D /* MenuCell.swift */,
 				2260828021E76B8B00B5D768 /* EpdCell.swift */,
+				22F4C8E12237D34C00DE0177 /* NotificationsViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -178,6 +197,13 @@
 				221000B7220AA9E9008C7202 /* Constants.swift */,
 				2239C9B921F30924003515D8 /* Extensions.swift */,
 				2260827E21E752B100B5D768 /* Requests.swift */,
+				22F4C8DD2237C88200DE0177 /* ListAccNumbers.swift */,
+				22F4C8DB2237C86D00DE0177 /* AccNumSheet.swift */,
+				22F4C8D92237C85D00DE0177 /* UserCard.swift */,
+				22F4C8D72237C84600DE0177 /* Ticket.swift */,
+				22F4C8D52237C83C00DE0177 /* Bank.swift */,
+				22F4C8D32237C60500DE0177 /* epdData.swift */,
+				22F4C8DF2237CE8400DE0177 /* Notification.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -185,6 +211,7 @@
 		2261575D221C1C6B002BEEB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				22F4C8D12237700700DE0177 /* NotificationViewController.swift */,
 				22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */,
 				22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */,
 				22494BE722003D0600C9BDFB /* MainViewController.swift */,
@@ -430,25 +457,33 @@
 				2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */,
 				220876582223AD7700B2D42E /* AlertService.swift in Sources */,
 				227120D521FEE92000965502 /* WebViewController.swift in Sources */,
+				22F4C8D42237C60500DE0177 /* epdData.swift in Sources */,
 				224008B721F98D3F00A29222 /* ConfirmAccViewController.swift in Sources */,
 				B222F1EA1DAA30330089573D /* ViewController.swift in Sources */,
 				224008B321F9844D00A29222 /* TicketViewController.swift in Sources */,
 				228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */,
 				2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */,
 				2210047821D63AB10062C9C9 /* EnergyStreamTests.swift in Sources */,
+				22F4C8DC2237C86D00DE0177 /* AccNumSheet.swift in Sources */,
 				22CA1B8D22081CC000995A73 /* BlueTableViewCell.swift in Sources */,
+				22F4C8D82237C84600DE0177 /* Ticket.swift in Sources */,
+				22F4C8E22237D34C00DE0177 /* NotificationsViewCell.swift in Sources */,
 				2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */,
+				22F4C8DA2237C85D00DE0177 /* UserCard.swift in Sources */,
 				226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
 				22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */,
 				2239C9BA21F30924003515D8 /* Extensions.swift in Sources */,
 				22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */,
+				22F4C8E02237CE8400DE0177 /* Notification.swift in Sources */,
+				22F4C8D62237C83C00DE0177 /* Bank.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
 				221000B8220AA9E9008C7202 /* Constants.swift in Sources */,
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
 				2240080521FB16F600E18474 /* SocketIOManager.swift in Sources */,
 				22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */,
 				226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */,
+				22F4C8DE2237C88200DE0177 /* ListAccNumbers.swift in Sources */,
 				22636B61221671AA005D4436 /* BankListCell.swift in Sources */,
 				228E155821F75BD80040168A /* TicketListViewController.swift in Sources */,
 				222B8DC021F85EF9001D4B09 /* TicketListViewCell.swift in Sources */,
@@ -462,6 +497,7 @@
 				22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */,
 				22CA1B852207F80600995A73 /* AccNumSheetViewController.swift in Sources */,
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
+				22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */,
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,

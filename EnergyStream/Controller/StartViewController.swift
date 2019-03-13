@@ -185,13 +185,17 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                     if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
                         myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
                             DispatchQueue.main.async {
-                                if success {
-                                    // User authenticated successfully, take appropriate action
-                                    self.userLogin()
-                                    print("Awesome!!... User authenticated successfully")
-                                } else {
-                                    // User did not authenticate successfully, look at error and take appropriate action
-                                    print("Sorry!!... User did not authenticate successfully")
+                                for _ in 0 ... 2 {
+                                    if success {
+                                        // User authenticated successfully, take appropriate action
+                                        self.userLogin()
+                                        print("Awesome!!... User authenticated successfully")
+                                        break
+                                        
+                                    } else {
+                                        // User did not authenticate successfully, look at error and take appropriate action
+                                        print("Sorry!!... User did not authenticate successfully")
+                                    }
                                 }
                             }
                         }

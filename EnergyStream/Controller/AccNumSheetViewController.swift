@@ -70,6 +70,12 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         self.accNumberLbl.text! = "№ \(Requests.currentUser.accountNumber)"
         self.fioLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
         self.addressLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
