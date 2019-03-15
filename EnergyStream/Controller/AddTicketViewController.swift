@@ -12,21 +12,26 @@ import MobileCoreServices
 import AVFoundation
 import Photos
 
-class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource {
+class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
 
     static let shared = AddTicketViewController()
-    fileprivate var currentVC: UIViewController?
+    @IBOutlet weak var collectionView:UICollectionView!
     
     //MARK: - Internal Properties
-    var imagePickedBlock: ((UIImage) -> Void)?
-    var videoPickedBlock: ((NSURL) -> Void)?
-    var filePickedBlock: ((URL) -> Void)?
-    var attachedImages = [UIImage]()
+    var attachedImages = [UIImage]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     var ticketThemes = [String]() {
         didSet {
             picker.reloadAllComponents()
         }
     }
+    
     
     private var picker = UIPickerView()
     
@@ -61,7 +66,7 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
             if (200..<300).contains(statusCode) {
                 let value = responseJSON.result.value
                 print("value: ", value ?? "nil")
-                guard let test = value as? [String:Any] else {return}
+                guard let _ = value as? [String:Any] else {return}
                 self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
             }
             else {
@@ -105,6 +110,7 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getTicketThemes()
+//        self.createCollectionView()
         //trigger the camera process
         msgSubject.inputView = picker
         picker.delegate = self
@@ -143,8 +149,17 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
         self.fioDataLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
         self.addressTitleLbl.text! = "Адрес"
         self.addressDataLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
+        
+        
     }
     
+    @IBAction func selectImages() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.allowsEditing = true
+        vc.delegate = self
+        present(vc, animated: true)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -155,6 +170,27 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
 //
 //    }
 
+    
+
+}
+
+extension AddTicketViewController {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print(ticketThemes.count)
+        return ticketThemes.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        msgSubject.text! = ticketThemes[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ticketThemes[row]
+    }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
@@ -169,44 +205,42 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
             textView.textColor = UIColor.black
         }
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             return
         }
         attachedImages.append(image)
-//        self.dismiss(animated: true, completion: nil)
+        //        self.dismiss(animated: true, completion: nil)
         print(attachedImages.count)
         picker.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func selectImages() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.allowsEditing = true
-        vc.delegate = self
-        present(vc, animated: true)
+    
+    //MARK: UiCollectionView datasource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if attachedImages.isEmpty {
+            return 1
+        }
+        else {
+            return attachedImages.count
+        }
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticketCollectionViewCell", for: indexPath) as! TicketCollectionViewCell
+//        cell.image = attachedImages[indexPath]
+      
+        if !attachedImages.isEmpty {
+            print("Adding file miniature to collectionView")
+            cell.image.layer.cornerRadius = 5
+            cell.image.layer.masksToBounds = true
+            cell.image.image = attachedImages[indexPath.row]
+            cell.deleteItemBtn.isHidden = false
+        }
+        return cell
     }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print(ticketThemes.count)
-       return ticketThemes.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            msgSubject.text! = ticketThemes[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return ticketThemes[row]
-    }
-    
+
 }
 
 

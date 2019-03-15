@@ -22,34 +22,33 @@ class SocketIOManager: NSObject {
         super.init()
         socket.on("connect") { _, _ in
         print("socket connected")
-            let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
-            self.token = Requests.authToken
-            self.socket.emit("auth", ["token":self.token])
-        }
-
-        socket.on("notifications") { dataArray, ack in
-            guard let data = dataArray[0] as? [String:Any] else {return}
-            print(dataArray)
-            print(data["msg"])
-            self.pushNotification(message: data)
-            
-        }
+        let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
+        let token = dic?["token"] as? String ?? ""
+        self.socket.emit("auth", ["token":token])
+    }
+    
+    socket.on("notifications") { dataArray, ack in
+    guard let data = dataArray[0] as? [String:Any] else {return}
+    //            print(dataArray)
+    //            print(data["msg"])
+    self.pushNotification(message:data)
+    
+    }
         
         
     }
     func pushNotification(message: [String:Any]) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            
             // we're only going to create and schedule a notification
             // if the user has kept notifications authorized for this app
             guard settings.authorizationStatus == .authorized else { return }
             
             let content = UNMutableNotificationContent()
             content.title = "Тестовое сообщение"
-            content.subtitle = "Exceeded balance by $300.00."
+//            content.subtitle = "Exceeded balance by $300.00."
             content.body = message["msg"] as? String ?? ""
             content.sound = UNNotificationSound.default()
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: true)
             
             // create a "request to schedule a local notification, which
             // includes the content of the notification and the trigger conditions for delivery"
@@ -59,6 +58,7 @@ class SocketIOManager: NSObject {
     }
     }
     func establishConnection() {
+        
         socket.connect()
         
         

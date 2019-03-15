@@ -109,7 +109,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                                 
                             }
                             catch {
-                                print("Unable to save token into keychain")
+                                print("Unable to save credentials into keychain")
                                 
                             }      
                         }))
@@ -125,6 +125,14 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                 guard let token = jsonData["token"] as? String else {return}
                 if token != "" {
                         Requests.authToken = token
+                    do {
+                        try Locksmith.updateData(data: ["token":token], forUserAccount: "energyStreamToken")
+                        
+                    }
+                    catch {
+                        print("Unable to save token into keychain")
+                        
+                    }
                     }
                 guard let auth = jsonData["auth"] as? Bool else {return}
                     if auth == true {
@@ -148,7 +156,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-        SocketIOManager.sharedInstance.establishConnection()
+//        SocketIOManager.sharedInstance.establishConnection()
     }
     @IBAction func resetPass() {
         performSegue(withIdentifier: "toResetPassVC", sender: self)
