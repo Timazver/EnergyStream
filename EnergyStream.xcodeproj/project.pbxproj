@@ -38,12 +38,14 @@
 		228E155821F75BD80040168A /* TicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E155721F75BD80040168A /* TicketListViewController.swift */; };
 		228EB02221E4A3B000033803 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228EB02121E4A3B000033803 /* UserProfileCell.swift */; };
 		2290B93E21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */; };
+		2296A032223CD4E20006419F /* AddPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296A031223CD4E20006419F /* AddPhotoCollectionViewCell.swift */; };
 		22CA1B852207F80600995A73 /* AccNumSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */; };
 		22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */; };
 		22CA1B8D22081CC000995A73 /* BlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */; };
 		22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */; };
 		22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */; };
 		22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D806D02232653F00B1524D /* NotificationsViewController.swift */; };
+		22E10F5A223D14870020F635 /* TicketThemeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E10F59223D14870020F635 /* TicketThemeList.swift */; };
 		22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D12237700700DE0177 /* NotificationViewController.swift */; };
 		22F4C8D42237C60500DE0177 /* epdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D32237C60500DE0177 /* epdData.swift */; };
 		22F4C8D62237C83C00DE0177 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D52237C83C00DE0177 /* Bank.swift */; };
@@ -105,12 +107,14 @@
 		228E155721F75BD80040168A /* TicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewController.swift; sourceTree = "<group>"; };
 		228EB02121E4A3B000033803 /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		2290B93D21F5DD6B004DE3EA /* PassChangeUserFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassChangeUserFormViewController.swift; sourceTree = "<group>"; };
+		2296A031223CD4E20006419F /* AddPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		22CA1B842207F80600995A73 /* AccNumSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccNumSheetViewController.swift; sourceTree = "<group>"; };
 		22CA1B8A22081B9300995A73 /* ModalAccNumSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAccNumSheetViewController.swift; sourceTree = "<group>"; };
 		22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
 		22D806D02232653F00B1524D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		22E10F59223D14870020F635 /* TicketThemeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketThemeList.swift; sourceTree = "<group>"; };
 		22F4C8D12237700700DE0177 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		22F4C8D32237C60500DE0177 /* epdData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = epdData.swift; sourceTree = "<group>"; };
 		22F4C8D52237C83C00DE0177 /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				2260828021E76B8B00B5D768 /* EpdCell.swift */,
 				22F4C8E12237D34C00DE0177 /* NotificationsViewCell.swift */,
 				2270AD43223B5F800004F7BD /* TicketCollectionViewCell.swift */,
+				2296A031223CD4E20006419F /* AddPhotoCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				22F4C8D52237C83C00DE0177 /* Bank.swift */,
 				22F4C8D32237C60500DE0177 /* epdData.swift */,
 				22F4C8DF2237CE8400DE0177 /* Notification.swift */,
+				22E10F59223D14870020F635 /* TicketThemeList.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				227120D521FEE92000965502 /* WebViewController.swift in Sources */,
 				22F4C8D42237C60500DE0177 /* epdData.swift in Sources */,
 				224008B721F98D3F00A29222 /* ConfirmAccViewController.swift in Sources */,
+				2296A032223CD4E20006419F /* AddPhotoCollectionViewCell.swift in Sources */,
 				B222F1EA1DAA30330089573D /* ViewController.swift in Sources */,
 				2270AD44223B5F800004F7BD /* TicketCollectionViewCell.swift in Sources */,
 				224008B321F9844D00A29222 /* TicketViewController.swift in Sources */,
@@ -503,6 +510,7 @@
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
 				22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
+				22E10F5A223D14870020F635 /* TicketThemeList.swift in Sources */,
 				2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */,
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,
 				2213165A21F1F8220045F7D3 /* PdfViewController.swift in Sources */,

@@ -26,7 +26,7 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
         }
     }
     
-    var ticketThemes = [String]() {
+    var ticketThemes = [TicketThemeList]() {
         didSet {
             picker.reloadAllComponents()
         }
@@ -49,35 +49,69 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
 //    @IBOutlet weak var cancelBtn: UIButton!
     
     
-    @IBAction func sendTicket() {
+    @IBAction func sendTicket()
+//    {
+//        let title = self.msgSubject.text
+//        let msg = self.msgTtext.text
+//        let files: Array = [String]()
+//        let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber,"files":files] as [String : Any]
+//        let headers = ["Authorization": "Bearer \(Requests.authToken)",
+//            "Content-Type": "application/json"]
+//
+//        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application") else {return}
+//
+//        request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+//            guard let statusCode = responseJSON.response?.statusCode else { return }
+//            print("statusCode: ", statusCode)
+//
+//            if (200..<300).contains(statusCode) {
+//                let value = responseJSON.result.value
+//                print("value: ", value ?? "nil")
+//                guard let _ = value as? [String:Any] else {return}
+//                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
+//            }
+//            else {
+//                print("error")
+//                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время отправки заявки."), animated: true, completion: nil)
+//            }
+//
+//        }
+//
+//    }
+    
+    {
         let title = self.msgSubject.text
         let msg = self.msgTtext.text
-        let files: Array = [String]()
-        let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber,"files":files] as [String : Any]
+        let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
-        
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application") else {return}
         
-        request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
-            guard let statusCode = responseJSON.response?.statusCode else { return }
-            print("statusCode: ", statusCode)
-
-            if (200..<300).contains(statusCode) {
-                let value = responseJSON.result.value
-                print("value: ", value ?? "nil")
-                guard let _ = value as? [String:Any] else {return}
-                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
+        upload(multipartFormData: { multipartFormData in
+            print("started to upload files")
+            for item in self.attachedImages {
+                if let imageData = UIImagePNGRepresentation(item) {
+                    multipartFormData.append(imageData, withName: "photo")
+                }
             }
-            else {
-                print("error")
-                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время отправки заявки."), animated: true, completion: nil)
+            for (key,value) in parameters {
+                multipartFormData.append(value.data(using: .utf8)!, withName: key)
             }
-
-        }
-       
-    }
+        }, to: url, headers:headers, encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseString { response in
+                    debugPrint(response)
+                    }
+                return
+            case .failure(let encodingError):
+                print("Error during uploading images")
+                debugPrint(encodingError)
+            }
+            })
+        
     
+    }
     
     func getTicketThemes() {
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
@@ -95,7 +129,8 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
                         guard let data = value as? [[String:Any]] else {return}
                         print(data)
                         for dic in data {
-                            self.ticketThemes.append(dic["name"] as? String ?? "")
+                            print(dic)
+                            self.ticketThemes.append(TicketThemeList(dic: dic))
                         }
                         print("ticketThemes's count \(self.ticketThemes.count)")
                     }
@@ -185,11 +220,11 @@ extension AddTicketViewController {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        msgSubject.text! = ticketThemes[row]
+        msgSubject.text! = String(ticketThemes[row].id)
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return ticketThemes[row]
+        return ticketThemes[row].name
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -223,22 +258,40 @@ extension AddTicketViewController {
             return 1
         }
         else {
-            return attachedImages.count
+            return attachedImages.count + 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticketCollectionViewCell", for: indexPath) as! TicketCollectionViewCell
-//        cell.image = attachedImages[indexPath]
-      
+        print(collectionView.numberOfSections)
+//        let section = collectionView.numberOfSections 
+//        let item = collectionView.numberOfItems(inSection: section) - 1
+//        let lastIndexPath = IndexPath(item: item, section: section)
+//        collectionView.scrollToItem(at: lastIndexPath, at: .bottom, animated: true)
         if !attachedImages.isEmpty {
             print("Adding file miniature to collectionView")
-            cell.image.layer.cornerRadius = 5
-            cell.image.layer.masksToBounds = true
-            cell.image.image = attachedImages[indexPath.row]
-            cell.deleteItemBtn.isHidden = false
+            if indexPath.row != attachedImages.count {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticketCollectionViewCell", for: indexPath) as! TicketCollectionViewCell
+                cell.image.layer.cornerRadius = 5
+                cell.image.layer.masksToBounds = true
+                cell.image.image = attachedImages[indexPath.row]
+                cell.deleteItemBtn.isHidden = false
+            
+                return cell
+            }
+            else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
+                
+                return cell
+            }
         }
-        return cell
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addPhotoCollectionViewCell", for: indexPath) as! AddPhotoCollectionViewCell
+            
+            return cell
+        }
+        
+       
     }
 
 }
