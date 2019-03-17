@@ -405,7 +405,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgT-Bs-uVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1958" y="833"/>
+            <point key="canvasLocation" x="-1959.2" y="832.53373313343332"/>
+        </scene>
+        <!--License Agreement View Controller-->
+        <scene sceneID="KWd-5x-CDX">
+            <objects>
+                <viewController storyboardIdentifier="LicenseAgreementViewController" id="g1l-d4-42z" customClass="LicenseAgreementViewController" customModule="EnergyStream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9nO-07-f8G"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ufg-f8-2fh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gE1-Ps-oBq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="0Dd-Yr-EiP">
+                                <rect key="frame" x="10" y="30" width="355" height="577"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="500" id="dMp-Zd-g6t"/>
+                                </constraints>
+                                <mutableString key="text">Пользовательское соглашение между ТОО «Энергопоток»
+и потребителем электроэнергии
+
+1. Предметом настоящего Пользовательского соглашения является оказание потребителю  ТОО «Энергопоток» (далее — Пользователь) услуг, доступных на сайте и приложениях  ТОО «Энергопоток» после регистрации пользователя в порядке, установленном настоящим Пользовательским соглашением.
+2. Сайт, приложение  ТОО «Энергопоток»  обеспечивает доступ абонентов компании к веб-интерфейсу системы услуг личного кабинета, связанных с деятельностью ТОО «Энергопоток». Услуги сайта, приложения предоставляются Пользователям, имеющим доступ к сети Интернет, и  установленное программное обеспечение для работы с  веб-интерфейсом (браузером), на основе настоящего Пользовательского соглашения.
+3. Настоящее Пользовательское соглашение вступает в силу путем выражения Пользователем согласия с его условиями в форме нажатия Пользователем элемента управления веб-интерфейса «Я принимаю условия настоящего Пользовательского соглашения», помещенным под текстом Соглашения. Настоящее Пользовательское соглашение может быть изменено администрацией сайта ТОО «Энергопоток» без какого-либо специального уведомления. 
+4. Пользователь должен пройти процедуру регистрации:
+1) выразить согласие с условиями настоящего Пользовательского соглашения, путем, описанным в пункте 3. настоящего Пользовательского соглашения.
+2) заполнить Регистрационную Форму с обязательным указанием Ф.И.О. (наименования) Пользователя ,адреса электронной почты, абонентский  номера сотовой связи, номера  лицевого счёта по договору электроснабжения Пользователя, а также других сведений указанных в регистрационной форме необходимых и достаточных для идентификации Пользователя;
+3).  при регистрации Пользователю необходимо создать имя пользователя (логин) и пароль, для  доступа в личный кабинет Пользователя.
+5. Пользователь соглашается предоставить точную и полную информацию о себе по вопросам, предлагаемым в Регистрационной Форме. Если Пользователь предоставляет неверную информацию или у  ТОО «Энергопоток» есть серьезные основания полагать, что предоставленная Пользователем информация неверна, неполна или неточна, ТОО «Энергопоток» имеет право отказать Пользователю в регистрации и получении услуг, доступных на сайте.
+6.  Пользователь несет ответственность за безопасность своего пароля, а также за все, что будет сделано на сайте под паролем Пользователя.
+7. Пользователь настоящим Пользовательским соглашением выражает согласие на автоматизированную обработку своих персональных данных  с совершением действий: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, обезличивание, блокирование, удаление, уничтожение, передача (предоставление, доступ). Обработка персональных данных осуществляется в целях улучшения работы сайта, определения предпочтений пользователя. Данное согласие действует с момента его предоставления и в течение всего периода  использования сайта.
+8. Пользователь соглашается получать на адрес Электронной почты ,абонентский  номер сотовой связи , указанный в регистрационной форме , информационные электронные сообщения по вопросам электроснабжения.( извещения, уведомления, предписания  и т.п.)
+9. Принимая условия настоящего пользовательского соглашения, Пользователь гарантирует, что обладает  всеми необходимыми правами  и полномочиями,  а  также  несет ответственность за возможные  последствия, возникающие при ограничении или отключении электроэнергии из-за неоплаты, а также подтверждает, что  электронные информационные сообщения  (извещения, уведомления ,предписания и т.п.), отправленные от имени ТОО «Энергопоток» на  указанный Пользователем при регистрации адрес Электронной почты , абонентский номер сотовой связи,  полученными и надлежаще извещенным.  
+10. Пользователь несет полную ответственность за всю информацию, переданную в базу данных ТОО «Энергопоток».
+11. Пользователь соглашается не воспроизводить, не повторять и не копировать, не продавать и не перепродавать, а также не использовать для каких-либо коммерческих целей какие-либо части сайт приложения ТОО «Энергопоток» не несет ответственности по договорам между Пользователем и третьими лицами. 
+12. Пользователь соглашается, с тем, что ТОО «Энергопоток» может в любое время поменять положения настоящего соглашения, а также ограничить пользование сайтом, приложением в любое время без предварительного уведомления.
+13.  ТОО «Энергопоток» обязуется соблюдать конфиденциальность полученной от Пользователя информации за исключением случаев, предусмотренных Законодательством Республики Казахстан.
+14. Пользователь не имеет права доступа к любой другой информации ТОО «Энергопоток», помимо собственной информации Пользователя в базе данных ТОО «Энергопоток», а также общедоступной информации ТОО «Энергопоток» на сайте.
+15. Плата использование Приложения не взымается.
+</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWp-w3-quE">
+                                <rect key="frame" x="137.5" y="617" width="100" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="jMK-lM-D5y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Закрыть"/>
+                                <connections>
+                                    <action selector="closeWindow" destination="g1l-d4-42z" eventType="touchUpInside" id="tId-Sp-uyP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Dd-Yr-EiP" firstAttribute="top" secondItem="9nO-07-f8G" secondAttribute="bottom" constant="10" id="LrL-Co-aK8"/>
+                            <constraint firstItem="0Dd-Yr-EiP" firstAttribute="leading" secondItem="gE1-Ps-oBq" secondAttribute="leading" constant="10" id="XLB-6i-GKf"/>
+                            <constraint firstItem="Ufg-f8-2fh" firstAttribute="top" secondItem="0Dd-Yr-EiP" secondAttribute="bottom" constant="60" id="Y8K-XT-uQr"/>
+                            <constraint firstItem="oWp-w3-quE" firstAttribute="centerX" secondItem="gE1-Ps-oBq" secondAttribute="centerX" id="be6-7j-ilA"/>
+                            <constraint firstItem="oWp-w3-quE" firstAttribute="top" secondItem="0Dd-Yr-EiP" secondAttribute="bottom" constant="10" id="j0p-Hq-VPf"/>
+                            <constraint firstAttribute="trailing" secondItem="0Dd-Yr-EiP" secondAttribute="trailing" constant="10" id="sG7-RG-Nnm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s6S-Uk-OSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1978.4000000000001" y="1599.8500749625189"/>
         </scene>
         <!--Reset Pass View Controller-->
         <scene sceneID="YXz-xS-bnI">
@@ -793,7 +863,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMs-dy-PFM">
-                                                    <rect key="frame" x="68" y="11" width="237" height="27"/>
+                                                    <rect key="frame" x="68" y="11" width="292" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="s33-zQ-ZXZ"/>
                                                     </constraints>
@@ -1507,7 +1577,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFs-Uc-YHB">
-                                                    <rect key="frame" x="10" y="10" width="280" height="33.5"/>
+                                                    <rect key="frame" x="10" y="10" width="335" height="33.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="c3d-0v-Xc5"/>
                                                     </constraints>
@@ -1562,7 +1632,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsk-SY-zMZ">
-                                                    <rect key="frame" x="110" y="7" width="70" height="30"/>
+                                                    <rect key="frame" x="165" y="7" width="70" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="UYt-ey-ISj"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="kiA-eW-e5I"/>
@@ -1572,7 +1642,7 @@
                                                     <color key="highlightedColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                                 <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4kX-cq-mz4">
-                                                    <rect key="frame" x="190" y="2" width="120" height="40"/>
+                                                    <rect key="frame" x="245" y="2" width="120" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="bez-I3-p5G"/>
                                                         <constraint firstAttribute="width" constant="120" id="voO-NQ-0QJ"/>
@@ -1789,14 +1859,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kue-gX-fVh">
-                                                    <rect key="frame" x="0.0" y="10" width="60" height="60"/>
+                                                    <rect key="frame" x="0.0" y="5" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="gHj-cB-aeY"/>
                                                         <constraint firstAttribute="width" constant="60" id="xbo-Ir-3L1"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejK-b7-AtQ">
-                                                    <rect key="frame" x="55" y="0.0" width="15" height="15"/>
+                                                    <rect key="frame" x="50" y="0.0" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="L1b-Te-xrf"/>
                                                         <constraint firstAttribute="width" constant="15" id="xxb-Az-QmH"/>
@@ -1824,7 +1894,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6y-5A-yNd">
-                                                    <rect key="frame" x="22.5" y="22.5" width="30" height="30"/>
+                                                    <rect key="frame" x="17.5" y="17.5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="vBq-Ar-pZh"/>
                                                         <constraint firstAttribute="width" constant="30" id="wvZ-kk-wL4"/>
@@ -2213,7 +2283,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyX-5w-3jP">
-                                                    <rect key="frame" x="190.5" y="12" width="39.5" height="19.5"/>
+                                                    <rect key="frame" x="245.5" y="12" width="39.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2248,7 +2318,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkX-tX-b2U">
-                                                    <rect key="frame" x="135" y="24.5" width="120" height="21"/>
+                                                    <rect key="frame" x="190" y="24.5" width="120" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="DZj-XA-ml4"/>
                                                     </constraints>
@@ -2277,7 +2347,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgT-gj-EEA">
-                                                    <rect key="frame" x="240" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="295" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="NfQ-n8-1J2"/>
                                                         <constraint firstAttribute="height" constant="30" id="Sde-sY-SaP"/>
@@ -2395,7 +2465,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icy-GY-e8T">
-                                                    <rect key="frame" x="170" y="25" width="120" height="20"/>
+                                                    <rect key="frame" x="225" y="25" width="120" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="Dud-rg-MSb"/>
                                                         <constraint firstAttribute="height" constant="20" id="tVi-an-R2j"/>
@@ -2671,7 +2741,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPA-1w-Kcw">
-                                                    <rect key="frame" x="170" y="25" width="120" height="20"/>
+                                                    <rect key="frame" x="225" y="25" width="120" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Eao-fF-WUV"/>
                                                         <constraint firstAttribute="width" constant="120" id="du5-Yd-m2p"/>

@@ -15,7 +15,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password:UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
-    
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     
@@ -63,67 +62,90 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func userRegister() {
+       
+        let alert = UIAlertController(title: "Внимание", message:"Необходимо принять пользовательское соглашение.", preferredStyle: .actionSheet)
         
-        let accountNumber = self.accountNumber.text
-        let phoneNumber = self.phoneNumber.text!.removingWhitespaces()
-        let password = self.password.text
+        let showAction = UIAlertAction(title: "Просмотреть", style: .default, handler: { action in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "LicenseAgreementViewController")
+            self.present(vc, animated: true, completion: nil)
+        })
         
-        let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
-        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/register") else {return}
-        
-        request(url, method: HTTPMethod.post, parameters: parametersForRegister, encoding: JSONEncoding.default).responseJSON { responseJSON in
-            guard let statusCode = responseJSON.response?.statusCode else { return }
-            print(responseJSON.value!)
-            print("statusCode: ", statusCode)
-            if statusCode == 200 {
-                print("Появилось окно с смс")
-                let smsAlert = UIAlertController(title: "Введите смс код", message: "", preferredStyle: UIAlertControllerStyle.alert)
-                smsAlert.addTextField { (textField : UITextField!) -> Void in
-                }
-                let action=UIAlertAction(title: "Отправить", style: .default, handler:{
-                    action in
-                    guard let urlForActivate = URL(string: "\(Constants.URLForApi ?? "")/api/activate") else {return}
-                    let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text] as [String : Any]
-                    request(urlForActivate, method: HTTPMethod.post, parameters: parametersForActivate, encoding: JSONEncoding.default).responseJSON {responseJSON in
-                        guard let activateStatusCode = responseJSON.response?.statusCode else { return }
-                        if activateStatusCode == 200 {
-                            
-                            self.present(AlertService.showAlert(title: "Успешно", message: "Регистрация завершилась успешно", handler: {
-                                action in
-                                self.performSegue(withIdentifier: "backToLoginSegue", sender: self)
-                            }),animated: true, completion: nil)
-                        }
-                
-                        else if activateStatusCode == 404 {
-                            self.present(AlertService.showAlert(title: "Ошибка", message: "Смс код введен неверно."),animated: true, completion: nil)
-                           
+        let acceptAction = UIAlertAction(title: "Принять", style: .default, handler: {action in
+            let accountNumber = self.accountNumber.text
+            let phoneNumber = self.phoneNumber.text!.removingWhitespaces()
+            let password = self.password.text
+            
+            let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
+            guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/register") else {return}
+            
+            request(url, method: HTTPMethod.post, parameters: parametersForRegister, encoding: JSONEncoding.default).responseJSON { responseJSON in
+                guard let statusCode = responseJSON.response?.statusCode else { return }
+                print(responseJSON.value!)
+                print("statusCode: ", statusCode)
+                if statusCode == 200 {
+                    print("Появилось окно с смс")
+                    let smsAlert = UIAlertController(title: "Введите смс код", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    smsAlert.addTextField { (textField : UITextField!) -> Void in
+                    }
+                    let action=UIAlertAction(title: "Отправить", style: .default, handler:{
+                        action in
+                        guard let urlForActivate = URL(string: "\(Constants.URLForApi ?? "")/api/activate") else {return}
+                        let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text] as [String : Any]
+                        request(urlForActivate, method: HTTPMethod.post, parameters: parametersForActivate, encoding: JSONEncoding.default).responseJSON {responseJSON in
+                            guard let activateStatusCode = responseJSON.response?.statusCode else { return }
+                            if activateStatusCode == 200 {
+                                
+                                self.present(AlertService.showAlert(title: "Успешно", message: "Регистрация завершилась успешно", handler: {
+                                    action in
+                                    self.performSegue(withIdentifier: "backToLoginSegue", sender: self)
+                                }),animated: true, completion: nil)
+                            }
+                                
+                            else if activateStatusCode == 404 {
+                                self.present(AlertService.showAlert(title: "Ошибка", message: "Смс код введен неверно."),animated: true, completion: nil)
+                                
+                            }
                         }
                     }
+                    )
+                    let cancel = UIAlertAction(title: "Отмена", style: .default, handler:  {
+                        action in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    
+                    smsAlert.addAction(action)
+                    smsAlert.addAction(cancel)
+                    self.present(smsAlert, animated: true, completion: nil)
                 }
-            )
-                let cancel = UIAlertAction(title: "Отмена", style: .default, handler:  {
-                    action in
-                    self.dismiss(animated: true, completion: nil)
-                })
+                    
+                else if statusCode == 404 {
+                    self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе."),animated: true, completion: nil)
+                }
+                    
+                else if statusCode == 401 {
+                    self.present(AlertService.showAlert(title: "Ошибка", message: "Данный номер уже зарегистрирован."),animated: true, completion: nil)
+                }
+                    
+                else if statusCode == 500 {
+                    self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время регистрации пользователя."),animated: true, completion: nil)
+                }
                 
-                smsAlert.addAction(action)
-                smsAlert.addAction(cancel)
-                self.present(smsAlert, animated: true, completion: nil)
             }
             
-            else if statusCode == 404 {
-                self.present(AlertService.showAlert(title: "Ошибка", message: "Лицевой счёт не найден в базе."),animated: true, completion: nil)
-            }
-            
-            else if statusCode == 401 {
-                self.present(AlertService.showAlert(title: "Ошибка", message: "Данный номер уже зарегистрирован."),animated: true, completion: nil)
-            }
-            
-            else if statusCode == 500 {
-                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время регистрации пользователя."),animated: true, completion: nil)
-            }
-            
-        }
+        })
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: {
+            action in
+        })
+        
+        alert.addAction(showAction)
+        alert.addAction(acceptAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
     }
     
     @IBAction func closeRegisterWindow() {

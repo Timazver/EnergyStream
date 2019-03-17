@@ -31,6 +31,7 @@
 		226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464F921F053940003C9C2 /* payInfoCell.swift */; };
 		226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */; };
 		226464FE21F09B1A0003C9C2 /* AccListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226464FD21F09B1A0003C9C2 /* AccListCell.swift */; };
+		226E3D25223E540100F4828F /* LicenseAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E3D24223E540100F4828F /* LicenseAgreementViewController.swift */; };
 		2270AD44223B5F800004F7BD /* TicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270AD43223B5F800004F7BD /* TicketCollectionViewCell.swift */; };
 		227120D321FEC5B100965502 /* BankChoosePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */; };
 		227120D521FEE92000965502 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227120D421FEE92000965502 /* WebViewController.swift */; };
@@ -100,6 +101,7 @@
 		226464FB21F09ADE0003C9C2 /* AccListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListTableViewController.swift; sourceTree = "<group>"; };
 		226464FD21F09B1A0003C9C2 /* AccListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccListCell.swift; sourceTree = "<group>"; };
 		22695B0021FDBC440070C831 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		226E3D24223E540100F4828F /* LicenseAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseAgreementViewController.swift; sourceTree = "<group>"; };
 		2270AD43223B5F800004F7BD /* TicketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		227120D221FEC5B100965502 /* BankChoosePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankChoosePopUpViewController.swift; sourceTree = "<group>"; };
 		227120D421FEE92000965502 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
 				B222F21D1DAA46600089573D /* EpdViewController.swift */,
 				B222F2191DAA354D0089573D /* menuViewController.swift */,
+				226E3D24223E540100F4828F /* LicenseAgreementViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				22F4C8E22237D34C00DE0177 /* NotificationsViewCell.swift in Sources */,
 				2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */,
 				22F4C8DA2237C85D00DE0177 /* UserCard.swift in Sources */,
+				226E3D25223E540100F4828F /* LicenseAgreementViewController.swift in Sources */,
 				226464FC21F09ADE0003C9C2 /* AccListTableViewController.swift in Sources */,
 				B222F21C1DAA36070089573D /* MenuCell.swift in Sources */,
 				22CA1B8B22081B9300995A73 /* ModalAccNumSheetViewController.swift in Sources */,

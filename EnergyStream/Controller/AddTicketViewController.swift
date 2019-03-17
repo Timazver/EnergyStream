@@ -49,37 +49,7 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
 //    @IBOutlet weak var cancelBtn: UIButton!
     
     
-    @IBAction func sendTicket()
-//    {
-//        let title = self.msgSubject.text
-//        let msg = self.msgTtext.text
-//        let files: Array = [String]()
-//        let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber,"files":files] as [String : Any]
-//        let headers = ["Authorization": "Bearer \(Requests.authToken)",
-//            "Content-Type": "application/json"]
-//
-//        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application") else {return}
-//
-//        request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
-//            guard let statusCode = responseJSON.response?.statusCode else { return }
-//            print("statusCode: ", statusCode)
-//
-//            if (200..<300).contains(statusCode) {
-//                let value = responseJSON.result.value
-//                print("value: ", value ?? "nil")
-//                guard let _ = value as? [String:Any] else {return}
-//                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена."), animated: true, completion: nil)
-//            }
-//            else {
-//                print("error")
-//                self.present(AlertService.showAlert(title: "Ошибка", message: "Ошибка во время отправки заявки."), animated: true, completion: nil)
-//            }
-//
-//        }
-//
-//    }
-    
-    {
+    @IBAction func sendTicket() {
         let title = self.msgSubject.text
         let msg = self.msgTtext.text
         let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber]
@@ -101,9 +71,11 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseString { response in
+                    
                     debugPrint(response)
                     }
-                return
+                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена.", handler: {action in self.navigationController?.popViewController(animated: true)}) , animated: true, completion:nil)
+                
             case .failure(let encodingError):
                 print("Error during uploading images")
                 debugPrint(encodingError)
