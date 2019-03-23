@@ -8,10 +8,8 @@
 
 import UIKit
 
-class TicketListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TicketListViewController: UIViewController {
     
-    
-    @IBOutlet var ticketListTableView: UITableView!
     var msgTitle: String = ""
     var msgText: String = ""
     var ticketListArr = [Ticket]() {
@@ -22,6 +20,11 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
             
         }
     }
+    var refreshControl: UIRefreshControl!
+    
+    
+    @IBOutlet var ticketListTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +38,24 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
         print("ticketListArray count is \(ticketListArr.count)")
         let addTicket = UIBarButtonItem(barButtonSystemItem:.add, target: self, action: #selector(addTicketVC))
         self.navigationItem.rightBarButtonItem = addTicket
+        print("This is viewDidLoad method in TicketListViewController")
+        
+        refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "Идет обновление")
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
+        ticketListTableView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
+        
+   @objc func refresh(sender: AnyObject) {
+//        refreshBegin(
+//            refreshEnd: {(x: Int) -> () in
+                self.getTicketList()
+                self.ticketListTableView.reloadData()
+                self.refreshControl.endRefreshing()
+//            })
+    }
+
     
     @objc func addTicketVC(sender: UIButton) {
 //        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -44,6 +63,85 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
 //        self.present(newVC, animated: true, completion: nil)
         performSegue(withIdentifier: "toAddTicketVC", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        if segue.identifier == "toAddTicketVC" {
+            _ = segue.destination as! AddTicketViewController
+        }
+        else {
+            //        let ticketVC = segue.destination as! TicketViewController
+            //        ticketVC.titleFromTable = msgTitle
+            //        ticketVC.text = msgText
+        }
+        
+    }
+    
+    func showTicket(msgTitle: String, msgText: String) {
+        //        performSegue(withIdentifier: "toTicketVC", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ticketVC = storyboard.instantiateViewController(withIdentifier: "TicketViewController") as! TicketViewController
+        ticketVC.ticket = self.getTicketByTitle(title: msgTitle)
+        self.addChildViewController(ticketVC)
+        ticketVC.view.frame = self.view.frame
+        self.view.addSubview(ticketVC.view)
+        ticketVC.didMove(toParentViewController: self)
+    }
+    
+    func getTicketList() {
+        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return }
+        
+        //MARK: Request with onlu swift features
+        var requestForUserInfo = URLRequest(url:url )
+        requestForUserInfo.httpMethod = "GET"
+        requestForUserInfo.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
+        requestForUserInfo.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        
+        session.dataTask(with: requestForUserInfo) {
+            (data,response,error) in
+            
+            if let response = response {
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                guard let ticketList = json as? [[String:Any]] else {return}
+                
+                self.ticketListArr.removeAll()
+                for dic in ticketList {
+                    self.ticketListArr.append(Ticket(dic))
+                }
+                
+            }catch {
+                print(error)
+            }
+            
+            }.resume()
+        
+    }
+    
+    func getTicketByTitle(title: String) -> Ticket {
+        var ticket = Ticket()
+        for item in ticketListArr {
+            if item.ticketTitle == title {
+                ticket = item
+            }
+        }
+        return ticket
+    }
+    
+}
+
+//MARK Extension
+
+extension TicketListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if ticketListArr.isEmpty {
@@ -55,14 +153,14 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
-        }
-      
+        return 1
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath ) as! TicketListViewCell
-//        cell.textLabel?.numberOfLines = 0
-//        cell.textLabel?.lineBreakMode = .byWordWrapping
+        //        cell.textLabel?.numberOfLines = 0
+        //        cell.textLabel?.lineBreakMode = .byWordWrapping
         print("Filling cells")
         if !self.ticketListArr.isEmpty {
             cell.ticketNumber.text = "№ \(self.ticketListArr[indexPath.section].ticketNumber)"
@@ -81,95 +179,30 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
         msgTitle = self.ticketListArr[indexPath.section].ticketTitle
         msgText = self.ticketListArr[indexPath.section].ticketMsg
         self.showTicket(msgTitle: msgTitle, msgText: msgText)
-//        performSegue(withIdentifier: "toTicketVC", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+        //        performSegue(withIdentifier: "toTicketVC", sender: self)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
-        if segue.identifier == "toAddTicketVC" {
-            let newVC = segue.destination as! AddTicketViewController
-        }
-        else {
-//        let ticketVC = segue.destination as! TicketViewController
-//        ticketVC.titleFromTable = msgTitle
-//        ticketVC.text = msgText
-        }
-        
-    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return 20
-//        }
-//        else {
-            return 5
-//        }
+        //        if section == 0 {
+        //            return 20
+        //        }
+        //        else {
+        return 5
+        //        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.white
     }
     
-    func showTicket(msgTitle: String, msgText: String) {
-//        performSegue(withIdentifier: "toTicketVC", sender: self)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let TicketVC = storyboard.instantiateViewController(withIdentifier: "TicketViewController") as! TicketViewController
-        TicketVC.text = msgText
-        TicketVC.titleFromTable = msgTitle
-        self.addChildViewController(TicketVC)
-        TicketVC.view.frame = self.view.frame
-        self.view.addSubview(TicketVC.view)
-        TicketVC.didMove(toParentViewController: self)
-    }
     
-    func getTicketList() {
-        let headers = ["Authorization": "Bearer \(Requests.authToken)","Content-Type": "application/json"]
-        //        let parametersForRequest = ["]
-        guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return }
-        
-        //MARK: Request with onlu swift features
-        var requestForUserInfo = URLRequest(url:url )
-        
-            requestForUserInfo.httpMethod = "GET"
-            requestForUserInfo.addValue("Bearer \(Requests.authToken) ", forHTTPHeaderField: "Authorization")
-            requestForUserInfo.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let session = URLSession.shared
-        
-            session.dataTask(with: requestForUserInfo) {
-                (data,response,error) in
-                
-                if let response = response {
-                    print(response)
-                }
-                
-                guard let data = data else {return}
-                
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                    guard let ticketList = json as? [[String:Any]] else {return}
-                    
-                    //                if !Requests.ticketListArray.isEmpty {
-                    //                    self.ticketListArray.removeAll()
-                    //                }
-                    
-                    for dic in ticketList {
-                        self.ticketListArr.append(Ticket(dic))
-                    }
-                    
-                }catch {
-                    print(error)
-                }
-                
-                }.resume()
-        
-    }
-
+    
     func createHeaderView() -> UIView {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 250))
         headerView.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
@@ -317,7 +350,7 @@ class TicketListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         return headerView
     }
-   
+    
 }
 
 

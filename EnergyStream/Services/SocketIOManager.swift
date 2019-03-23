@@ -20,7 +20,7 @@ class SocketIOManager: NSObject {
     
     override init() {
         super.init()
-        socket.on("connect") { _, _ in
+    socket.on("connect") { _, _ in
         print("socket connected")
         let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStream")
         let token = dic?["token"] as? String ?? ""
@@ -28,12 +28,12 @@ class SocketIOManager: NSObject {
     }
     
     socket.on("notifications") { dataArray, ack in
-    guard let data = dataArray[0] as? [String:Any] else {return}
-    //            print(dataArray)
-    //            print(data["msg"])
-    self.pushNotification(message:data)
-    
-    }
+        guard let data = dataArray[0] as? [String:Any] else {return}
+        //            print(dataArray)
+        //            print(data["msg"])
+        self.pushNotification(message:data)
+        
+        }
         
         
     }
@@ -48,7 +48,7 @@ class SocketIOManager: NSObject {
 //            content.subtitle = "Exceeded balance by $300.00."
             content.body = message["msg"] as? String ?? ""
             content.sound = UNNotificationSound.default()
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: true)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
             
             // create a "request to schedule a local notification, which
             // includes the content of the notification and the trigger conditions for delivery"

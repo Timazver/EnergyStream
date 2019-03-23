@@ -11,18 +11,22 @@ import Alamofire
 import MobileCoreServices
 import AVFoundation
 import Photos
-
-class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+import BSImagePicker
+class AddTicketViewController: UIViewController {
     
     
 
-    static let shared = AddTicketViewController()
+//    static let shared = AddTicketViewController()
     @IBOutlet weak var collectionView:UICollectionView!
+    
     
     //MARK: - Internal Properties
     var attachedImages = [UIImage]() {
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
         }
     }
     
@@ -49,10 +53,69 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
 //    @IBOutlet weak var cancelBtn: UIButton!
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.getTicketThemes()
+        //        self.createCollectionView()
+        //trigger the camera process
+        msgSubject.inputView = picker
+        picker.delegate = self
+        self.navigationController!.navigationBar.backItem?.title = ""
+        msgTtext.text = "Введите текст заявки"
+        msgTtext.textColor = UIColor.lightGray
+        
+        self.title = "Создание обращения в тех. службу"
+        self.msgSubject.backgroundColor = .clear
+        self.msgTtext.backgroundColor = .clear
+        
+        self.msgSubject.layer.borderColor = UIColor.lightGray.cgColor
+        self.msgSubject.layer.borderWidth = 0.4
+        self.msgSubject.layer.cornerRadius = CGFloat(5)
+        
+        self.msgTtext.layer.borderColor = UIColor.lightGray.cgColor
+        self.msgTtext.layer.borderWidth = 0.4
+        self.msgTtext.layer.cornerRadius = CGFloat(5)
+        self.msgSubject.useBottomBorderWithoutBackgroundColor()
+        //        self.msgSubject.useBottomBorderWithoutBackgroundColor()
+        //        self.msgTtext.useBottomBorderWithoutBackgroundColor()
+        
+        self.addBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.addBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        //            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        self.addBtn.layer.cornerRadius = 5
+        self.addBtn.layer.borderWidth = 1
+        //        self.cancelBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        //        self.cancelBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
+        //        //            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        //        self.cancelBtn.layer.cornerRadius = 5
+        //        self.cancelBtn.layer.borderWidth = 1
+        
+        self.accNumberLbl.text! = "№ \(Requests.currentUser.accountNumber)"
+        self.fioTitleLbl.text! = "ФИО"
+        self.fioDataLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
+        self.addressTitleLbl.text! = "Адрес"
+        self.addressDataLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
+        
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Готово", style: .plain, target: self, action: #selector(closePickerView))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(closePickerView))
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        msgSubject.inputAccessoryView = toolBar
+    }
+    
+    
     @IBAction func sendTicket() {
-        let title = self.msgSubject.text
+        let title = String(findNameById(name: self.msgSubject.text ?? "").id)
         let msg = self.msgTtext.text
-        let parameters = ["title":title ?? "","msg":msg ?? "","accountNumber":Requests.currentAccoutNumber]
+        let parameters = ["title":title ,"msg":msg ?? "","accountNumber":Requests.currentAccoutNumber]
         let headers = ["Authorization": "Bearer \(Requests.authToken)",
             "Content-Type": "application/json"]
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application") else {return}
@@ -60,12 +123,12 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
         upload(multipartFormData: { multipartFormData in
             print("started to upload files")
             for item in self.attachedImages {
-                if let imageData = UIImagePNGRepresentation(item) {
-                    multipartFormData.append(imageData, withName: "photo")
+                if let imageData = UIImageJPEGRepresentation(item, 0.25) {
+                    multipartFormData.append(imageData, withName: "uploads[]", fileName: "photo", mimeType: "image/jpg")
                 }
             }
             for (key,value) in parameters {
-                multipartFormData.append(value.data(using: .utf8)!, withName: key)
+                multipartFormData.append(value  .data(using: .utf8)!, withName: key)
             }
         }, to: url, headers:headers, encodingCompletion: { encodingResult in
             switch encodingResult {
@@ -74,7 +137,8 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
                     
                     debugPrint(response)
                     }
-                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена.", handler: {action in self.navigationController?.popViewController(animated: true)}) , animated: true, completion:nil)
+                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена.", handler: {action in
+                    self.navigationController?.popViewController(animated: true)}) , animated: true, completion:nil)
                 
             case .failure(let encodingError):
                 print("Error during uploading images")
@@ -114,74 +178,67 @@ class AddTicketViewController: UIViewController, UITextViewDelegate, UINavigatio
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.getTicketThemes()
-//        self.createCollectionView()
-        //trigger the camera process
-        msgSubject.inputView = picker
-        picker.delegate = self
-        self.navigationController!.navigationBar.backItem?.title = ""
-        msgTtext.text = "Введите текст заявки"
-        msgTtext.textColor = UIColor.lightGray
-        
-        self.title = "Создание обращения в тех. службу"
-        self.msgSubject.backgroundColor = .clear
-        self.msgTtext.backgroundColor = .clear
-        
-        self.msgSubject.layer.borderColor = UIColor.lightGray.cgColor
-        self.msgSubject.layer.borderWidth = 0.4
-        self.msgSubject.layer.cornerRadius = CGFloat(5)
-        
-        self.msgTtext.layer.borderColor = UIColor.lightGray.cgColor
-        self.msgTtext.layer.borderWidth = 0.4
-        self.msgTtext.layer.cornerRadius = CGFloat(5)
-        self.msgSubject.useBottomBorderWithoutBackgroundColor()
-//        self.msgSubject.useBottomBorderWithoutBackgroundColor()
-//        self.msgTtext.useBottomBorderWithoutBackgroundColor()
-        
-        self.addBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
-        self.addBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
-        //            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
-        self.addBtn.layer.cornerRadius = 5
-        self.addBtn.layer.borderWidth = 1
-//        self.cancelBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
-//        self.cancelBtn.layer.borderColor = UIColor(red: 0.55, green: 0.65, blue: 1.00, alpha: 1.0).cgColor
-//        //            UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
-//        self.cancelBtn.layer.cornerRadius = 5
-//        self.cancelBtn.layer.borderWidth = 1
-        
-        self.accNumberLbl.text! = "№ \(Requests.currentUser.accountNumber)"
-        self.fioTitleLbl.text! = "ФИО"
-        self.fioDataLbl.text! = Requests.currentUser.fio.capitalizingFirstLetter()
-        self.addressTitleLbl.text! = "Адрес"
-        self.addressDataLbl.text! = Requests.currentUser.address.capitalizingFirstLetter()
-        
-        
+    func findNameById(id: Int) -> TicketThemeList {
+        var theme = TicketThemeList()
+        for item in ticketThemes {
+            if item.id == id {
+                theme = item
+            }
+        }
+        return theme
     }
     
-    @IBAction func selectImages() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.allowsEditing = true
-        vc.delegate = self
-        present(vc, animated: true)
+    func findNameById(name: String) -> TicketThemeList {
+        var theme = TicketThemeList()
+        for item in ticketThemes {
+            if item.name == name {
+                theme = item
+            }
+        }
+        return theme
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-//    @IBAction func closeWindow() {
-//        dismiss(animated: true, completion: nil)
-//
-//    }
-
-    
+    @objc func closePickerView() {
+        self.view.endEditing(true)
+    }
 
 }
 
-extension AddTicketViewController {
+extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBAction func selectImages() {
+        let vc = BSImagePickerViewController()
+        
+        bs_presentImagePickerController(vc, animated: true,
+                                        select: { (asset: PHAsset) -> Void in
+                                            print("User finished selecting  assets")
+                                            // User selected an asset.
+                                            // Do something with it, start upload perhaps?
+        }, deselect: { (asset: PHAsset) -> Void in
+            // User deselected an assets.
+            // Do something, cancel upload?
+        }, cancel: { (assets: [PHAsset]) -> Void in
+            // User cancelled. And this where the assets currently selected.
+        }, finish: { (assets: [PHAsset]) -> Void in
+            for asset in assets {
+                let manager = PHImageManager.default()
+                let options = PHImageRequestOptions()
+                options.version = .original
+                options.isSynchronous = true
+                manager.requestImageData(for: asset, options: options) { data, _, _, _ in
+                    if let data = data {
+                        self.attachedImages.append(UIImage(data: data)!)
+                    }
+                }
+            }
+            print(self.attachedImages.count)
+        }, completion: nil)
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -192,7 +249,7 @@ extension AddTicketViewController {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        msgSubject.text! = String(ticketThemes[row].id)
+        msgSubject.text! = findNameById(id: ticketThemes[row].id).name
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -213,15 +270,16 @@ extension AddTicketViewController {
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-            return
-        }
-        attachedImages.append(image)
-        //        self.dismiss(animated: true, completion: nil)
-        print(attachedImages.count)
-        picker.dismiss(animated: true, completion: nil)
-    }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+//            return
+//        }
+//        attachedImages.append(image)
+//        //        self.dismiss(animated: true, completion: nil)
+//        print(attachedImages.count)
+//        picker.dismiss(animated: true, completion: nil)
+//    }
     
     
     //MARK: UiCollectionView datasource
@@ -265,6 +323,19 @@ extension AddTicketViewController {
         
        
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ImageShowViewController") as! ImageShowViewController
+        //        vc.imageForShow =
+        vc.configure(image: attachedImages[indexPath.row])
+        self.addChildViewController(vc)
+        vc.view.frame = self.view.frame
+        self.view.addSubview(vc.view)
+        vc.didMove(toParentViewController: self)
+    }
+    
+    
 
 }
 

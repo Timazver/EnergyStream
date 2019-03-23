@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AKMonthYearPickerView
 
 class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -74,15 +73,16 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.tintColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         toolBar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(closePickerView))
+        let doneButton = UIBarButtonItem(title: "Готово", style: .plain, target: self, action: #selector(closePickerView))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closePickerView))
+        let cancelButton = UIBarButtonItem(title: "Отмена", style: .plain, target: self, action: #selector(closePickerView))
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         yearTextField.inputAccessoryView = toolBar
+        monthTextField.inputAccessoryView = toolBar
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -106,12 +106,12 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
         if yearTextField.isFirstResponder {
             yearTextField.text! = years[row]
             year = yearTextField.text!
-            yearTextField.resignFirstResponder()
+//            yearTextField.resignFirstResponder()
         }
         else if monthTextField.isFirstResponder {
             monthTextField.text! = months[row]
             month = formatMonth(months.firstIndex(of: monthTextField.text!)! + 1)
-            monthTextField.resignFirstResponder()
+//            monthTextField.resignFirstResponder()
         }
         
     }

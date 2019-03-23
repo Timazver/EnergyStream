@@ -9,10 +9,10 @@
 import UIKit
 
 
-class NotificationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotificationsViewController: UIViewController {
     
+     var refreshControl: UIRefreshControl!
     
-    @IBOutlet var notificationsTableView: UITableView!
     var notificationText: String = ""
     var notificationListArr = [Notification]() {
         didSet {
@@ -22,6 +22,8 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             
         }
     }
+    
+    @IBOutlet var notificationsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,18 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         notificationsTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         self.getNotificationsList()
         print("notificationListArr count is \(notificationListArr.count)")
+        
+        refreshControl = UIRefreshControl()
+        //        refreshControl.attributedTitle = NSAttributedString(string: "Идет обновление")
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControlEvents.valueChanged)
+        notificationsTableView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func refresh(sender: AnyObject) {
+        self.getNotificationsList()
+        self.notificationsTableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     @objc func addTicketVC(sender: UIButton) {
@@ -43,36 +56,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
         performSegue(withIdentifier: "toAddTicketVC", sender: self)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if notificationListArr.isEmpty {
-            return 0
-        }
-        else {
-            return self.notificationListArr.count
-        }
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsViewCell", for: indexPath ) as! NotificationsViewCell
-        //        cell.textLabel?.numberOfLines = 0
-        //        cell.textLabel?.lineBreakMode = .byWordWrapping
-        print("Filling cells")
-        if !self.notificationListArr.isEmpty {
-            cell.notificationTitle.text = self.notificationListArr[indexPath.section].title
-            cell.notificationDate.text = self.notificationListArr[indexPath.section].date
-            loadingViewService.removeLoadingScreen()
-        }
-        else {
-            loadingViewService.removeLoadingScreen()
-        }
-        loadingViewService.removeLoadingScreen()
-        return cell
-    }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        notificationTitle = self.notificationListArr[indexPath.section].ticketTitle
@@ -93,35 +77,6 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
             //        ticketVC.text = msgText
         }
         
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //        if section == 0 {
-        //            return 20
-        //        }
-        //        else {
-        return 5
-        //        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.white
-    }
-    
-    func showTicket(msgTitle: String, msgText: String) {
-        //        performSegue(withIdentifier: "toTicketVC", sender: self)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let TicketVC = storyboard.instantiateViewController(withIdentifier: "TicketViewController") as! TicketViewController
-        TicketVC.text = msgText
-        TicketVC.titleFromTable = msgTitle
-        self.addChildViewController(TicketVC)
-        TicketVC.view.frame = self.view.frame
-        self.view.addSubview(TicketVC.view)
-        TicketVC.didMove(toParentViewController: self)
     }
     
     func getNotificationsList() {
@@ -150,11 +105,7 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
                 guard let notificationList = json as? [[String:Any]] else {return}
-                
-                //                if !Requests.ticketListArray.isEmpty {
-                //                    self.ticketListArray.removeAll()
-                //                }
-                
+                self.notificationListArr.removeAll()
                 for dic in notificationList {
                     self.notificationListArr.append(Notification(dic))
                 }
@@ -299,5 +250,67 @@ class NotificationsViewController: UIViewController, UITableViewDelegate, UITabl
     
 }
 
+extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if notificationListArr.isEmpty {
+            return 0
+        }
+        else {
+            return self.notificationListArr.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsViewCell", for: indexPath ) as! NotificationsViewCell
+        //        cell.textLabel?.numberOfLines = 0
+        //        cell.textLabel?.lineBreakMode = .byWordWrapping
+        print("Filling cells")
+        if !self.notificationListArr.isEmpty {
+            cell.notificationTitle.text = self.notificationListArr[indexPath.section].title
+            cell.notificationDate.text = self.notificationListArr[indexPath.section].date
+            loadingViewService.removeLoadingScreen()
+        }
+        else {
+            loadingViewService.removeLoadingScreen()
+        }
+        loadingViewService.removeLoadingScreen()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        //        if section == 0 {
+        //            return 20
+        //        }
+        //        else {
+        return 5
+        //        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let notificationVC = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+        notificationVC.text = self.notificationListArr[indexPath.row].title
+        self.addChildViewController(notificationVC)
+        notificationVC.view.frame = self.view.frame
+        self.view.addSubview(notificationVC.view)
+        notificationVC.didMove(toParentViewController: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
 
 

@@ -194,11 +194,13 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                guard let userData = json as? [String:Any] else {return}
-                let user = userData["user"] as? [String:Any]
-                Requests.currentAccoutNumber = user?["accountNumber"] as! String
+                print(json)
+                guard let userData = json as? [String:Any] else { return }
+                guard let user = userData["user"] as? [String:Any] else { return }
+                guard let accArray = user["listAccountNumbers"] as? [[String:Any]] else { return }
+                Requests.currentAccoutNumber = accArray[0]["accountNumber"] as! String
                 
-                let accountNumbersArray = user?["listAccountNumbers"] as! [[String:Any]]
+                let accountNumbersArray = user["listAccountNumbers"] as! [[String:Any]]
                 
                 //Try to parse array of ListAccNumbers into array of Structure
                 var model = [ListAccNumbers]()

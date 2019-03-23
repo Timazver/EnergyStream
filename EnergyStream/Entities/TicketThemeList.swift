@@ -16,4 +16,9 @@ struct TicketThemeList {
         self.id = dic["id"] as? Int ?? 0
         self.name = dic["name"] as? String ?? ""
     }
+    
+    init() {
+        self.id = 0
+        self.name = ""
+    }
 }

@@ -20,5 +20,10 @@ struct Notification {
         self.date = newTime.toString(dateFormat: "dd-MM-YYYY")
     }
     
+    init() {
+        self.title = ""
+        self.date = ""
+    }
+    
     
 }

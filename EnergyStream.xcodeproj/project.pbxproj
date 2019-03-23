@@ -25,6 +25,8 @@
 		224008B921F98D5E00A29222 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224008B821F98D5E00A29222 /* ChangePassViewController.swift */; };
 		22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22494BE722003D0600C9BDFB /* MainViewController.swift */; };
 		22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22494BFA22004C9A00C9BDFB /* Media.xcassets */; };
+		225B69A92241E94100604DF0 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B69A82241E94100604DF0 /* ImageViewCell.swift */; };
+		225B69AF22424B2E00604DF0 /* ImageShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B69AE22424B2E00604DF0 /* ImageShowViewController.swift */; };
 		2260827F21E752B100B5D768 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260827E21E752B100B5D768 /* Requests.swift */; };
 		2260828121E76B8B00B5D768 /* EpdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260828021E76B8B00B5D768 /* EpdCell.swift */; };
 		22636B61221671AA005D4436 /* BankListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22636B60221671A9005D4436 /* BankListCell.swift */; };
@@ -94,6 +96,8 @@
 		22570BA4220198B40072A06C /* PTN57F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTN57F.ttf; sourceTree = "<group>"; };
 		22570BA5220198B90072A06C /* PTC75F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC75F.ttf; sourceTree = "<group>"; };
 		22570BA6220198BA0072A06C /* PTC55F.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PTC55F.ttf; sourceTree = "<group>"; };
+		225B69A82241E94100604DF0 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		225B69AE22424B2E00604DF0 /* ImageShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageShowViewController.swift; sourceTree = "<group>"; };
 		2260827E21E752B100B5D768 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		2260828021E76B8B00B5D768 /* EpdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpdCell.swift; sourceTree = "<group>"; };
 		22636B60221671A9005D4436 /* BankListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListCell.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				2260828021E76B8B00B5D768 /* EpdCell.swift */,
 				22F4C8E12237D34C00DE0177 /* NotificationsViewCell.swift */,
 				2270AD43223B5F800004F7BD /* TicketCollectionViewCell.swift */,
+				225B69A82241E94100604DF0 /* ImageViewCell.swift */,
 				2296A031223CD4E20006419F /* AddPhotoCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -232,6 +237,7 @@
 				224008B621F98D3F00A29222 /* ConfirmAccViewController.swift */,
 				224008B821F98D5E00A29222 /* ChangePassViewController.swift */,
 				224008B221F9844D00A29222 /* TicketViewController.swift */,
+				225B69AE22424B2E00604DF0 /* ImageShowViewController.swift */,
 				228E155721F75BD80040168A /* TicketListViewController.swift */,
 				22D806D02232653F00B1524D /* NotificationsViewController.swift */,
 				228E155521F7528E0040168A /* AddTicketViewController.swift */,
@@ -414,23 +420,27 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EnergyStream/Pods-EnergyStream-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AKMonthYearPickerView/AKMonthYearPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework",
 				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMonthYearPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -492,6 +502,7 @@
 				22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */,
 				22F4C8E02237CE8400DE0177 /* Notification.swift in Sources */,
 				22F4C8D62237C83C00DE0177 /* Bank.swift in Sources */,
+				225B69AF22424B2E00604DF0 /* ImageShowViewController.swift in Sources */,
 				2260827F21E752B100B5D768 /* Requests.swift in Sources */,
 				221000B8220AA9E9008C7202 /* Constants.swift in Sources */,
 				22494BE822003D0600C9BDFB /* MainViewController.swift in Sources */,
@@ -512,6 +523,7 @@
 				22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */,
 				22CA1B852207F80600995A73 /* AccNumSheetViewController.swift in Sources */,
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
+				225B69A92241E94100604DF0 /* ImageViewCell.swift in Sources */,
 				22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */,
 				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				22E10F5A223D14870020F635 /* TicketThemeList.swift in Sources */,
