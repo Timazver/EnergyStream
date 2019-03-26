@@ -123,7 +123,7 @@ class AddTicketViewController: UIViewController {
         upload(multipartFormData: { multipartFormData in
             print("started to upload files")
             for item in self.attachedImages {
-                if let imageData = UIImageJPEGRepresentation(item, 0.25) {
+                if let imageData = UIImageJPEGRepresentation(item, 0.5) {
                     multipartFormData.append(imageData, withName: "uploads[]", fileName: "photo", mimeType: "image/jpg")
                 }
             }

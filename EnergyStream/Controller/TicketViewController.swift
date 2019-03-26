@@ -31,6 +31,7 @@ class TicketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.attachedImages.delegate = self
         getImages(ticket: ticket)
         msgText.contentInsetAdjustmentBehavior = .never
         viewForElements.layer.cornerRadius = CGFloat(5)
@@ -42,6 +43,18 @@ class TicketViewController: UIViewController {
     }
     
 
+    func showImage(image: UIImage) {
+        //        performSegue(withIdentifier: "toTicketVC", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ImageShowViewController") as! ImageShowViewController
+        vc.configure(image: image)
+        present(vc, animated: true, completion: nil)
+//        self.addChildViewController(vc)
+//        vc.view.frame = self.view.frame
+//        self.view.addSubview(vc.view)
+//        vc.didMove(toParentViewController: self)
+    }
+    
     func showAnimate()
     {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
@@ -92,17 +105,9 @@ extension TicketViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didSelectItemAt method was called")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ImageShowViewController") as! ImageShowViewController
-//        vc.imageForShow =
-        vc.configure(image: imageArray[indexPath.row])
-        self.addChildViewController(vc)
-        vc.view.frame = self.view.frame
-        self.view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        print(indexPath.row)
+        showImage(image: imageArray[indexPath.row])
     }
-    
-    
 }

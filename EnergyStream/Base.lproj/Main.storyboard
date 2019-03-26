@@ -1821,7 +1821,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hv5-Ji-oT1">
+                                                        <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hv5-Ji-oT1">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="Qhw-pp-ysI"/>
@@ -1898,19 +1898,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89b-oS-FBh">
-                                <rect key="frame" x="37.5" y="180" width="300" height="307"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="89b-oS-FBh">
+                                <rect key="frame" x="16" y="28" width="343" height="619"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="N8m-Ri-xag"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="OZU-I0-Hl3"/>
+                                    <constraint firstAttribute="width" constant="343" id="vNK-It-6K2"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EYw-pv-iGy" firstAttribute="top" secondItem="89b-oS-FBh" secondAttribute="bottom" constant="180" id="eQ6-1z-WJo"/>
-                            <constraint firstItem="89b-oS-FBh" firstAttribute="centerY" secondItem="7Qa-rm-gJY" secondAttribute="centerY" id="orV-Jp-JJK"/>
-                            <constraint firstItem="89b-oS-FBh" firstAttribute="centerX" secondItem="7Qa-rm-gJY" secondAttribute="centerX" id="rKZ-eR-m2H"/>
+                            <constraint firstItem="EYw-pv-iGy" firstAttribute="top" secondItem="89b-oS-FBh" secondAttribute="bottom" constant="20" id="5WQ-Ts-uQY"/>
+                            <constraint firstItem="89b-oS-FBh" firstAttribute="top" secondItem="hPx-k8-aYU" secondAttribute="bottom" constant="8" id="aO2-Cu-wXz"/>
+                            <constraint firstAttribute="trailing" secondItem="89b-oS-FBh" secondAttribute="trailing" constant="16" id="gL9-cv-Zj7"/>
+                            <constraint firstItem="89b-oS-FBh" firstAttribute="leading" secondItem="7Qa-rm-gJY" secondAttribute="leading" constant="16" id="oa9-nm-fTb"/>
                         </constraints>
                     </view>
                     <connections>

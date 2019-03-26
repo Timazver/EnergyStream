@@ -69,7 +69,7 @@ class NotificationsViewController: UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         if segue.identifier == "toAddTicketVC" {
-            let newVC = segue.destination as! AddTicketViewController
+            _ = segue.destination as! AddTicketViewController
         }
         else {
             //        let ticketVC = segue.destination as! TicketViewController
@@ -254,7 +254,7 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if notificationListArr.isEmpty {
-            return 0
+            return 1
         }
         else {
             return self.notificationListArr.count
@@ -300,10 +300,10 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.backgroundColor = UIColor.white
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let notificationVC = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-        notificationVC.text = self.notificationListArr[indexPath.row].title
+        notificationVC.text = self.notificationListArr[indexPath.section].title
         self.addChildViewController(notificationVC)
         notificationVC.view.frame = self.view.frame
         self.view.addSubview(notificationVC.view)

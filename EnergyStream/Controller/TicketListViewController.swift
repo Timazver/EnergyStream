@@ -91,6 +91,7 @@ class TicketListViewController: UIViewController {
     }
     
     func getTicketList() {
+        print("Getting ticket list ...")
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/application?accountNumber=\(Requests.currentAccoutNumber)") else {return }
         
         //MARK: Request with onlu swift features
@@ -159,8 +160,6 @@ extension TicketListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath ) as! TicketListViewCell
-        //        cell.textLabel?.numberOfLines = 0
-        //        cell.textLabel?.lineBreakMode = .byWordWrapping
         print("Filling cells")
         if !self.ticketListArr.isEmpty {
             cell.ticketNumber.text = "№ \(self.ticketListArr[indexPath.section].ticketNumber)"

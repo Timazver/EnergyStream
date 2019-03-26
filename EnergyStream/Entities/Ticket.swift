@@ -26,7 +26,7 @@ struct Ticket {
         self.date = newTime.toString(dateFormat: "dd-MM-YYYY")
         
         let title = ticketDic["title"] as? [String:Any]
-        self.ticketTitle = title!["name"] as? String ??  ""
+        self.ticketTitle = title?["name"] as? String ??  ""
         
         self.ticketMsg = ticketDic["msg"] as! String
         self.ticketNumber = String(ticketDic["number"] as! Int)

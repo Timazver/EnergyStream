@@ -124,7 +124,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
                 
                 guard let token = jsonData["token"] as? String else {return}
                 if token != "" {
-                        Requests.authToken = token
+                    print("trying to save token to keychain")
+                    Requests.authToken = token
                     do {
                         try Locksmith.updateData(data: ["token":token], forUserAccount: "energyStreamToken")
                         
@@ -156,8 +157,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-//        SocketIOManager.sharedInstance.establishConnection()
     }
+    
     @IBAction func resetPass() {
         performSegue(withIdentifier: "toResetPassVC", sender: self)
     }
