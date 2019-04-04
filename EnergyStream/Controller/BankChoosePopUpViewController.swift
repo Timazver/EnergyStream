@@ -42,8 +42,9 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
-        let newVC = segue.destination as! WebViewController
-        newVC.url = self.URLForWebView
+        if let newVC = segue.destination as? WebViewController {
+            newVC.url = self.URLForWebView
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,12 +77,11 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         URLForWebView = self.bankArray[indexPath.section].link
         performSegue(withIdentifier: "toWebView", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankListCell", for: indexPath) as! BankListCell
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 3)
-//        cell.layer.shadowOpacity = 0.3
        
         print("bankArray count is \(self.bankArray.count)")
         let imageUrl = URL(string: self.bankArray[indexPath.section].imgUrl)

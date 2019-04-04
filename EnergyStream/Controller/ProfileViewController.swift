@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var ticketsBtn: UIButton!
     @IBOutlet weak var accNumBtn: UIButton!
     @IBOutlet weak var notificationsBtn: UIButton!
+    @IBOutlet weak var shymKomServiceBtn: UIButton!
     
     public var accNumber: String = ""
     
@@ -57,6 +58,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.notificationsBtn.layer.cornerRadius = 5
         self.notificationsBtn.layer.borderWidth = 1
         self.notificationsBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
+        
+        self.shymKomServiceBtn.backgroundColor = UIColor(red:0.77, green:0.90, blue:0.97, alpha:1.0)
+        self.shymKomServiceBtn.layer.cornerRadius = 5
+        self.shymKomServiceBtn.layer.borderWidth = 1
+        self.shymKomServiceBtn.layer.borderColor = UIColor(red:0.65, green:0.84, blue:0.95, alpha:1.0).cgColor
 
         self.profileCellTitles = ["Лицевой счет","ФИО","Количество человек","Адрес","Номер телефона","Тип счётчика"]
         profileTableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -144,6 +150,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.performSegue(withIdentifier: "segueToNotificationsVC", sender: self)
     }
     
+    @IBAction func segueToWebView(sender: Any) {
+        self.performSegue(withIdentifier: "ShymKomServiceSegue", sender: self)
+    }
+    
     func getUserInfo(userAccNumber: String) {
         
         guard let url = URL(string:"\(Constants.URLForApi ?? "")/api/user/card?accountNumber=\(self.accNumber)") else {return}
@@ -187,9 +197,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        if let vc = segue.destination as? WebViewController {
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+            vc.url = Constants.shymKomService
+        }
+        
     }
     
     

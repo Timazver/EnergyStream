@@ -9,7 +9,9 @@
 import Foundation
 
 struct Constants {
+//    static let  URLForApi: String! = "http://mobile.epotok.kz"
     static let  URLForApi: String! = "http://5.63.112.4:35648"
+    static let shymKomService: String = "http://shymkom.kz/index.php/vizovmastera"
     static let actionFileTypeHeading = "Добавить файл"
     static let actionFileTypeDescription = "Выберите тип файла..."
     static let camera = "Камера"

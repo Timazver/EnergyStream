@@ -16,6 +16,7 @@ class ImageShowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = imageForShow
+        imageView.clipsToBounds = true
         imageView.layer.cornerRadius = CGFloat(5)
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))

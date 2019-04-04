@@ -206,11 +206,7 @@ class AddTicketViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-}
-
-extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    @IBAction func selectImages() {
+    func selectImages() {
         let vc = BSImagePickerViewController()
         
         bs_presentImagePickerController(vc, animated: true,
@@ -239,6 +235,41 @@ extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDele
         }, completion: nil)
     }
     
+    func takePhoto(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func chooseSource() {
+        let alert = UIAlertController(title: "", message: "Выберите источник", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Камера", style: .default, handler: { action in
+            self.takePhoto(sender: self)
+        }
+        ))
+        
+        alert.addAction(UIAlertAction(title: "Галерея", style: .default, handler: { action in
+            self.selectImages()
+        }
+        ))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+}
+
+extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDelegate,UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.attachedImages.append(pickedImage)
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
