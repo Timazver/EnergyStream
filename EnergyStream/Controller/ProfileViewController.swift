@@ -199,7 +199,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? WebViewController {
             let backItem = UIBarButtonItem()
-            backItem.title = ""
+            backItem.title = "Назад"
             navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
             vc.url = Constants.shymKomService
         }

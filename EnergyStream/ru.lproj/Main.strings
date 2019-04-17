@@ -1,0 +1,240 @@
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "0Eg-X9-ISQ"; */
+"0Eg-X9-ISQ.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Новый пароль"; ObjectID = "24Z-ND-i6c"; */
+"24Z-ND-i6c.text" = "Новый пароль";
+
+/* Class = "UITextView"; text = "Введите сообщение"; ObjectID = "40d-NA-TWo"; */
+"40d-NA-TWo.text" = "Введите сообщение";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "45l-38-EW2"; */
+"45l-38-EW2.text" = "Title";
+
+/* Class = "UILabel"; text = "Тема обращения"; ObjectID = "4yB-3e-MrB"; */
+"4yB-3e-MrB.text" = "Тема обращения";
+
+/* Class = "UILabel"; text = "Регистрация"; ObjectID = "50F-1G-1Jk"; */
+"50F-1G-1Jk.text" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6oV-CT-WUm"; */
+"6oV-CT-WUm.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8Jn-3t-OQQ"; */
+"8Jn-3t-OQQ.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "91p-Da-Hcs"; */
+"91p-Da-Hcs.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Номер телефона"; ObjectID = "9Ig-Dw-y07"; */
+"9Ig-Dw-y07.text" = "Номер телефона";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "9MI-nL-B3Y"; */
+"9MI-nL-B3Y.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "title"; ObjectID = "Aq5-Qk-9VW"; */
+"Aq5-Qk-9VW.text" = "title";
+
+/* Class = "UILabel"; text = "Повторите новый пароль"; ObjectID = "B0l-Km-dmv"; */
+"B0l-Km-dmv.text" = "Повторите новый пароль";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "Cyy-7c-AK3"; */
+"Cyy-7c-AK3.normalTitle" = "Отмена";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "DFs-Uc-YHB"; */
+"DFs-Uc-YHB.text" = "Label";
+
+/* Class = "UILabel"; text = "Номер телефона"; ObjectID = "DRx-aI-jSu"; */
+"DRx-aI-jSu.text" = "Номер телефона";
+
+/* Class = "UILabel"; text = "Номер лицевого счета"; ObjectID = "FEd-RQ-Jjf"; */
+"FEd-RQ-Jjf.text" = "Номер лицевого счета";
+
+/* Class = "UIButton"; normalTitle = "Добавить"; ObjectID = "H7x-R7-Tb8"; */
+"H7x-R7-Tb8.normalTitle" = "Добавить";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "HyX-5w-3jP"; */
+"HyX-5w-3jP.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Мои уведомления"; ObjectID = "Je7-Cq-wns"; */
+"Je7-Cq-wns.normalTitle" = "Мои уведомления";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JkX-tX-b2U"; */
+"JkX-tX-b2U.text" = "Label";
+
+/* Class = "UILabel"; text = "accNum"; ObjectID = "LbV-lj-rht"; */
+"LbV-lj-rht.text" = "accNum";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "M1D-Li-fmC"; */
+"M1D-Li-fmC.normalTitle" = "Далее";
+
+/* Class = "UIButton"; normalTitle = "Отправить"; ObjectID = "NFC-yc-HDn"; */
+"NFC-yc-HDn.normalTitle" = "Отправить";
+
+/* Class = "UILabel"; text = "Адрес"; ObjectID = "NXQ-4Z-drJ"; */
+"NXQ-4Z-drJ.text" = "Адрес";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Nbs-GK-Qet"; */
+"Nbs-GK-Qet.text" = "Label";
+
+/* Class = "UILabel"; text = "ВЫБЕРИТЕ ПЕРИОД"; ObjectID = "O4L-Uw-XZJ"; */
+"O4L-Uw-XZJ.text" = "ВЫБЕРИТЕ ПЕРИОД";
+
+/* Class = "UIButton"; normalTitle = "РЕГИСТРАЦИЯ"; ObjectID = "OGX-Os-5wB"; */
+"OGX-Os-5wB.normalTitle" = "РЕГИСТРАЦИЯ";
+
+/* Class = "UILabel"; text = "Пароль"; ObjectID = "Ohk-0e-pHf"; */
+"Ohk-0e-pHf.text" = "Пароль";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Oin-WJ-pBz"; */
+"Oin-WJ-pBz.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PwF-S6-IlO"; */
+"PwF-S6-IlO.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RUC-Oi-a71"; */
+"RUC-Oi-a71.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Справка по лицевому счёту"; ObjectID = "Rib-q4-o46"; */
+"Rib-q4-o46.normalTitle" = "Справка по лицевому счёту";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Ruc-mj-0tV"; */
+"Ruc-mj-0tV.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "ВОЙТИ"; ObjectID = "Sby-ga-gYv"; */
+"Sby-ga-gYv.normalTitle" = "ВОЙТИ";
+
+/* Class = "UILabel"; text = "Номер телефона"; ObjectID = "TvI-aj-8zj"; */
+"TvI-aj-8zj.text" = "Номер телефона";
+
+/* Class = "UIButton"; normalTitle = "Мои обращения"; ObjectID = "V2s-4Y-TNz"; */
+"V2s-4Y-TNz.normalTitle" = "Мои обращения";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "VdY-La-H4G"; */
+"VdY-La-H4G.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Заявка на тех. обслуживание"; ObjectID = "WCM-5l-KFX"; */
+"WCM-5l-KFX.normalTitle" = "Заявка на тех. обслуживание";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "WPA-1w-Kcw"; */
+"WPA-1w-Kcw.text" = "date";
+
+/* Class = "UILabel"; text = "Номер телефона"; ObjectID = "Wyo-Ry-axZ"; */
+"Wyo-Ry-axZ.text" = "Номер телефона";
+
+/* Class = "UILabel"; text = "Текст обращения"; ObjectID = "XWv-ez-gTK"; */
+"XWv-ez-gTK.text" = "Текст обращения";
+
+/* Class = "UIButton"; normalTitle = "Подтвердить"; ObjectID = "Xys-EM-29O"; */
+"Xys-EM-29O.normalTitle" = "Подтвердить";
+
+/* Class = "UIButton"; normalTitle = "РЕГИСТРАЦИЯ"; ObjectID = "YZR-Lp-hii"; */
+"YZR-Lp-hii.normalTitle" = "РЕГИСТРАЦИЯ";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Yde-hJ-Zwz"; */
+"Yde-hJ-Zwz.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Z27-ZH-m7K"; */
+"Z27-ZH-m7K.text" = "Label";
+
+/* Class = "UILabel"; text = "Номер лицевого счета"; ObjectID = "Zjf-vh-odm"; */
+"Zjf-vh-odm.text" = "Номер лицевого счета";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bKR-LL-9P5"; */
+"bKR-LL-9P5.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Сохранить"; ObjectID = "bxk-Ux-L0I"; */
+"bxk-Ux-L0I.normalTitle" = "Сохранить";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "djz-w1-7Ve"; */
+"djz-w1-7Ve.text" = "Label";
+
+/* Class = "UILabel"; text = "Новый пароль"; ObjectID = "h7V-6o-lCw"; */
+"h7V-6o-lCw.text" = "Новый пароль";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "h9V-lD-qXI"; */
+"h9V-lD-qXI.text" = "Label";
+
+/* Class = "UILabel"; text = "Год"; ObjectID = "hBt-qM-yIl"; */
+"hBt-qM-yIl.text" = "Год";
+
+/* Class = "UILabel"; text = "Пароль"; ObjectID = "hPu-Lg-bn3"; */
+"hPu-Lg-bn3.text" = "Пароль";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hbp-mx-L65"; */
+"hbp-mx-L65.text" = "Label";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "icy-GY-e8T"; */
+"icy-GY-e8T.text" = "date";
+
+/* Class = "UILabel"; text = "Месяц"; ObjectID = "ifS-ly-duI"; */
+"ifS-ly-duI.text" = "Месяц";
+
+/* Class = "UITextField"; placeholder = "Выберите тему обращения"; ObjectID = "ivm-fF-LWA"; */
+"ivm-fF-LWA.placeholder" = "Выберите тему обращения";
+
+/* Class = "UIButton"; normalTitle = "Единый платежный документ"; ObjectID = "j6d-bk-Foy"; */
+"j6d-bk-Foy.normalTitle" = "Единый платежный документ";
+
+/* Class = "UIButton"; normalTitle = "РЕГИСТРАЦИЯ"; ObjectID = "jJD-Vy-su8"; */
+"jJD-Vy-su8.normalTitle" = "РЕГИСТРАЦИЯ";
+
+/* Class = "UILabel"; text = "Номер телефона"; ObjectID = "kOH-n1-ABu"; */
+"kOH-n1-ABu.text" = "Номер телефона";
+
+/* Class = "UILabel"; text = "Восстановить пароль"; ObjectID = "lDE-v9-WOJ"; */
+"lDE-v9-WOJ.text" = "Восстановить пароль";
+
+/* Class = "UILabel"; text = "Повторите пароль"; ObjectID = "lPu-2o-2UV"; */
+"lPu-2o-2UV.text" = "Повторите пароль";
+
+/* Class = "UILabel"; text = "number"; ObjectID = "lWW-Qt-Ymg"; */
+"lWW-Qt-Ymg.text" = "number";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mU7-Cs-iro"; */
+"mU7-Cs-iro.text" = "Label";
+
+/* Class = "UILabel"; text = "Восстановить пароль"; ObjectID = "nBz-AN-Xwa"; */
+"nBz-AN-Xwa.text" = "Восстановить пароль";
+
+/* Class = "UIButton"; normalTitle = "Закрыть"; ObjectID = "oWp-w3-quE"; */
+"oWp-w3-quE.normalTitle" = "Закрыть";
+
+/* Class = "UILabel"; text = "Пароль"; ObjectID = "qZf-yg-92A"; */
+"qZf-yg-92A.text" = "Пароль";
+
+/* Class = "UILabel"; text = "Текущий пароль"; ObjectID = "qpc-J1-Hib"; */
+"qpc-J1-Hib.text" = "Текущий пароль";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qsk-SY-zMZ"; */
+"qsk-SY-zMZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Месяц/Год"; ObjectID = "sHp-4j-a7g"; */
+"sHp-4j-a7g.text" = "Месяц/Год";
+
+/* Class = "UIButton"; normalTitle = "ВОЙТИ"; ObjectID = "se6-Kv-osA"; */
+"se6-Kv-osA.normalTitle" = "ВОЙТИ";
+
+/* Class = "UILabel"; text = "Новый пароль"; ObjectID = "sy7-eb-0J8"; */
+"sy7-eb-0J8.text" = "Новый пароль";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "tgx-sN-H5h"; */
+"tgx-sN-H5h.title" = "Root View Controller";
+
+/* Class = "UILabel"; text = "FullName"; ObjectID = "vDj-GC-Uzq"; */
+"vDj-GC-Uzq.text" = "FullName";
+
+/* Class = "UILabel"; text = "title"; ObjectID = "vSd-Nh-PVw"; */
+"vSd-Nh-PVw.text" = "title";
+
+/* Class = "UILabel"; text = "ФИО"; ObjectID = "wsd-7A-PeN"; */
+"wsd-7A-PeN.text" = "ФИО";
+
+/* Class = "UIButton"; normalTitle = "Получить СМС код"; ObjectID = "wsu-mM-sMi"; */
+"wsu-mM-sMi.normalTitle" = "Получить СМС код";
+
+/* Class = "UIButton"; normalTitle = "Сохранить"; ObjectID = "x3L-DS-Eui"; */
+"x3L-DS-Eui.normalTitle" = "Сохранить";
+
+/* Class = "UILabel"; text = "Авторизация"; ObjectID = "zJQ-O7-87a"; */
+"zJQ-O7-87a.text" = "Авторизация";

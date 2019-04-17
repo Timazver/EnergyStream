@@ -13,11 +13,6 @@ import Alamofire
 
 class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var bankListTableview: UITableView!
-//    var kaspiImageUrl: URL!
-//    var halykImageUrl: URL!
-//    var kaspiImage: Data!
-//    var halykImage: Data!
     var URLForWebView: String!
     
     var bankArray: Array = [Bank]() {
@@ -25,6 +20,18 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
             self.bankListTableview.reloadData()
         }
     }
+    
+    @IBOutlet weak var bankListTableview: UITableView!
+//    var kaspiImageUrl: URL!
+//    var halykImageUrl: URL!
+//    var kaspiImage: Data!
+//    var halykImage: Data!
+    
+//    @IBAction func openWebViewWithBankUrl() {
+//        URLForWebView = sender.link
+//        performSegue(withIdentifier: "toWebView", sender: self)
+//    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +100,7 @@ class BankChoosePopUpViewController: UIViewController, UITableViewDelegate, UITa
             print("Ошибка загрузки изображения")
         }
         
-        cell.bankBtn.setBackgroundImage(UIImage(data:image), for: UIControlState.normal)
+        cell.bankImage.image = UIImage(data:image)
         loadingViewService.removeLoadingScreen()
         return cell
     }

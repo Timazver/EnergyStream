@@ -28,7 +28,7 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Уведомления"
-        self.navigationController!.navigationBar.backItem!.title = " "
+        self.navigationController!.navigationBar.backItem!.title = "Назад"
         loadingViewService.setLoadingScreen(notificationsTableView)
         self.notificationsTableView.tableHeaderView = self.createHeaderView()
         self.notificationsTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)

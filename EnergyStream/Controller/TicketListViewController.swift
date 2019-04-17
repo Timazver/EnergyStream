@@ -25,11 +25,14 @@ class TicketListViewController: UIViewController {
     
     @IBOutlet var ticketListTableView: UITableView!
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.getTicketList()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Список заявок"
-        self.navigationController!.navigationBar.backItem!.title = " "
+        self.navigationController!.navigationBar.backItem!.title = "Назад"
         loadingViewService.setLoadingScreen(ticketListTableView)
         self.ticketListTableView.tableHeaderView = self.createHeaderView()
         self.ticketListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
@@ -327,7 +330,7 @@ extension TicketListViewController: UITableViewDelegate, UITableViewDataSource {
         ticketNumLbl.numberOfLines = 0
         ticketNumLbl.font = UIFont.systemFont(ofSize: 15.0)
         ticketNumLbl.textColor = UIColor.gray
-        ticketNumLbl.text = "Номер заявки"
+        ticketNumLbl.text = "Номер обращения"
         headerView.addSubview(ticketNumLbl)
         
         //add constraints

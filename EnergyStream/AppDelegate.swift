@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let manager = SocketManager(socketURL: URL(string: "http://5.63.112.4:43000")!)
-        var socket = manager.defaultSocket
+        let socket = manager.defaultSocket
         socket.connect()
         socket.on("connect") { _, _ in
             print("socket connected")
@@ -103,8 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         socket.on("notifications") { dataArray, ack in
             guard let data = dataArray[0] as? [String:Any] else {return}
-            print(dataArray)
-            print(data["msg"])
             SocketIOManager.sharedInstance.pushNotification(message:data)
             
         }

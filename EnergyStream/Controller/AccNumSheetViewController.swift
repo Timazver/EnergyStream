@@ -61,7 +61,7 @@ class AccNumSheetViewController: UIViewController, UITextFieldDelegate, UIPicker
 
         self.title = "Отчёт по ЛС"
 
-        self.navigationController!.navigationBar.backItem?.title = ""
+        self.navigationController!.navigationBar.backItem?.title = "Назад"
         self.sendBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.sendBtn.layer.cornerRadius = 5
         self.sendBtn.layer.borderWidth = 1

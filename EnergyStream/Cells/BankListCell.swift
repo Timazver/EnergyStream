@@ -10,7 +10,7 @@ import UIKit
 
 class BankListCell: UITableViewCell {
     
-    @IBOutlet weak var bankBtn : UIButton!
+    @IBOutlet weak var bankImage : UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -20,7 +20,7 @@ class loadingViewService {
     /// Spinner shown during load the TableView
     static let spinner = UIActivityIndicatorView()
     
-    static func setLoadingScreen(_ view: UITableView) {
+    static func setLoadingScreen(_ view: UITableView, text: String = "Загрузка...") {
         
         // Sets the view which contains the loading text and the spinner
         let width: CGFloat = 120
@@ -33,7 +33,7 @@ class loadingViewService {
         // Sets loading text
         self.loadingLabel.textColor = UIColor.gray
         self.loadingLabel.textAlignment = NSTextAlignment.center
-        self.loadingLabel.text = "Загрузка..."
+        self.loadingLabel.text = text
         self.loadingLabel.frame = CGRect(x:0,y:0,width: 140,height: 30)
         self.loadingLabel.isHidden = false
         

@@ -55,13 +55,14 @@ class AddTicketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
         self.getTicketThemes()
         //        self.createCollectionView()
         //trigger the camera process
         msgSubject.inputView = picker
         picker.delegate = self
-        self.navigationController!.navigationBar.backItem?.title = ""
-        msgTtext.text = "Введите текст заявки"
+        self.navigationController!.navigationBar.backItem!.title = "Назад"
+        msgTtext.text = "Введите текст обращения"
         msgTtext.textColor = UIColor.lightGray
         
         self.title = "Создание обращения в тех. службу"
@@ -113,6 +114,7 @@ class AddTicketViewController: UIViewController {
     
     
     @IBAction func sendTicket() {
+        createLoadingView()
         let title = String(findNameById(name: self.msgSubject.text ?? "").id)
         let msg = self.msgTtext.text
         let parameters = ["title":title ,"msg":msg ?? "","accountNumber":Requests.currentAccoutNumber]
@@ -134,11 +136,13 @@ class AddTicketViewController: UIViewController {
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseString { response in
-                    
+                    loadingViewService.removeLoadingScreen()
+                    self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена.", handler: {action in
+                        self.navigationController?.popViewController(animated: true)}) , animated: true, completion:nil)
                     debugPrint(response)
                     }
-                self.present(AlertService.showAlert(title: "Успешно", message: "Ваша заявка успешно отправлена.", handler: {action in
-                    self.navigationController?.popViewController(animated: true)}) , animated: true, completion:nil)
+                
+                
                 
             case .failure(let encodingError):
                 print("Error during uploading images")
@@ -196,6 +200,28 @@ class AddTicketViewController: UIViewController {
             }
         }
         return theme
+    }
+    
+    func createLoadingView() {
+        let loadingView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        loadingView.backgroundColor = UIColor.gray.withAlphaComponent(0.7)
+        self.view.addSubview(loadingView)
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        loadingView.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+        
+        
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        tableView.separatorStyle = .none
+        loadingView.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor).isActive = true
+        tableView.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor).isActive = true
+        tableView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        tableView.layer.cornerRadius = 5
+        tableView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        loadingViewService.setLoadingScreen(tableView, text: "Отправка")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -337,7 +363,8 @@ extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDele
                 cell.image.layer.masksToBounds = true
                 cell.image.image = attachedImages[indexPath.row]
                 cell.deleteItemBtn.isHidden = false
-            
+                cell.deleteItemBtn.tag = indexPath.row
+                cell.deleteItemBtn.addTarget(self, action: #selector(removeItem(_:)), for: .touchUpInside)
                 return cell
             }
             else {
@@ -355,15 +382,21 @@ extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDele
        
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("DidSelectItem method was called")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ImageShowViewController") as! ImageShowViewController
         //        vc.imageForShow =
         vc.configure(image: attachedImages[indexPath.row])
-        self.addChildViewController(vc)
-        vc.view.frame = self.view.frame
-        self.view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func removeItem(_ sender: UIButton) {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let indexPaths = [indexPath]
+        attachedImages.remove(at: sender.tag)
+        collectionView.deleteItems(at: indexPaths)
+        self.collectionView.reloadData()
     }
     
     

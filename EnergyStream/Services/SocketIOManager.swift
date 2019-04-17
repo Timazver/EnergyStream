@@ -13,7 +13,7 @@ import Locksmith
 
 class SocketIOManager: NSObject {
     static let sharedInstance = SocketIOManager()
-    static let manager = SocketManager(socketURL: URL(string: "http://5.63.112.4:43000")!)
+    static let manager = SocketManager(socketURL: URL(string: "http://mobile.epotok.kz:4300")!)
     var socket = manager.defaultSocket
 //    var token = ""
     //generate token for socket

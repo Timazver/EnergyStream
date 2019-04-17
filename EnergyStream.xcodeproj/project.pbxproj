@@ -15,6 +15,7 @@
 		2227A89921D79C0900EB411A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2227A89821D79C0900EB411A /* RegisterViewController.swift */; };
 		222B8DBE21F82C35001D4B09 /* loadingViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B8DBD21F82C35001D4B09 /* loadingViewService.swift */; };
 		222B8DC021F85EF9001D4B09 /* TicketListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */; };
+		2232F0AF22588C8400CE5C15 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2232F0AE22588C8400CE5C15 /* WebKit.framework */; };
 		2239AF7E21F70D55009DC5AD /* PaymentDestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */; };
 		2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239AF7F21F73490009DC5AD /* ProfileViewController.swift */; };
 		2239C9BA21F30924003515D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239C9B921F30924003515D8 /* Extensions.swift */; };
@@ -77,6 +78,9 @@
 		2227A89821D79C0900EB411A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		222B8DBD21F82C35001D4B09 /* loadingViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewService.swift; sourceTree = "<group>"; };
 		222B8DBF21F85EF9001D4B09 /* TicketListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListViewCell.swift; sourceTree = "<group>"; };
+		2232F0AE22588C8400CE5C15 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2232F0B022589E6200CE5C15 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		2232F0B122589E6300CE5C15 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2239AF7D21F70D55009DC5AD /* PaymentDestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDestCell.swift; sourceTree = "<group>"; };
 		2239AF7F21F73490009DC5AD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2239C9B921F30924003515D8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2232F0AF22588C8400CE5C15 /* WebKit.framework in Frameworks */,
 				EDC99ACF170C3BB78952FE77 /* Pods_EnergyStream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +271,7 @@
 		6A0B05E69C764BD576150D15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2232F0AE22588C8400CE5C15 /* WebKit.framework */,
 				22695B0021FDBC440070C831 /* Security.framework */,
 				F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */,
 			);
@@ -387,8 +393,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = B222F1DB1DAA30320089573D;
 			productRefGroup = B222F1E51DAA30330089573D /* Products */;
@@ -544,6 +552,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B222F1EC1DAA30330089573D /* Base */,
+				2232F0B022589E6200CE5C15 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -552,6 +561,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B222F1F11DAA30330089573D /* Base */,
+				2232F0B122589E6300CE5C15 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

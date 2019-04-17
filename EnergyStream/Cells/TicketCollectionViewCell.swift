@@ -8,9 +8,11 @@
 
 import UIKit
 
+
 class TicketCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var deleteItemBtn: UIButton!
+    
     
 }
