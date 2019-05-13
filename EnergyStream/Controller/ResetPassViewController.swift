@@ -31,7 +31,6 @@ class ResetPassViewController: UIViewController, UITextFieldDelegate {
             
                 if (200..<300).contains(statusCode) {
                     let value = responseJSON.result.value
-                    print("value: \(value)")
                 }
                 else {
                     print("error")

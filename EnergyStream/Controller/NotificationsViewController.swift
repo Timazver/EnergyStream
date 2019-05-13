@@ -29,7 +29,6 @@ class NotificationsViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Уведомления"
         self.navigationController!.navigationBar.backItem!.title = "Назад"
-        loadingViewService.setLoadingScreen(notificationsTableView)
         self.notificationsTableView.tableHeaderView = self.createHeaderView()
         self.notificationsTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         notificationsTableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -253,12 +252,13 @@ class NotificationsViewController: UIViewController {
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if notificationListArr.isEmpty {
-            return 1
-        }
-        else {
-            return self.notificationListArr.count
-        }
+//        if notificationListArr.isEmpty {
+//            return 1
+//        }
+//        else {
+//            return self.notificationListArr.count
+//        }
+        return self.notificationListArr.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -267,6 +267,7 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        loadingViewService.setLoadingScreen(notificationsTableView)
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsViewCell", for: indexPath ) as! NotificationsViewCell
         //        cell.textLabel?.numberOfLines = 0
         //        cell.textLabel?.lineBreakMode = .byWordWrapping
@@ -275,11 +276,14 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
             cell.notificationTitle.text = self.notificationListArr[indexPath.section].title
             cell.notificationDate.text = self.notificationListArr[indexPath.section].date
             loadingViewService.removeLoadingScreen()
+            print("array is not empty")
         }
+        
         else {
             loadingViewService.removeLoadingScreen()
+            print("array is empty")
         }
-        loadingViewService.removeLoadingScreen()
+      
         return cell
     }
     

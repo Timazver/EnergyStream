@@ -33,7 +33,6 @@ class TicketListViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Список заявок"
         self.navigationController!.navigationBar.backItem!.title = "Назад"
-        loadingViewService.setLoadingScreen(ticketListTableView)
         self.ticketListTableView.tableHeaderView = self.createHeaderView()
         self.ticketListTableView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.95, alpha:1.0)
         ticketListTableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -148,12 +147,7 @@ class TicketListViewController: UIViewController {
 extension TicketListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if ticketListArr.isEmpty {
-            return 0
-        }
-        else {
-            return self.ticketListArr.count
-        }
+     return ticketListArr.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -162,6 +156,7 @@ extension TicketListViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          loadingViewService.setLoadingScreen(ticketListTableView)
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath ) as! TicketListViewCell
         print("Filling cells")
         if !self.ticketListArr.isEmpty {
@@ -173,7 +168,6 @@ extension TicketListViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             loadingViewService.removeLoadingScreen()
         }
-        loadingViewService.removeLoadingScreen()
         return cell
     }
     

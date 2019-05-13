@@ -34,7 +34,6 @@ class SocketIOManager: NSObject {
         socket.on("notifications") { dataArray, ack in
             guard let data = dataArray[0] as? [String:Any] else {return}
             print(dataArray)
-            print(data["msg"])
             self.pushNotification(message:data)
             
         }

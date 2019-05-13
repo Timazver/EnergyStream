@@ -37,7 +37,6 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.title = "Список лицевых счетов"
-        print(self.title)
     }
     
     override func viewDidLoad() {
@@ -48,7 +47,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
 //        catch {
 //
 //        }
-       
+    
 //        self.textField.delegate = self
         loadingViewService.setLoadingScreen(accListTableView)
         self.accListTableView.tableHeaderView = createHeaderView()
@@ -57,7 +56,6 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
         self.title = "Список лицевых счетов"
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.06, blue:0.27, alpha:1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        print(self.navigationController?.navigationBar.topItem?.title)
         contextMenuBtn = UIBarButtonItem(title:". . .", style: .plain, target: self, action: #selector(showBottomAlertWindow(_:)))
         self.navigationItem.rightBarButtonItem = contextMenuBtn
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -192,13 +190,17 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             }
             
             guard let data = data else {return}
-            
+            print(data)
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
                 guard let userData = json as? [String:Any] else { return }
                 guard let user = userData["user"] as? [String:Any] else { return }
                 guard let accArray = user["listAccountNumbers"] as? [[String:Any]] else { return }
+                if accArray.isEmpty {
+                    AlertService.showAlert(title: "Ошибка", message: "Список лицевых счетов пустой. Пожалуйста добавьте лицевой счет")
+                }
+                else {
                 Requests.currentAccoutNumber = accArray[0]["accountNumber"] as! String
                 
                 let accountNumbersArray = user["listAccountNumbers"] as! [[String:Any]]
@@ -225,7 +227,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
                         
                     }
                 }
-                
+                }
             }catch {
                 print(error)
             }
@@ -375,7 +377,7 @@ class AccListTableViewController: UITableViewController, UITextFieldDelegate {
             self.listAccountNumbers.remove(at: indexPath.section)
             let indexSet = NSMutableIndexSet()
             indexSet.add(indexPath.section)
-            tableView.deleteSections(indexSet as! IndexSet, with: .automatic)
+            tableView.deleteSections((indexSet as IndexSet), with: .automatic)
         }
         
     }

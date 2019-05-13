@@ -72,9 +72,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         })
         
         let acceptAction = UIAlertAction(title: "Принять", style: .default, handler: {action in
-            let accountNumber = self.accountNumber.text
+            let accountNumber = self.accountNumber.text!
             let phoneNumber = self.phoneNumber.text!.removingWhitespaces()
-            let password = self.password.text
+            let password = self.password.text!
             
             let parametersForRegister = ["phoneNumber":phoneNumber,"password":password,"accountNumber":accountNumber]
             guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/register") else {return}
@@ -91,7 +91,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     let action=UIAlertAction(title: "Отправить", style: .default, handler:{
                         action in
                         guard let urlForActivate = URL(string: "\(Constants.URLForApi ?? "")/api/activate") else {return}
-                        let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text] as [String : Any]
+                        let parametersForActivate = ["phoneNumber":phoneNumber,"activateCode":smsAlert.textFields![0].text!] as [String : Any]
                         request(urlForActivate, method: HTTPMethod.post, parameters: parametersForActivate, encoding: JSONEncoding.default).responseJSON {responseJSON in
                             guard let activateStatusCode = responseJSON.response?.statusCode else { return }
                             if activateStatusCode == 200 {

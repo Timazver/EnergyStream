@@ -7,6 +7,7 @@ class Requests {
     static var currentAccoutNumber: String = ""
     static var authToken: String = ""
     static var currentUser = UserCard()
+    static var fcmToken: String = ""
 
     
     

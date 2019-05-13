@@ -28,8 +28,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
+       
         //change buttons color and border
         self.loginBtn.backgroundColor = UIColor(red:0.11, green:0.60, blue:0.87, alpha:1.0)
         self.loginBtn.layer.cornerRadius = 5
@@ -67,11 +66,10 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
 //
     @IBAction func userLogin() {
-        
+        print("Method userlogin was called")
         var login = self.textfieldPhoneNumber.text!.removingWhitespaces()
         var password = self.password.text!
-        
-        let parameters = ["phoneNumber":login,"password":password]
+        let parameters = ["phoneNumber":login,"password":password, "fcmToken":Requests.fcmToken]
         
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/login") else {return}
         

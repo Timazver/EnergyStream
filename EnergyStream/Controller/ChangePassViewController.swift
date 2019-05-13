@@ -54,7 +54,6 @@ class ChangePassViewController: UIViewController {
                 print("statusCode: ", statusCode)
                 
                 if (200..<300).contains(statusCode) {
-                    let value = responseJSON.result.value
 //                    guard let msg = value as? [String:Any] else {return}
                     self.present(AlertService.showAlert(title: "Успешно", message: "Пароль был успешно восстановлен."),animated: true, completion: nil)
                     DispatchQueue.main.asyncAfter(deadline:.now() + .seconds(4), execute: {

@@ -48,6 +48,7 @@
 		22CA1B8D22081CC000995A73 /* BlueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */; };
 		22CA1B8F22081CC900995A73 /* WhiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */; };
 		22CA1B9122082A0600995A73 /* ExitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */; };
+		22D5CF452269994F0060D7B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22D5CF442269994F0060D7B1 /* GoogleService-Info.plist */; };
 		22D806D12232653F00B1524D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D806D02232653F00B1524D /* NotificationsViewController.swift */; };
 		22E10F5A223D14870020F635 /* TicketThemeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E10F59223D14870020F635 /* TicketThemeList.swift */; };
 		22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4C8D12237700700DE0177 /* NotificationViewController.swift */; };
@@ -63,7 +64,6 @@
 		B222F1EA1DAA30330089573D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F1E91DAA30330089573D /* ViewController.swift */; };
 		B222F1ED1DAA30330089573D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1EB1DAA30330089573D /* Main.storyboard */; };
 		B222F1F21DAA30330089573D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B222F1F01DAA30330089573D /* LaunchScreen.storyboard */; };
-		B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F2191DAA354D0089573D /* menuViewController.swift */; };
 		B222F21C1DAA36070089573D /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F21B1DAA36070089573D /* MenuCell.swift */; };
 		B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B222F21D1DAA46600089573D /* EpdViewController.swift */; };
 		EDC99ACF170C3BB78952FE77 /* Pods_EnergyStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27B1B2CED01D1367D9A143A /* Pods_EnergyStream.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -123,6 +123,7 @@
 		22CA1B8C22081CC000995A73 /* BlueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B8E22081CC900995A73 /* WhiteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteTableViewCell.swift; sourceTree = "<group>"; };
 		22CA1B9022082A0600995A73 /* ExitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitTableViewCell.swift; sourceTree = "<group>"; };
+		22D5CF442269994F0060D7B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22D806D02232653F00B1524D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		22E10F59223D14870020F635 /* TicketThemeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketThemeList.swift; sourceTree = "<group>"; };
 		22F4C8D12237700700DE0177 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		B222F1FE1DAA30330089573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B222F2071DAA30330089573D /* EnergyStreamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStreamUITests.swift; sourceTree = "<group>"; };
 		B222F2091DAA30330089573D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B222F2191DAA354D0089573D /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		B222F21B1DAA36070089573D /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		B222F21D1DAA46600089573D /* EpdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpdViewController.swift; sourceTree = "<group>"; };
 		EFE7F1388F102BB4CD1B5D36 /* Pods-EnergyStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnergyStream.debug.xcconfig"; path = "Target Support Files/Pods-EnergyStream/Pods-EnergyStream.debug.xcconfig"; sourceTree = "<group>"; };
@@ -253,7 +253,6 @@
 				2227A89421D72ADC00EB411A /* StartViewController.swift */,
 				2227A89821D79C0900EB411A /* RegisterViewController.swift */,
 				B222F21D1DAA46600089573D /* EpdViewController.swift */,
-				B222F2191DAA354D0089573D /* menuViewController.swift */,
 				226E3D24223E540100F4828F /* LicenseAgreementViewController.swift */,
 			);
 			path = Controller;
@@ -313,6 +312,7 @@
 				B222F1EB1DAA30330089573D /* Main.storyboard */,
 				B222F1F01DAA30330089573D /* LaunchScreen.storyboard */,
 				B222F1F31DAA30330089573D /* Info.plist */,
+				22D5CF442269994F0060D7B1 /* GoogleService-Info.plist */,
 			);
 			path = EnergyStream;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -390,10 +390,9 @@
 			};
 			buildConfigurationList = B222F1DF1DAA30320089573D /* Build configuration list for PBXProject "EnergyStream" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				ru,
@@ -414,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B222F1F21DAA30330089573D /* LaunchScreen.storyboard in Resources */,
+				22D5CF452269994F0060D7B1 /* GoogleService-Info.plist in Resources */,
 				22494BFB22004C9A00C9BDFB /* Media.xcassets in Resources */,
 				B222F1ED1DAA30330089573D /* Main.storyboard in Resources */,
 			);
@@ -435,10 +435,13 @@
 				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -448,10 +451,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -536,7 +542,6 @@
 				B222F21E1DAA46600089573D /* EpdViewController.swift in Sources */,
 				225B69A92241E94100604DF0 /* ImageViewCell.swift in Sources */,
 				22F4C8D22237700800DE0177 /* NotificationViewController.swift in Sources */,
-				B222F21A1DAA354D0089573D /* menuViewController.swift in Sources */,
 				22E10F5A223D14870020F635 /* TicketThemeList.swift in Sources */,
 				2239AF8021F73490009DC5AD /* ProfileViewController.swift in Sources */,
 				226464FA21F053940003C9C2 /* payInfoCell.swift in Sources */,

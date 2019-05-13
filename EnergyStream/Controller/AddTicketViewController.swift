@@ -384,11 +384,13 @@ extension AddTicketViewController:UITextViewDelegate, UINavigationControllerDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("DidSelectItem method was called")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ImageShowViewController") as! ImageShowViewController
-        //        vc.imageForShow =
-        vc.configure(image: attachedImages[indexPath.row])
-        present(vc, animated: true, completion: nil)
+        if indexPath.count > 1 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ImageShowViewController") as! ImageShowViewController
+            vc.configure(image: attachedImages[indexPath.row])
+            present(vc, animated: true, completion: nil)
+        }
+       
     }
     
     @objc func removeItem(_ sender: UIButton) {

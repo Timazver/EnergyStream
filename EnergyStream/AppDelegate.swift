@@ -10,19 +10,41 @@ import UIKit
 import UserNotifications
 import Locksmith
 import SocketIO
+import Firebase
+import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+       
         application.setMinimumBackgroundFetchInterval(10)
         registerForPushNotifications()
         SocketIOManager.sharedInstance.establishConnection()
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+            // For iOS 10 data message (sent via FCM
+            Messaging.messaging().delegate = self
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
+        
         return true
     }
 
@@ -35,6 +57,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 //        SocketIOManager.sharedInstance.closeConnection()
+        SocketIOManager.sharedInstance.establishConnection()
+//        do {
+//            
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategory.init() as String, mode: AVAudioSessionMode.init() as String , options: [.mixWithOthers, .allowAirPlay])
+//            SocketIOManager.sharedInstance.establishConnection()
+//            print("Playback OK")
+//            try AVAudioSession.sharedInstance().setActive(true)
+//            print("Session is Active")
+//        } catch {
+//            print(error)
+//        }
+    }
+    
+    func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
+        print(remoteMessage.appData)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -78,6 +115,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let token = tokenParts.joined()
+        _ = InstanceID.instanceID().instanceID(handler: { (result, error) in
+            if let error = error {
+                print("Error is \(error)")
+            }
+            else if let result = result {
+                print("Result is \(result.token)")
+                Requests.fcmToken = result.token
+                
+            }
+        })
         print("Device Token: \(token)")
     }
     

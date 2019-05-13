@@ -25,7 +25,6 @@ class PassChangeUserFormViewController: UIViewController {
         let oldPassword = self.currentPass.text
         let newPassword = self.newPass.text
         let repeatedPassword = self.newPassAgain.text
-        let message = ""
         if newPassword != repeatedPassword {
            self.present(AlertService.showAlert(title: "Ошибка", message: "Введенные пароли не совпадают."), animated: true, completion: nil)
         }
@@ -35,7 +34,7 @@ class PassChangeUserFormViewController: UIViewController {
         
         guard let url = URL(string: "\(Constants.URLForApi ?? "")/api/changepass") else {return}
         
-        request(url, method: HTTPMethod.post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
+        request(url, method: HTTPMethod.post, parameters: parameters as Parameters,encoding: JSONEncoding.default, headers: headers).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
             print("statusCode: ", statusCode)
             

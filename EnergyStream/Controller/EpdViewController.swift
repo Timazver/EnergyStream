@@ -331,7 +331,6 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
     }
     
     func getUserEpd(_ accountNumber: String) {
-        let epdTitles = ["Организация", "Назначение" , "К оплате"]
         guard let url = URL(string:"\(Constants.URLForApi ?? "")/api/epd?accountNumber=\(Requests.currentAccoutNumber)") else {return}
         
         
@@ -345,10 +344,6 @@ class EpdViewController: UIViewController,UITableViewDelegate, UITableViewDataSo
         
         session.dataTask(with: requestForUserInfo) {
             (data,response,error) in
-            
-            if let response = response {
-                //                print(response)
-            }
             
             guard let data = data else {return}
             
