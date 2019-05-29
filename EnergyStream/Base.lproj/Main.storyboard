@@ -223,9 +223,9 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="se6-Kv-osA" id="x7q-XE-WrM"/>
-                        <outlet property="password" destination="ign-LL-OaV" id="LKH-o5-t2E"/>
+                        <outlet property="password" destination="ign-LL-OaV" id="gZU-j8-PNb"/>
                         <outlet property="registerBtn" destination="OGX-Os-5wB" id="VhH-aE-WNJ"/>
-                        <outlet property="textfieldPhoneNumber" destination="d2W-2G-V2L" id="G8G-7H-O5m"/>
+                        <outlet property="textfieldPhoneNumber" destination="d2W-2G-V2L" id="QLk-fK-DOq"/>
                         <segue destination="hSE-K4-j1h" kind="presentation" identifier="accListSegue" id="eJl-WA-g0v"/>
                         <segue destination="YTL-eq-fkf" kind="show" identifier="toResetPassVC" id="gav-X2-7wQ"/>
                     </connections>
@@ -2739,6 +2739,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JgD-yn-47j"/>
-        <segue reference="ndv-oi-V9K"/>
+        <segue reference="QgY-TU-dxe"/>
     </inferredMetricsTieBreakers>
 </document>

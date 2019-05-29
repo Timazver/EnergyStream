@@ -25,23 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
        
-        application.setMinimumBackgroundFetchInterval(10)
-        registerForPushNotifications()
-        SocketIOManager.sharedInstance.establishConnection()
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-            // For iOS 10 data message (sent via FCM
-            Messaging.messaging().delegate = self
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+//        application.setMinimumBackgroundFetchInterval(10)
+//        registerForPushNotifications()
+//        SocketIOManager.sharedInstance.establishConnection()
+//        if #available(iOS 10.0, *) {
+//            // For iOS 10 display notification (sent via APNS)
+//            UNUserNotificationCenter.current().delegate = self
+//            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//            UNUserNotificationCenter.current().requestAuthorization(
+//                options: authOptions,
+//                completionHandler: {_, _ in })
+//            // For iOS 10 data message (sent via FCM
+//            Messaging.messaging().delegate = self
+//        } else {
+//            let settings: UIUserNotificationSettings =
+//                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//        }
         application.registerForRemoteNotifications()
         FirebaseApp.configure()
         
@@ -133,28 +133,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("Failed to register: \(error)")
     }
     
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let manager = SocketManager(socketURL: URL(string: "http://5.63.112.4:43000")!)
-        let socket = manager.defaultSocket
-        socket.connect()
-        socket.on("connect") { _, _ in
-            print("socket connected")
-            let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStreamToken")
-            let token = dic?["token"] as? String ?? ""
-            socket.emit("auth", ["token":token])
-        }
-        
-        socket.on("disconnect") { _, _ in
-            print("socket disconnected")
-        }
-        
-        socket.on("notifications") { dataArray, ack in
-            guard let data = dataArray[0] as? [String:Any] else {return}
-            SocketIOManager.sharedInstance.pushNotification(message:data)
-            
-        }
-        
-    }
+//    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        let manager = SocketManager(socketURL: URL(string: "http://5.63.112.4:43000")!)
+//        let socket = manager.defaultSocket
+//        socket.connect()
+//        socket.on("connect") { _, _ in
+//            print("socket connected")
+//            let dic = Locksmith.loadDataForUserAccount(userAccount: "energyStreamToken")
+//            let token = dic?["token"] as? String ?? ""
+//            socket.emit("auth", ["token":token])
+//        }
+//
+//        socket.on("disconnect") { _, _ in
+//            print("socket disconnected")
+//        }
+//
+//        socket.on("notifications") { dataArray, ack in
+//            guard let data = dataArray[0] as? [String:Any] else {return}
+//            SocketIOManager.sharedInstance.pushNotification(message:data)
+//
+//        }
+//
+//    }
 
 }
 
